@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('fanzas', function (Blueprint $table) {
             $table->id();
-            $table->string('fanza_id');
+            $table->string('content_id');
             $table->string('title')->nullable();
             $table->string('volume')->nullable();
             $table->string('actress')->nullable();
