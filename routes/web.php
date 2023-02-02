@@ -1,9 +1,12 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FangaController;
+// use App\Http\Controllers\NewController;
+use App\Http\Controllers\Fanza\VideoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,14 +19,23 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+Route::get('/', [FangaController::class, 'index'])->name('fanga');
+
+Route::controller(VideoController::class)->group(function ()
+{
+    Route::get('fanza/video/create', 'create')->name('video.create');
+    Route::get('fanza/video/store', 'store')->name('video.store');
+    Route::post('fanza/video/store', 'store');
 });
+
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
