@@ -10,14 +10,14 @@ class Fanza extends Model
     use HasFactory;
 
     protected $table = "fanzas";
-    protected $primaryKey = 'fanza_id';
+    protected $primaryKey = 'content_id';
     protected $keyType = 'string';
     protected $dates = ['date'];
     protected $casts = ['date' => 'date'];
     public $incrementing = false;
 
     protected $fillable = [
-        'fanza_id',
+        'content_id',
         'title',
         'actress',
         'maker',

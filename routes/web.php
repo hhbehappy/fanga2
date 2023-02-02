@@ -5,8 +5,9 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FangaController;
-// use App\Http\Controllers\NewController;
-use App\Http\Controllers\Fanza\VideoController;
+use App\Http\Controllers\FanzaVideoController;
+use App\Http\Controllers\FanzaFreeMemoController;
+// use App\Http\Controllers\Duga\VideoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +22,20 @@ use App\Http\Controllers\Fanza\VideoController;
 
 Route::get('/', [FangaController::class, 'index'])->name('fanga');
 
-Route::controller(VideoController::class)->group(function ()
+// FANZA
+Route::controller(FanzaFreeMemoController::class)->group(function ()
 {
-    Route::get('fanza/video/create', 'create')->name('video.create');
-    Route::get('fanza/video/store', 'store')->name('video.store');
-    Route::post('fanza/video/store', 'store');
+    Route::get('fanzafreememo/store/{fanza_id}/{content_id}', 'store');
+    Route::post('fanzafreememo/store/{fanza_id}/{content_id}', 'store');
+    Route::delete('fanzafreememo/destroy/{id}', 'destroy');
+});
+
+Route::controller(FanzaVideoController::class)->group(function ()
+{
+    Route::get('fanza/create', 'create')->name('fvideo.create');
+    Route::get('fanza/store', 'store')->name('fvideo.store');
+    Route::post('fanza/store', 'store');
+    Route::get('/fanza/video/{id}', 'show')->name('fvideo.show');
 });
 
 // Route::get('/', function () {
