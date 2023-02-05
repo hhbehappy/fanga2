@@ -3,7 +3,7 @@ import BasicLayout from '@/Layouts/BasicLayout.vue';
 import { router, Head, Link, useForm  } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import InputError from '@/Components/InputError.vue';
-// import FlashMessage from '@/Components/FlashMessage.vue';
+import FlashMessage from '@/Components/FlashMessage.vue';
 // import NiceFlashMessage from '@/Components/NiceFlashMessage.vue';
 
 const props = defineProps({
@@ -13,10 +13,10 @@ const props = defineProps({
   fanza_id: Number,
   content_id: String,
   fanza_free_memos: Object,
-  // usermemos: Object,
+  fanza_release_memos: Object,
   // privatememos: Object,
   // usermemolists: Object,
-  // privatememoid: Number,
+  user_id: Number,
   // nice: Object,
   // nicecount: Number
 })
@@ -26,7 +26,7 @@ const form = useForm({
   free: null,
   release: null,
   private: null,
-  nickname: true
+  nickname: 1
 });
 
 const isShow = ref(false)
@@ -38,14 +38,14 @@ const submitFunction = () => {
     preserveScroll: true
   })
 }
-// const submitFunction2 = () => {
-//   form.post('/newvideo/storereleasememo/' + props.content_id, {
-//     onSuccess: () => form.reset('free', 'release', 'private'),
-//     preserveScroll: true
-//   })
-// }
+const submitFunction2 = () => {
+  form.post('/fanzareleasememo/store/' + props.fanza_id + '/' + props.content_id, {
+    onSuccess: () => form.reset('free', 'release', 'private'),
+    preserveScroll: true
+  })
+}
 // const submitFunction3 = () => {
-//   form.post('/newvideo/storeprivatememo/' + props.content_id, {
+//   form.post('/newvideo/storeprivatememo/' + props.fanza_id + '/' + props.content_id, {
 //     onSuccess: () => form.reset('free', 'release', 'private'),
 //     preserveScroll: true
 //   })
@@ -58,15 +58,15 @@ const destroyFreeMemo = id => {
   })
 };
 
-// const deleteMemo = id => {
-//     Inertia.delete(`/newvideo/usermemodelete/${id}/` + props.content_id, {
-//     onBefore: () => confirm('本当に削除しますか？'),
-//     preserveScroll: true,
-//   })
-// };
+const destroyReleaseMemo = id => {
+    router.delete(`/fanzareleasememo/destroy/${id}`, {
+    onBefore: () => confirm('本当に削除しますか？'),
+    preserveScroll: true,
+  })
+};
 
 // const deletePrivateMemo = id => {
-//     Inertia.delete(`/newvideo/privatememodelete/${id}/` + props.content_id, {
+//     router.delete(`/newvideo/privatememodelete/${id}`, {
 //     onBefore: () => confirm('本当に削除しますか？'),
 //     preserveScroll: true,
 //   })
@@ -316,6 +316,41 @@ export default {
         </Link> -->
       </p>
     </div>
+  <!-- 公開メモ -->
+  <div class="flex flex-col justify-center mx-auto my-2">
+    <div v-for="fanza_release_memo in fanza_release_memos" :key="fanza_release_memo.id">
+      <div v-if="fanza_release_memo.release" class="border-dotted border-b border-gray-500 p-2 mx-5">
+        <div class="flex flex-wrap mb-3 justify-between items-center">
+          <div>
+            <span v-if="fanza_release_memo.nickname === 1" class="bg-blue-200 p-1 px-3 rounded-2xl text-xs font-bold">{{ fanza_release_memo.name }}さんのメモ</span>
+            <span v-else-if="fanza_release_memo.nickname === 0" class="bg-blue-200 p-1 px-3 rounded-2xl text-xs font-bold">ログインユーザーのメモ</span>
+            <span class="w-28 mt-2 ml-4 text-sm text-zinc-500 inline-block">
+            {{ fanza_release_memo.updated_at }}
+            </span>
+          </div>
+          <div v-if="fanza_release_memo.user_id === props.user_id" class="flex">
+            <Link as="button" :href="route('fvideo.edit', { type: 'release', content_id: videoid.content_id, memoid: fanza_release_memo.id}) + '#editmemo'">
+              <button type="button" class="mt-2 mx-2 px-3 py-1 bg-green-600 text-white font-semibold text-xs leading-normal uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out flex align-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-4 mr-1 inline-block">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                </svg>
+                編集
+              </button>
+            </Link>
+            <button type="button" @click="destroyReleaseMemo(fanza_release_memo.id)" class="mt-2 px-2 py-1 bg-red-600 text-white font-semibold text-xs leading-normal uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out flex align-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 my-auto mr-1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              削除
+            </button>
+          </div>
+        </div>
+        <div class="w-full whitespace-pre-line">
+          {{ fanza_release_memo.release }}
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- フリーメモ -->
   <div class="flex flex-col justify-center mx-auto my-2">
     <div v-for="fanza_free_memo in fanza_free_memos" :key="fanza_free_memo.id" class="border-dotted border-b border-gray-500 p-2 mx-5">
@@ -341,10 +376,6 @@ export default {
   <!-- 投稿用メモのタブ -->
   <div class="flex flex-wrap justify-center h-96 mb-6">
     <div class="w-11/12">
-      <InputError class="my-4 text-center text-xl" :message="form.errors.free" />
-      <InputError class="my-4 text-center text-xl" :message="form.errors.release" />
-      <InputError class="my-4 text-center text-xl" :message="form.errors.private" />
-      <!-- <FlashMessage /> -->
       <ul class="flex mb-0 list-none flex-wrap pt-3 pb-2 flex-row text-xs md:text-base cursor-pointer">
         <li class="-mb-px flex-auto text-center w-1/3">
           <a class="font-bold uppercase pr-2 py-2 shadow-md rounded block leading-normal" @click="toggleTabs(1)" :class="{'text-black bg-gray-200': openTab !== 1, 'text-black bg-amber-200': openTab === 1}">
@@ -378,6 +409,8 @@ export default {
               <form @submit.prevent="submitFunction">
                 <div class="flex justify-center relative">
                   <div class="mb-3 w-full">
+                    <InputError class="mb-4 text-center" :message="form.errors.free" />
+                    <FlashMessage class="mb-4" />
                     <textarea name="free" v-model="form.free" class="form-control block w-full py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-800 focus:outline-none" id="free" rows="5" placeholder="フリーメモ">
                     </textarea><br>
                     <button type="submit" class="px-6 py-2 bg-blue-600 text-white font-bold text-sm leading-normal uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-lg transition duration-150 ease-in-out flex align-center absolute right-6">
@@ -397,18 +430,20 @@ export default {
               <form @submit.prevent="submitFunction2">
                 <div class="flex justify-center relative">
                   <div class="mb-3 w-full">
+                    <InputError class="mb-4 text-center" :message="form.errors.release" />
+                    <FlashMessage />
                     <textarea name="release" v-model="form.release" class="form-control block w-full py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-800 focus:outline-none" id="release" rows="5" placeholder="公開メモ">
                     </textarea><br>
                     <div class="flex justify-end mr-40 items-center">
                       <div class="">
                         <div class="mb-1">
                           <label class="cursor-pointer text-sm">
-                            <input type="radio" class="mr-2 mb-1" name="nickname" v-model="form.nickname" value="yes" checked>ニックネームを使用する
+                            <input type="radio" class="mr-2 mb-1" name="nickname" v-model="form.nickname" value="1" checked>ニックネームを使用する
                           </label>
                         </div>
                         <div class="">
                           <label class="cursor-pointer text-sm">
-                            <input type="radio" class="mr-2 mb-1" name="nickname" v-model="form.nickname" value="no">ニックネームを使用しない
+                            <input type="radio" class="mr-2 mb-1" name="nickname" v-model="form.nickname" value="0">ニックネームを使用しない
                           </label>
                         </div>
                       </div>
@@ -430,6 +465,8 @@ export default {
               <form @submit.prevent="submitFunction3">
                 <div class="flex justify-center relative">
                   <div class="mb-3 w-full">
+                    <InputError class="mb-4 text-center" :message="form.errors.private" />
+                    <FlashMessage />
                     <textarea name="private" v-model="form.private" class="form-control block w-full py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-800 focus:outline-none" id="private" rows="5" placeholder="非公開メモ">
                     </textarea><br>
                     <button type="submit" class="px-6 py-2 bg-blue-600 text-white font-bold text-sm leading-normal uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-lg transition duration-150 ease-in-out flex align-center absolute right-6">
