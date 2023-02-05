@@ -8,6 +8,7 @@ use App\Http\Controllers\FangaController;
 use App\Http\Controllers\FanzaVideoController;
 use App\Http\Controllers\FanzaFreeMemoController;
 use App\Http\Controllers\FanzaReleaseMemoController;
+use App\Http\Controllers\FanzaPrivateMemoController;
 // use App\Http\Controllers\Duga\VideoController;
 
 /*
@@ -37,6 +38,14 @@ Route::controller(FanzaReleaseMemoController::class)->group(function ()
     Route::post('fanzareleasememo/store/{fanza_id}/{content_id}', 'store');
     Route::put('/fanzareleasememo/update/{type}/{content_id}', 'update');
     Route::delete('fanzareleasememo/destroy/{id}', 'destroy');
+});
+
+Route::controller(FanzaPrivateMemoController::class)->group(function ()
+{
+    Route::get('fanzaprivatememo/store/{fanza_id}/{content_id}', 'store');
+    Route::post('fanzaprivatememo/store/{fanza_id}/{content_id}', 'store');
+    Route::put('/fanzaprivatememo/update/{type}/{content_id}', 'update');
+    Route::delete('fanzaprivatememo/destroy/{id}', 'destroy');
 });
 
 Route::controller(FanzaVideoController::class)->group(function ()

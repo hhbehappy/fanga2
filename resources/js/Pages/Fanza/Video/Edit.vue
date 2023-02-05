@@ -5,19 +5,19 @@ import { ref } from 'vue';
 
 const props = defineProps({
   type:String,
+  user_id: Number,
   videoids: Object,
   title: String,
   date: String,
   content_id: String,
   fanza_release_memos: Object,
-  // privatememos: Object,
-  user_id: Number,
-  updateusermemoid: Object,
+  fanza_private_memos: Object,
   update_release_id: Object,
+  update_private_id: Object,
   // nice: String,
   // nicecount: Number
 })
-// console.log(props.id);
+
 const form = useForm({
   content_id: props.content_id,
   release: null,
@@ -26,18 +26,16 @@ const form = useForm({
 });
 
 const updateReleaseMemo = id => {
-    router.put(`/fanzareleasememo/update/${id}/` + props.content_id + '#memo', form, {
-    // onBefore: () => confirm('本当に更新しますか？'),
+    router.put(`/fanzareleasememo/update/${id}/` + props.content_id, form, {
     preserveScroll: true
   })
 };
 
-// const updatePrivateMemo = id => {
-//     router.put(`/newvideo/updateprivate/${id}/` + props.content_id, form, {
-//     // onBefore: () => confirm('本当に更新しますか？'),
-//     preserveScroll: true
-//   })
-// };
+const updatePrivateMemo = id => {
+    router.put(`/fanzaprivatememo/update/${id}/` + props.content_id, form, {
+    preserveScroll: true
+  })
+};
 
 const isShow = ref(false)
 const toggleStatus = () => { isShow.value = !isShow.value}
@@ -303,20 +301,20 @@ const toggleStatus = () => { isShow.value = !isShow.value}
         </div>
       </div>
         <!-- 非公開メモ -->
-        <div v-for="privatememo in privatememos" :key="privatememo.id">
-          <div v-if="privatememo.private && props.type === '1'">
+        <div v-for="fanza_private_memo in fanza_private_memos" :key="fanza_private_memo.id">
+          <div v-if="fanza_private_memo.private && props.type === 'private' ">
             <div class="border-dotted border-b border-gray-500 p-2 mb-6">
-              <p class="mb-3"><span class="bg-red-200 p-1 px-3 rounded-2xl text-xs font-bold">{{ privatememo.name }}さんの非公開メモ</span><span class="ml-6 text-sm text-zinc-500">
-              {{ privatememo.updated_at }}
+              <p class="mb-3"><span class="bg-red-200 p-1 px-3 rounded-2xl text-xs font-bold">{{ fanza_private_memo.name }}さんの非公開メモ</span><span class="ml-6 text-sm text-zinc-500">
+              {{ fanza_private_memo.updated_at }}
               </span></p>
               <div class="flex items-start">
-                {{ privatememo.private }}
+                {{ fanza_private_memo.private }}
               </div>
             </div>
           <p class="text-sm text-center text-red-400 my-4">ー メモは5文字以上500文字以内で入力してください ー</p>
       <div class="flex flex-wrap justify-center">
         <div class="w-full">
-          <form @submit.prevent="updatePrivateMemo(updateprivatememoid.id, privatememo.content_id)">
+          <form @submit.prevent="updatePrivateMemo(update_private_id.id, fanza_private_memo.content_id)">
             <div class="flex justify-center relative">
               <div class="mb-3 w-full">
                   <textarea name="private" v-model="form.private" class="form-control block w-full py-1.5 mb-4 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-800 focus:outline-none" id="private" rows="5" placeholder="非公開メモの編集">
@@ -339,7 +337,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
   </div>
     </div>
     <!-- モーダルウィンドウの中 -->
-    <!-- <div v-show="isShow" class="modal" id="modal-1" aria-hidden="true" @click="toggleStatus">
+    <div v-show="isShow" class="modal" id="modal-1" aria-hidden="true" @click="toggleStatus">
       <div class="modal__overlay" tabindex="-1" data-micromodal-close>
         <div class="modal__container h-[40rem]" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
           <main class="modal__content" id="modal-1-content">
@@ -391,7 +389,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
           </main>
         </div>
       </div>
-    </div> -->
+    </div>
     <!-- モーダルウィンドウの中 -->
   </div>
 </BasicLayout>
