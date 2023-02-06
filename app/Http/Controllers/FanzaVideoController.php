@@ -13,6 +13,7 @@ use App\Models\Fanza;
 use App\Models\FanzaFreeMemo;
 use App\Models\FanzaReleaseMemo;
 use App\Models\FanzaPrivateMemo;
+use App\Models\Nice;
 
 class FanzaVideoController extends Controller
 {
@@ -38,7 +39,7 @@ class FanzaVideoController extends Controller
             'hits'          => '100',
             'offset'        => '',
             'sort'          => '',
-            'keyword'       => '',
+            'keyword'       => '-VR',
             'cid'           => '',
             'article'       => '',
             'article_id'    => '',
@@ -132,7 +133,7 @@ class FanzaVideoController extends Controller
 
     public function show($content_id)
     {
-        // dd($content_id);
+        
         $videoa = Fanza::whereContent_id($content_id)->first();
         $content_id_1 = Fanza::findOrFail($content_id);
         $fanza_free_memos = FanzaFreeMemo::whereContent_id($content_id)->latest('updated_at')->get();
@@ -141,10 +142,10 @@ class FanzaVideoController extends Controller
         
         $releaselists = FanzaReleaseMemo::latest('updated_at')->limit(30)->get()->unique('content_id');
         $user_id = Auth::id();
-        // $nice = Nice::where([['content_id', $content_id], ['user_id', Auth::id()]])->first();
-        // $nicecount = Nice::whereContent_id($content_id)->count();
+        $nice = Nice::where([['content_id', $content_id], ['user_id', Auth::id()]])->first();
+        $nicecount = Nice::whereContent_id($content_id)->count();
         
-        // dd($nicecount);
+        
         return Inertia::render('Fanza/Video', [
             'title' => $videoa->title,
             'videoids' => Fanza::find($content_id_1),
@@ -156,8 +157,8 @@ class FanzaVideoController extends Controller
             'fanza_private_memos' => $fanza_private_memos,
             'releaselists' => $releaselists,
             'user_id' => $user_id,
-            // 'nice' => $nice,
-            // 'nicecount' => $nicecount
+            'nice' => $nice,
+            'nicecount' => $nicecount
         ]);
     }
 
@@ -170,23 +171,24 @@ class FanzaVideoController extends Controller
         $update_release_id = FanzaReleaseMemo::whereId($memoid)->first();
         $update_private_id = FanzaPrivateMemo::whereId($memoid)->first();
         $user_id = Auth::id();
-        // $nice=Nice::where([['content_id', $content_id], ['user_id', Auth::id()]])->first();
-        // $nicecount = Nice::whereContent_id($content_id)->count();
+        $nice=Nice::where([['content_id', $content_id], ['user_id', Auth::id()]])->first();
+        $nicecount = Nice::whereContent_id($content_id)->count();
 
         // dd($nicecount);
         return Inertia::render('Fanza/Video/Edit', [
             'type' => $type, // privatememoかreleasememoか判断
             'title' => $videoa->title,
             'videoids' => Fanza::find($content_id_1),
-            'date' => $videoa->date->format('Y/m/d'), 
+            'date' => $videoa->date->format('Y/m/d'),
+            'fanza_id' => $videoa->id,
             'content_id' => $videoa->content_id,
             'fanza_release_memos' => $fanza_release_memos,
             'fanza_private_memos' => $fanza_private_memos,
             'update_release_id' => $update_release_id,
             'update_private_id' => $update_private_id,
             'user_id' => $user_id,
-            // 'nice' => $nice,
-            // 'nicecount' => $nicecount
+            'nice' => $nice,
+            'nicecount' => $nicecount
         ]);
     }
 }

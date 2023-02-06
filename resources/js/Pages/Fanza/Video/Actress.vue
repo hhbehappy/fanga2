@@ -18,10 +18,10 @@ defineProps({
     </div>
     <div class="flex flex-wrap mx-7 md:mx-1">
       <div v-for="actresslist in actresslists" :key="actresslist.id">
-        <div v-if="actresslist.actress" class="w-40 mr-3 mb-4">
-          <a :href="route('flist.show', { keyword: actresslist.actress })" class="p-3 border-2 text-blue-500 text-center inline-block">
-            <span class="w-32 inline-block truncate">{{ actresslist.actress }}</span>
-            <img :src="'https://pics.dmm.co.jp/digital/video/' + actresslist.content_id  + '/' + actresslist.content_id + 'ps.jpg'" :alt="'【FANZA】' + actresslist.title + 'のメイン画像'" class="h-44 w-32">
+        <div v-if="actresslist.actress" class="w-36 mr-2 mb-4">
+          <a :href="route('flist.show', { keyword: actresslist.actress })" class="p-2 border-2 text-blue-500 text-center inline-block">
+            <span class="w-28 inline-block truncate">{{ actresslist.actress }}</span>
+            <img :src="'https://pics.dmm.co.jp/digital/video/' + actresslist.content_id  + '/' + actresslist.content_id + 'ps.jpg'" :alt="'【FANZA】' + actresslist.title + 'のメイン画像'" class="h-40">
           </a>
         </div>
       </div>
@@ -31,10 +31,10 @@ defineProps({
     </div>
     <div class="flex flex-wrap mx-7 md:mx-1">
       <div v-for="actressnicelist in actressnicelists" :key="actressnicelist.id">
-        <div v-if="actressnicelist.newvideo_id === 'fanza' && actressnicelist.actress" class="w-40 mr-3 mb-4">
-          <a :href="route('flist.show', { keyword: actressnicelist.actress })" class="p-3 border-2 text-blue-500 text-center inline-block">
-            <span class="w-32 inline-block truncate">{{ actressnicelist.actress }}</span>
-            <img :src="'https://pics.dmm.co.jp/digital/video/' + actressnicelist.content_id  + '/' + actressnicelist.content_id + 'ps.jpg'" :alt="'【FANZA】' + actressnicelist.title + 'のメイン画像'" class="h-44 w-32">
+        <div v-if="actressnicelist.type === 'fanza' && actressnicelist.actress" class="w-36 mr-2 mb-4">
+          <a :href="route('flist.show', { keyword: actressnicelist.actress })" class="p-2 border-2 text-blue-500 text-center inline-block">
+            <span class="w-28 inline-block truncate">{{ actressnicelist.actress }}</span>
+            <img :src="'https://pics.dmm.co.jp/digital/video/' + actressnicelist.content_id  + '/' + actressnicelist.content_id + 'ps.jpg'" :alt="'【FANZA】' + actressnicelist.title + 'のメイン画像'" class="h-40">
           </a>
         </div>
       </div>

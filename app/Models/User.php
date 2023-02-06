@@ -51,4 +51,17 @@ class User extends Authenticatable
     {
         return $this->hasMany(FanzaReleaseMemo::class);
     }
+
+    public function fanzaprivatememo()
+    {
+        return $this->hasMany(FanzaPrivateMemo::class);
+    }
+
+    public function fanza() {
+        return $this->hasMany('App\Models\Fanza');
+    }
+
+    public function nices() {
+        return $this->hasMany('App\Models\Nice');
+    }
 }

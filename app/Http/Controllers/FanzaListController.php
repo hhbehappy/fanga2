@@ -66,8 +66,8 @@ class FanzaListController extends Controller
             ->limit(50)->get()->unique('maker');
             
         $makernicelists = DB::table('nices')
-            ->select('nices.content_id', 'title', 'maker', 'Fanza_id',DB::raw('count(*) as total'))
-            ->groupBy('content_id', 'title', 'maker', 'Fanza_id')->latest('total')
+            ->select('nices.content_id', 'title', 'maker', 'type',DB::raw('count(*) as total'))
+            ->groupBy('content_id', 'title', 'maker', 'type')->latest('total')
             ->leftJoin('fanzas', 'nices.content_id', '=', 'fanzas.content_id')
             ->limit(50)->get()->unique('maker');
             
@@ -89,8 +89,8 @@ class FanzaListController extends Controller
             ->limit(50)->get()->unique('actress');
             
         $actressnicelists = DB::table('nices')
-            ->select('nices.content_id', 'title', 'actress', 'Fanza_id',DB::raw('count(*) as total'))
-            ->groupBy('content_id', 'title', 'actress', 'Fanza_id')->latest('total')
+            ->select('nices.content_id', 'title', 'actress', 'type',DB::raw('count(*) as total'))
+            ->groupBy('content_id', 'title', 'actress', 'type')->latest('total')
             ->leftJoin('fanzas', 'nices.content_id', '=', 'fanzas.content_id')
             ->limit(50)->get()->unique('actress');
             
@@ -111,8 +111,8 @@ class FanzaListController extends Controller
             ->limit(50)->get()->unique('series');
             
         $seriesnicelists = DB::table('nices')
-            ->select('nices.content_id', 'title', 'series', 'Fanza_id',DB::raw('count(*) as total'))
-            ->groupBy('content_id', 'title', 'series', 'Fanza_id')->latest('total')
+            ->select('nices.content_id', 'title', 'series', 'type',DB::raw('count(*) as total'))
+            ->groupBy('content_id', 'title', 'series', 'type')->latest('total')
             ->leftJoin('fanzas', 'nices.content_id', '=', 'fanzas.content_id')
             ->limit(50)->get()->unique('series');
             
