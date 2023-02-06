@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FangaController;
 use App\Http\Controllers\FanzaVideoController;
+use App\Http\Controllers\FanzaListController;
 use App\Http\Controllers\FanzaFreeMemoController;
 use App\Http\Controllers\FanzaReleaseMemoController;
 use App\Http\Controllers\FanzaPrivateMemoController;
@@ -48,13 +49,24 @@ Route::controller(FanzaPrivateMemoController::class)->group(function ()
     Route::delete('fanzaprivatememo/destroy/{id}', 'destroy');
 });
 
+Route::controller(FanzaListController::class)->group(function ()
+{
+    Route::get('fanza/video/all', 'index')->name('flist.index');
+    Route::get('fanza/video/list', 'show')->name('flist.show');
+    Route::get('fanza/video/genre', 'genre')->name('flist.genre');
+    Route::get('fanza/video/maker', 'maker')->name('flist.maker');
+    Route::get('fanza/video/actress', 'actress')->name('flist.actress');
+    Route::get('fanza/video/series', 'series')->name('flist.series');
+});
+
 Route::controller(FanzaVideoController::class)->group(function ()
 {
+    Route::get('fanza/video/memotype', 'memotype')->name('fvideo.memotype');
     Route::get('fanza/create', 'create')->name('fvideo.create');
+    Route::get('/fanza/video/{id}', 'show')->name('fvideo.show');
     Route::get('fanza/store', 'store')->name('fvideo.store');
     Route::post('fanza/store', 'store');
     Route::get('/fanza/video/edit/{type}/{content_id}/{memoid}', 'edit')->middleware(['auth', 'verified'])->name('fvideo.edit');
-    Route::get('/fanza/video/{id}', 'show')->name('fvideo.show');
 });
 
 // Route::get('/', function () {

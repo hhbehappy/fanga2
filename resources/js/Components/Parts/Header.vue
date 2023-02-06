@@ -45,7 +45,7 @@ const path = location.pathname;
     <nav class="hidden md:flex items-center md:mr-2 lg:mr-8">
       <ul class="flex flex-wrap lg:flex-nowrap">
         <li class="h-6 w-20 mb-1 text-center text-gray-700 font-bold hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
-          <a :href="route('fanga')" class="absolute top-0 left-0 w-full h-full">FANZA</a>
+          <a :href="route('flist.index')" class="absolute top-0 left-0 w-full h-full">FANZA</a>
         </li>
         <li class="h-6 w-20 mb-1 text-center text-gray-700 font-bold hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
           <a :href="route('fanga')" class="absolute top-0 left-0 w-full h-full">DUGA</a>
