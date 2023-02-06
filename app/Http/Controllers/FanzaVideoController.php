@@ -130,7 +130,7 @@ class FanzaVideoController extends Controller
         $fanza_release_memos = FanzaReleaseMemo::whereContent_id($content_id)->latest('updated_at')->get();
         $fanza_private_memos = FanzaPrivateMemo::where([['content_id', $content_id], ['user_id', Auth::id()]])->latest('updated_at')->get();
         
-        // $usermemolists = UserMemo::latest('updated_at')->limit(30)->get()->unique('content_id');
+        $releaselists = FanzaReleaseMemo::latest('updated_at')->limit(30)->get()->unique('content_id');
         $user_id = Auth::id();
         // $nice = Nice::where([['content_id', $content_id], ['user_id', Auth::id()]])->first();
         // $nicecount = Nice::whereContent_id($content_id)->count();
@@ -145,7 +145,7 @@ class FanzaVideoController extends Controller
             'fanza_free_memos' => $fanza_free_memos,
             'fanza_release_memos' => $fanza_release_memos,
             'fanza_private_memos' => $fanza_private_memos,
-            // 'usermemolists' => $usermemolists,
+            'releaselists' => $releaselists,
             'user_id' => $user_id,
             // 'nice' => $nice,
             // 'nicecount' => $nicecount

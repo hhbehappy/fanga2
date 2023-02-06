@@ -15,7 +15,7 @@ const props = defineProps({
   fanza_free_memos: Object,
   fanza_release_memos: Object,
   fanza_private_memos: Object,
-  // usermemolists: Object,
+  releaselists: Object,
   user_id: Number,
   // nice: Object,
   // nicecount: Number
@@ -519,6 +519,76 @@ export default {
       </div>
     </div>
   </div>
+  <!-- 最近のメモ動画 -->
+  <div class="border-b-4 border-gray-500 mb-8 w-11/12 mx-auto">
+    <h2 class="ml-4 mb-1 text-xl font-bold"><span class="text-red-500">FANZA</span>の最近メモされた動画</h2>
+  </div>
+  <div class="flex overflow-x-auto hidden-scrollbar h-52 ml-4">
+    <div class="flex flex-none flex-nowrap">
+      <div v-for="releaselist in releaselists" :key="releaselist.id" class="">
+          <div v-if="releaselist.content_id" class="mr-4">
+            <Link :href="route('fvideo.show', { id: releaselist.content_id })">
+              <img :src="'https://pics.dmm.co.jp/digital/video/' + releaselist.content_id  + '/' + releaselist.content_id + 'ps.jpg'" :alt="'【FANZA】' + videoid.title" class="w-32">
+            </Link>
+          </div>
+      </div>
+    </div>
+  </div>
+  <!-- モーダルウィンドウの中 -->
+  <div v-show="isShow" class="modal" id="modal-1" aria-hidden="true" @click="toggleStatus">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+      <div class="modal__container h-[40rem]" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+        <main class="modal__content" id="modal-1-content">
+          <div class="flex overflow-x-scroll m-6 pb-6 hidden-scrollbar snap-x">
+        <div class="flex flex-none flex-nowrap items-start snap-x">
+          <div class="mr-3 snap-center">
+            <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'pl.jpg'" :alt="'【FANZA】' + videoid.title + 'のジャケット画像'" class="h-[30rem]">
+          </div>
+          <div class="mx-10 snap-center">
+            <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-1.jpg'" :alt="'【FANZA】' + videoid.title + '1枚目の画像'" class="h-[30rem]">
+          </div>
+          <div class="mx-10 snap-center">
+            <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-2.jpg'" :alt="'【FANZA】' + videoid.title + '2枚目の画像'" class="h-[30rem]">
+          </div>
+          <div class="mx-10 snap-center">
+            <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-3.jpg'" :alt="'【FANZA】' + videoid.title + '3枚目の画像'" class="h-[30rem]">
+          </div>
+          <div class="mx-10 snap-center">
+            <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-4.jpg'" :alt="'【FANZA】' + videoid.title + '4枚目の画像'" class="h-[30rem]">
+          </div>
+          <div class="mx-10 snap-center">
+            <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-5.jpg'" :alt="'【FANZA】' + videoid.title + '5枚目の画像'" class="h-[30rem]">
+          </div>
+          <div class="mx-10 snap-center">
+            <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-6.jpg'" :alt="'【FANZA】' + videoid.title + '6枚目の画像'" class="h-[30rem]">
+          </div>
+          <div class="mx-10 snap-center">
+            <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-7.jpg'" :alt="'【FANZA】' + videoid.title + '7枚目の画像'" class="h-[30rem]">
+          </div>
+          <div class="mx-10 snap-center">
+            <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-8.jpg'" :alt="'【FANZA】' + videoid.title + '8枚目の画像'" class="h-[30rem]">
+          </div>
+          <div class="mx-10 snap-center">
+            <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-9.jpg'" :alt="'【FANZA】' + videoid.title + '9枚目の画像'" class="h-[30rem]">
+          </div>
+          <div class="mx-10">
+            <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-10.jpg'" :alt="'【FANZA】' + videoid.title + '10枚目の画像'" class="h-[30rem]">
+          </div>
+          <div class="w-80 mx-3 self-center">
+            <a :href="videoid.affiliateURL + '&af_id=maxjpblog-999&ch=api'" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 ml-14 text-white">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />
+            </svg>
+            <span class="ml-10 font-bold text-lg text-blue-500">詳細ページへ</span></a>
+
+          </div>
+        </div>
+      </div>
+        </main>
+      </div>
+    </div>
+  </div>
+  <!-- モーダルウィンドウの中 -->
 </div>
 </BasicLayout>
 </template>
