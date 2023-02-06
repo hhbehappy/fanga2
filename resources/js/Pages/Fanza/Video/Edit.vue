@@ -62,7 +62,8 @@ const toggleStatus = () => { isShow.value = !isShow.value}
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
               </svg>
-              <span class="mx-1 text-sm"><a target="_self" rel="noopener" :href="'https://www.dmm.co.jp/litevideo/-/part/=/cid='+ videoid.content_id + '/size=560_360/affi_id=maxjpblog-995/'">無料サンプル動画</a></span>
+              <span class="mx-1 text-sm"><a target="_self" rel="noopener" :href="'https://www.dmm.co.jp/litevideo/-/part/=/cid='+ videoid.content_id + '/size=560_360/'">無料サンプル動画</a></span>
+              <!-- <span class="mx-1 text-sm"><a target="_self" rel="noopener" :href="'https://www.dmm.co.jp/litevideo/-/part/=/cid='+ videoid.content_id + '/size=560_360/affi_id=maxjpblog-995/'">無料サンプル動画</a></span> -->
           </div>
         </div>
         <div class="mx-6 lg:ml-6 w-full md:w-3/5 lg:w-[380px] shrink-0">
@@ -187,10 +188,11 @@ const toggleStatus = () => { isShow.value = !isShow.value}
             </tbody>
           </table>
         </div>
-      <div class="hidden lg:block w-full ml-10 xl:ml-20">
-          <div style="width:100%; padding-top: 75%; position:relative;">
+      <div class="hidden lg:block w-full mr-8">
+        <div style="width:100%; padding-top: 75%; position:relative;"><iframe width="100%" height="100%" max-width="1280px" style="position: absolute; top: 0; left: 0;" :src="'https://www.dmm.co.jp/litevideo/-/part/=/cid=' + videoid.content_id + '/size=1280_720/'" scrolling="no" frameborder="0" allowfullscreen></iframe></div>
+          <!-- <div style="width:100%; padding-top: 75%; position:relative;">
             <iframe width="85%" height="85%" max-width="1280px" style="position: absolute; top: 0; left: 0;" :src="'https://www.dmm.co.jp/litevideo/-/part/=/affi_id=maxjpblog-001/cid=' + videoid.content_id + '/size=1280_720/'" scrolling="no" frameborder="0" allowfullscreen></iframe>
-          </div>
+          </div> -->
       </div>
     </div>
     <button @click="toggleStatus" type="button" data-micromodal-trigger="modal-1" href='javascript:;'>
@@ -240,8 +242,15 @@ const toggleStatus = () => { isShow.value = !isShow.value}
           </div>
         </div>
     </button>
+    <!-- サンプル動画 -->
+    <div class="block lg:hidden w-1/2 mx-auto">
+      <div style="width:100%; padding-top: 75%; position:relative;"><iframe width="100%" height="100%" max-width="1280px" style="position: absolute; top: 0; left: 0;" :src="'https://www.dmm.co.jp/litevideo/-/part/=/cid=' + videoid.content_id + '/size=1280_720/'" scrolling="no" frameborder="0" allowfullscreen></iframe></div>
+      <!-- <div style="width:100%; padding-top: 75%; position:relative;">
+        <iframe width="85%" height="85%" max-width="1280px" style="position: absolute; top: 0; left: 0;" :src="'https://www.dmm.co.jp/litevideo/-/part/=/affi_id=maxjpblog-001/cid=' + videoid.content_id + '/size=1280_720/'" scrolling="no" frameborder="0" allowfullscreen></iframe>
+      </div> -->
+    </div>
     <!--メモ -->
-    <div id="editmemo" class="border-b-4 border-gray-500 mx-6 mt-4">
+    <div id="editmemo" class="border-b-4 border-gray-500 mt-8">
       <h2 class="ml-4 mb-2 text-2xl font-bold">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-1 mb-1 inline-block">
           <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />

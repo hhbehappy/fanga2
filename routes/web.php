@@ -10,6 +10,11 @@ use App\Http\Controllers\FanzaListController;
 use App\Http\Controllers\FanzaFreeMemoController;
 use App\Http\Controllers\FanzaReleaseMemoController;
 use App\Http\Controllers\FanzaPrivateMemoController;
+use App\Http\Controllers\DugaVideoController;
+// use App\Http\Controllers\DugaListController;
+// use App\Http\Controllers\DugaFreeMemoController;
+// use App\Http\Controllers\DugaReleaseMemoController;
+// use App\Http\Controllers\DugaPrivateMemoController;
 use App\Http\Controllers\NiceController;
 // use App\Http\Controllers\Duga\VideoController;
 
@@ -74,6 +79,17 @@ Route::controller(FanzaVideoController::class)->group(function ()
     Route::get('fanza/store', 'store')->name('fvideo.store');
     Route::post('fanza/store', 'store');
     Route::get('/fanza/video/edit/{type}/{content_id}/{memoid}', 'edit')->middleware(['auth', 'verified'])->name('fvideo.edit');
+});
+
+// DUGA
+Route::controller(DugaVideoController::class)->group(function ()
+{
+    Route::get('duga/video/memotype', 'memotype')->name('dvideo.memotype');
+    Route::get('duga/create', 'create')->name('dvideo.create');
+    Route::get('/duga/video/{id}', 'show')->name('dvideo.show');
+    Route::get('duga/store', 'store')->name('dvideo.store');
+    Route::post('duga/store', 'store');
+    Route::get('/duga/video/edit/{type}/{productid}/{memoid}', 'edit')->middleware(['auth', 'verified'])->name('dvideo.edit');
 });
 
 // Route::get('/', function () {
