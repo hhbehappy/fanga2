@@ -140,28 +140,29 @@ class DugaVideoController extends Controller
         $dugavideo = Duga::whereProductid($productid)->first();
         $productid_1 = Duga::findOrFail($productid);
         $duga_free_memos = DugaFreeMemo::whereProductid($productid)->latest('updated_at')->get();
-        $duga_user_memos = DugaReleaseMemo::whereProductid($productid)->latest('updated_at')->get();
-        $duga_private_memos = DugaPrivateMemo::where([['productid', $productid], ['user_id', Auth::id()]])->latest('updated_at')->get();
-        $usermemolists = DugaReleaseMemo::select('title', 'duga_user_memos.productid', 're_productid', 'jacketimage', 'duga_user_memos.updated_at')
-        ->latest('updated_at')->limit(20)->leftJoin('duga_video', 'duga_user_memos.productid', '=', 'duga_video.productid')->get()->unique('re_productid');
+        // $duga_user_memos = DugaReleaseMemo::whereProductid($productid)->latest('updated_at')->get();
+        // $duga_private_memos = DugaPrivateMemo::where([['productid', $productid], ['user_id', Auth::id()]])->latest('updated_at')->get();
+        // $usermemolists = DugaReleaseMemo::select('title', 'duga_user_memos.productid', 're_productid', 'jacketimage', 'duga_user_memos.updated_at')
+        // ->latest('updated_at')->limit(20)->leftJoin('duga_video', 'duga_user_memos.productid', '=', 'duga_video.productid')->get()->unique('re_productid');
         $re_productid = str_replace("-", "/", $dugavideo->productid);
-        $privatememoid = Auth::id();
+        $user_id = Auth::id();
         $nice = Nice::where([['content_id', $productid], ['user_id', Auth::id()]])->first();
         $nicecount = Nice::whereContent_id($productid)->count();
         // dd(gettype(Auth::id()));
         return Inertia::render('Duga/Video', [
             'title'             => $dugavideo->title,
             'dugavideos'        => Duga::find($productid_1),
-            'date' => $dugavideo->date->format('Y/m/d'),
-            'productid' => $dugavideo->productid,
-            'duga_free_memos' => $duga_free_memos,
-            'duga_user_memos' => $duga_user_memos,
-            'duga_private_memos' => $duga_private_memos,
-            're_productid'     => $re_productid,
-            'usermemolists'     => $usermemolists,
-            'privatememoid' => $privatememoid,
-            'nice' => $nice,
-            'nicecount' => $nicecount,
+            'date'              => $dugavideo->date->format('Y/m/d'),
+            'duga_id'           => $dugavideo->id,
+            'productid'         => $dugavideo->productid,
+            'duga_free_memos'   => $duga_free_memos,
+            // 'duga_user_memos' => $duga_user_memos,
+            // 'duga_private_memos' => $duga_private_memos,
+            // 'usermemolists'     => $usermemolists,
+            're_productid'      => $re_productid,
+            'user_id'           => $user_id,
+            'nice'              => $nice,
+            'nicecount'         => $nicecount,
         ]);
     }
 }

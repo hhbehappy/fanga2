@@ -12,7 +12,7 @@ use App\Http\Controllers\FanzaReleaseMemoController;
 use App\Http\Controllers\FanzaPrivateMemoController;
 use App\Http\Controllers\DugaVideoController;
 // use App\Http\Controllers\DugaListController;
-// use App\Http\Controllers\DugaFreeMemoController;
+use App\Http\Controllers\DugaFreeMemoController;
 // use App\Http\Controllers\DugaReleaseMemoController;
 // use App\Http\Controllers\DugaPrivateMemoController;
 use App\Http\Controllers\NiceController;
@@ -32,8 +32,8 @@ use App\Http\Controllers\NiceController;
 Route::get('/', [FangaController::class, 'index'])->name('fanga');
 
 // 気になる動画機能
-Route::get('/nice/{content_id}/{fanza_id}/{type}', [NiceController::class, 'nice'])->name('nice');
-Route::post('/nice/{content_id}/{fanza_id}/{type}', [NiceController::class, 'nice']);
+Route::get('/nice/{content_id}/{fanza_id}/{duga_id}/{type}', [NiceController::class, 'nice'])->name('nice');
+Route::post('/nice/{content_id}/{fanza_id}/{duga_id}/{type}', [NiceController::class, 'nice']);
 Route::get('/unnice/{content_id}', [NiceController::class, 'unnice'])->name('unnice');
 Route::post('/unnice/{content_id}', [NiceController::class, 'unnice']);
 
@@ -82,6 +82,13 @@ Route::controller(FanzaVideoController::class)->group(function ()
 });
 
 // DUGA
+Route::controller(DugaFreeMemoController::class)->group(function ()
+{
+    Route::get('dugafreememo/store/{duga_id}/{productid}', 'store');
+    Route::post('dugafreememo/store/{duga_id}/{productid}', 'store');
+    Route::delete('dugafreememo/destroy/{id}', 'destroy');
+});
+
 Route::controller(DugaVideoController::class)->group(function ()
 {
     Route::get('duga/video/memotype', 'memotype')->name('dvideo.memotype');

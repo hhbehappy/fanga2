@@ -5,19 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Nice extends Model
+class DugaFreeMemo extends Model
 {
     use HasFactory;
 
-    protected $table = "nices";
+    protected $table = "duga_free_memos";
+    protected $casts = [
+        'updated_at' => 'datetime:Y年m月d日',
+    ];
 
     protected $fillable = [
         'user_id',
-        'fanza_id',
         'duga_id',
-        'type',
-        'content_id',
-        're_productid'
+        'productid',
+        're_productid',
+        'free'
     ];
 
     public function user()
@@ -25,11 +27,8 @@ class Nice extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function fanza() {
-        return $this->belongsTo('App\Models\Fanza');
-    }
-
-    public function duga() {
-        return $this->belongsTo('App\Models\Duga');
+    public function duga()
+    {
+        return $this->belongsTo(Duga::class);
     }
 }
