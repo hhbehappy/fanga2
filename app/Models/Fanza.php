@@ -38,4 +38,12 @@ class Fanza extends Model
         'date',
         'volume',
     ];
+    
+    public function user() {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    public function nices() {
+        return $this->hasMany('App\Models\Nice');
+    }
 }

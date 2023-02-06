@@ -18,10 +18,10 @@ defineProps({
     </div>
     <div class="flex flex-wrap mx-7 md:mx-1">
       <div v-for="serieslist in serieslists" :key="serieslist.id">
-        <div v-if="serieslist.series" class="w-40 mr-3 mb-4">
-          <a :href="route('flist.show', { keyword: serieslist.series })" class="p-3 border-2 text-blue-500 text-center inline-block">
-            <span class="w-32 inline-block truncate">{{ serieslist.series }}</span>
-            <img :src="'https://pics.dmm.co.jp/digital/video/' + serieslist.content_id  + '/' + serieslist.content_id + 'ps.jpg'" :alt="'【FANZA】' + serieslist.title + 'のメイン画像'" class="h-44">
+        <div v-if="serieslist.series" class="w-36 mr-2 mb-4">
+          <a :href="route('flist.show', { keyword: serieslist.series })" class="p-2 border-2 text-blue-500 text-center inline-block">
+            <span class="w-28 inline-block truncate">{{ serieslist.series }}</span>
+            <img :src="'https://pics.dmm.co.jp/digital/video/' + serieslist.content_id  + '/' + serieslist.content_id + 'ps.jpg'" :alt="'【FANZA】' + serieslist.title + 'のメイン画像'" class="h-40">
           </a>
         </div>
       </div>
@@ -31,10 +31,10 @@ defineProps({
     </div>
     <div class="flex flex-wrap mx-7 md:mx-1">
       <div v-for="seriesnicelist in seriesnicelists" :key="seriesnicelist.id">
-        <div v-if="seriesnicelist.newvideo_id === 'fanza' && seriesnicelist.series" class="w-40 mr-3 mb-4">
-          <a :href="route('flist.show', { keyword: seriesnicelist.series })" class="p-3 border-2 text-blue-500 text-center inline-block">
-            <span class="w-32 inline-block truncate">{{ seriesnicelist.series }}</span>
-            <img :src="'https://pics.dmm.co.jp/digital/video/' + seriesnicelist.content_id  + '/' + seriesnicelist.content_id + 'ps.jpg'" :alt="'【FANZA】' + seriesnicelist.title + 'のメイン画像'" class="h-44">
+        <div v-if="seriesnicelist.type === 'fanza' && seriesnicelist.series" class="w-36 mr-2 mb-4">
+          <a :href="route('flist.show', { keyword: seriesnicelist.series })" class="p-2 border-2 text-blue-500 text-center inline-block">
+            <span class="w-28 inline-block truncate">{{ seriesnicelist.series }}</span>
+            <img :src="'https://pics.dmm.co.jp/digital/video/' + seriesnicelist.content_id  + '/' + seriesnicelist.content_id + 'ps.jpg'" :alt="'【FANZA】' + seriesnicelist.title + 'のメイン画像'" class="h-40">
           </a>
         </div>
       </div>

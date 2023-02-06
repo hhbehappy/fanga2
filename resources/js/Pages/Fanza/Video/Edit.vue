@@ -1,25 +1,27 @@
 <script setup>
-import BasicLayout from '@/Layouts/BasicLayout.vue';
+import Layout from '@/Layouts/Layout.vue';
 import { router, Head, Link, useForm  } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import NiceFlashMessage from '@/Components/NiceFlashMessage.vue';
 
 const props = defineProps({
-  type:String,
-  user_id: Number,
   videoids: Object,
   title: String,
   date: String,
+  fanza_id: Number,
+  type:String,
   content_id: String,
   fanza_release_memos: Object,
   fanza_private_memos: Object,
   update_release_id: Object,
   update_private_id: Object,
-  // nice: String,
-  // nicecount: Number
+  user_id: Number,
+  nice: Object,
+  nicecount: Number
 })
 
 const form = useForm({
-  content_id: props.content_id,
+  // content_id: props.content_id,
   release: null,
   private: null,
   nickname: 1
@@ -43,11 +45,12 @@ const toggleStatus = () => { isShow.value = !isShow.value}
 </script>
 
 <template>
-<BasicLayout>
+<Layout>
   <Head :title="'【FANZA】' + title" />
   
   <div v-for="videoid in videoids" :key="videoid.id">
-    <h1 class="font-bold text-2xl mb-8 px-4 md:mr-8 bg-gray-200 p-2 border-b-2 border-gray-500"><span class="text-red-500">【FANZA】</span>{{ videoid.title }}</h1>
+    <h1 class="font-bold md:text-xl mb-8 px-4 md:mr-8 bg-gray-200 p-2 border-b-2 border-gray-500"><span class="text-red-500">【FANZA】</span>{{ videoid.title }}</h1>
+    <p class="mb-7"><NiceFlashMessage /></p>
     <div class="container mx-auto flex flex-wrap md:flex-nowrap">
         <div class="mx-14 md:mx-2 w-[190px] shrink-0">
           <button @click="toggleStatus" type="button" data-micromodal-trigger="modal-1" href='javascript:;'>
@@ -63,8 +66,8 @@ const toggleStatus = () => { isShow.value = !isShow.value}
           </div>
         </div>
         <div class="mx-6 lg:ml-6 w-full md:w-3/5 lg:w-[380px] shrink-0">
-          <!-- <div v-if="$page.props.auth.user" class="my-2">
-            <div v-if="nice && nice.user_id === privatememoid" class="w-44 px-1 border-b border-pink-400 rounded">
+          <div v-if="$page.props.auth.user" class="my-2">
+            <div v-if="nice && nice.user_id === user_id" class="w-44 px-1 border-b border-pink-400 rounded">
               <Link :href="route('unnice', { content_id: videoid.content_id})">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-1 w-4 h-4 text-pink-400 inline-block">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -73,7 +76,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
               </Link>
           </div>
           <div v-else class="w-48 px-2 border-b border-pink-400">
-              <Link :href="route('nice', { content_id: videoid.content_id, newvideo_id : 'fanza'})">
+              <Link :href="route('nice', { content_id: videoid.content_id, fanza_id: props.fanza_id, type : 'fanza' })">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1 w-4 h-4 inline-block text-pink-400">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -81,8 +84,8 @@ const toggleStatus = () => { isShow.value = !isShow.value}
               </Link>
             </div>
           </div>
-          <div class="text-sm mb-2">気になる動画の登録数 : {{ nicecount }}</div> -->
-          <!-- <table>
+          <div class="text-sm mb-2">気になる動画の登録数 : {{ nicecount }}</div>
+          <table>
             <tbody>
               <tr>
                 <td class="w-24 h-8 py-1 text-sm">配信開始日</td>
@@ -102,7 +105,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
                 <td class="w-24 h-10 py-2 text-sm">出演者</td>
                 <td>
                   <span v-if="videoid.actress" class="border border-gray-300 lg:border-none rounded p-1 text-sm text-blue-500">
-                    <a :href="route('fanzavideo.show', { keyword: videoid.actress })">{{ videoid.actress }}</a></span>
+                    <a :href="route('flist.show', { keyword: videoid.actress })">{{ videoid.actress }}</a></span>
                   <span v-else class="text-2xl">----</span>
                 </td>
               </tr>
@@ -110,7 +113,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
                 <td class="w-24 h-10 py-2 text-sm">シリーズ</td>
                 <td>
                   <span v-if="videoid.series" class="border border-gray-300 lg:border-none rounded p-1 text-sm text-blue-500">
-                    <a :href="route('fanzavideo.show', { keyword: videoid.series })">{{ videoid.series }}</a></span>
+                    <a :href="route('flist.show', { keyword: videoid.series })">{{ videoid.series }}</a></span>
                   <span v-else class="text-2xl">----</span>
                 </td>
               </tr>
@@ -118,7 +121,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
                 <td class="w-24 h-10 py-2 text-sm">メーカー</td>
                 <td>
                   <span v-if="videoid.maker" class="border border-gray-300 lg:border-none rounded p-1 text-sm text-blue-500">
-                    <a :href="route('fanzavideo.show', { keyword: videoid.maker })">{{ videoid.maker }}</a></span>
+                    <a :href="route('flist.show', { keyword: videoid.maker })">{{ videoid.maker }}</a></span>
                   <span v-else class="text-2xl">----</span>
                 </td>
               </tr>
@@ -126,7 +129,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
                 <td class="w-24 h-10 py-2 text-sm">レーベル</td>
                 <td>
                   <span v-if="videoid.label" class="border border-gray-300 lg:border-none rounded p-1 text-sm text-blue-500">
-                    <a :href="route('fanzavideo.show', { keyword: videoid.label })">{{ videoid.label }}</a></span>
+                    <a :href="route('flist.show', { keyword: videoid.label })">{{ videoid.label }}</a></span>
                   <span v-else class="text-2xl">----</span>
                 </td>
               </tr>
@@ -134,7 +137,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
                 <td class="w-24 h-10 py-2 text-sm">監督</td>
                 <td>
                   <span v-if="videoid.director" class="border border-gray-300 lg:border-none rounded p-1 text-sm text-blue-500">
-                    <a :href="route('fanzavideo.show', { keyword: videoid.director })">{{ videoid.director }}</a></span>
+                    <a :href="route('flist.show', { keyword: videoid.director })">{{ videoid.director }}</a></span>
                   <span v-else class="text-2xl">----</span>
                   </td>
               </tr>
@@ -142,34 +145,34 @@ const toggleStatus = () => { isShow.value = !isShow.value}
                 <td class="w-24 h-10 text-sm">ジャンル</td>
                 <td class="py-2">
                   <div v-if="videoid.genre" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('fanzavideo.show', { keyword: videoid.genre })">{{ videoid.genre }}</a></div>
+                    <a :href="route('flist.show', { keyword: videoid.genre })">{{ videoid.genre }}</a></div>
                   <div v-else></div>
                   <div v-if="videoid.genre1" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('fanzavideo.show', { keyword: videoid.genre1 })">{{ videoid.genre1 }}</a></div>
+                    <a :href="route('flist.show', { keyword: videoid.genre1 })">{{ videoid.genre1 }}</a></div>
                   <div v-else></div>
                   <div v-if="videoid.genre2" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('fanzavideo.show', { keyword: videoid.genre2 })">{{ videoid.genre2 }}</a></div>
+                    <a :href="route('flist.show', { keyword: videoid.genre2 })">{{ videoid.genre2 }}</a></div>
                   <div v-else></div>
                   <div v-if="videoid.genre3" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('fanzavideo.show', { keyword: videoid.genre3 })">{{ videoid.genre3 }}</a></div>
+                    <a :href="route('flist.show', { keyword: videoid.genre3 })">{{ videoid.genre3 }}</a></div>
                   <div v-else></div>
                   <div v-if="videoid.genre4" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('fanzavideo.show', { keyword: videoid.genre4 })">{{ videoid.genre4 }}</a></div>
+                    <a :href="route('flist.show', { keyword: videoid.genre4 })">{{ videoid.genre4 }}</a></div>
                   <div v-else></div>
                   <div v-if="videoid.genre5" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('fanzavideo.show', { keyword: videoid.genre5 })">{{ videoid.genre5 }}</a></div>
+                    <a :href="route('flist.show', { keyword: videoid.genre5 })">{{ videoid.genre5 }}</a></div>
                   <div v-else></div>
                   <div v-if="videoid.genre6" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('fanzavideo.show', { keyword: videoid.genre6 })">{{ videoid.genre6 }}</a></div>
+                    <a :href="route('flist.show', { keyword: videoid.genre6 })">{{ videoid.genre6 }}</a></div>
                   <div v-else></div>
                   <div v-if="videoid.genre7" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('fanzavideo.show', { keyword: videoid.genre7 })">{{ videoid.genre7 }}</a></div>
+                    <a :href="route('flist.show', { keyword: videoid.genre7 })">{{ videoid.genre7 }}</a></div>
                   <div v-else></div>
                   <div v-if="videoid.genre8" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('fanzavideo.show', { keyword: videoid.genre8 })">{{ videoid.genre8 }}</a></div>
+                    <a :href="route('flist.show', { keyword: videoid.genre8 })">{{ videoid.genre8 }}</a></div>
                   <div v-else></div>
                   <div v-if="videoid.genre9" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('fanzavideo.show', { keyword: videoid.genre9 })">{{ videoid.genre9 }}</a></div>
+                    <a :href="route('flist.show', { keyword: videoid.genre9 })">{{ videoid.genre9 }}</a></div>
                   <div v-else></div>
                 </td>
               </tr>
@@ -178,11 +181,11 @@ const toggleStatus = () => { isShow.value = !isShow.value}
                   配信元
                 </td>
                 <td>
-                  <a :href="videoid.affiliateURL + '&af_id=maxjpblog-991&ch=api'" target="_blank" rel="noopener" class="text-blue-500">FANZA</a>
+                  <a :href="'https://www.dmm.co.jp/digital/videoa/-/detail/=/cid=' + videoid.content_id + '/?dmmref=recommend1_detail&i3_ref=recommend&i3_ord=2'" target="_blank" rel="noopener" class="text-blue-500">FANZA</a>
                 </td>
               </tr>
             </tbody>
-          </table> -->
+          </table>
         </div>
       <div class="hidden lg:block w-full ml-10 xl:ml-20">
           <div style="width:100%; padding-top: 75%; position:relative;">
@@ -227,7 +230,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
               <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + '-10.jpg'" :alt="'【FANZA】' + videoid.title + '10枚目の画像'" class="h-[6rem]">
             </div>
             <div class="w-30 mr-12 mt-4">
-              <a :href="videoid.affiliateURL + '&af_id=maxjpblog-999&ch=api'" target="_blank" rel="noopener">
+              <a :href="'https://www.dmm.co.jp/digital/videoa/-/detail/=/cid=' + videoid.content_id + '/?dmmref=recommend1_detail&i3_ref=recommend&i3_ord=2'" target="_blank" rel="noopener">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 ml-3">
               <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />
               </svg>
@@ -377,7 +380,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
               <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-10.jpg'" :alt="'【FANZA】' + videoid.title + '10枚目の画像'" class="h-[30rem]">
             </div>
             <div class="w-80 mx-3 self-center">
-              <a :href="videoid.affiliateURL + '&af_id=maxjpblog-999&ch=api'" target="_blank" rel="noopener">
+              <a :href="'https://www.dmm.co.jp/digital/videoa/-/detail/=/cid=' + videoid.content_id + '/?dmmref=recommend1_detail&i3_ref=recommend&i3_ord=2'" target="_blank" rel="noopener">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-32 h-32 mx-10 text-white">
               <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />
               </svg>
@@ -392,5 +395,5 @@ const toggleStatus = () => { isShow.value = !isShow.value}
     </div>
     <!-- モーダルウィンドウの中 -->
   </div>
-</BasicLayout>
+</Layout>
 </template>

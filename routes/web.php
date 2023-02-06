@@ -10,6 +10,7 @@ use App\Http\Controllers\FanzaListController;
 use App\Http\Controllers\FanzaFreeMemoController;
 use App\Http\Controllers\FanzaReleaseMemoController;
 use App\Http\Controllers\FanzaPrivateMemoController;
+use App\Http\Controllers\NiceController;
 // use App\Http\Controllers\Duga\VideoController;
 
 /*
@@ -24,6 +25,12 @@ use App\Http\Controllers\FanzaPrivateMemoController;
 */
 
 Route::get('/', [FangaController::class, 'index'])->name('fanga');
+
+// 気になる動画機能
+Route::get('/nice/{content_id}/{fanza_id}/{type}', [NiceController::class, 'nice'])->name('nice');
+Route::post('/nice/{content_id}/{fanza_id}/{type}', [NiceController::class, 'nice']);
+Route::get('/unnice/{content_id}', [NiceController::class, 'unnice'])->name('unnice');
+Route::post('/unnice/{content_id}', [NiceController::class, 'unnice']);
 
 // FANZA
 Route::controller(FanzaFreeMemoController::class)->group(function ()
