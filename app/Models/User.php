@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(FanzaFreeMemo::class);
     }
+
+    public function fanzareleasememo()
+    {
+        return $this->hasMany(FanzaReleaseMemo::class);
+    }
 }

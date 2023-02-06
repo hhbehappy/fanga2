@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreFanzaFreeMemoRequest extends FormRequest
+class StoreFanzaPrivateMemoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class StoreFanzaFreeMemoRequest extends FormRequest
     public function rules()
     {
         return [
-            'free'          => 'required|max:100|min:5',
+            'private'          => 'required|max:300|min:5',
         ];
     }
 }

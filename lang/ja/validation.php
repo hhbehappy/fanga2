@@ -81,7 +81,7 @@ return [
     'max'                  => [
         'numeric' => ':attributeには、:max以下の数字を指定してください。',
         'file'    => ':attributeには、:max kB以下のファイルを指定してください。',
-        'string'  => ':attributeは、:max文字以下で指定してください。',
+        'string'  => ':attributeは、:max文字以下で送信してください。',
         'array'   => ':attributeは:max個以下指定してください。',
     ],
     'mimes'                => ':attributeには:valuesタイプのファイルを指定してください。',
@@ -89,7 +89,7 @@ return [
     'min'                  => [
         'numeric' => ':attributeには、:min以上の数字を入力してください。',
         'file'    => ':attributeには、:min kB以上のファイルを指定してください。',
-        'string'  => ':attributeは、:min文字以上で登録してください。',
+        'string'  => ':attributeは、:min文字以上で送信してください。',
         'array'   => ':attributeは:min個以上指定してください。',
     ],
     'multiple_of' => ':attributeには、:valueの倍数を指定してください。',
@@ -107,7 +107,7 @@ return [
     'required_without'     => ':valuesを指定しない場合は、:attributeを指定してください。',
     'required_without_all' => ':valuesのどれも指定しない場合は、:attributeを指定してください。',
     'prohibited'           => ':attributeは入力禁止です。',
-    'prohibited_if' => ':otherが:valueの場合、:attributeは入力禁止です。',
+    'prohibited_if'        => ':otherが:valueの場合、:attributeは入力禁止です。',
     'prohibited_unless'    => ':otherが:valueでない場合、:attributeは入力禁止です。',
     'prohibits'            => 'attributeは:otherの入力を禁じています。',
     'same'                 => ':attributeと:otherには同じ値を指定してください。',

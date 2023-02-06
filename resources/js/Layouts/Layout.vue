@@ -14,7 +14,7 @@ const path = location.pathname;
   <div class="flex flex-col min-h-screen">
     <div class="flex flex-grow">
       <div class="">
-        <div v-if="path.includes('newvideo') === true">
+        <div v-if="path.includes('fanza') === true">
           <FanzaSideBar />
         </div>
         <div v-else-if="path.includes('dugavideo') === true">

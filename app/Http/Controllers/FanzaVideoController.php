@@ -11,9 +11,20 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Fanza;
 use App\Models\FanzaFreeMemo;
+use App\Models\FanzaReleaseMemo;
+use App\Models\FanzaPrivateMemo;
 
 class FanzaVideoController extends Controller
 {
+    public function memotype(Request $request)
+    {
+        $id = $request->id;
+
+        return Inertia::render('Fanza/Video/MemoType', [
+            'id' => $id
+        ]);
+    }
+
     public function create()
     {
         $request_param = array(
@@ -125,11 +136,11 @@ class FanzaVideoController extends Controller
         $videoa = Fanza::whereContent_id($content_id)->first();
         $content_id_1 = Fanza::findOrFail($content_id);
         $fanza_free_memos = FanzaFreeMemo::whereContent_id($content_id)->latest('updated_at')->get();
-        // $usermemos = UserMemo::whereContent_id($content_id)->latest('updated_at')->get();
-        // $privatememos = PrivateMemo::where([['content_id', $content_id], ['user_id', Auth::id()]])->latest('updated_at')->get();
+        $fanza_release_memos = FanzaReleaseMemo::whereContent_id($content_id)->latest('updated_at')->get();
+        $fanza_private_memos = FanzaPrivateMemo::where([['content_id', $content_id], ['user_id', Auth::id()]])->latest('updated_at')->get();
         
-        // $usermemolists = UserMemo::latest('updated_at')->limit(30)->get()->unique('content_id');
-        // $privatememoid = Auth::id();
+        $releaselists = FanzaReleaseMemo::latest('updated_at')->limit(30)->get()->unique('content_id');
+        $user_id = Auth::id();
         // $nice = Nice::where([['content_id', $content_id], ['user_id', Auth::id()]])->first();
         // $nicecount = Nice::whereContent_id($content_id)->count();
         
@@ -141,10 +152,39 @@ class FanzaVideoController extends Controller
             'fanza_id' => $videoa->id,
             'content_id' => $videoa->content_id,
             'fanza_free_memos' => $fanza_free_memos,
-            // 'usermemos' => $usermemos,
-            // 'privatememos' => $privatememos,
-            // 'usermemolists' => $usermemolists,
-            // 'privatememoid' => $privatememoid,
+            'fanza_release_memos' => $fanza_release_memos,
+            'fanza_private_memos' => $fanza_private_memos,
+            'releaselists' => $releaselists,
+            'user_id' => $user_id,
+            // 'nice' => $nice,
+            // 'nicecount' => $nicecount
+        ]);
+    }
+
+    public function edit($type, $content_id, $memoid)
+    {
+        $videoa = Fanza::whereContent_id($content_id)->first();
+        $content_id_1 = Fanza::findOrFail($content_id);
+        $fanza_release_memos = FanzaReleaseMemo::whereId($memoid)->get();
+        $fanza_private_memos = FanzaPrivateMemo::where([['id', $memoid], ['user_id', Auth::id()]])->get();
+        $update_release_id = FanzaReleaseMemo::whereId($memoid)->first();
+        $update_private_id = FanzaPrivateMemo::whereId($memoid)->first();
+        $user_id = Auth::id();
+        // $nice=Nice::where([['content_id', $content_id], ['user_id', Auth::id()]])->first();
+        // $nicecount = Nice::whereContent_id($content_id)->count();
+
+        // dd($nicecount);
+        return Inertia::render('Fanza/Video/Edit', [
+            'type' => $type, // privatememoかreleasememoか判断
+            'title' => $videoa->title,
+            'videoids' => Fanza::find($content_id_1),
+            'date' => $videoa->date->format('Y/m/d'), 
+            'content_id' => $videoa->content_id,
+            'fanza_release_memos' => $fanza_release_memos,
+            'fanza_private_memos' => $fanza_private_memos,
+            'update_release_id' => $update_release_id,
+            'update_private_id' => $update_private_id,
+            'user_id' => $user_id,
             // 'nice' => $nice,
             // 'nicecount' => $nicecount
         ]);
