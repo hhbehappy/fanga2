@@ -15,7 +15,7 @@ const props = defineProps({
   productid: String,
   re_productid: String,
   duga_free_memos: Object,
-  duga_user_memos: Object,
+  duga_release_memos: Object,
   duga_private_memos: Object,
   usermemolists: Object,
   user_id: Number,
@@ -61,7 +61,7 @@ const destroyFreeMemo = id => {
 };
 
 const destroyReleaseMemo = id => {
-    router.delete(`/dugarelease/destroy/${id}`, {
+    router.delete(`/dugareleasememo/destroy/${id}`, {
     onBefore: () => confirm('本当に削除しますか？'),
     preserveScroll: true,
   })
@@ -117,7 +117,7 @@ export default {
               </Link>
           </div>
           <div v-else class="w-52 px-2 border-b border-pink-400">
-              <Link :href="route('nice', { content_id: dugavideo.productid, fanza_id: '1', duga_id: props.duga_id, type : 'duga'})">
+              <Link :href="route('nice', { content_id: dugavideo.productid, fanza_id: '1', duga_id: props.duga_id, type : 'duga' })">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-1 mb-0.5 w-4 h-4 text-pink-400 inline-block">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                 </svg>
@@ -324,20 +324,20 @@ export default {
         </div>
       </div>
     </div> -->
-    <!-- ユーザーメモ -->
-    <!-- <div class="flex flex-col justify-center mx-auto my-2">
-      <div v-for="duga_user_memo in duga_user_memos" :key="duga_user_memo.id">
-        <div v-if="duga_user_memo.release" class="border-dotted border-b border-gray-500 p-2 mx-5">
+    <!-- 公開メモ -->
+    <div class="flex flex-col justify-center mx-auto my-2">
+      <div v-for="duga_release_memo in duga_release_memos" :key="duga_release_memo.id">
+        <div v-if="duga_release_memo.release" class="border-dotted border-b border-gray-500 p-2 mx-5">
           <div class="flex flex-wrap mb-3 justify-between items-center">
             <div>
-              <span v-if="duga_user_memo.nickname === 'yes'" class="bg-blue-200 p-1 px-3 rounded-2xl text-xs font-bold">{{ duga_user_memo.name }}さんのメモ</span>
-              <span v-else-if="duga_user_memo.nickname === 'no'" class="bg-blue-200 p-1 px-3 rounded-2xl text-xs font-bold">ログインユーザーのメモ</span>
+              <span v-if="duga_release_memo.nickname === 1" class="bg-blue-200 p-1 px-3 rounded-2xl text-xs font-bold">{{ duga_release_memo.name }}さんのメモ</span>
+              <span v-else-if="duga_release_memo.nickname === 0" class="bg-blue-200 p-1 px-3 rounded-2xl text-xs font-bold">ログインユーザーのメモ</span>
               <span class="w-28 mt-2 ml-4 text-sm text-zinc-500 inline-block">
-              {{ duga_user_memo.updated_at }}
+              {{ duga_release_memo.updated_at }}
               </span>
             </div>
-            <div v-if="duga_user_memo.user_id === props.privatememoid" class="flex">
-              <Link as="button" :href="route('dugavideo.edit', { id: '0', productid: dugavideo.productid, memoid: duga_user_memo.id}) + '#editmemo'">
+            <div v-if="duga_release_memo.user_id === props.user_id" class="flex">
+              <Link as="button" :href="route('dvideo.edit', { type: 'release', productid: dugavideo.productid, memoid: duga_release_memo.id}) + '#editmemo'">
                 <button type="button" class="mt-2 mx-2 px-3 py-1 bg-green-600 text-white font-semibold text-xs leading-normal uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out flex align-center">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-4 mr-1 inline-block">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
@@ -345,7 +345,7 @@ export default {
                   編集
                 </button>
               </Link>
-              <button type="button" @click="deleteMemo(duga_user_memo.id)" class="mt-2 px-2 py-1 bg-red-600 text-white font-semibold text-xs leading-normal uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out flex align-center">
+              <button type="button" @click="destroyReleaseMemo(duga_release_memo.id)" class="mt-2 px-2 py-1 bg-red-600 text-white font-semibold text-xs leading-normal uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out flex align-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 my-auto mr-1">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -354,11 +354,11 @@ export default {
             </div>
           </div>
           <div class="w-full whitespace-pre-line">
-            {{ duga_user_memo.release }}
+            {{ duga_release_memo.release }}
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
     <!-- フリーメモ -->
     <div class="flex flex-col justify-center mx-auto my-2">
       <div v-for="duga_free_memo in duga_free_memos" :key="duga_free_memo.id" class="border-dotted border-b border-gray-500 p-2 mx-5">
@@ -445,12 +445,12 @@ export default {
                         <div class="">
                           <div class="mb-1">
                             <label class="cursor-pointer text-sm">
-                              <input type="radio" class="mr-2 mb-1" name="nickname" v-model="form.nickname" value="yes" checked>ニックネームを使用する
+                              <input type="radio" class="mr-2 mb-1" name="nickname" v-model="form.nickname" value="1" checked>ニックネームを使用する
                             </label>
                           </div>
                           <div class="">
                             <label class="cursor-pointer text-sm">
-                              <input type="radio" class="mr-2 mb-1" name="nickname" v-model="form.nickname" value="no">ニックネームを使用しない
+                              <input type="radio" class="mr-2 mb-1" name="nickname" v-model="form.nickname" value="0">ニックネームを使用しない
                             </label>
                           </div>
                         </div>

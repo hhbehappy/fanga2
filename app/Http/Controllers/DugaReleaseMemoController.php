@@ -3,21 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\StoreFanzaReleaseMemoRequest;
-use App\Http\Requests\UpdateFanzaReleaseMemoRequest;
-use App\Models\FanzaReleaseMemo;
+use App\Http\Requests\StoreDugaReleaseMemoRequest;
+use App\Http\Requests\UpdateDugaReleaseMemoRequest;
+use App\Models\DugaReleaseMemo;
 
-class FanzaReleaseMemoController extends Controller
+class DugaReleaseMemoController extends Controller
 {
-    public function store(StoreFanzaReleaseMemoRequest $request, $fanza_id, $content_id)
+    public function store(StoreDugaReleaseMemoRequest $request, $duga_id, $productid)
     {
-        
-        FanzaReleaseMemo::create([
+        // dd($duga_id);
+        $re_productid = str_replace("-", "/", $productid);
+
+        DugaReleaseMemo::create([
             'user_id'      => Auth::id(),
             'name'         => Auth::user()->name,
             'nickname'     => $request->get('nickname'),
-            'fanza_id'     => $fanza_id,
-            'content_id'   => $content_id,
+            'duga_id'      => $duga_id,
+            'productid'    => $productid,
+            're_productid' => $re_productid,
             'release'      => $request->get('release')
         ]);
 
@@ -28,17 +31,17 @@ class FanzaReleaseMemoController extends Controller
         ]);
     }
 
-    public function update(UpdateFanzaReleaseMemoRequest $request, $id, $content_id)
+    public function update(UpdateDugaReleaseMemoRequest $request, $id, $productid)
     {
         
-        $releasememo = FanzaReleaseMemo::findOrFail($id);
+        $releasememo = DugaReleaseMemo::findOrFail($id);
 
         $releasememo->update([
             'nickname'    => $request->get('nickname'),
             'release'     => $request->get('release')
         ]);
 
-        return to_route('fvideo.show', ['id' => $content_id])
+        return to_route('dvideo.show', ['id' => $productid])
         ->with([
             'message' => '公開メモを更新しました。',
             'status'  => 'update'
@@ -48,8 +51,8 @@ class FanzaReleaseMemoController extends Controller
     public function destroy($id)
     {
         
-        $release_memo = FanzaReleaseMemo::findOrFail($id);
-        $release_memo->delete();
+        $free_memo = DugaReleaseMemo::findOrFail($id);
+        $free_memo->delete();
 
         return back()
         ->with([

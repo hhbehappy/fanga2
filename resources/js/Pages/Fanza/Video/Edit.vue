@@ -77,7 +77,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
               </Link>
           </div>
           <div v-else class="w-48 px-2 border-b border-pink-400">
-              <Link :href="route('nice', { content_id: videoid.content_id, fanza_id: props.fanza_id, type : 'fanza' })">
+              <Link :href="route('nice', { content_id: videoid.content_id, fanza_id: props.fanza_id, duga_id: '1', type : 'fanza' })">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1 w-4 h-4 inline-block text-pink-400">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -195,8 +195,9 @@ const toggleStatus = () => { isShow.value = !isShow.value}
           </div> -->
       </div>
     </div>
+    <!-- 画像リスト -->
     <button @click="toggleStatus" type="button" data-micromodal-trigger="modal-1" href='javascript:;'>
-      <div class="flex overflow-x-scroll m-6 pb-6 hidden-scrollbar">
+      <div class="flex overflow-x-scroll m-6 pb-3 hidden-scrollbar">
           <div class="flex flex-none flex-nowrap">
             <div class="w-36 mr-5">
               <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'pl.jpg'" :alt="'【FANZA】' + videoid.title + 'のジャケット画像'" class="h-[6rem]">

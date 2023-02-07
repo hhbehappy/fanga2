@@ -140,10 +140,10 @@ class DugaVideoController extends Controller
         $dugavideo = Duga::whereProductid($productid)->first();
         $productid_1 = Duga::findOrFail($productid);
         $duga_free_memos = DugaFreeMemo::whereProductid($productid)->latest('updated_at')->get();
-        // $duga_user_memos = DugaReleaseMemo::whereProductid($productid)->latest('updated_at')->get();
+        $duga_release_memos = DugaReleaseMemo::whereProductid($productid)->latest('updated_at')->get();
         // $duga_private_memos = DugaPrivateMemo::where([['productid', $productid], ['user_id', Auth::id()]])->latest('updated_at')->get();
-        // $usermemolists = DugaReleaseMemo::select('title', 'duga_user_memos.productid', 're_productid', 'jacketimage', 'duga_user_memos.updated_at')
-        // ->latest('updated_at')->limit(20)->leftJoin('duga_video', 'duga_user_memos.productid', '=', 'duga_video.productid')->get()->unique('re_productid');
+        // $usermemolists = DugaReleaseMemo::select('title', 'duga_release_memos.productid', 're_productid', 'jacketimage', 'duga_release_memos.updated_at')
+        // ->latest('updated_at')->limit(20)->leftJoin('duga_video', 'duga_release_memos.productid', '=', 'duga_video.productid')->get()->unique('re_productid');
         $re_productid = str_replace("-", "/", $dugavideo->productid);
         $user_id = Auth::id();
         $nice = Nice::where([['content_id', $productid], ['user_id', Auth::id()]])->first();
@@ -156,13 +156,45 @@ class DugaVideoController extends Controller
             'duga_id'           => $dugavideo->id,
             'productid'         => $dugavideo->productid,
             'duga_free_memos'   => $duga_free_memos,
-            // 'duga_user_memos' => $duga_user_memos,
+            'duga_release_memos'   => $duga_release_memos,
             // 'duga_private_memos' => $duga_private_memos,
             // 'usermemolists'     => $usermemolists,
             're_productid'      => $re_productid,
             'user_id'           => $user_id,
             'nice'              => $nice,
             'nicecount'         => $nicecount,
+        ]);
+    }
+
+    public function edit($type, $productid, $memoid)
+    {
+        
+        $dugavideo = Duga::whereProductid($productid)->first();
+        $productid_1 = Duga::findOrFail($productid);
+        $re_productid = str_replace("-", "/", $dugavideo->productid);
+        $duga_release_memos = DugaReleaseMemo::whereId($memoid)->get();
+        // $duga_private_memos = DugaPrivateMemo::where([['id', $memoid], ['user_id', Auth::id()]])->get();
+        $update_release_id = DugaReleaseMemo::whereId($memoid)->first();
+        // $update_private_id = DugaPrivateMemo::whereId($memoid)->first();
+        $user_id = Auth::id();
+        $nice=Nice::where([['content_id', $productid], ['user_id', Auth::id()]])->first();
+        $nicecount = Nice::whereContent_id($productid)->count();
+
+        return Inertia::render('Duga/Video/Edit', [
+            'type' => $type, // privatememoかreleasememoか判断
+            'title' => $dugavideo->title,
+            'dugavideos' => Duga::find($productid_1),
+            'date' => $dugavideo->date->format('Y/m/d'), 
+            'duga_id'           => $dugavideo->id,
+            'productid' => $dugavideo->productid,
+            're_productid' => $re_productid,
+            'duga_release_memos' => $duga_release_memos,
+            // 'duga_private_memos' => $duga_private_memos,
+            'update_release_id' => $update_release_id,
+            // 'update_private_id' => $update_private_id,
+            'user_id' => $user_id,
+            'nice' => $nice,
+            'nicecount' => $nicecount
         ]);
     }
 }
