@@ -14,9 +14,8 @@ use App\Http\Controllers\DugaVideoController;
 // use App\Http\Controllers\DugaListController;
 use App\Http\Controllers\DugaFreeMemoController;
 use App\Http\Controllers\DugaReleaseMemoController;
-// use App\Http\Controllers\DugaPrivateMemoController;
+use App\Http\Controllers\DugaPrivateMemoController;
 use App\Http\Controllers\NiceController;
-// use App\Http\Controllers\Duga\VideoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,6 +94,14 @@ Route::controller(DugaReleaseMemoController::class)->group(function ()
     Route::post('dugareleasememo/store/{duga_id}/{productid}', 'store');
     Route::put('/dugareleasememo/update/{type}/{productid}', 'update');
     Route::delete('dugareleasememo/destroy/{id}', 'destroy');
+});
+
+Route::controller(DugaPrivateMemoController::class)->group(function ()
+{
+    Route::get('dugaprivatememo/store/{duga_id}/{productid}', 'store');
+    Route::post('dugaprivatememo/store/{duga_id}/{productid}', 'store');
+    Route::put('/dugaprivatememo/update/{type}/{productid}', 'update');
+    Route::delete('dugaprivatememo/destroy/{id}', 'destroy');
 });
 
 Route::controller(DugaVideoController::class)->group(function ()

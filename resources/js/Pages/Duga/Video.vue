@@ -17,14 +17,13 @@ const props = defineProps({
   duga_free_memos: Object,
   duga_release_memos: Object,
   duga_private_memos: Object,
-  usermemolists: Object,
+  releaselists: Object,
   user_id: Number,
   nice: Object,
   nicecount: Number
 })
 
 const form = useForm({
-  // content_id: props.content_id,
   free: null,
   release: null,
   private: null,
@@ -291,7 +290,7 @@ export default {
       </p>
     </div>
     <!-- 非公開メモ -->
-    <!-- <div class="flex flex-col justify-center mx-auto my-2">
+    <div class="flex flex-col justify-center mx-auto my-2">
       <div v-for="duga_private_memo in duga_private_memos" :key="duga_private_memo.id">
         <div class="border-dotted border-b border-gray-500 p-2 mx-5">
           <div class="flex flex-wrap mb-3 justify-between items-center">
@@ -302,7 +301,7 @@ export default {
               </span>
             </div>
             <div class="flex">
-              <Link as="button" :href="route('dugavideo.edit', { id: '1', productid: duga_private_memo.productid, memoid: duga_private_memo.id}) + '#editmemo'">
+              <Link as="button" :href="route('dvideo.edit', { type: 'private', productid: duga_private_memo.productid, memoid: duga_private_memo.id}) + '#editmemo'">
                   <button type="button" class="mt-2 mx-2 px-3 py-1 bg-green-600 text-white font-semibold text-xs leading-normal uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out flex align-center">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-4 mr-1 inline-block">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
@@ -310,7 +309,7 @@ export default {
                   編集
                 </button>
               </Link>
-              <button type="button" @click="deletePrivateMemo(duga_private_memo.id)" class="mt-2 px-2 py-1 bg-red-600 text-white font-semibold text-xs leading-normal uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out flex align-center">
+              <button type="button" @click="destroyPrivateMemo(duga_private_memo.id)" class="mt-2 px-2 py-1 bg-red-600 text-white font-semibold text-xs leading-normal uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out flex align-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 my-auto mr-1">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -323,7 +322,7 @@ export default {
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
     <!-- 公開メモ -->
     <div class="flex flex-col justify-center mx-auto my-2">
       <div v-for="duga_release_memo in duga_release_memos" :key="duga_release_memo.id">
@@ -493,16 +492,16 @@ export default {
       </div>
     </div>
     <!-- 最近のメモ動画 -->
-    <div class="border-b-4 border-gray-500 mb-8 w-11/12 mx-auto">
-      <h2 class="ml-4 mb-2 text-xl font-bold"><span class="text-red-500">DUGA</span>の最近メモされた動画</h2>
+    <div class="border-b-4 border-gray-500 mb-8 mx-auto">
+      <h2 class="ml-2 mb-1 text-xl font-bold"><span class="text-red-500">DUGA</span>の最近メモされた動画</h2>
     </div>
-    <div class="flex overflow-x-auto hidden-scrollbar h-52 ml-8">
+    <div class="flex overflow-x-auto hidden-scrollbar h-52 ml-4">
       <div class="flex flex-none flex-nowrap">
-        <div v-for="usermemolist in usermemolists" :key="usermemolist.productid" class="">
-          <div class="mr-4 mb-4">
-            <Link :href="route('dugavideo.show', { id: usermemolist.productid })">
-              <img v-if="usermemolist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + usermemolist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + usermemolist.title" class="h-44">
-              <img v-else :src="'https://pic.duga.jp/unsecure/' + usermemolist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + usermemolist.title" class="h-44 w-32">
+        <div v-for="releaselist in releaselists" :key="releaselist.productid" class="">
+          <div class="mr-4">
+            <Link :href="route('dvideo.show', { id: releaselist.productid })">
+              <img v-if="releaselist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + releaselist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + releaselist.title" class="h-44">
+              <img v-else :src="'https://pic.duga.jp/unsecure/' + releaselist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + releaselist.title" class="h-44 w-32">
             </Link>
           </div>
         </div>
