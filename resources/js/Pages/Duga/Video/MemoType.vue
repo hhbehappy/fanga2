@@ -16,7 +16,7 @@ const props = defineProps({
         <div class="flex w-4/5 md:w-9/12 mx-auto mb-6 px-4 pt-8 items-center justify-between border-b-4 border-gray-400">
             <h1 class="font-bold text-xl text-gray-800 leading-tight">メモは全部で3種類あります。</h1>
             <div class="text-blue-500">
-            <Link :href="route('fvideo.show', props.id) + '#memo'" class="block w-8 ml-3">戻る</Link>
+            <Link :href="route('dvideo.show', props.id) + '#memo'" class="block w-8 ml-3">戻る</Link>
             </div>
         </div>
         <div class="w-4/5 md:w-9/12 mx-auto p-5 bg-white">
@@ -33,7 +33,7 @@ const props = defineProps({
                 <li>無料会員登録後に利用ができます。</li>
                 <li>5文字以上300文字以内でメモができます。</li>
                 <li>公開時にニックネームを使用するか選択ができます。
-                    <p class="text-sm leading-7">（例）<span class="py-1 px-2 bg-blue-200 rounded-2xl">FANGAさんの公開メモ</span> または<span class="py-1 px-2 bg-blue-200 rounded-2xl">ログインユーザーの公開メモ</span></p>
+                    <p class="text-sm leading-7">（例）<span class="py-1 px-2 bg-blue-200 rounded-2xl">FANGAさんの公開メモ</span> または <span class="py-1 px-2 bg-blue-200 rounded-2xl">ログインユーザーの公開メモ</span></p>
                 </li>
                 <li>公開メモの編集や削除ができます。</li>
             </ul>

@@ -174,7 +174,6 @@ class FanzaVideoController extends Controller
         $nice=Nice::where([['content_id', $content_id], ['user_id', Auth::id()]])->first();
         $nicecount = Nice::whereContent_id($content_id)->count();
 
-        // dd($nicecount);
         return Inertia::render('Fanza/Video/Edit', [
             'type' => $type, // privatememoかreleasememoか判断
             'title' => $videoa->title,

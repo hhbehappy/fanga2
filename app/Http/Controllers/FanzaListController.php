@@ -16,7 +16,6 @@ class FanzaListController extends Controller
         $videoids = Fanza::whereDate('date', '<', $today)->latest('date')->paginate(20);
         $onemonths = Carbon::today()->subMonth(1);
 
-        // dd($onemonths);
 
         return view('Fanza/Video/All', compact('videoids', 'onemonths'));
     }
@@ -26,7 +25,6 @@ class FanzaListController extends Controller
 
         $onemonths = Carbon::today()->subMonth(1);
         $keyword = $request->keyword;
-        // dd($keyword);
 
         if(!empty($keyword)){
             $videolists = Fanza::where('maker', 'like', $keyword)
@@ -70,8 +68,6 @@ class FanzaListController extends Controller
             ->groupBy('content_id', 'title', 'maker', 'type')->latest('total')
             ->leftJoin('fanzas', 'nices.content_id', '=', 'fanzas.content_id')
             ->limit(50)->get()->unique('maker');
-            
-            // dd($makerlists);
 
         return Inertia::render('Fanza/Video/Maker',[
             'makerlists' => $makerlists,
@@ -94,7 +90,6 @@ class FanzaListController extends Controller
             ->leftJoin('fanzas', 'nices.content_id', '=', 'fanzas.content_id')
             ->limit(50)->get()->unique('actress');
             
-            // dd($actressnicelists);
 
         return Inertia::render('Fanza/Video/Actress',[
             'actresslists' => $actresslists,
@@ -116,7 +111,6 @@ class FanzaListController extends Controller
             ->leftJoin('fanzas', 'nices.content_id', '=', 'fanzas.content_id')
             ->limit(50)->get()->unique('series');
             
-            // dd($serieslists);
 
         return Inertia::render('Fanza/Video/Series', [
             'serieslists' => $serieslists,

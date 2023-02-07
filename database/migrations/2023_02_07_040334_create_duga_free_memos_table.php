@@ -13,18 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        if (Schema::hasTable('nices')) {
-            return;
-        }
-
-        Schema::create('nices', function (Blueprint $table) {
+        Schema::create('duga_free_memos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('fanza_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('duga_id')->nullable()->constrained()->onDelete('cascade');
-            $table->string('type')->nullable();
-            $table->string('content_id')->nullable();
-            $table->string('re_productid')->nullable();
+            $table->foreignId('duga_id')->constrained()->onDelete('cascade');
+            $table->string('productid');
+            $table->string('re_productid');
+            $table->text('free');
             $table->timestamps();
         });
     }
@@ -36,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nices');
+        Schema::dropIfExists('duga_free_memos');
     }
 };

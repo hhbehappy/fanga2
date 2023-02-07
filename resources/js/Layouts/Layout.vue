@@ -17,7 +17,7 @@ const path = location.pathname;
         <div v-if="path.includes('fanza') === true">
           <FanzaSideBar />
         </div>
-        <div v-else-if="path.includes('dugavideo') === true">
+        <div v-else-if="path.includes('duga') === true">
           <DugaSideBar />
         </div>
         <div v-else-if="path.includes('mypage') === true">
