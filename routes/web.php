@@ -11,7 +11,7 @@ use App\Http\Controllers\FanzaFreeMemoController;
 use App\Http\Controllers\FanzaReleaseMemoController;
 use App\Http\Controllers\FanzaPrivateMemoController;
 use App\Http\Controllers\DugaVideoController;
-// use App\Http\Controllers\DugaListController;
+use App\Http\Controllers\DugaListController;
 use App\Http\Controllers\DugaFreeMemoController;
 use App\Http\Controllers\DugaReleaseMemoController;
 use App\Http\Controllers\DugaPrivateMemoController;
@@ -102,6 +102,16 @@ Route::controller(DugaPrivateMemoController::class)->group(function ()
     Route::post('dugaprivatememo/store/{duga_id}/{productid}', 'store');
     Route::put('/dugaprivatememo/update/{type}/{productid}', 'update');
     Route::delete('dugaprivatememo/destroy/{id}', 'destroy');
+});
+
+Route::controller(DugaListController::class)->group(function ()
+{
+    Route::get('duga/video/all', 'index')->name('dlist.index');
+    Route::get('duga/video/list', 'show')->name('dlist.show');
+    Route::get('duga/video/category', 'category')->name('dlist.category');
+    Route::get('duga/video/maker', 'maker')->name('dlist.maker');
+    Route::get('duga/video/performer', 'performer')->name('dlist.performer');
+    Route::get('duga/video/series', 'series')->name('dlist.series');
 });
 
 Route::controller(DugaVideoController::class)->group(function ()

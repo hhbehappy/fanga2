@@ -1,5 +1,5 @@
 <script setup>
-import BasicLayout from '@/Layouts/BasicLayout.vue';
+import Layout from '@/Layouts/Layout.vue';
 import { router, Head, Link, useForm  } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import InputError from '@/Components/InputError.vue';
@@ -91,11 +91,11 @@ export default {
 </script>
 
 <template>
-<BasicLayout>
+<Layout>
   <Head :title="'【DUGA】' + title" />
 
   <div v-for="dugavideo in dugavideos" :key="dugavideo.id" class="">
-    <h1 class="font-bold text-2xl mb-8 px-4 md:mr-8 bg-gray-200 p-2 border-b-2 border-gray-500"><span class="text-red-500">【DUGA】</span>{{ dugavideo.title }}</h1>
+    <h1 class="font-bold md:text-xl mb-8 px-4 md:mr-8 bg-gray-200 p-2 border-b-2 border-gray-500"><span class="text-red-500">【DUGA】</span>{{ dugavideo.title }}</h1>
     <p class="mb-7"><NiceFlashMessage /></p>
     <div class="container mx-auto flex flex-wrap md:flex-nowrap mb-4">
       <div class="mb-6 mx-14 md:mx-2 w-[190px] shrink-0">
@@ -125,7 +125,7 @@ export default {
             </div>
           </div>
           <div class="text-sm mb-2">気になる動画の登録数 : {{ nicecount }}</div>
-          <!-- <table>
+          <table>
             <tbody>
               <tr>
                 <td class="w-24 h-8 py-1 text-sm">配信開始日</td>
@@ -152,7 +152,7 @@ export default {
                 <td class="w-24 h-10 py-2 text-sm">出演者</td>
                 <td>
                   <span v-if="dugavideo.performer" class="border border-gray-300 lg:border-none rounded p-1 text-blue-500 text-sm">
-                    <a :href="route('dvideo.show', { keyword: dugavideo.performer })">{{ dugavideo.performer }}</a></span>
+                    <a :href="route('dlist.show', { keyword: dugavideo.performer })">{{ dugavideo.performer }}</a></span>
                   <span v-else class="text-2xl">----</span>
                 </td>
               </tr>
@@ -160,7 +160,7 @@ export default {
                 <td class="w-24 h-10 py-2 text-sm">シリーズ</td>
                 <td>
                   <span v-if="dugavideo.series" class="border border-gray-300 lg:border-none rounded p-1 text-blue-500 text-sm">
-                    <a :href="route('dvideo.show', { keyword: dugavideo.series })">{{ dugavideo.series }}</a></span>
+                    <a :href="route('dlist.show', { keyword: dugavideo.series })">{{ dugavideo.series }}</a></span>
                   <span v-else class="text-2xl">----</span>
                 </td>
               </tr>
@@ -168,7 +168,7 @@ export default {
                 <td class="w-24 h-10 py-2 text-sm">メーカー</td>
                 <td>
                   <span v-if="dugavideo.maker" class="border border-gray-300 lg:border-none rounded p-1 text-blue-500 text-sm">
-                    <a :href="route('dvideo.show', { keyword: dugavideo.maker })">{{ dugavideo.maker }}</a></span>
+                    <a :href="route('dlist.show', { keyword: dugavideo.maker })">{{ dugavideo.maker }}</a></span>
                   <span v-else class="text-2xl">----</span>
                 </td>
               </tr>
@@ -176,7 +176,7 @@ export default {
                 <td class="w-24 h-10 py-2 text-sm">レーベル</td>
                 <td>
                   <span v-if="dugavideo.label" class="border border-gray-300 lg:border-none rounded p-1 text-blue-500 text-sm">
-                    <a :href="route('dvideo.show', { keyword: dugavideo.label })">{{ dugavideo.label }}</a></span>
+                    <a :href="route('dlist.show', { keyword: dugavideo.label })">{{ dugavideo.label }}</a></span>
                   <span v-else class="text-2xl">----</span>
                 </td>
               </tr>
@@ -184,7 +184,7 @@ export default {
                 <td class="w-24 h-10 py-2 text-sm">監督</td>
                 <td>
                   <span v-if="dugavideo.director" class="border border-gray-300 lg:border-none rounded p-1 text-blue-500 text-sm">
-                    <a :href="route('dvideo.show', { keyword: dugavideo.director })">{{ dugavideo.director }}</a></span>
+                    <a :href="route('dlist.show', { keyword: dugavideo.director })">{{ dugavideo.director }}</a></span>
                   <span v-else class="text-2xl">----</span>
                   </td>
               </tr>
@@ -192,7 +192,7 @@ export default {
                 <td class="w-24 h-10 text-sm">カテゴリ</td>
                 <td class="py-2">
                   <div v-if="dugavideo.category" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('dvideo.show', { keyword: dugavideo.category })">{{ dugavideo.category }}</a></div>
+                    <a :href="route('dlist.show', { keyword: dugavideo.category })">{{ dugavideo.category }}</a></div>
                   <div v-else></div>
                 </td>
               </tr>
@@ -205,7 +205,7 @@ export default {
                 </td>
               </tr>
             </tbody>
-          </table> -->
+          </table>
       </div>
       <div class="hidden lg:block w-full mr-12">
         <video controls playsinline :poster="'https://affsample.duga.jp/unsecure/' + dugavideo.productid + '/noauth/flvcap.jpg'" preload="metadata">
@@ -499,7 +499,7 @@ export default {
       <div class="flex flex-none flex-nowrap">
         <div v-for="releaselist in releaselists" :key="releaselist.productid" class="">
           <div class="mr-4">
-            <Link :href="route('dvideo.show', { id: releaselist.productid })">
+            <Link :href="route('dlist.show', { id: releaselist.productid })">
               <img v-if="releaselist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + releaselist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + releaselist.title" class="h-44">
               <img v-else :src="'https://pic.duga.jp/unsecure/' + releaselist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + releaselist.title" class="h-44 w-32">
             </Link>
@@ -563,5 +563,5 @@ export default {
     </div>
     <!-- モーダルウィンドウの中 -->
   </div>
-</BasicLayout>
+</Layout>
 </template>

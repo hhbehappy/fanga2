@@ -1,5 +1,5 @@
 <script setup>
-import BasicLayout from '@/Layouts/BasicLayout.vue';
+import Layout from '@/Layouts/Layout.vue';
 import { router, Head, Link, useForm  } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
@@ -45,7 +45,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
 </script>
 
 <template>
-  <BasicLayout>
+  <Layout>
     <Head :title="'【DUGA】' + title" />
   
     <div v-for="dugavideo in dugavideos" :key="dugavideo.id" class="">
@@ -380,5 +380,5 @@ const toggleStatus = () => { isShow.value = !isShow.value}
       </div>
       <!-- モーダルウィンドウの中 -->
     </div>
-  </BasicLayout>
+  </Layout>
   </template>
