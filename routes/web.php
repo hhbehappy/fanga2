@@ -16,6 +16,7 @@ use App\Http\Controllers\DugaFreeMemoController;
 use App\Http\Controllers\DugaReleaseMemoController;
 use App\Http\Controllers\DugaPrivateMemoController;
 use App\Http\Controllers\NiceController;
+use App\Http\Controllers\MyPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,8 @@ use App\Http\Controllers\NiceController;
 
 Route::get('/', [FangaController::class, 'index'])->name('fanga');
 
+// マイページ
+Route::get('/mypage', [MyPageController::class, 'index'])->middleware(['auth', 'verified'])->name('mypage');
 // 気になる動画機能
 Route::get('/nice/{content_id}/{fanza_id}/{duga_id}/{type}', [NiceController::class, 'nice'])->name('nice');
 Route::post('/nice/{content_id}/{fanza_id}/{duga_id}/{type}', [NiceController::class, 'nice']);

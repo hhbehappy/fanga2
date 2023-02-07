@@ -3,8 +3,16 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
+use App\Models\FanzaFreeMemo;
+use App\Models\FanzaReleaseMemo;
+use App\Models\FanzaPrivateMemo;
+use App\Models\DugaFreeMemo;
+use App\Models\DugaReleaseMemo;
+use App\Models\DugaPrivateMemo;
+use App\Models\Nice;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -43,6 +51,17 @@ class HandleInertiaRequests extends Middleware
                 'message' => fn () => $request->session()->get('message'),
                 'nicemessage' => fn () => $request->session()->get('nicemessage'),
                 'status' => fn () => $request->session()->get('status'),
+            ],
+            'count' => [
+                'freememo' => FanzaFreeMemo::whereUser_id(Auth::id())->select('content_id')->get()->unique('content_id')->count(),
+                'usermemo' => FanzaReleaseMemo::whereUser_id(Auth::id())->select('content_id')->get()->unique('content_id')->count(),
+                'privatememo' => FanzaprivateMemo::whereUser_id(Auth::id())->select('content_id')->get()->unique('content_id')->count(),
+                // dd($pravate),
+                'dugafreememo' => DugaFreeMemo::whereUser_id(Auth::id())->select('productid')->get()->unique('productid')->count(),
+                'dugausermemo' => DugaReleaseMemo::whereUser_id(Auth::id())->select('productid')->get()->unique('productid')->count(),
+                'dugaprivatememo' => DugaPrivateMemo::whereUser_id(Auth::id())->select('productid')->get()->unique('productid')->count(),
+                'fanzanice' => Nice::where([['user_id', Auth::id()], ['type', 'fanza']])->select('content_id')->get()->unique('content_id')->count(),
+                'duganice' => Nice::where([['user_id', Auth::id()], ['type', 'duga']])->select('content_id')->get()->unique('content_id')->count(),
             ],
         ]);
     }
