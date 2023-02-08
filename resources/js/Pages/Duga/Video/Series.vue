@@ -20,9 +20,9 @@ defineProps({
       <div v-for="serieslist in serieslists" :key="serieslist.id">
         <div v-if="serieslist.series" class="w-36 mr-1 mb-4">
           <a :href="route('dlist.show', { keyword: serieslist.series })" class="p-2 border-2 text-blue-500 text-center inline-block">
-            <span class="w-28 inline-block truncate">{{ serieslist.series }}</span>
             <img v-if="serieslist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + serieslist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + serieslist.title" class="h-40">
             <img v-else :src="'https://pic.duga.jp/unsecure/' + serieslist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + serieslist.title + 'のメイン画像'" class="h-40">
+            <span class="w-28 -mb-2 text-sm inline-block truncate">{{ serieslist.series }}</span>
           </a>
         </div>
       </div>
@@ -34,9 +34,9 @@ defineProps({
       <div v-for="seriesnicelist in seriesnicelists" :key="seriesnicelist.id">
         <div v-if="seriesnicelist.newvideo_id === 'duga' && seriesnicelist.series" class="w-40 mr-3 mb-4">
           <a :href="route('dlist.show', { keyword: seriesnicelist.series })" class="p-3 border-2 text-blue-500 text-center inline-block">
-            <span class="w-32 inline-block truncate">{{ seriesnicelist.series }}</span>
             <img v-if="seriesnicelist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + seriesnicelist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + seriesnicelist.title" class="h-44 w-32">
             <img v-else :src="'https://pic.duga.jp/unsecure/' + seriesnicelist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + seriesnicelist.title + 'のメイン画像'" class="h-44 w-32">
+            <span class="w-32 -mb-2 text-sm inline-block truncate">{{ seriesnicelist.series }}</span>
           </a>
         </div>
       </div>

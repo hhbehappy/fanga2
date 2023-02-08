@@ -20,8 +20,8 @@ defineProps({
       <div v-for="makerlist in makerlists" :key="makerlist.id">
         <div v-if="makerlist.maker" class="w-36 mr-2 mb-4">
           <a :href="route('flist.show', { keyword: makerlist.maker })" class="p-2 border-2 text-blue-500 text-center inline-block">
-            <span class="w-28 inline-block truncate">{{ makerlist.maker }}</span>
             <img :src="'https://pics.dmm.co.jp/digital/video/' + makerlist.content_id  + '/' + makerlist.content_id + 'ps.jpg'" :alt="'【FANZA】' + makerlist.title + 'のメイン画像'" class="h-40">
+            <span class="w-28 -mb-2 text-sm inline-block truncate">{{ makerlist.maker }}</span>
           </a>
         </div>
       </div>
@@ -33,8 +33,8 @@ defineProps({
       <div v-for="makernicelist in makernicelists" :key="makernicelist.id">
         <div v-if="makernicelist.type === 'fanza' && makernicelist.maker" class="w-36 mr-2 mb-4">
           <a :href="route('flist.show', { keyword: makernicelist.maker })" class="p-2 border-2 text-blue-500 text-center inline-block">
-            <span class="w-28 inline-block truncate">{{ makernicelist.maker }}</span>
             <img :src="'https://pics.dmm.co.jp/digital/video/' + makernicelist.content_id  + '/' + makernicelist.content_id + 'ps.jpg'" :alt="'【FANZA】' + makernicelist.title + 'のメイン画像'" class="h-40">
+            <span class="w-28 -mb-2 text-sm inline-block truncate">{{ makernicelist.maker }}</span>
           </a>
         </div>
       </div>

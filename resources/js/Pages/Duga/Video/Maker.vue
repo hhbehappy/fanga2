@@ -20,9 +20,9 @@ defineProps({
       <div v-for="makerlist in makerlists" :key="makerlist.id">
         <div v-if="makerlist.maker" class="w-36 mr-1 mb-4">
           <a :href="route('dlist.show', { keyword: makerlist.maker })" class="p-2 border-2 text-blue-500 text-center inline-block">
-            <span class="w-28 inline-block truncate">{{ makerlist.maker }}</span>
             <img v-if="makerlist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + makerlist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + makerlist.title" class="h-40">
             <img v-else :src="'https://pic.duga.jp/unsecure/' + makerlist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + makerlist.title + 'のメイン画像'" class="h-40">
+            <span class="w-28 -mb-2 text-sm inline-block truncate">{{ makerlist.maker }}</span>
           </a>
         </div>
       </div>
@@ -34,9 +34,9 @@ defineProps({
       <div v-for="makernicelist in makernicelists" :key="makernicelist.id">
         <div v-if="makernicelist.newvideo_id === 'duga' && makernicelist.maker" class="w-40 mr-3 mb-4">
           <a :href="route('dlist.show', { keyword: makernicelist.maker })" class="p-3 border-2 text-blue-500 text-center inline-block">
-            <span class="w-32 inline-block truncate">{{ makernicelist.maker }}</span>
             <img v-if="makernicelist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + makernicelist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + makernicelist.title" class="h-44 w-32">
             <img v-else :src="'https://pic.duga.jp/unsecure/' + makernicelist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + makernicelist.title + 'のメイン画像'" class="h-44 w-32">
+            <span class="w-32 -mb-2 text-sm inline-block truncate">{{ makernicelist.maker }}</span>
           </a>
         </div>
       </div>

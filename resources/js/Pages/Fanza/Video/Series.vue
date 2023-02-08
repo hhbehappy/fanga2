@@ -20,8 +20,8 @@ defineProps({
       <div v-for="serieslist in serieslists" :key="serieslist.id">
         <div v-if="serieslist.series" class="w-36 mr-2 mb-4">
           <a :href="route('flist.show', { keyword: serieslist.series })" class="p-2 border-2 text-blue-500 text-center inline-block">
-            <span class="w-28 inline-block truncate">{{ serieslist.series }}</span>
             <img :src="'https://pics.dmm.co.jp/digital/video/' + serieslist.content_id  + '/' + serieslist.content_id + 'ps.jpg'" :alt="'【FANZA】' + serieslist.title + 'のメイン画像'" class="h-40">
+            <span class="w-28 -mb-2 text-sm inline-block truncate">{{ serieslist.series }}</span>
           </a>
         </div>
       </div>
@@ -33,8 +33,8 @@ defineProps({
       <div v-for="seriesnicelist in seriesnicelists" :key="seriesnicelist.id">
         <div v-if="seriesnicelist.type === 'fanza' && seriesnicelist.series" class="w-36 mr-2 mb-4">
           <a :href="route('flist.show', { keyword: seriesnicelist.series })" class="p-2 border-2 text-blue-500 text-center inline-block">
-            <span class="w-28 inline-block truncate">{{ seriesnicelist.series }}</span>
             <img :src="'https://pics.dmm.co.jp/digital/video/' + seriesnicelist.content_id  + '/' + seriesnicelist.content_id + 'ps.jpg'" :alt="'【FANZA】' + seriesnicelist.title + 'のメイン画像'" class="h-40">
+            <span class="w-28 -mb-2 text-sm inline-block truncate">{{ seriesnicelist.series }}</span>
           </a>
         </div>
       </div>
