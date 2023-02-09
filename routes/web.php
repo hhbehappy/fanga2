@@ -33,9 +33,15 @@ use App\Http\Controllers\RedirectbackController;
 */
 
 Route::get('/', [FangaController::class, 'index'])->name('fanga');
+Route::get('/logout', [FangaController::class, 'logout'])->name('fanga.logout');
 
 // マイページ
 Route::get('/mypage', [MyPageController::class, 'index'])->middleware(['auth', 'verified'])->name('mypage');
+
+// 検索ページ
+Route::get('/search/fanza', [FangaController::class, 'searchfanza'])->name('fanga.searchfanza');
+Route::get('/search/duga', [FangaController::class, 'searchduga'])->name('fanga.searchduga');
+
 // 気になる動画機能
 Route::get('/nice/{content_id}/{fanza_id}/{duga_id}/{type}', [NiceController::class, 'nice'])->name('nice');
 Route::post('/nice/{content_id}/{fanza_id}/{duga_id}/{type}', [NiceController::class, 'nice']);

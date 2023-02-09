@@ -8,20 +8,20 @@ const path = location.pathname;
 <template> 
 <header class="py-4">
   <div class="flex items-end justify-between w-full md:mb-5 pb-3 border-b-2 border-gray-500">
-    <div class="w-36 sm:w-44 ml-3 sm:ml-8 shrink-0"> 
+    <div class="w-36 sm:w-44 ml-4 lg:ml-8 shrink-0"> 
       <Link :href="route('fanga')">
           <ApplicationLogo />
       </Link>
     </div>
     <div class="flex flex-wrap md:hidden justify-end">
       <div class="h-8 ml-4 mb-1">
-        <form :action="route('fanga')" method="GET">
+        <form :action="route('fanga.searchfanza')" method="GET">
           <input type="text" name="keyword" placeholder="FANZA" class="w-4/5 h-8 pb-2.5 leading-5 rounded-l-lg">
           <input type="submit" value="検索" class="h-8 p-1 text-gray-100 text-sm bg-gray-600 rounded-r-lg cursor-pointer">
         </form>
       </div>
       <div class="h-8 ml-4 mb-1">
-        <form :action="route('fanga')" method="GET">
+        <form :action="route('fanga.searchduga')" method="GET">
           <input type="text" name="keyword" placeholder="DUGA" class="w-4/5 h-8 pb-2.5 leading-5 rounded-l-lg">
           <input type="submit" value="検索" class="h-8 p-1 text-gray-100 text-sm bg-gray-600 rounded-r-lg cursor-pointer">
         </form>
@@ -29,13 +29,13 @@ const path = location.pathname;
     </div>
     <div class="hidden md:flex flex-wrap justify-center">
       <div class="h-7 ml-4 mb-1">
-        <form :action="route('fanga')" method="GET">
+        <form :action="route('fanga.searchfanza')" method="GET">
           <input type="text" name="keyword" placeholder="FANZA" class="w-48 h-7 pb-2.5 leading-5 rounded-l-lg">
           <input type="submit" value="検索" class="w-10 h-7 p-1 text-gray-100 text-sm bg-gray-600 rounded-r-lg cursor-pointer">
         </form>
       </div>
       <div class="h-7 ml-4">
-        <form :action="route('fanga')" method="GET">
+        <form :action="route('fanga.searchduga')" method="GET">
           <input type="text" name="keyword" placeholder="DUGA" class="w-48 h-7 pb-2.5 leading-5 rounded-l-lg">
           <input type="submit" value="検索" class="w-10 h-7 p-1 text-gray-100 text-sm bg-gray-600 rounded-r-lg cursor-pointer">
         </form>
@@ -48,12 +48,12 @@ const path = location.pathname;
           <a :href="route('flist.index')" class="absolute top-0 left-0 w-full h-full">FANZA</a>
         </li>
         <li class="h-6 w-16 mb-1 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
-          <a :href="route('fanga')" class="absolute top-0 left-0 w-full h-full">DUGA</a>
+          <a :href="route('dlist.index')" class="absolute top-0 left-0 w-full h-full">DUGA</a>
         </li>
         <li class="h-6 w-12 mb-1 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
           <Link :href="route('bbs')" class="absolute top-0 left-0 w-full h-full">BBS</Link></li>
         <li class="h-6 w-24 mb-1 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
-          <Link :href="route('fanga')" class="absolute top-0 left-0 w-full h-full">マイページ</Link></li>
+          <Link :href="route('mypage')" class="absolute top-0 left-0 w-full h-full">マイページ</Link></li>
         <li v-if="$page.props.auth.user" class=""></li>
         <li v-else class="h-6 w-20 mb-1 text-center hover:bg-green-600 hover:text-white border-r-2 border-gray-500 relative">
           <Link :href="route('register')" class="absolute top-0 left-0 w-full h-full">会員登録</Link></li>
@@ -68,15 +68,15 @@ const path = location.pathname;
   <nav class="flex flex-col md:hidden w-full">
     <ul class="flex">
       <li class="p-1 h-10 w-1/2 bg-gray-200 text-center text-gray-700 text-2xl font-bold hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
-        <a :href="route('fanga')" class="absolute top-0 left-0 w-full h-full mt-1">FANZA</a>
+        <a :href="route('flist.index')" class="absolute top-0 left-0 w-full h-full mt-1">FANZA</a>
       </li>
       <li class="p-1 h-10 w-1/2 bg-gray-200 text-center text-gray-700 text-2xl font-bold hover:bg-red-500 hover:text-white relative">
-        <a :href="route('fanga')" class="absolute top-0 left-0 w-full h-full mt-1">DUGA</a>
+        <a :href="route('dlist.index')" class="absolute top-0 left-0 w-full h-full mt-1">DUGA</a>
       </li>
     </ul>
     <ul v-if="$page.props.auth.user" class="flex">
       <li class="h-9 w-1/3 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
-        <Link :href="route('fanga')" class="absolute top-0 left-0 w-full h-full mt-1">マイページ</Link></li>
+        <Link :href="route('mypage')" class="absolute top-0 left-0 w-full h-full mt-1">マイページ</Link></li>
       <li class="h-9 w-1/3 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <Link :href="route('bbs')" class="absolute top-0 left-0 w-full h-full mt-1">BBS</Link></li>
       <li class="h-9 w-1/3 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
@@ -84,7 +84,7 @@ const path = location.pathname;
     </ul>
     <ul v-else class="flex">
       <li class="h-9 w-1/4 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
-        <Link :href="route('fanga')" class="absolute top-0 left-0 w-full h-full mt-1">マイページ</Link></li>
+        <Link :href="route('mypage')" class="absolute top-0 left-0 w-full h-full mt-1">マイページ</Link></li>
       <li class="h-9 w-1/4 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <Link :href="route('bbs')" class="absolute top-0 left-0 w-full h-full mt-1">BBS</Link></li>
         <li class="h-9 w-1/4 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-r-2 border-gray-500 hover:bg-green-600 hover:text-white relative">
