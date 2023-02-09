@@ -51,14 +51,14 @@ const path = location.pathname;
           <a :href="route('fanga')" class="absolute top-0 left-0 w-full h-full">DUGA</a>
         </li>
         <li class="h-6 w-12 mb-1 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
-          <Link :href="route('fanga')" class="absolute top-0 left-0 w-full h-full">BBS</Link></li>
+          <Link :href="route('bbs')" class="absolute top-0 left-0 w-full h-full">BBS</Link></li>
         <li class="h-6 w-24 mb-1 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
           <Link :href="route('fanga')" class="absolute top-0 left-0 w-full h-full">マイページ</Link></li>
         <li v-if="$page.props.auth.user" class=""></li>
         <li v-else class="h-6 w-20 mb-1 text-center hover:bg-green-600 hover:text-white border-r-2 border-gray-500 relative">
           <Link :href="route('register')" class="absolute top-0 left-0 w-full h-full">会員登録</Link></li>
         <li v-if="$page.props.auth.user" class="h-6 w-24 mb-1 text-center hover:bg-red-500 hover:text-white relative">
-          <Link :href="route('logout')" class="absolute top-0 left-0 w-full h-full">ログアウト</Link></li>
+          <Link :href="route('logout')" method="post" as="button" class="absolute top-0 left-0 w-full h-full">ログアウト</Link></li>
         <li v-else class="h-6 w-20 mb-1 text-center hover:bg-red-500 hover:text-white relative">
           <Link :href="route('login')" class="absolute top-0 left-0 w-full h-full">ログイン</Link></li>
       </ul>
@@ -78,15 +78,15 @@ const path = location.pathname;
       <li class="h-9 w-1/3 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <Link :href="route('fanga')" class="absolute top-0 left-0 w-full h-full mt-1">マイページ</Link></li>
       <li class="h-9 w-1/3 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
-        <Link :href="route('fanga')" class="absolute top-0 left-0 w-full h-full mt-1">BBS</Link></li>
+        <Link :href="route('bbs')" class="absolute top-0 left-0 w-full h-full mt-1">BBS</Link></li>
       <li class="h-9 w-1/3 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
-        <Link :href="route('logout')" class="absolute top-0 left-0 w-full h-full mt-1">ログアウト</Link></li>
+        <Link :href="route('logout')" method="post" as="button" class="absolute top-0 left-0 w-full h-full">ログアウト</Link></li>
     </ul>
     <ul v-else class="flex">
       <li class="h-9 w-1/4 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <Link :href="route('fanga')" class="absolute top-0 left-0 w-full h-full mt-1">マイページ</Link></li>
       <li class="h-9 w-1/4 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
-        <Link :href="route('fanga')" class="absolute top-0 left-0 w-full h-full mt-1">BBS</Link></li>
+        <Link :href="route('bbs')" class="absolute top-0 left-0 w-full h-full mt-1">BBS</Link></li>
         <li class="h-9 w-1/4 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-r-2 border-gray-500 hover:bg-green-600 hover:text-white relative">
         <Link :href="route('register')" class="absolute top-0 left-0 w-full h-full mt-1">会員登録</Link></li>
         <li class="h-9 w-1/4 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
@@ -98,14 +98,14 @@ const path = location.pathname;
       <div class="flex h-7 pl-4 min-w-full bg-gray-900 items-center">
         <h1 class="text-red-500 text-lg font-bold">FANZA</h1>
       </div>
-      <div class="flex flex-nowrap md:hidden h-8 w-full mb-6 bg-gray-200 text-center font-mono text-sm">
-        <div class="h-8 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+      <div class="flex flex-nowrap md:hidden h-7 w-full mb-6 bg-gray-200 text-center font-mono text-sm">
+        <div class="h-7 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <Link :href="route('flist.genre')" class="absolute top-0 left-0 w-full h-full mt-1">ジャンル一覧</Link></div>
-        <div class="h-8 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+        <div class="h-7 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <Link :href="route('flist.actress')" class="absolute top-0 left-0 w-full h-full mt-1">女優一覧</Link></div>
-        <div class="h-8 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+        <div class="h-7 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <Link :href="route('flist.maker')" class="absolute top-0 left-0 w-full h-full mt-1">メーカー一覧</Link></div>
-        <div class="h-8 w-1/4 pt-1 border-b-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+        <div class="h-7 w-1/4 pt-1 border-b-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <Link :href="route('flist.series')" class="absolute top-0 left-0 w-full h-full mt-1">シリーズ一覧</Link></div>
       </div>
     </div>
@@ -113,14 +113,14 @@ const path = location.pathname;
       <div class="flex h-7 pl-4 min-w-full bg-gray-900 items-center">
         <h1 class="text-red-500 text-lg font-bold">DUGA</h1>
       </div>
-      <div class="flex flex-nowrap md:hidden h-8 w-full mb-6 bg-gray-200 text-center font-mono text-sm">
-      <div class="h-8 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+      <div class="flex flex-nowrap md:hidden h-7 w-full mb-6 bg-gray-200 text-center font-mono text-sm">
+      <div class="h-7 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <Link :href="route('dlist.category')" class="absolute top-0 left-0 w-full h-full mt-1">カテゴリ一覧</Link></div>
-        <div class="h-8 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+        <div class="h-7 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <Link :href="route('dlist.performer')" class="absolute top-0 left-0 w-full h-full mt-1">女優一覧</Link></div>
-        <div class="h-8 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+        <div class="h-7 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <Link :href="route('dlist.maker')" class="absolute top-0 left-0 w-full h-full mt-1">メーカー一覧</Link></div>
-        <div class="h-8 w-1/4 pt-1 border-b-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+        <div class="h-7 w-1/4 pt-1 border-b-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <Link :href="route('dlist.series')" class="absolute top-0 left-0 w-full h-full mt-1">シリーズ一覧</Link></div>
       </div>
     </div>

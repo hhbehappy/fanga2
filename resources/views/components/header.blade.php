@@ -20,44 +20,44 @@
       </div>
     </div>
     <div class="hidden md:flex flex-wrap justify-center">
-      <div class="h-7 ml-6 mb-1">
+      <div class="h-7 ml-4 mb-1">
         <form action="{{ route('fanga') }}" method="GET">
-          <input type="text" name="keyword" placeholder="FANZA" class="w-52 h-7 pb-2.5 -mr-1.5 leading-5 rounded-l-lg">
+          <input type="text" name="keyword" placeholder="FANZA" class="w-48 h-7 pb-2.5 -mr-1.5 leading-5 rounded-l-lg">
           <input type="submit" value="検索" class="w-10 h-7 p-1 text-gray-100 text-sm bg-gray-600 rounded-r-lg cursor-pointer">
         </form>
       </div>
-      <div class="h-7 ml-6">
+      <div class="h-7 ml-4 mb-1">
         <form action="{{ route('fanga') }}" method="GET">
-          <input type="text" name="keyword" placeholder="DUGA" class="w-52 h-7 pb-2.5 -mr-1.5 leading-5 rounded-l-lg">
+          <input type="text" name="keyword" placeholder="DUGA" class="w-48 h-7 pb-2.5 -mr-1.5 leading-5 rounded-l-lg">
           <input type="submit" value="検索" class="w-10 h-7 p-1 text-gray-100 text-sm bg-gray-600 rounded-r-lg cursor-pointer">
         </form>
       </div>
     </div>
     {{-- PC --}}
-    <nav class="hidden md:flex items-center md:mr-2 lg:mr-8">
+    <nav class="hidden md:flex items-center lg:mr-8 text-gray-700 font-bold">
       <ul class="flex flex-wrap lg:flex-nowrap">
-        <li class="h-6 w-20 mb-1 text-center text-gray-700 font-bold hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
+        <li class="h-6 w-20 mb-1 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
           <a href="{{ route('flist.index') }}" class="absolute top-0 left-0 w-full h-full">FANZA</a>
         </li>
-        <li class="h-6 w-20 mb-1 text-center text-gray-700 font-bold hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
+        <li class="h-6 w-16 mb-1 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
           <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full">DUGA</a>
         </li>
-        <li class="h-6 w-16 mb-1 text-center text-gray-700 font-bold hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative"><a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full">BBS</a></li>
-        <li class="h-6 w-24 mb-1 text-center text-gray-700 font-bold hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative"><a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full">マイページ</a></li>
+        <li class="h-6 w-12 mb-1 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative"><a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full">BBS</a></li>
+        <li class="h-6 w-24 mb-1 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative"><a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full">マイページ</a></li>
         @guest
-        <li class="h-6 w-24 mb-1 text-center text-gray-700 font-bold hover:bg-green-600 hover:text-white border-r-2 border-gray-500 relative"><a href="{{ route('register') }}" class="absolute top-0 left-0 w-full h-full">会員登録</a></li>
+        <li class="h-6 w-20 mb-1 text-center hover:bg-green-600 hover:text-white border-r-2 border-gray-500 relative"><a href="{{ route('register') }}" class="absolute top-0 left-0 w-full h-full">会員登録</a></li>
         @endguest
         @auth
-        <li class="h-6 w-24 mb-1 text-center text-gray-700 font-bold hover:bg-red-500 hover:text-white relative"><a href="{{ route('logout') }}" class="absolute top-0 left-0 w-full h-full">ログアウト</a></li>
+        <li class="h-6 w-24 mb-1 text-center hover:bg-red-500 hover:text-white relative"><a href="{{ route('logout') }}" class="absolute top-0 left-0 w-full h-full">ログアウト</a></li>
         @endauth
         @guest
-        <li class="h-6 w-20 mb-1 text-center text-gray-700 font-bold hover:bg-red-500 hover:text-white relative"><a href="{{ route('login') }}" class="absolute top-0 left-0 w-full h-full">ログイン</a></li>
+        <li class="h-6 w-20 mb-1 text-center hover:bg-red-500 hover:text-white relative"><a href="{{ route('login') }}" class="absolute top-0 left-0 w-full h-full">ログイン</a></li>
         @endguest
       </ul>
     </nav>
   </div>
   {{-- スマホ --}}
-  <nav class="flex flex-col md:hidden mb-5">
+  <nav class="flex flex-col md:hidden">
     <ul class="flex">
       <li class="p-1 h-10 w-1/2 bg-gray-200 text-center text-gray-700 text-2xl font-bold hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
         <a href="{{ route('flist.index') }}" class="absolute top-0 left-0 w-full h-full mt-1">FANZA</a>
@@ -67,58 +67,58 @@
       </li>
     </ul>
     @auth
-    <ul class="flex">
-      <li class="h-9 w-1/3 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+    <ul class="flex text-gray-700 font-bold">
+      <li class="h-9 w-1/3 bg-gray-200 text-center p-1 border-y-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full mt-1">マイページ</a></li>
-      <li class="h-9 w-1/3 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+      <li class="h-9 w-1/3 bg-gray-200 text-center p-1 border-y-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full mt-1">BBS</a></li>
-      <li class="h-9 w-1/3 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+      <li class="h-9 w-1/3 bg-gray-200 text-center p-1 border-y-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <a href="{{ route('logout') }}" class="absolute top-0 left-0 w-full h-full mt-1">ログアウト</a></li>
     </ul>
     @endauth
     @guest
-    <ul class="flex">
-      <li class="h-9 w-1/4 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+    <ul class="flex text-gray-700 font-bold">
+      <li class="h-9 w-1/4 bg-gray-200 text-center p-1 border-y-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full mt-1">マイページ</a></li>
-      <li class="h-9 w-1/4 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+      <li class="h-9 w-1/4 bg-gray-200 text-center p-1 border-y-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full mt-1">BBS</a></li>
-      <li class="h-9 w-1/4 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-r-2 border-gray-500 hover:bg-green-600 hover:text-white relative">
+      <li class="h-9 w-1/4 bg-gray-200 text-center p-1 border-y-2 border-r-2 border-gray-500 hover:bg-green-600 hover:text-white relative">
         <a href="{{ route('register') }}" class="absolute top-0 left-0 w-full h-full mt-1">会員登録</a></li>
-      <li class="h-9 w-1/4 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+      <li class="h-9 w-1/4 bg-gray-200 text-center p-1 border-y-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <a href="{{ route('login') }}" class="absolute top-0 left-0 w-full h-full mt-1">
-          <span class="inlien-block py-1 px-3 font-mono text-white bg-red-500 rounded-md">ログイン</span></a></li>
+          <span class="inlien-block py-0.5 px-2 font-mono text-white bg-red-500 rounded-md">ログイン</span></a></li>
     </ul>
     @endguest
     @if (Request::is('fanza/*'))
-    <div class="mt-8">
-      <div class="flex h-8 pl-8 min-w-full bg-gray-900 items-center">
-        <h1 class="text-red-500 text-xl font-bold">FANZA</h1>
+    <div class="">
+      <div class="flex h-7 pl-4 min-w-full bg-gray-900 items-center">
+        <h1 class="text-red-500 text-lg font-bold">FANZA</h1>
       </div>
-      <div class="flex flex-nowrap md:hidden h-8 w-full mb-6 bg-gray-200 text-center font-bold">
-        <div class="h-8 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+      <div class="flex flex-nowrap md:hidden h-7 w-full mb-6 bg-gray-200 text-center font-mono text-sm">
+        <div class="h-7 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <a href="{{ route('flist.genre') }}" class="absolute top-0 left-0 w-full h-full mt-1">ジャンル一覧</a></div>
-        <div class="h-8 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+        <div class="h-7 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <a href="{{ route('flist.actress') }}" class="absolute top-0 left-0 w-full h-full mt-1">女優一覧</a></div>
-        <div class="h-8 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+        <div class="h-7 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <a href="{{ route('flist.maker') }}" class="absolute top-0 left-0 w-full h-full mt-1">メーカー一覧</a></div>
-        <div class="h-8 w-1/4 pt-1 border-b-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+        <div class="h-7 w-1/4 pt-1 border-b-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <a href="{{ route('flist.series') }}" class="absolute top-0 left-0 w-full h-full mt-1">シリーズ一覧</a></div>
       </div>
     </div>
     @endif
     @if (Request::is('duga/*'))
-    <div class="mt-8">
-      <div class="flex h-8 pl-8 min-w-full bg-gray-900 items-center">
-        <h1 class="text-red-500 text-xl font-bold">DUGA</h1>
+    <div class="">
+      <div class="flex h-7 pl-4 min-w-full bg-gray-900 items-center">
+        <h1 class="text-red-500 text-lg font-bold">DUGA</h1>
       </div>
-      <div class="flex flex-nowrap md:hidden h-8 w-full mb-6 bg-gray-200 text-center font-bold">
-      <div class="h-8 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+      <div class="flex flex-nowrap md:hidden h-7 w-full mb-6 bg-gray-200 text-center font-mono text-sm">
+      <div class="h-7 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
       <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full mt-1">カテゴリ一覧</a></div>
-      <div class="h-8 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+      <div class="h-7 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
       <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full mt-1">女優一覧</a></div>
-      <div class="h-8 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+      <div class="h-7 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
       <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full mt-1">メーカー一覧</a></div>
-      <div class="h-8 w-1/4 pt-1 border-b-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
+      <div class="h-7 w-1/4 pt-1 border-b-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
       <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full mt-1">シリーズ一覧</a></div>
       </div>
     </div>

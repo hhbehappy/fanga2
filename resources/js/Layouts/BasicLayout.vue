@@ -1,7 +1,6 @@
 <script setup>
 import Header from '@/Components/Parts/Header.vue';
 import Footer from '@/Components/Parts/Footer.vue';
-import { Link,Head } from '@inertiajs/vue3';
 
 </script>
 

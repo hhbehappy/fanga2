@@ -42,6 +42,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function fanza() {
+        return $this->hasMany('App\Models\Fanza');
+    }
+
     public function fanzafreememo()
     {
         return $this->hasMany(FanzaFreeMemo::class);
@@ -57,11 +61,36 @@ class User extends Authenticatable
         return $this->hasMany(FanzaPrivateMemo::class);
     }
 
-    public function fanza() {
-        return $this->hasMany('App\Models\Fanza');
+    public function duga() {
+        return $this->hasMany('App\Models\Duga');
+    }
+
+    public function dugafreememo()
+    {
+        return $this->hasMany(DugaFreeMemo::class);
+    }
+
+    public function dugareleasememo()
+    {
+        return $this->hasMany(DugaReleaseMemo::class);
+    }
+
+    public function dugaprivatememo()
+    {
+        return $this->hasMany(DugaPrivateMemo::class);
     }
 
     public function nices() {
         return $this->hasMany('App\Models\Nice');
+    }
+
+    public function threads()
+    {
+        return $this->hasMany(Thread::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }
