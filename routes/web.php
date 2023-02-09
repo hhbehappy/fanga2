@@ -17,6 +17,9 @@ use App\Http\Controllers\DugaReleaseMemoController;
 use App\Http\Controllers\DugaPrivateMemoController;
 use App\Http\Controllers\NiceController;
 use App\Http\Controllers\MyPageController;
+use App\Http\Controllers\ThreadController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\RedirectbackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +41,24 @@ Route::get('/nice/{content_id}/{fanza_id}/{duga_id}/{type}', [NiceController::cl
 Route::post('/nice/{content_id}/{fanza_id}/{duga_id}/{type}', [NiceController::class, 'nice']);
 Route::get('/unnice/{content_id}', [NiceController::class, 'unnice'])->name('unnice');
 Route::post('/unnice/{content_id}', [NiceController::class, 'unnice']);
+
+// BBS
+Route::controller(ThreadController::class)->group(function ()
+{
+    Route::get('/bbs', 'index')->name('bbs');
+    Route::get('/bbs/create', 'create')->middleware(['auth', 'verified'])->name('threads.create');
+    Route::get('/bbs/{id}', 'show')->name('threads.show');
+    Route::get('/threads/store/{id}', 'store')->name('threads.store');
+    Route::post('/threads/store', 'store');
+    Route::delete('/threads/destroy/{id}', 'destroy')->name('threads.destroy');
+});
+Route::controller(CommentController::class)->group(function ()
+{
+    Route::get('/comments/store/{id}', 'store')->name('comments.store');
+    Route::post('/comments/store/{id}', 'store');
+    Route::delete('/comments/destroy/{id}', 'destroy')->name('comments.destroy');
+});
+Route::post('/commentlogin', [RedirectbackController::class, 'direct'])->middleware(['auth', 'verified']);
 
 // FANZA
 Route::controller(FanzaFreeMemoController::class)->group(function ()
