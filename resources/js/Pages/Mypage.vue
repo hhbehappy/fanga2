@@ -15,12 +15,6 @@ const props = defineProps({
   assetsPath: Object
 })
 
-// const destroy = id => {
-//     Inertia.delete(`/user/${id}/`, {
-//     onBefore: () => confirm('本当に削除しますか？'),
-//     preserveScroll: true,
-//   })
-// };
 </script>
 
 <script>
@@ -42,28 +36,28 @@ export default {
 <template>
 <Layout>
   <Head :title="$page.props.auth.user.name + 'さんのマイページ'" />
-  <button type="button" @click="destroy(props.user.id)" class="px-2 py-1 bg-red-600 text-white font-semibold text-xs leading-normal uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out flex align-center absolute right-7 md:right-12">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 my-auto mr-1">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-    削除
-  </button>
-  <div class="mx-auto mt-5 md:mt-0">
-    <div class="border-b-4 border-gray-500 mb-6 mx-">
-      <h1 class="font-bold text-2xl pl-6">{{ $page.props.auth.user.name }}さんのマイページ</h1>
+  
+  <div class="w-screen md:w-full mx-auto mt-5 md:mt-0">
+    <div class="border-b-4 border-gray-500 mb-3">
+      <h1 class="font-bold text-lg md:text-2xl pl-6">{{ $page.props.auth.user.name }}さんのマイページ</h1>
     </div>
     <!-- タブ -->
     <div class="flex flex-wrap justify-center mb-6">
       <div class="w-full">
-        <ul class="flex mb-0 list-none flex-nowrap mx-5 md:mx-1 pt-3 pb-2 flex-row cursor-pointer">
-          <li class="-mb-px flex-auto text-center w-1/2">
-            <a class="font-bold uppercase pr-2 py-3 shadow-md rounded block leading-normal" @click="toggleTabs(1)" :class="{'text-gray-600 bg-gray-200': openTab !== 1, 'text-white bg-red-500': openTab === 1}">
+        <ul class="flex mb-0 list-none flex-nowrap mx-3 md:mx-1 pt-3 pb-2 flex-row cursor-pointer">
+          <li class="-mb-px flex-auto text-center w-1/3">
+            <a class="font-bold uppercase py-3 shadow-md rounded block leading-normal" @click="toggleTabs(1)" :class="{'text-gray-600 bg-gray-200': openTab !== 1, 'text-white bg-red-500': openTab === 1}">
               FANZA
             </a>
           </li>
-          <li class="-mb-px flex-auto text-center w-1/2 px-2">
-            <a class="font-bold uppercase pr-2 py-3 shadow-md rounded block leading-normal" @click="toggleTabs(2)" :class="{'text-gray-600 bg-gray-200': openTab !== 2, 'text-white bg-red-500': openTab === 2}">
+          <li class="-mb-px flex-auto text-center w-1/3 px-2">
+            <a class="font-bold uppercase py-3 shadow-md rounded block leading-normal" @click="toggleTabs(2)" :class="{'text-gray-600 bg-gray-200': openTab !== 2, 'text-white bg-red-500': openTab === 2}">
               DUGA
+            </a>
+          </li>
+          <li class="-mb-px flex-auto text-center w-1/3">
+            <a class="font-bold uppercase py-3 shadow-md rounded block leading-normal" @click="toggleTabs(3)" :class="{'text-gray-600 bg-gray-200': openTab !== 3, 'text-white bg-red-500': openTab === 3}">
+              アカウント
             </a>
           </li>
         </ul>
@@ -72,8 +66,11 @@ export default {
             <div class="tab-content tab-space">
               <!-- FANZA -->
               <div :class="{'hidden': openTab !== 1, 'block': openTab === 1}">
-                <div class="mx-4 mb-10">
-                  <h2 class="font-bold bg-red-200 rounded-xl w-48 py-1 px-4 ml-1 mb-4">非公開メモをした動画</h2>
+                <div class="mx-2 md:mx-0 mb-10">
+                  <div class="flex">
+                    <h2 class="font-bold bg-red-200 rounded-xl py-1 px-4 ml-1 mb-4">非公開メモをした動画
+                      <span class="md:hidden ml-2">({{ $page.props.count.fanzaprivatememo }})</span></h2>
+                  </div>
                   <div class="flex flex-wrap mx-2 mb-8 w-full">
                     <div v-for="fanzaprivatememolist in fanzaprivatememolists" :key="fanzaprivatememolist.id" class="">
                       <div class="mr-4 mb-4">
@@ -83,7 +80,9 @@ export default {
                       </div>
                     </div>
                   </div>
-                  <h2 class="font-bold bg-blue-200 rounded-xl w-44 py-1 px-4 ml-1 mb-4">公開メモをした動画</h2>
+                  <div class="flex">
+                    <h2 class="font-bold bg-blue-200 rounded-xl py-1 px-4 ml-1 mb-4">公開メモをした動画<span class="md:hidden ml-2">({{ $page.props.count.fanzareleasememo }})</span></h2>
+                  </div>
                   <div class="flex flex-wrap mx-2 mb-8">
                     <div v-for="fanzareleasememolist in fanzareleasememolists" :key="fanzareleasememolist.id" class="">
                       <div class="mr-4 mb-4">
@@ -93,7 +92,9 @@ export default {
                       </div>
                     </div>
                   </div>
-                  <h2 class="font-bold bg-amber-200 rounded-xl w-48 py-1 px-4 ml-1 mb-4">フリーメモをした動画</h2>
+                  <div class="flex">
+                    <h2 class="font-bold bg-amber-200 rounded-xl py-1 px-4 ml-1 mb-4">フリーメモをした動画<span class="md:hidden ml-2">({{ $page.props.count.fanzafreememo }})</span></h2>
+                  </div>
                   <div class="flex flex-wrap mx-2 mb-8">
                     <div v-for="fanzafreememolist in fanzafreememolists" :key="fanzafreememolist.id" class="">
                       <div v-if="fanzafreememolist.content_id" class="mr-4 mb-4">
@@ -103,7 +104,9 @@ export default {
                       </div>
                     </div>
                   </div>
-                  <h2 class="font-bold w-32 px-4 py-1 ml-1 mb-4 bg-pink-300 rounded-xl">気になる動画</h2>
+                  <div class="flex">
+                    <h2 class="font-bold px-4 py-1 ml-1 mb-4 bg-pink-300 rounded-xl">気になる動画<span class="md:hidden ml-2">({{ $page.props.count.fanzanice }})</span></h2>
+                  </div>
                   <div class="flex flex-wrap mx-2 mb-8">
                     <div v-for="nicelist in nicelists" :key="nicelist.id" class="">
                       <div v-if="nicelist.type === 'fanza'" class="mr-4 mb-4">
@@ -117,8 +120,10 @@ export default {
               </div>
               <!-- DUGA -->
               <div :class="{'hidden': openTab !== 2, 'block': openTab === 2}">
-                <div class="mx-4 mb-10">
-                  <h2 class="font-bold bg-red-200 rounded-xl w-48 py-1 px-4 ml-1 mb-4">非公開メモをした動画</h2>
+                <div class="mx-2 md:mx-0 mb-10">
+                  <div class="flex">
+                    <h2 class="font-bold bg-red-200 rounded-xl py-1 px-4 ml-1 mb-4">非公開メモをした動画<span class="md:hidden ml-2">({{ $page.props.count.dugaprivatememo }})</span></h2>
+                  </div>
                   <div class="flex flex-wrap mx-2 mb-8 w-full">
                     <div v-for="dugaprivatememolist in dugaprivatememolists" :key="dugaprivatememolist.productid" class="">
                       <div class="mr-4 mb-4">
@@ -129,7 +134,9 @@ export default {
                       </div>
                     </div>
                   </div>
-                  <h2 class="font-bold bg-blue-200 rounded-xl w-44 py-1 px-4 ml-1 mb-4">公開メモをした動画</h2>
+                  <div class="flex">
+                    <h2 class="font-bold bg-blue-200 rounded-xl py-1 px-4 ml-1 mb-4">公開メモをした動画<span class="md:hidden ml-2">({{ $page.props.count.dugareleasememo }})</span></h2>
+                  </div>
                   <div class="flex flex-wrap mx-2 mb-8">
                     <div v-for="dugareleasememolist in dugareleasememolists" :key="dugareleasememolist.id" class="">
                       <div class="mr-4 mb-4">
@@ -140,7 +147,9 @@ export default {
                       </div>
                     </div>
                   </div>
-                  <h2 class="font-bold bg-amber-200 rounded-xl w-48 py-1 px-4 ml-1 mb-4">フリーメモをした動画</h2>
+                  <div class="flex">
+                    <h2 class="font-bold bg-amber-200 rounded-xl py-1 px-4 ml-1 mb-4">フリーメモをした動画<span class="md:hidden ml-2">({{ $page.props.count.dugafreememo }})</span></h2>
+                  </div>
                   <div class="flex flex-wrap mx-2 mb-8">
                     <div v-for="dugafreememolist in dugafreememolists" :key="dugafreememolist.id" class="">
                       <div class="mr-4 mb-4">
@@ -151,7 +160,9 @@ export default {
                       </div>
                     </div>
                   </div>
-                  <h2 class="font-bold w-32 px-4 py-1 ml-1 mb-4 bg-pink-300 rounded-xl">気になる動画</h2>
+                  <div class="flex">
+                    <h2 class="font-bold px-4 py-1 ml-1 mb-4 bg-pink-300 rounded-xl">気になる動画<span class="md:hidden ml-2">({{ $page.props.count.duganice }})</span></h2>
+                  </div>
                   <div class="flex flex-wrap mx-2 mb-8">
                     <div v-for="duganicelist in duganicelists" :key="duganicelist.productid" class="">
                       <div v-if="duganicelist.type === 'duga'" class="mr-4 mb-4">
@@ -161,6 +172,22 @@ export default {
                         </Link>
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+              <!-- アカウント -->
+              <div :class="{'hidden': openTab !== 3, 'block': openTab === 3}">
+                <div class="h-96 p-5 bg-gray-200">
+                  <div class="p-7 space-y-3 text-blue-500 bg-white">
+                    <p class="hover:underline">
+                      ユーザー名変更
+                    </p>
+                    <p class="hover:underline">
+                      パスワード変更
+                    </p>
+                    <p class="hover:underline">
+                      退会ページ
+                    </p>
                   </div>
                 </div>
               </div>

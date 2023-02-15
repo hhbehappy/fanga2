@@ -4,10 +4,10 @@
   </x-slot>
 
   <div class="border-b-4 border-gray-500 mb-2">
-    <h1 class="font-bold text-xl inline-block"><span class="text-red-500">【FANZA】</span>『 {{ $keyword }} 』の検索一覧</h1>
-    <span class="ml-5">{{ $fanzas->total() }}件中 {{ $fanzas->firstItem() }}〜{{ $fanzas->lastItem() }}件</span>
+    <h1 class="font-bold md:text-xl inline-block"><span class="text-red-500">【FANZA】</span>『 {{ $keyword }} 』の検索一覧</h1>
+    <span class="ml-5 inline-block">{{ $fanzas->total() }}件中 {{ $fanzas->firstItem() }}〜{{ $fanzas->lastItem() }}件</span>
   </div>
-  <p class="text-sm mb-6 ml-8"><span class="font-bold text-white bg-red-500 px-1">NEW</span> : 配信開始日より1ヶ月以内の動画</p>
+  <p class="text-sm mb-6 ml-6"><span class="font-bold text-white bg-red-500 px-1">NEW</span> : 配信開始日より1ヶ月以内の動画</p>
   <div class="container mx-3 flex flex-col">
     <div class="flex flex-none flex-wrap mb-4 relative">
       @foreach ( $fanzas as $fanza )

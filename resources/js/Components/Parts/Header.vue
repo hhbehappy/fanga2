@@ -91,7 +91,7 @@ const path = location.pathname;
         <Link :href="route('register')" class="absolute top-0 left-0 w-full h-full mt-1">会員登録</Link></li>
         <li class="h-9 w-1/4 bg-gray-200 text-center text-gray-700 font-bold p-1 border-y-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <Link :href="route('login')" class="absolute top-0 left-0 w-full h-full mt-1">
-          <span class="inlien-block py-0.5 px-2 font-mono text-white bg-red-500 rounded-md">ログイン
+          <span class="inlien-block py-0.5 px-2 text-sm font-mono text-white bg-red-500 rounded-md">ログイン
           </span></Link></li>
     </ul>
     <div v-if="path.includes('fanza') === true" class="">

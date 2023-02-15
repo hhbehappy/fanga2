@@ -86,7 +86,7 @@
         <a href="{{ route('register') }}" class="absolute top-0 left-0 w-full h-full mt-1">会員登録</a></li>
       <li class="h-9 w-1/4 bg-gray-200 text-center p-1 border-y-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <a href="{{ route('login') }}" class="absolute top-0 left-0 w-full h-full mt-1">
-          <span class="inlien-block py-0.5 px-2 font-mono text-white bg-red-500 rounded-md">ログイン</span></a></li>
+          <span class="inlien-block py-0.5 px-2 text-sm font-mono text-white bg-red-500 rounded-md">ログイン</span></a></li>
     </ul>
     @endguest
     @if (Request::is('fanza/*'))
@@ -113,13 +113,13 @@
       </div>
       <div class="flex flex-nowrap md:hidden h-7 w-full mb-6 bg-gray-200 text-center font-mono text-sm">
       <div class="h-7 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
-      <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full mt-1">カテゴリ一覧</a></div>
+      <a href="{{ route('dlist.category') }}" class="absolute top-0 left-0 w-full h-full mt-1">カテゴリ一覧</a></div>
       <div class="h-7 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
-      <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full mt-1">女優一覧</a></div>
+      <a href="{{ route('dlist.performer') }}" class="absolute top-0 left-0 w-full h-full mt-1">女優一覧</a></div>
       <div class="h-7 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
-      <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full mt-1">メーカー一覧</a></div>
+      <a href="{{ route('dlist.maker') }}" class="absolute top-0 left-0 w-full h-full mt-1">メーカー一覧</a></div>
       <div class="h-7 w-1/4 pt-1 border-b-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
-      <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full mt-1">シリーズ一覧</a></div>
+      <a href="{{ route('dlist.series') }}" class="absolute top-0 left-0 w-full h-full mt-1">シリーズ一覧</a></div>
       </div>
     </div>
     @endif

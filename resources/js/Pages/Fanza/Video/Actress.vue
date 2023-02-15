@@ -14,9 +14,9 @@ defineProps({
 
   <div class="">
     <div class="border-b-4 border-gray-500 mb-4">
-      <h1 class="font-bold text-2xl ml-4"><span class="text-red-500">【FANZA】</span>女優一覧 : メモの多い動画順</h1>
+      <h1 class="font-bold md:text-2xl ml-2"><span class="text-red-500">【FANZA】</span>女優一覧 : メモの多い動画順</h1>
     </div>
-    <div class="flex flex-wrap mx-7 md:mx-1">
+    <div class="flex flex-wrap ml-4 md:mx-2">
       <div v-for="actresslist in actresslists" :key="actresslist.id">
         <div v-if="actresslist.actress" class="w-36 mr-2 mb-4">
           <a :href="route('flist.show', { keyword: actresslist.actress })" class="p-2 border-2 text-blue-500 text-center inline-block">
@@ -27,9 +27,9 @@ defineProps({
       </div>
     </div>
     <div class="border-b-4 border-gray-500 my-4">
-      <h2 class="font-bold text-2xl ml-4"><span class="text-red-500">【FANZA】</span>女優一覧 : 気になる動画の登録数順</h2>
+      <h2 class="font-bold md:text-2xl ml-2"><span class="text-red-500">【FANZA】</span>女優一覧 : 気になる動画の登録数順</h2>
     </div>
-    <div class="flex flex-wrap mx-7 md:mx-1">
+    <div class="flex flex-wrap ml-4 md:mx-2">
       <div v-for="actressnicelist in actressnicelists" :key="actressnicelist.id">
         <div v-if="actressnicelist.type === 'fanza' && actressnicelist.actress" class="w-36 mr-2 mb-4">
           <a :href="route('flist.show', { keyword: actressnicelist.actress })" class="p-2 border-2 text-blue-500 text-center inline-block">

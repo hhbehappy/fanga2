@@ -34,15 +34,15 @@ function scrollTolist6() {
     <Head :title="'【FANZA】ジャンル一覧'" />
 
     <div class="border-b-4 border-gray-500 mb-2">
-      <h1 class="font-bold text-2xl ml-4"><span class="text-red-500">【FANZA】</span>ジャンル一覧</h1>
+      <h1 class="font-bold text-xl ml-4"><span class="text-red-500">【FANZA】</span>ジャンル一覧</h1>
     </div>
-    <div class="ml-5">
-      <button @click="scrollTolist1" class="h-10 text-blue-500 font-bold pl-5 pr-4 bg-gray-200">シチュエーション</button>
-      <button @click="scrollTolist2" class="h-10 text-blue-500 font-bold px-4 bg-gray-200">タイプ</button>
-      <button @click="scrollTolist3" class="h-10 text-blue-500 font-bold px-4 bg-gray-200">コスチューム</button>
-      <button @click="scrollTolist4" class="h-10 text-blue-500 font-bold px-4 bg-gray-200">ジャンル</button>
-      <button @click="scrollTolist5" class="h-10 text-blue-500 font-bold px-4 bg-gray-200">プレイ</button>
-      <button @click="scrollTolist6" class="h-10 text-blue-500 font-bold pl-4 pr-5 bg-gray-200">その他</button>
+    <div class="m-5">
+      <button @click="scrollTolist1" class="w-1/2 md:w-48 h-10 text-blue-500 font-bold pl-5 pr-4 bg-gray-200">シチュエーション</button>
+      <button @click="scrollTolist2" class="w-1/2 md:w-40 h-10 text-blue-500 font-bold px-4 bg-gray-200">タイプ</button>
+      <button @click="scrollTolist3" class="w-1/2 md:w-40 h-10 text-blue-500 font-bold px-4 bg-gray-200">コスチューム</button>
+      <button @click="scrollTolist4" class="w-1/2 md:w-40 h-10 text-blue-500 font-bold px-4 bg-gray-200">ジャンル</button>
+      <button @click="scrollTolist5" class="w-1/2 md:w-40 h-10 text-blue-500 font-bold px-4 bg-gray-200">プレイ</button>
+      <button @click="scrollTolist6" class="w-1/2 md:w-40 h-10 text-blue-500 font-bold pl-4 pr-5 bg-gray-200">その他</button>
     </div>
     <!-- シチュエーション -->
     <div class="m-5">
