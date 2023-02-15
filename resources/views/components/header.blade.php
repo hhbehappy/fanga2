@@ -8,13 +8,13 @@
     <div class="flex flex-wrap md:hidden justify-end">
       <div class="h-8 ml-4 mb-1">
         <form action="{{ route('fanga.searchfanza') }}" method="GET">
-          <input type="text" name="keyword" placeholder="FANZA" class="w-4/5 h-8 pb-2.5 -mr-1.5 leading-5 rounded-l-lg">
+          <input type="text" name="keyword" placeholder="FANZA" class="w-4/5 h-8 pb-2.5 -mr-1.5 leading-5 rounded-l-lg" required>
           <input type="submit" value="検索" class="h-8 p-1 text-gray-100 text-sm bg-gray-600 rounded-r-lg cursor-pointer">
         </form>
       </div>
       <div class="h-8 ml-4 mb-1">
         <form action="{{ route('fanga.searchduga') }}" method="GET">
-          <input type="text" name="keyword" placeholder="DUGA" class="w-4/5 h-8 pb-2.5 -mr-1.5 leading-5 rounded-l-lg">
+          <input type="text" name="keyword" placeholder="DUGA" class="w-4/5 h-8 pb-2.5 -mr-1.5 leading-5 rounded-l-lg" required>
           <input type="submit" value="検索" class="h-8 p-1 text-gray-100 text-sm bg-gray-600 rounded-r-lg cursor-pointer">
         </form>
       </div>
@@ -22,13 +22,13 @@
     <div class="hidden md:flex flex-wrap justify-center">
       <div class="h-7 ml-4 mb-1">
         <form action="{{ route('fanga.searchfanza') }}" method="GET">
-          <input type="text" name="keyword" placeholder="FANZA" class="w-48 h-7 pb-2.5 -mr-1.5 leading-5 rounded-l-lg">
+          <input type="text" name="keyword" placeholder="FANZA" class="w-48 h-7 pb-2.5 -mr-1.5 leading-5 rounded-l-lg" required>
           <input type="submit" value="検索" class="w-10 h-7 p-1 text-gray-100 text-sm bg-gray-600 rounded-r-lg cursor-pointer">
         </form>
       </div>
       <div class="h-7 ml-4 mb-1">
         <form action="{{ route('fanga.searchduga') }}" method="GET">
-          <input type="text" name="keyword" placeholder="DUGA" class="w-48 h-7 pb-2.5 -mr-1.5 leading-5 rounded-l-lg">
+          <input type="text" name="keyword" placeholder="DUGA" class="w-48 h-7 pb-2.5 -mr-1.5 leading-5 rounded-l-lg" required>
           <input type="submit" value="検索" class="w-10 h-7 p-1 text-gray-100 text-sm bg-gray-600 rounded-r-lg cursor-pointer">
         </form>
       </div>
@@ -86,7 +86,7 @@
         <a href="{{ route('register') }}" class="absolute top-0 left-0 w-full h-full mt-1">会員登録</a></li>
       <li class="h-9 w-1/4 bg-gray-200 text-center p-1 border-y-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
         <a href="{{ route('login') }}" class="absolute top-0 left-0 w-full h-full mt-1">
-          <span class="inlien-block py-0.5 px-2 font-mono text-white bg-red-500 rounded-md">ログイン</span></a></li>
+          <span class="inlien-block py-0.5 px-2 text-sm font-mono text-white bg-red-500 rounded-md">ログイン</span></a></li>
     </ul>
     @endguest
     @if (Request::is('fanza/*'))
@@ -113,13 +113,13 @@
       </div>
       <div class="flex flex-nowrap md:hidden h-7 w-full mb-6 bg-gray-200 text-center font-mono text-sm">
       <div class="h-7 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
-      <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full mt-1">カテゴリ一覧</a></div>
+      <a href="{{ route('dlist.category') }}" class="absolute top-0 left-0 w-full h-full mt-1">カテゴリ一覧</a></div>
       <div class="h-7 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
-      <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full mt-1">女優一覧</a></div>
+      <a href="{{ route('dlist.performer') }}" class="absolute top-0 left-0 w-full h-full mt-1">女優一覧</a></div>
       <div class="h-7 w-1/4 pt-1 border-b-2 border-r-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
-      <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full mt-1">メーカー一覧</a></div>
+      <a href="{{ route('dlist.maker') }}" class="absolute top-0 left-0 w-full h-full mt-1">メーカー一覧</a></div>
       <div class="h-7 w-1/4 pt-1 border-b-2 border-gray-500 hover:bg-red-500 hover:text-white relative">
-      <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full mt-1">シリーズ一覧</a></div>
+      <a href="{{ route('dlist.series') }}" class="absolute top-0 left-0 w-full h-full mt-1">シリーズ一覧</a></div>
       </div>
     </div>
     @endif

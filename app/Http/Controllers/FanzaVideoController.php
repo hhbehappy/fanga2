@@ -61,10 +61,10 @@ class FanzaVideoController extends Controller
             }      }
             $response = Http::get($url);
             json_decode($response,true);
-            $result_data = [];
-            $result_data = $response['result']['items'];
+            $result_datas = [];
+            $result_datas = $response['result']['items'];
 
-            foreach( $result_data as $item ){
+            foreach( $result_datas as $item ){
                 
                 $item_list = array(
                     'content_id'         => $item['content_id'], 
@@ -89,10 +89,10 @@ class FanzaVideoController extends Controller
                     'imageURL_small'     => $item['imageURL']['small'], 
                     'affiliateURL'       => $item['affiliateURL'], 
                 );
-                
+
                 $post_html = <<< EOM
-                <div style="float:left;margin:7px;height:320px;width:20em;font-size:50%">
-                <a href="store?content_id={$item_list['content_id']}&title={$item_list['title']}&volume={$item_list['volume']}&date={$item_list['date']}&maker={$item_list['maker']}&label={$item_list['label']}&series={$item_list['series']}&actress={$item_list['actress']}&director={$item_list['director']}&genre={$item_list['genre0']}&genre1={$item_list['genre1']}&genre2={$item_list['genre2']}&genre3={$item_list['genre3']}&genre4={$item_list['genre4']}&genre5={$item_list['genre5']}&genre6={$item_list['genre6']}&genre7={$item_list['genre7']}&genre8={$item_list['genre8']}&genre9={$item_list['genre9']}&affiliateURL={$item_list['affiliateURL']}"><img src="{$item_list['imageURL_small']}" target="_blank" rel="noopener"}"><br>{$item_list['content_id']}<br>{$item_list['genre0']}<br>{$item_list['genre1']}<br>{$item_list['genre2']}<br>{$item_list['genre3']}<br>{$item_list['genre4']}<br>{$item_list['genre5']}<br>{$item_list['genre6']}<br>{$item_list['genre7']}<br>{$item_list['genre8']}<br>{$item_list['genre9']}<br></a>
+                <div style="float:left;margin:7px;height:320px;width:10em; font-size:50%">
+                <a href="store?content_id={$item_list['content_id']}&title={$item_list['title']}&volume={$item_list['volume']}&date={$item_list['date']}&maker={$item_list['maker']}&label={$item_list['label']}&series={$item_list['series']}&actress={$item_list['actress']}&director={$item_list['director']}&genre={$item_list['genre0']}&genre1={$item_list['genre1']}&genre2={$item_list['genre2']}&genre3={$item_list['genre3']}&genre4={$item_list['genre4']}&genre5={$item_list['genre5']}&genre6={$item_list['genre6']}&genre7={$item_list['genre7']}&genre8={$item_list['genre8']}&genre9={$item_list['genre9']}&affiliateURL={$item_list['affiliateURL']}"><img src="{$item_list['imageURL_small']}" target="_blank" rel="noopener" style="height:120px;"}"><br>{$item_list['content_id']}<br>{$item_list['genre0']}<br>{$item_list['genre1']}<br>{$item_list['genre2']}<br>{$item_list['genre3']}<br>{$item_list['genre4']}<br>{$item_list['genre5']}<br>{$item_list['genre6']}<br>{$item_list['genre7']}<br>{$item_list['genre8']}<br>{$item_list['genre9']}<br></a>
                 </div>
                 EOM;
                 // HTML出力
@@ -102,7 +102,7 @@ class FanzaVideoController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->get('content_id'));
+
         Fanza::updateOrCreate(
             ['content_id'        => $request->get('content_id')],
             ['content_id'        => $request->get('content_id'),

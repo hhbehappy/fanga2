@@ -161,6 +161,7 @@ return [
         'content' => '本文',
         'password' => 'パスワード',
         'email' => 'メールアドレス',
+        'message' => 'お問い合わせ内容'
     ],
 
 ];

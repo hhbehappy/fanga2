@@ -23,6 +23,21 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                 </svg>
             </li>
+            @auth
+            <div class="flex">
+                <li class="h-10 w-1/2 bg-gray-200 text-center text-gray-700 hover:bg-green-600 hover:text-white border-r-2 border-t-2 border-gray-500 relative">
+                    <a href="{{ route('mypage') }}" class="absolute top-0 left-0 w-full h-full mt-2 font-bold">
+                        マイページ
+                    </a>
+                </li>
+                <li class="h-10 w-1/2 bg-gray-200 text-center text-gray-700 hover:bg-red-500 hover:text-white border-t-2 border-gray-500 relative">
+                    <a href="{{ route('logout') }}" class="absolute top-0 left-0 w-full h-full mt-2 font-bold">
+                        ログアウト
+                    </a>
+                </li>
+            </div>
+            @endauth
+            @guest
             <div class="flex">
                 <li class="h-10 w-1/2 bg-gray-200 text-center text-gray-700 hover:bg-green-600 hover:text-white border-r-2 border-t-2 border-gray-500 relative">
                     <a href="{{ route('register') }}" class="absolute top-0 left-0 w-full h-full mt-2">
@@ -39,6 +54,7 @@
                     </a>
                 </li>
             </div>
+            @endguest
         </ul>
     </div>
     <div class="hidden md:block pt-3">
