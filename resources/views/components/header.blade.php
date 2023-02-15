@@ -8,13 +8,13 @@
     <div class="flex flex-wrap md:hidden justify-end">
       <div class="h-8 ml-4 mb-1">
         <form action="{{ route('fanga.searchfanza') }}" method="GET">
-          <input type="text" name="keyword" placeholder="FANZA" class="w-4/5 h-8 pb-2.5 -mr-1.5 leading-5 rounded-l-lg">
+          <input type="text" name="keyword" placeholder="FANZA" class="w-4/5 h-8 pb-2.5 -mr-1.5 leading-5 rounded-l-lg" required>
           <input type="submit" value="検索" class="h-8 p-1 text-gray-100 text-sm bg-gray-600 rounded-r-lg cursor-pointer">
         </form>
       </div>
       <div class="h-8 ml-4 mb-1">
         <form action="{{ route('fanga.searchduga') }}" method="GET">
-          <input type="text" name="keyword" placeholder="DUGA" class="w-4/5 h-8 pb-2.5 -mr-1.5 leading-5 rounded-l-lg">
+          <input type="text" name="keyword" placeholder="DUGA" class="w-4/5 h-8 pb-2.5 -mr-1.5 leading-5 rounded-l-lg" required>
           <input type="submit" value="検索" class="h-8 p-1 text-gray-100 text-sm bg-gray-600 rounded-r-lg cursor-pointer">
         </form>
       </div>
@@ -22,13 +22,13 @@
     <div class="hidden md:flex flex-wrap justify-center">
       <div class="h-7 ml-4 mb-1">
         <form action="{{ route('fanga.searchfanza') }}" method="GET">
-          <input type="text" name="keyword" placeholder="FANZA" class="w-48 h-7 pb-2.5 -mr-1.5 leading-5 rounded-l-lg">
+          <input type="text" name="keyword" placeholder="FANZA" class="w-48 h-7 pb-2.5 -mr-1.5 leading-5 rounded-l-lg" required>
           <input type="submit" value="検索" class="w-10 h-7 p-1 text-gray-100 text-sm bg-gray-600 rounded-r-lg cursor-pointer">
         </form>
       </div>
       <div class="h-7 ml-4 mb-1">
         <form action="{{ route('fanga.searchduga') }}" method="GET">
-          <input type="text" name="keyword" placeholder="DUGA" class="w-48 h-7 pb-2.5 -mr-1.5 leading-5 rounded-l-lg">
+          <input type="text" name="keyword" placeholder="DUGA" class="w-48 h-7 pb-2.5 -mr-1.5 leading-5 rounded-l-lg" required>
           <input type="submit" value="検索" class="w-10 h-7 p-1 text-gray-100 text-sm bg-gray-600 rounded-r-lg cursor-pointer">
         </form>
       </div>

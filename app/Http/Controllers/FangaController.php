@@ -57,6 +57,10 @@ class FangaController extends Controller
     {
         $onemonths = Carbon::today()->subMonth(1);
         $keyword = $request->keyword;
+
+        $request->validate([
+            'keyword' => 'required'
+        ]);
         
         if(!empty($keyword)){
             $fanzas = Fanza::where('content_id', 'like', '%'. $keyword. '%')
@@ -87,6 +91,10 @@ class FangaController extends Controller
     {
         $onemonths = Carbon::today()->subMonth(1);
         $keyword = $request->keyword;
+
+        $request->validate([
+            'keyword' => 'required'
+        ]);
 
         if(!empty($keyword)){
             $dugas = Duga::where('productid', 'like','%'. $keyword. '%')

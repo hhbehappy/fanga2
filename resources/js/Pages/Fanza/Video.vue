@@ -525,7 +525,7 @@ export default {
   </div>
   <!-- 最近のメモ動画 -->
   <div class="border-b-4 border-gray-500 mb-8 mx-auto">
-    <h2 class="ml-2 mb-1 text-xl font-bold"><span class="text-red-500">FANZA</span>の最近メモされた動画</h2>
+    <h2 class="ml-2 mb-1 text-xl font-bold"><span class="text-red-500">FANZA</span>の最近公開メモされた動画</h2>
   </div>
   <div class="flex overflow-x-auto hidden-scrollbar h-52 ml-4">
     <div class="flex flex-none flex-nowrap">

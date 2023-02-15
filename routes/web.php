@@ -20,6 +20,7 @@ use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\RedirectbackController;
+use App\Http\Controllers\InquiryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +66,12 @@ Route::controller(CommentController::class)->group(function ()
     Route::delete('/comments/destroy/{id}', 'destroy')->name('comments.destroy');
 });
 Route::post('/commentlogin', [RedirectbackController::class, 'direct'])->middleware(['auth', 'verified']);
+
+// お問い合わせ
+Route::get('/inquiry', [InquiryController::class, 'index'])->name('inquiry');
+Route::get('/inquiry/store', [InquiryController::class, 'store'])->name('inquiry.store');
+Route::post('/inquiry/store', [InquiryController::class, 'store']);
+Route::delete('/inquiry/destroy/{id}', [InquiryController::class, 'destroy'])->name('inquiry.destroy');
 
 // FANZA
 Route::controller(FanzaFreeMemoController::class)->group(function ()
