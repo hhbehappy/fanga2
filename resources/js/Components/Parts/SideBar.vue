@@ -7,12 +7,21 @@ import { Link } from '@inertiajs/vue3';
     <div class="flex flex-col space-y-1">
       <p class="pb-1 pl-3 text-left text-gray-300 font-bold bg-black">MENU</p>
       <h1 class="pt-2 pl-3 text-left text-red-500 font-bold text-xl">FANZA</h1>
+      <p class="text-xs text-blue-500 text-right mr-2 py-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="mb-1 w-3 h-3 inline-block text-gray-800">
+          <path fill-rule="evenodd" d="M10.21 14.77a.75.75 0 01.02-1.06L14.168 10 10.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+          <path fill-rule="evenodd" d="M4.21 14.77a.75.75 0 01.02-1.06L8.168 10 4.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+        </svg>
+        <a :href="route('flist.index')" class="hover:underline">動画一覧</a>
+      </p>
       <h2 class="pl-3 text-left text-gray-700 font-bold">ジャンル</h2>
-      <a :href="route('flist.show', { keyword: 'アイドル・芸能人' })" class="text-blue-500 text-sm pl-3">アイドル・芸能人</a>
-      <a :href="route('flist.show', { keyword: '中出し' })" class="text-blue-500 text-sm pl-3">中出し</a>
-      <a :href="route('flist.show', { keyword: 'ギャル' })" class="text-blue-500 text-sm pl-3">ギャル</a>
-      <a :href="route('flist.show', { keyword: 'エステ' })" class="text-blue-500 text-sm pl-3">エステ</a>
-      <a :href="route('flist.show', { keyword: 'オタク' })" class="text-blue-500 text-sm pl-3">オタク</a>
+      <ul class="text-blue-500 text-sm pl-3">
+        <li><a :href="route('flist.show', { keyword: 'アイドル・芸能人' })" class="hover:underline">アイドル・芸能人</a></li>
+        <li><a :href="route('flist.show', { keyword: '中出し' })" class="hover:underline">中出し</a></li>
+        <li><a :href="route('flist.show', { keyword: 'ギャル' })" class="hover:underline">ギャル</a></li>
+        <li><a :href="route('flist.show', { keyword: 'エステ' })" class="hover:underline">エステ</a></li>
+        <li><a :href="route('flist.show', { keyword: 'オタク' })" class="hover:underline">オタク</a></li>
+      </ul>
       <p class="text-xs text-blue-500 text-right mr-2 py-1">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="mb-1 w-3 h-3 inline-block text-gray-800">
           <path fill-rule="evenodd" d="M10.21 14.77a.75.75 0 01.02-1.06L14.168 10 10.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
@@ -62,6 +71,13 @@ import { Link } from '@inertiajs/vue3';
     </div>
     <div class="flex flex-col pt-2 border-t-2 border-gray-400 space-y-1">
       <h1 class="pl-3 text-left text-red-500 font-bold text-xl">DUGA</h1>
+      <p class="text-xs text-blue-500 text-right mr-2 py-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="mb-1 w-3 h-3 inline-block text-gray-800">
+          <path fill-rule="evenodd" d="M10.21 14.77a.75.75 0 01.02-1.06L14.168 10 10.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+          <path fill-rule="evenodd" d="M4.21 14.77a.75.75 0 01.02-1.06L8.168 10 4.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+        </svg>
+        <a :href="route('dlist.index')" class="">動画一覧</a>
+      </p>
       <h2 class="pl-3 text-left text-gray-700 font-bold">カテゴリ</h2>
       <a :href="route('dlist.show', { keyword: 'アイドル' })" class="text-blue-500 text-sm pl-3">アイドル</a>
       <a :href="route('dlist.show', { keyword: '素人' })" class="text-blue-500 text-sm pl-3">素人</a>
@@ -116,6 +132,20 @@ import { Link } from '@inertiajs/vue3';
       </p>
     </div>
     <div class="flex flex-col mt-3 py-3 border-t-2 border-gray-400">
+        <p class="text-blue-500 pl-3">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="mb-1 w-3 h-3 inline-block text-gray-800">
+            <path fill-rule="evenodd" d="M10.21 14.77a.75.75 0 01.02-1.06L14.168 10 10.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+            <path fill-rule="evenodd" d="M4.21 14.77a.75.75 0 01.02-1.06L8.168 10 4.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+          </svg>
+          <a :href="route('flist.index')" class="">FANZA</a>
+        </p>
+        <p class="text-blue-500 pl-3">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="mb-1 w-3 h-3 inline-block text-gray-800">
+            <path fill-rule="evenodd" d="M10.21 14.77a.75.75 0 01.02-1.06L14.168 10 10.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+            <path fill-rule="evenodd" d="M4.21 14.77a.75.75 0 01.02-1.06L8.168 10 4.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+          </svg>
+          <a :href="route('dlist.index')" class="">DUGA</a>
+        </p>
         <p class="text-blue-500 pl-3">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="mb-1 w-3 h-3 inline-block text-gray-800">
             <path fill-rule="evenodd" d="M10.21 14.77a.75.75 0 01.02-1.06L14.168 10 10.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />

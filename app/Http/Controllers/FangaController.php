@@ -39,6 +39,21 @@ class FangaController extends Controller
         ]);
     }
 
+    public function about()
+    {
+        return Inertia::render('Info/About');
+    }
+
+    public function privacy()
+    {
+        return Inertia::render('Info/Privacy');
+    }
+
+    public function rule()
+    {
+        return Inertia::render('Info/Rule');
+    }
+
     /**
      * ユーザーをアプリケーションからログアウトさせる
      *

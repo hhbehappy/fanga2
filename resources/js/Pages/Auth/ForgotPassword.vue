@@ -23,7 +23,7 @@ const submit = () => {
     <BasicLayout>
         <Head title="パスワードの再設定" />
 
-        <div class="min-h-screen w-screen bg-gray-100 pt-10 mt-5">
+        <div class="min-h-screen w-screen bg-gray-100 pt-10">
             <div class="w-4/5 md:w-[480px] mx-auto bg-white p-5">
                 <div class="mx-auto">
                     <div class="w-full px-2 mb-5 items-center border-b-4 border-gray-400">
@@ -36,7 +36,7 @@ const submit = () => {
 
                     <div class="mb-4 text-xs text-gray-600">
                         <p class="my-1">パスワードを再設定するためのメールを送信します。</p>
-                        <p>ご登録済みのメールアドレスを入力して、「送信する」ボタンをクリックしてください。</p>
+                        <p>ご登録済みのメールアドレスを入力して、「送信する」ボタンを選択してください。</p>
                     </div>
             
                     <form @submit.prevent="submit">

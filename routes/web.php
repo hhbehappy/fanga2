@@ -2,7 +2,6 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FangaController;
 use App\Http\Controllers\FanzaVideoController;
@@ -16,7 +15,6 @@ use App\Http\Controllers\DugaFreeMemoController;
 use App\Http\Controllers\DugaReleaseMemoController;
 use App\Http\Controllers\DugaPrivateMemoController;
 use App\Http\Controllers\NiceController;
-use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\RedirectbackController;
@@ -33,11 +31,23 @@ use App\Http\Controllers\InquiryController;
 |
 */
 
-Route::get('/', [FangaController::class, 'index'])->name('fanga');
+Route::controller(FangaController::class)->group(function ()
+{
+    Route::get('/', 'index')->name('fanga');
+    // 規約関係
+    Route::get('/info/about', 'about')->name('about');
+    Route::get('/info/privacy', 'privacy')->name('privacy');
+    Route::get('/info/rule', 'rule')->name('rule');
+
+});
 Route::get('/logout', [FangaController::class, 'logout'])->name('fanga.logout');
 
 // マイページ
-Route::get('/mypage', [MyPageController::class, 'index'])->middleware(['auth', 'verified'])->name('mypage');
+Route::middleware('auth')->group(function () {
+    Route::get('/mypage', [ProfileController::class, 'edit'])->name('mypage');
+    Route::patch('/mypage', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/mypage', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 // 検索ページ
 Route::get('/search/fanza', [FangaController::class, 'searchfanza'])->name('fanga.searchfanza');
@@ -161,16 +171,6 @@ Route::controller(DugaVideoController::class)->group(function ()
     Route::get('duga/store', 'store')->name('dvideo.store');
     Route::post('duga/store', 'store');
     Route::get('/duga/video/edit/{type}/{productid}/{memoid}', 'edit')->middleware(['auth', 'verified'])->name('dvideo.edit');
-});
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';

@@ -1,26 +1,24 @@
 <script setup>
 import BasicLayout from '@/Layouts/BasicLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
-
-const props = defineProps({
-    id: String
-})
-
 </script>
 
 <template>
-<BasicLayout>
-    <Head :title="メモの種類について" />
+  <Head :title="'当サイトについて'" />
 
-    <div class="min-h-screen w-screen pb-12 bg-gray-100">
-        <div class="flex w-4/5 md:w-9/12 mx-auto mb-6 px-4 pt-8 items-center justify-between border-b-4 border-gray-400">
-            <h1 class="font-bold md:text-xl text-gray-800 leading-tight">メモの種類について。</h1>
-            <div>
-            <Link :href="route('dvideo.show', props.id) + '#memo'" class="block w-8 ml-3 text-blue-500">戻る</Link>
-            </div>
-        </div>
-        <div class="w-4/5 md:w-9/12 mx-auto p-5 bg-white">
-            <p class="mb-5">メモは３種類あります。利用されると同時に<Link :href="route('rule')" class="text-blue-500 hover:underline">利用規約</Link>に同意したものとされます。</p>
+<BasicLayout>
+  <div class="min-h-screen w-screen bg-gray-100 py-10">
+    <div class="w-11/12 md:w-9/12 mx-auto p-4 bg-white text-gray-700">
+      <div class="mx-auto pt-2">
+        <section class="w-full px-2 space-y-3">
+          <h1 class="pb-1 font-bold md:text-xl leading-tight border-b-4 border-gray-400">当サイトについて</h1>
+          <p>
+            当サイトは、デジタルコンテンツ配信サービスの「FANZA」及び「DUGA」で配信されている動画コンテンツにメモを投稿できるサイトです。※VR動画には対応していません</p>
+          <p>
+            当サイトは、個人がプログラミング学習の一環として制作しているウェブサイトです。機能の不備やレイアウトの崩れなどがおそらくあります。発見次第に改善していきますのでご了承ください。
+          </p>
+          <h2 class="pt-5 pb-1 font-bold md:text-xl leading-tight border-b-4 border-gray-400">メモの種類について</h2>
+          <p class="mb-5">メモは３種類あります。利用されると同時に<Link :href="route('rule')" class="text-blue-500 hover:underline">利用規約</Link>に同意したものとされます。</p>
             <p class="w-24 my-2 py-1 px-2 font-semibold bg-amber-200 rounded-2xl">フリーメモ</p>
             <ul class="leading-8 list-disc list-inside">
                 <li>会員登録せずに利用ができます。</li>
@@ -46,9 +44,9 @@ const props = defineProps({
                 <li>誰にも見られない自分だけのメモです。</li>
                 <li>非公開メモの編集や削除ができます。</li>
             </ul>
-        </div>
-        
+        </section>
+      </div>
     </div>
-
+  </div>
 </BasicLayout>
 </template>

@@ -14,8 +14,8 @@ const props = defineProps({
 });
 
 const form = useForm({
-  // number: 1,
-  number: props.inquiryids.id + 1,
+  number: 1,
+  // number: props.inquiryids.id + 1,
   title: null,
   message: null,
 });

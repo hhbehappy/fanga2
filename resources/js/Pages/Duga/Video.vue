@@ -91,9 +91,9 @@ export default {
 </script>
 
 <template>
-<Layout>
   <Head :title="'【DUGA】' + title" />
 
+<Layout>
   <div v-for="dugavideo in dugavideos" :key="dugavideo.id" class="">
     <h1 class="font-bold md:text-xl mb-8 px-4 md:mr-8 bg-gray-200 p-2 border-b-2 border-gray-500"><span class="text-red-500">【DUGA】</span>{{ dugavideo.title }}</h1>
     <p class="mb-7"><NiceFlashMessage /></p>

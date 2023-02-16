@@ -3,21 +3,14 @@
     <div class="block md:hidden">
         <ul class="flex flex-col">
             <li class="flex h-8 w-full bg-gray-200 text-center text-gray-700 hover:bg-red-500 hover:text-white border-t-2 border-gray-500 justify-end items-center relative">
-                <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full mt-1">お問い合わせ
+                <a href="{{ route('about') }}" class="absolute top-0 left-0 w-full h-full mt-1">当サイトについて
                 </a>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                 </svg>
             </li>
             <li class="flex h-8 w-full bg-gray-200 text-center text-gray-700 hover:bg-red-500 hover:text-white border-t-2 border-gray-500 justify-end items-center relative">
-                <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full mt-1">利用規約
-                </a>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-            </li>
-            <li class="flex h-8 w-full bg-gray-200 text-center text-gray-700 hover:bg-red-500 hover:text-white border-t-2 border-gray-500 justify-end items-center relative">
-                <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full mt-1">プライバシーポリシー
+                <a href="{{ route('inquiry') }}" class="absolute top-0 left-0 w-full h-full mt-1">お問い合わせ
                 </a>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -25,14 +18,14 @@
             </li>
             @auth
             <div class="flex">
-                <li class="h-10 w-1/2 bg-gray-200 text-center text-gray-700 hover:bg-green-600 hover:text-white border-r-2 border-t-2 border-gray-500 relative">
+                <li class="h-10 w-1/2 bg-gray-200 text-center text-gray-700 hover:bg-red-500 hover:text-white border-r-2 border-t-2 border-gray-500 relative">
                     <a href="{{ route('mypage') }}" class="absolute top-0 left-0 w-full h-full mt-2 font-bold">
                         マイページ
                     </a>
                 </li>
                 <li class="h-10 w-1/2 bg-gray-200 text-center text-gray-700 hover:bg-red-500 hover:text-white border-t-2 border-gray-500 relative">
-                    <a href="{{ route('logout') }}" class="absolute top-0 left-0 w-full h-full mt-2 font-bold">
-                        ログアウト
+                    <a href="{{ route('bbs') }}" class="absolute top-0 left-0 w-full h-full mt-2 font-bold">
+                        BBS
                     </a>
                 </li>
             </div>
@@ -60,16 +53,30 @@
     <div class="hidden md:block pt-3">
         <ul class="flex justify-center">
             <li class="h-6 w-44 pr-2 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
-                <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full">プライバシーポリシー</a>
+                <a href="{{ route('about') }}" class="absolute top-0 left-0 w-full h-full">当サイトについて</a>
+            </li>
+            <li class="h-6 w-44 pr-2 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
+                <a href="{{ route('privacy') }}" class="absolute top-0 left-0 w-full h-full">プライバシーポリシー</a>
             </li>
             <li class="h-6 w-28 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
-                <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full">利用規約</a>
+                <a href="{{ route('rule') }}" class="absolute top-0 left-0 w-full h-full">利用規約</a>
             </li>
             <li class="h-6 w-32 text-center hover:bg-red-500 hover:text-white relative">
-                <a href="{{ route('fanga') }}" class="absolute top-0 left-0 w-full h-full">お問い合わせ</a>
+                <a href="{{ route('inquiry') }}" class="absolute top-0 left-0 w-full h-full">お問い合わせ</a>
             </li>
         </ul>
     </div>
-    <div class="text-center mt-3">© 2022 <a href="{{ route('fanga') }}" class="hover:underline">FANGA</a>. All Rights Reserved.
+    <div class="text-center mt-3">
+        <ul class="flex md:hidden pb-2 justify-center">
+            <li class="h-6 w-48 pr-2 text-center hover:bg-red-500 hover:text-white border-gray-500 relative">
+                <a href="{{ route('privacy') }}" class="absolute top-0 left-0 w-full h-full">プライバシーポリシー</a>
+            </li>
+            <li class="h-6 w-48 text-center hover:bg-red-500 hover:text-white border-gray-500 relative">
+                <a href="{{ route('rule') }}" class="absolute top-0 left-0 w-full h-full">利用規約</a>
+            </li>
+        </ul>
+        <p>
+            © 2022 <a href="{{ route('fanga') }}" class="hover:underline">FANGA</a>. All Rights Reserved.
+        </p>
     </div>
 </footer>
