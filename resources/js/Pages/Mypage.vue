@@ -46,17 +46,17 @@ export default {
       <div class="w-full">
         <ul class="flex mb-0 list-none flex-nowrap mx-3 md:mx-1 pt-3 pb-2 flex-row cursor-pointer">
           <li class="-mb-px flex-auto text-center w-1/3">
-            <a class="font-bold uppercase py-3 shadow-md rounded block leading-normal" @click="toggleTabs(1)" :class="{'text-gray-600 bg-gray-200': openTab !== 1, 'text-white bg-red-500': openTab === 1}">
+            <a class="font-bold uppercase py-2 shadow-md rounded block leading-normal" @click="toggleTabs(1)" :class="{'text-gray-600 bg-gray-200': openTab !== 1, 'text-white bg-red-500': openTab === 1}">
               FANZA
             </a>
           </li>
           <li class="-mb-px flex-auto text-center w-1/3 px-2">
-            <a class="font-bold uppercase py-3 shadow-md rounded block leading-normal" @click="toggleTabs(2)" :class="{'text-gray-600 bg-gray-200': openTab !== 2, 'text-white bg-red-500': openTab === 2}">
+            <a class="font-bold uppercase py-2 shadow-md rounded block leading-normal" @click="toggleTabs(2)" :class="{'text-gray-600 bg-gray-200': openTab !== 2, 'text-white bg-red-500': openTab === 2}">
               DUGA
             </a>
           </li>
           <li class="-mb-px flex-auto text-center w-1/3">
-            <a class="font-bold uppercase py-3 shadow-md rounded block leading-normal" @click="toggleTabs(3)" :class="{'text-gray-600 bg-gray-200': openTab !== 3, 'text-white bg-red-500': openTab === 3}">
+            <a class="font-bold uppercase py-2 shadow-md rounded block leading-normal" @click="toggleTabs(3)" :class="{'text-gray-600 bg-gray-200': openTab !== 3, 'text-white bg-red-500': openTab === 3}">
               アカウント
             </a>
           </li>

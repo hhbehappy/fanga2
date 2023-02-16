@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('fanza_release_memos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->string('name');
             $table->boolean('nickname');
             $table->foreignId('fanza_id')->constrained()->onDelete('cascade');

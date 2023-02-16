@@ -176,7 +176,7 @@ class DugaVideoController extends Controller
         $duga_private_memos = DugaPrivateMemo::where([['id', $memoid], ['user_id', Auth::id()]])->get();
         $update_release_id = DugaReleaseMemo::whereId($memoid)->first();
         $update_private_id = DugaPrivateMemo::whereId($memoid)->first();
-        $user_id = Auth::id();
+        $auth_id = Auth::id();
         $nice=Nice::where([['content_id', $productid], ['user_id', Auth::id()]])->first();
         $nicecount = Nice::whereContent_id($productid)->count();
 
@@ -192,7 +192,7 @@ class DugaVideoController extends Controller
             'duga_private_memos' => $duga_private_memos,
             'update_release_id' => $update_release_id,
             'update_private_id' => $update_private_id,
-            'user_id' => $user_id,
+            'auth_id' => $auth_id,
             'nice' => $nice,
             'nicecount' => $nicecount
         ]);

@@ -105,6 +105,7 @@ Route::controller(FanzaListController::class)->group(function ()
     Route::get('fanza/video/maker', 'maker')->name('flist.maker');
     Route::get('fanza/video/actress', 'actress')->name('flist.actress');
     Route::get('fanza/video/series', 'series')->name('flist.series');
+    Route::delete('fanza/destroy/{id}', 'destroy')->name('flist.destroy');
 });
 
 Route::controller(FanzaVideoController::class)->group(function ()
@@ -149,6 +150,7 @@ Route::controller(DugaListController::class)->group(function ()
     Route::get('duga/video/maker', 'maker')->name('dlist.maker');
     Route::get('duga/video/performer', 'performer')->name('dlist.performer');
     Route::get('duga/video/series', 'series')->name('dlist.series');
+    Route::delete('duga/destroy/{id}', 'destroy')->name('dlist.destroy');
 });
 
 Route::controller(DugaVideoController::class)->group(function ()

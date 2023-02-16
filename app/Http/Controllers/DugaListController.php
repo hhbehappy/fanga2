@@ -16,7 +16,7 @@ class DugaListController extends Controller
         $videoids = Duga::whereDate('date', '<', $today)->latest('date')->paginate(20);
         $onemonths = Carbon::today()->subMonth(1);
 
-        return view('Duga/Video/all', compact('videoids', 'onemonths'));
+        return view('Duga/Video/All', compact('videoids', 'onemonths'));
     }
 
     public function show(Request $request)
@@ -109,5 +109,15 @@ class DugaListController extends Controller
             'seriesnicelists' => $seriesnicelists
         ]);
         
+    }
+
+    public function destroy($id)
+    {
+        
+        $fanzavideo = Duga::findOrFail($id);
+        $fanzavideo->delete();
+
+        return back();
+
     }
 }
