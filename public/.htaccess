@@ -1,9 +1,12 @@
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
+    Options -MultiViews -Indexes
     </IfModule>
 
     RewriteEngine On
+
+    RewriteCond %{HTTPS} !on
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
@@ -18,4 +21,9 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    # httpsからの通信でwww有りの場合、www無しにリダイレクト
+    RewriteCond %{HTTPS} on
+    RewriteCond %{HTTP_HOST} ^www.fanga.jp$
+    RewriteRule ^(.*)$ https://fanga.jp/$1 [R=301,L]
 </IfModule>
