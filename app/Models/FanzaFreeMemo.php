@@ -25,7 +25,7 @@ class FanzaFreeMemo extends Model
     {
         return $this->belongsTo(User::class);
     }
-
+    
     public function fanza()
     {
         return $this->belongsTo(Fanza::class);

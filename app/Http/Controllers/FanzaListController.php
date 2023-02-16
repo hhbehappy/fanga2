@@ -117,4 +117,15 @@ class FanzaListController extends Controller
             'seriesnicelists' => $seriesnicelists
         ]);
     }
+
+    public function destroy($id)
+    {
+        
+        $fanzavideo = Fanza::findOrFail($id);
+        $fanzavideo->delete();
+
+        return back();
+
+    }
+
 }

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('duga_free_memos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->foreignId('duga_id')->constrained()->onDelete('cascade');
             $table->string('productid');
             $table->string('re_productid');

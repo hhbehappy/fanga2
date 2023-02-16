@@ -14,7 +14,7 @@ defineProps({
 
   <div class="">
     <div class="border-b-4 border-gray-500 mb-4">
-      <h1 class="font-bold md:text-2xl ml-2"><span class="text-red-500">【FANZA】</span>女優一覧 : メモの多い動画順</h1>
+      <h1 class="font-bold md:text-xl"><span class="text-red-500">【FANZA】</span>女優一覧 : メモの多い動画順</h1>
     </div>
     <div class="flex flex-wrap ml-4 md:mx-2">
       <div v-for="actresslist in actresslists" :key="actresslist.id">
@@ -27,7 +27,7 @@ defineProps({
       </div>
     </div>
     <div class="border-b-4 border-gray-500 my-4">
-      <h2 class="font-bold md:text-2xl ml-2"><span class="text-red-500">【FANZA】</span>女優一覧 : 気になる動画の登録数順</h2>
+      <h2 class="font-bold md:text-xl"><span class="text-red-500">【FANZA】</span>女優一覧 : 気になる動画の登録数順</h2>
     </div>
     <div class="flex flex-wrap ml-4 md:mx-2">
       <div v-for="actressnicelist in actressnicelists" :key="actressnicelist.id">

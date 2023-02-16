@@ -11,16 +11,25 @@
   <div class="container ml-1 md:ml-0 flex flex-col">
     <div class="flex flex-none flex-wrap mb-4 relative">
       @foreach ( $videoids as $videoid )
-      <a href="{{ route('dvideo.show', [ 'id' => $videoid->productid ]) }}">
-          @if( $videoid->date > $onemonths )
-            <span class="text-white bg-red-500 text-sm font-bold absolute ml-3 px-1">NEW</span>
+      <div>
+        <a href="{{ route('dvideo.show', [ 'id' => $videoid->productid ]) }}">
+            @if( $videoid->date > $onemonths )
+              <span class="text-white bg-red-500 text-sm font-bold absolute ml-1 px-1">NEW</span>
+            @endif
+            @if( $videoid->jacketimage )
+            <img src="<?php echo $videoid->jacketimage ?>" alt="【DUGA】<?php echo $videoid->title ?>" class="h-40 w-[118px] inline-block px-1 mb-4">
+            @else
+            <img src="<?php echo $videoid->posterimage ?>" alt="【DUGA】<?php echo $videoid->title ?>" class="h-40 w-[118px] inline-block px-1 mb-4">
+            @endif
+          </a>
+          @if (Auth::user()->id === 1 && $videoid->id !== 3)
+            <form method="post" action="{{ route('dlist.destroy', $videoid) }}" onclick='return confirm("削除しますか？");'>
+              @csrf
+              @method('delete')
+              <input type="submit" value="削除" class="text-white bg-red-500 rounded">
+            </form>
           @endif
-          @if( $videoid->jacketimage )
-          <img src="<?php echo $videoid->jacketimage ?>" alt="【DUGA】<?php echo $videoid->title ?>" class="h-40 w-32 inline-block px-2 mb-4">
-          @else
-          <img src="<?php echo $videoid->posterimage ?>" alt="【DUGA】<?php echo $videoid->title ?>" class="h-40 w-32 inline-block px-2 mb-4">
-          @endif
-        </a>
+      </div>
       @endforeach
     </div>
     <div class="ml-2">
