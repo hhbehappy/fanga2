@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Carbon\Carbon;
@@ -15,8 +16,9 @@ class DugaListController extends Controller
         $today = Carbon::today();
         $videoids = Duga::whereDate('date', '<', $today)->latest('date')->paginate(20);
         $onemonths = Carbon::today()->subMonth(1);
+        $auth_id = Auth::id();
 
-        return view('Duga/Video/All', compact('videoids', 'onemonths'));
+        return view('Duga/Video/All', compact('videoids', 'onemonths', 'auth_id'));
     }
 
     public function show(Request $request)
