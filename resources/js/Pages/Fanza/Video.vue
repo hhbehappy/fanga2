@@ -89,9 +89,9 @@ export default {
 </script>
 
 <template>
-<Layout>
   <Head :title="'【FANZA】' + title" />
 
+<Layout>
   <div v-for="videoid in videoids" :key="videoid.id" class="">
     <h1 class="font-bold md:text-xl mb-8 px-4 md:mr-8 bg-gray-200 p-2 border-b-2 border-gray-500"><span class="text-red-500">【FANZA】</span>{{ videoid.title }}</h1>
     <p class="mb-7"><NiceFlashMessage /></p>

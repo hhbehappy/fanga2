@@ -18,7 +18,7 @@ const destroythread = id => {
 <BasicLayout>
     <Head :title="'BBS スレッド一覧'" />
 
-    <div class="h-screen w-screen mt-5 md:mt-0 bg-gray-100">
+    <div class="h-screen w-screen bg-gray-100">
         <div class="flex w-4/5 md:w-9/12 mx-auto mb-6 px-8 pt-8 items-center justify-between border-b-4 border-gray-400">
             <h1 class="font-bold text-2xl text-gray-800 leading-tight">BBS</h1>
             <div class="text-xs md:text-base text-blue-500">

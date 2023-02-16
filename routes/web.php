@@ -31,7 +31,15 @@ use App\Http\Controllers\InquiryController;
 |
 */
 
-Route::get('/', [FangaController::class, 'index'])->name('fanga');
+Route::controller(FangaController::class)->group(function ()
+{
+    Route::get('/', 'index')->name('fanga');
+    // 規約関係
+    Route::get('/info/about', 'about')->name('about');
+    Route::get('/info/privacy', 'privacy')->name('privacy');
+    Route::get('/info/rule', 'rule')->name('rule');
+
+});
 Route::get('/logout', [FangaController::class, 'logout'])->name('fanga.logout');
 
 // マイページ
