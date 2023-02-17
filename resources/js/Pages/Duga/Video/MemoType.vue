@@ -42,7 +42,7 @@ const props = defineProps({
             <p class="w-24 mt-5 mb-2 py-1 px-2 font-semibold bg-red-200 rounded-2xl">非公開メモ</p>
             <ul class="leading-8 list-disc list-inside">
                 <li>無料会員登録後に利用ができます。</li>
-                <li>5文字以上500文字以内で、1作品につき2回までメモができます。</li>
+                <li>5文字以上500文字以内で、1作品につき2つまでメモができます。</li>
                 <li>誰にも見られない自分だけのメモです。</li>
                 <li>非公開メモの編集や削除ができます。</li>
             </ul>

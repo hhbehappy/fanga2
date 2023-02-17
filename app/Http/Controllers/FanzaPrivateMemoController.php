@@ -12,7 +12,6 @@ class FanzaPrivateMemoController extends Controller
 {
     public function store(StoreFanzaPrivateMemoRequest $request, $fanza_id, $content_id)
     {
-        // dd($content_id);
         FanzaPrivateMemo::create([
             'user_id'      => Auth::id(),
             'name'         => Auth::user()->name,

@@ -136,15 +136,16 @@ class FanzaVideoController extends Controller
         
         $videoa = Fanza::whereContent_id($content_id)->first();
         $content_id_1 = Fanza::findOrFail($content_id);
-        $fanza_free_memos = FanzaFreeMemo::whereContent_id($content_id)->latest('updated_at')->get();
-        $fanza_release_memos = FanzaReleaseMemo::whereContent_id($content_id)->latest('updated_at')->get();
-        $fanza_private_memos = FanzaPrivateMemo::where([['content_id', $content_id], ['user_id', Auth::id()]])->latest('updated_at')->get();
-        
+        $fanza_free_memos = FanzaFreeMemo::whereContent_id($content_id)->oldest('updated_at')->get();
+        $fanza_release_memos = FanzaReleaseMemo::whereContent_id($content_id)->oldest('updated_at')->get();
+        $fanza_private_memos = FanzaPrivateMemo::where([['content_id', $content_id], ['user_id', Auth::id()]])->oldest('updated_at')->get();
         $releaselists = FanzaReleaseMemo::latest('updated_at')->limit(30)->get()->unique('content_id');
         $auth_id = Auth::id();
         $nice = Nice::where([['content_id', $content_id], ['user_id', Auth::id()]])->first();
         $nicecount = Nice::whereContent_id($content_id)->count();
-        
+        $privatememolimit = FanzaPrivateMemo::where([['content_id', $content_id], ['user_id', Auth::id()]])->count();
+
+
         return Inertia::render('Fanza/Video', [
             'title' => $videoa->title,
             'videoids' => Fanza::find($content_id_1),
@@ -157,7 +158,8 @@ class FanzaVideoController extends Controller
             'releaselists' => $releaselists,
             'auth_id' => $auth_id,
             'nice' => $nice,
-            'nicecount' => $nicecount
+            'nicecount' => $nicecount,
+            'privatememolimit' => $privatememolimit
         ]);
     }
 

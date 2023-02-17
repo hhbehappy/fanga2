@@ -14,8 +14,7 @@ const props = defineProps({
 });
 
 const form = useForm({
-  number: 1,
-  // number: props.inquiryids.id + 1,
+  number: props.inquiryids.id + 1,
   title: null,
   message: null,
 });
@@ -40,7 +39,7 @@ const destroy = id => {
   <Head :title="'お問い合わせ'" />
   <!-- &#64; <a href="mailto:info@example.com">メールはこちらへ</a> -->
   <div class="min-h-screen w-screen pt-8 pb-10 mt-4 md:mt-0 bg-gray-100">
-    <div class="w-4/5 md:w-9/12 mx-auto px-8 py-4 bg-white">
+    <div class="w-4/5 md:w-9/12 max-w-3xl mx-auto px-8 py-4 bg-white">
         <div class="mx-auto pt-2">
             <div class="flex w-full px-3 items-center justify-between border-b-4 border-gray-400">
               <h1 class="pb-1 font-bold md:text-xl text-gray-700 leading-tight">お問い合わせ</h1>
@@ -72,7 +71,7 @@ const destroy = id => {
           </form>
         </div>
     </div>
-    <div class="w-4/5 md:w-9/12 my-12 mx-auto px-8 bg-white">
+    <div class="w-4/5 md:w-9/12 max-w-3xl my-12 mx-auto px-8 bg-white">
       <div class="mx-auto py-6 mt-10">
         <div class="w-full px-2 items-center border-b-4 border-gray-400">
           <h1 class="pb-1 font-bold md:text-xl text-gray-700 leading-tight">お問い合わせ内容</h1>

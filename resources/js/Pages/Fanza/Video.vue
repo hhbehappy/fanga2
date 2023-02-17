@@ -18,7 +18,8 @@ const props = defineProps({
   releaselists: Object,
   auth_id: Number,
   nice: Object,
-  nicecount: Number
+  nicecount: Number,
+  privatememolimit: Number
 })
 
 const form = useForm({
@@ -121,7 +122,7 @@ export default {
               </Link>
           </div>
           <div v-else class="w-52 px-2 border-b border-pink-400">
-              <Link :href="route('nice', { content_id: videoid.content_id, fanza_id: props.fanza_id, duga_id: '3', type : 'fanza' })">
+              <Link :href="route('nice', { content_id: videoid.content_id, fanza_id: props.fanza_id, duga_id: '1', type : 'fanza' })">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-1 mb-0.5 w-4 h-4 text-pink-400 inline-block">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                 </svg>
@@ -498,25 +499,30 @@ export default {
               </form>
             </div>
             <div :class="{'hidden': openTab !== 3, 'block': openTab === 3}">
-              <form @submit.prevent="submitFunction3">
-                <div class="flex justify-center relative">
-                  <div class="mb-3 w-full">
-                    <InputError class="mb-4 text-center" :message="form.errors.private" />
-                    <FlashMessage />
-                    <textarea name="private" v-model="form.private" class="form-control block w-full py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-800 focus:outline-none" id="private" rows="5" placeholder="非公開メモ">
-                    </textarea><br>
-                    <button type="submit" class="px-6 py-2 bg-blue-600 text-white font-bold text-sm leading-normal uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-lg transition duration-150 ease-in-out flex align-center absolute right-6">
-                      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="download"
-                        class="w-3 mt-1 mr-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <path fill="currentColor"
-                          d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z">
-                        </path>
-                      </svg>
-                      送信
-                    </button>
+              <div v-if="props.privatememolimit < 2">
+                <form @submit.prevent="submitFunction3">
+                  <div class="flex justify-center relative">
+                    <div class="mb-3 w-full">
+                      <InputError class="mb-4 text-center" :message="form.errors.private" />
+                      <FlashMessage />
+                      <textarea name="private" v-model="form.private" class="form-control block w-full py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-800 focus:outline-none" id="private" rows="5" placeholder="非公開メモ">
+                      </textarea><br>
+                      <button type="submit" class="px-6 py-2 bg-blue-600 text-white font-bold text-sm leading-normal uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-lg transition duration-150 ease-in-out flex align-center absolute right-6">
+                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="download"
+                          class="w-3 mt-1 mr-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                          <path fill="currentColor"
+                            d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z">
+                          </path>
+                        </svg>
+                        送信
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
+              <div v-else class="flex mt-10 justify-center">
+                <p class="pl-2 text-center border-b-2 border-red-400">非公開メモは1作品につき2つまでとなっています。</p>
+              </div>
             </div>
           </div>
         </div>

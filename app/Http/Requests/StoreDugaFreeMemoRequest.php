@@ -24,7 +24,7 @@ class StoreDugaFreeMemoRequest extends FormRequest
     public function rules()
     {
         return [
-            "free"      => "required|max:100|min:5",
+            "free"      => "required|max:300|min:5",
         ];
     }
 }

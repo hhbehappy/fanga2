@@ -51,31 +51,31 @@
         </ul>
     </div>
     <div class="hidden md:block pt-3">
-        <ul class="flex justify-center">
-            <li class="h-6 w-44 pr-2 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
+        <ul class="flex h-5 justify-center text-sm">
+            <li class="w-44 pr-2 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
                 <a href="{{ route('about') }}" class="absolute top-0 left-0 w-full h-full">当サイトについて</a>
             </li>
-            <li class="h-6 w-44 pr-2 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
+            <li class="w-44 pr-2 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
                 <a href="{{ route('privacy') }}" class="absolute top-0 left-0 w-full h-full">プライバシーポリシー</a>
             </li>
-            <li class="h-6 w-28 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
+            <li class="w-28 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
                 <a href="{{ route('rule') }}" class="absolute top-0 left-0 w-full h-full">利用規約</a>
             </li>
-            <li class="h-6 w-32 text-center hover:bg-red-500 hover:text-white relative">
+            <li class="w-32 text-center hover:bg-red-500 hover:text-white relative">
                 <a href="{{ route('inquiry') }}" class="absolute top-0 left-0 w-full h-full">お問い合わせ</a>
             </li>
         </ul>
     </div>
     <div class="text-center mt-3">
-        <ul class="flex md:hidden pb-2 justify-center">
-            <li class="h-6 w-48 pr-2 text-center hover:bg-red-500 hover:text-white border-gray-500 relative">
+        <ul class="flex h-7 md:hidden pb-2 justify-center text-sm">
+            <li class="w-48 pr-2 text-center hover:bg-red-500 hover:text-white border-gray-500 relative">
                 <a href="{{ route('privacy') }}" class="absolute top-0 left-0 w-full h-full">プライバシーポリシー</a>
             </li>
-            <li class="h-6 w-48 text-center hover:bg-red-500 hover:text-white border-gray-500 relative">
+            <li class="w-48 text-center hover:bg-red-500 hover:text-white border-gray-500 relative">
                 <a href="{{ route('rule') }}" class="absolute top-0 left-0 w-full h-full">利用規約</a>
             </li>
         </ul>
-        <p>
+        <p class="text-xs">
             © 2022 <a href="{{ route('fanga') }}" class="hover:underline">FANGA</a>. All Rights Reserved.
         </p>
     </div>

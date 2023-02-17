@@ -40,7 +40,7 @@ const destroycomment = id => {
     <Head :title="'BBS 詳細ページ'" />
 
     <div class="min-h-screen w-screen mt-5 md:mt-0 pb-10 bg-gray-100">
-        <div class="flex w-4/5 md:w-9/12 mx-auto mb-6 px-8 pt-8 items-center justify-between border-b-4 border-gray-400">
+        <div class="flex w-4/5 md:w-9/12 max-w-3xl mx-auto mb-6 px-8 pt-8 items-center justify-between border-b-4 border-gray-400">
             <h1 class="font-bold text-2xl text-gray-800 leading-tight">BBS</h1>
             <div class="">
             <p v-if="$page.props.auth.user" class=""></p>
@@ -51,11 +51,11 @@ const destroycomment = id => {
                 </form></p>
             </div>
         </div>
-        <div class="w-4/5 md:w-9/12 mb-4 mx-auto">
+        <div class="w-4/5 md:w-9/12 max-w-3xl mb-4 mx-auto">
             <FlashMessage />
         </div>
         <div v-for="thread in threads" :key="thread.id" class="">
-            <div class="w-4/5 md:w-9/12 mx-auto bg-white rounded p-2 mb-6">
+            <div class="w-4/5 md:w-9/12 max-w-3xl mx-auto bg-white rounded p-2 mb-6">
                 <div class="flex flex-nowrap items-center">
                     <h2 class="font-bold text-xl text-gray-800 leading-tight whitespace-pre-line">{{ thread.title }}</h2>
                     <span class="inline-block w-28 text-xs text-gray-600 ml-5">{{ thread.updated_at }}</span>
@@ -63,7 +63,7 @@ const destroycomment = id => {
             </div>
         </div>
         <div v-for="comment in comments" :key="comment.id" class="">
-            <div class="w-4/5 md:w-9/12 mx-auto bg-white rounded p-2 mb-5 whitespace-pre-line">
+            <div class="w-4/5 md:w-9/12 max-w-3xl mx-auto bg-white rounded p-2 mb-5 whitespace-pre-line">
                 <div class="flex mb-2 justify-between items-center">
                     <div class="">
                         <span v-if="comment.nickname === 1 && comment.name " class="text-sm font-bold">{{ comment.id }}. {{ comment.name }}さんのコメント</span>
@@ -82,7 +82,7 @@ const destroycomment = id => {
             </div>
         </div>
         <InputError class="my-4 text-center text-xl" :message="form.errors.content" />
-        <div v-if="$page.props.auth.user" class="w-4/5 md:w-9/12 mx-auto mt-8">
+        <div v-if="$page.props.auth.user" class="w-4/5 md:w-9/12 max-w-3xl mx-auto mt-8">
             <form @submit.prevent="submitFunction">
                 <div class="flex justify-center relative">
                     <div class="mb-3 w-full">
