@@ -24,7 +24,7 @@ class UpdateDugaReleaseMemoRequest extends FormRequest
     public function rules()
     {
         return [
-            'release'          => 'required|max:300|min:5',
+            'release'          => 'required|max:500|min:5',
         ];
     }
 }

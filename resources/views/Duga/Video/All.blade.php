@@ -22,7 +22,7 @@
             <img src="<?php echo $videoid->posterimage ?>" alt="【DUGA】<?php echo $videoid->title ?>" class="h-40 w-[118px] inline-block px-1 mb-4">
             @endif
           </a>
-          @if ($auth_id === 1 && $videoid->id !== 3)
+          @if ($auth_id === 1 && $videoid->id !== 1)
             <form method="post" action="{{ route('dlist.destroy', $videoid) }}" onclick='return confirm("削除しますか？");'>
               @csrf
               @method('delete')

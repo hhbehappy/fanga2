@@ -56,7 +56,6 @@ class HandleInertiaRequests extends Middleware
                 'fanzafreememo' => FanzaFreeMemo::whereUser_id(Auth::id())->select('content_id')->get()->unique('content_id')->count(),
                 'fanzareleasememo' => FanzaReleaseMemo::whereUser_id(Auth::id())->select('content_id')->get()->unique('content_id')->count(),
                 'fanzaprivatememo' => FanzaprivateMemo::whereUser_id(Auth::id())->select('content_id')->get()->unique('content_id')->count(),
-                // dd($pravate),
                 'dugafreememo' => DugaFreeMemo::whereUser_id(Auth::id())->select('productid')->get()->unique('productid')->count(),
                 'dugareleasememo' => DugaReleaseMemo::whereUser_id(Auth::id())->select('productid')->get()->unique('productid')->count(),
                 'dugaprivatememo' => DugaPrivateMemo::whereUser_id(Auth::id())->select('productid')->get()->unique('productid')->count(),

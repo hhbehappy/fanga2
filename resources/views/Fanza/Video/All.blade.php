@@ -18,7 +18,7 @@
             @endif
             <img src="<?php echo 'https://pics.dmm.co.jp/digital/video/' .  $videoid->content_id  . '/' .  $videoid->content_id   . 'ps.jpg'; ?>" alt="【FANZA】 <?php echo $videoid->title ?>" class="w-[118px] inline-block px-1 mb-4">
           </a>
-          @if ($auth_id === 1 && $videoid->id !== 3)
+          @if ($auth_id === 1 && $videoid->id !== 1)
           <form method="post" action="{{ route('flist.destroy', $videoid) }}" onclick='return confirm("削除しますか？");'>
             @csrf
             @method('delete')

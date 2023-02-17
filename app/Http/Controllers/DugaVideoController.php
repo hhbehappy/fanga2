@@ -40,7 +40,7 @@ class DugaVideoController extends Controller
             'hits'          => '100',
             'offset'        => '',
             'sort'          => '',
-            'keyword'       => '',
+            'keyword'       => 'glayz-1207',
             'output'        => 'json',
             'callback'      =>'',
             );
@@ -139,15 +139,16 @@ class DugaVideoController extends Controller
 
         $dugavideo = Duga::whereProductid($productid)->first();
         $productid_1 = Duga::findOrFail($productid);
-        $duga_free_memos = DugaFreeMemo::whereProductid($productid)->latest('updated_at')->get();
-        $duga_release_memos = DugaReleaseMemo::whereProductid($productid)->latest('updated_at')->get();
-        $duga_private_memos = DugaPrivateMemo::where([['productid', $productid], ['user_id', Auth::id()]])->latest('updated_at')->get();
+        $duga_free_memos = DugaFreeMemo::whereProductid($productid)->oldest('updated_at')->get();
+        $duga_release_memos = DugaReleaseMemo::whereProductid($productid)->oldest('updated_at')->get();
+        $duga_private_memos = DugaPrivateMemo::where([['productid', $productid], ['user_id', Auth::id()]])->oldest('updated_at')->get();
         $releaselists = DugaReleaseMemo::select('title', 'duga_release_memos.productid', 're_productid', 'jacketimage', 'duga_release_memos.updated_at')
         ->latest('updated_at')->limit(20)->leftJoin('dugas', 'duga_release_memos.productid', '=', 'dugas.productid')->get()->unique('re_productid');
         $re_productid = str_replace("-", "/", $dugavideo->productid);
         $user_id = Auth::id();
         $nice = Nice::where([['content_id', $productid], ['user_id', Auth::id()]])->first();
         $nicecount = Nice::whereContent_id($productid)->count();
+        $privatememolimit = DugaPrivateMemo::where([['productid', $productid], ['user_id', Auth::id()]])->count();
         
         return Inertia::render('Duga/Video', [
             'title'             => $dugavideo->title,
@@ -163,6 +164,7 @@ class DugaVideoController extends Controller
             'user_id'           => $user_id,
             'nice'              => $nice,
             'nicecount'         => $nicecount,
+            'privatememolimit'         => $privatememolimit
         ]);
     }
 
