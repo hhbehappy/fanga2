@@ -145,7 +145,7 @@ class DugaVideoController extends Controller
         $releaselists = DugaReleaseMemo::select('title', 'duga_release_memos.productid', 're_productid', 'jacketimage', 'duga_release_memos.updated_at')
         ->latest('updated_at')->limit(20)->leftJoin('dugas', 'duga_release_memos.productid', '=', 'dugas.productid')->get()->unique('re_productid');
         $re_productid = str_replace("-", "/", $dugavideo->productid);
-        $user_id = Auth::id();
+        $auth_id = Auth::id();
         $nice = Nice::where([['content_id', $productid], ['user_id', Auth::id()]])->first();
         $nicecount = Nice::whereContent_id($productid)->count();
         $privatememolimit = DugaPrivateMemo::where([['productid', $productid], ['user_id', Auth::id()]])->count();
@@ -161,7 +161,7 @@ class DugaVideoController extends Controller
             'duga_private_memos'=> $duga_private_memos,
             'releaselists'      => $releaselists,
             're_productid'      => $re_productid,
-            'user_id'           => $user_id,
+            'auth_id'           => $auth_id,
             'nice'              => $nice,
             'nicecount'         => $nicecount,
             'privatememolimit'         => $privatememolimit

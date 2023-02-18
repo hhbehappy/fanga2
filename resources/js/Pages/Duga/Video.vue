@@ -333,8 +333,6 @@ export default {
               <span v-if="duga_release_memo.nickname === 1 && duga_release_memo.user_id != NULL" class="bg-blue-200 p-1 px-3 rounded-2xl text-xs font-bold">{{ duga_release_memo.name }}さんのメモ</span>
               <span v-else-if="duga_release_memo.nickname === 0 && duga_release_memo.user_id != NULL" class="bg-blue-200 p-1 px-3 rounded-2xl text-xs font-bold">ログインユーザーのメモ</span>
               <span v-else class="bg-blue-200 p-1 px-3 rounded-2xl text-xs font-bold">退会済みユーザーのメモ</span>
-              <!-- <span v-if="duga_release_memo.nickname === 1" class="bg-blue-200 p-1 px-3 rounded-2xl text-xs font-bold">{{ duga_release_memo.name }}さんのメモ</span>
-              <span v-else-if="duga_release_memo.nickname === 0" class="bg-blue-200 p-1 px-3 rounded-2xl text-xs font-bold">ログインユーザーのメモ</span> -->
               <span class="w-28 mt-2 ml-4 text-sm text-zinc-500 inline-block">
               {{ duga_release_memo.updated_at }}
               </span>
@@ -508,7 +506,7 @@ export default {
       <div class="flex flex-none flex-nowrap">
         <div v-for="releaselist in releaselists" :key="releaselist.productid" class="">
           <div class="mr-4">
-            <Link :href="route('dlist.show', { id: releaselist.productid })">
+            <Link :href="route('dvideo.show', { id: releaselist.productid })">
               <img v-if="releaselist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + releaselist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + releaselist.title" class="h-44">
               <img v-else :src="'https://pic.duga.jp/unsecure/' + releaselist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + releaselist.title" class="h-44 w-32">
             </Link>
