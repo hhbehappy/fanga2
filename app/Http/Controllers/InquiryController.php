@@ -37,7 +37,10 @@ class InquiryController extends Controller
         Mail::to($email)->send(new InquiryForm($inputs));
 
         return back()
-        ->with('メールをお送りしました。');
+        ->with([
+            'message' => 'お問い合わせを送信しました。',
+            'status'  => 'store'
+        ]);
     }
     
 }
