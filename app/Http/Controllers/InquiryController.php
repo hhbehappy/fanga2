@@ -19,9 +19,9 @@ class InquiryController extends Controller
     public function store(Request $request){
 
         $inputs = $request->validate([
-            "title"     => "required|max:64|min:2",
-            "email"     => "required",
-            "message"   => "required|max:2000|min:5",
+            "title"     => "max:64|min:2",
+            "email"     => "",
+            "message"   => "max:2000|min:5",
         ]);
 
         Inquiry::create([
@@ -37,7 +37,10 @@ class InquiryController extends Controller
         Mail::to($email)->send(new InquiryForm($inputs));
 
         return back()
-        ->with('メールをお送りしました。');
+        ->with([
+            'message' => 'お問い合わせを送信しました。',
+            'status'  => 'store'
+        ]);
     }
     
 }
