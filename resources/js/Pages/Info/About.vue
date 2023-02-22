@@ -8,14 +8,14 @@ import { Head, Link } from '@inertiajs/vue3';
 
 <BasicLayout>
   <div class="min-h-screen w-screen bg-gray-100 py-10">
-    <div class="w-11/12 md:w-9/12 mx-auto p-4 bg-white text-gray-700">
-      <div class="mx-auto pt-2">
+    <div class="w-11/12 md:w-9/12 max-w-3xl mx-auto p-2 bg-white text-gray-700">
+      <div class="mx-auto">
         <section class="w-full px-2 space-y-3">
           <h1 class="pb-1 font-bold md:text-xl leading-tight border-b-4 border-gray-400">当サイトについて</h1>
           <p>
-            当サイトは、デジタルコンテンツ配信サービスの「FANZA」及び「DUGA」で配信されている動画コンテンツにメモを投稿できるサイトです。※VR動画には対応していません</p>
+            当サイトは、デジタルコンテンツ配信サービスの「FANZA」及び「DUGA」で配信されている動画コンテンツに、当サイト内においてメモを投稿できるウェブサイトです。※VR動画及び一部の動画には対応していません</p>
           <p>
-            当サイトは、個人がプログラミング学習の一環として制作しているウェブサイトです。機能の不備やレイアウトの崩れなどがおそらくあります。発見次第に改善していきますのでご了承ください。
+            当サイトは、個人がプログラミング学習の一環として制作しているウェブサイトです。機能の不備やレイアウトの崩れなどがおそらくあります。発見次第に改善していきますので予めご了承ください。
           </p>
           <h2 class="pt-5 pb-1 font-bold md:text-xl leading-tight border-b-4 border-gray-400">メモの種類について</h2>
           <p class="mb-5">メモは３種類あります。利用されると同時に<Link :href="route('rule')" class="text-blue-500 hover:underline">利用規約</Link>に同意したものとされます。</p>

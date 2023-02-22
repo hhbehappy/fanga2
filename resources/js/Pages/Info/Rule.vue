@@ -8,8 +8,8 @@ import { Head, Link } from '@inertiajs/vue3';
   <Head :title="'利用規約'" />
 
   <div class="min-h-screen w-screen bg-gray-100 py-10">
-    <div class="w-4/5 md:w-9/12 mx-auto px-6 py-4 bg-white text-gray-700">
-      <div class="mx-auto pt-4">
+    <div class="w-11/12 md:w-9/12 max-w-3xl mx-auto p-2 bg-white text-gray-700">
+      <div class="mx-auto">
         <div class="w-full px-2 space-y-3">
           <h1 class="pb-1 font-bold md:text-xl leading-tight border-b-4 border-gray-400">利用規約</h1>
           <h2 class="font-bold">第1条 総則</h2>
@@ -116,9 +116,9 @@ import { Head, Link } from '@inertiajs/vue3';
           <p>(1) 本規約の解釈にあたっては、日本法を準拠法とします。</p>
           <p>(2) 本サービスに関して紛争が生じた場合には、当サイトの運営者所在地を管轄する裁判所を専属的合意管轄とします。</p>
           <p class="font-bold">附則</p>
-          <p>本規約は2023年2月1日から適用されます。</p>
-          <p>[発効日:2023年2月1日]</p>
-          <p>[最終改定日:2023年2月1日]</p>
+          <p>本規約は2023年3月1日から適用されます。</p>
+          <p>[発効日:2023年3月1日]</p>
+          <p>[最終改定日:2023年3月1日]</p>
         </div>
       </div>
     </div>
