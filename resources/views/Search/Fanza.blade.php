@@ -17,6 +17,13 @@
           @endif
           <img src="<?php echo 'https://pics.dmm.co.jp/digital/video/' .  $fanza->content_id  . '/' .  $fanza->content_id   . 'ps.jpg'; ?>" alt="[FANZA] <?php echo $fanza->title ?>" class="w-32 inline-block px-2 mb-4">
         </a>
+        @if ($auth_id === 1 && $fanza->id !== 1)
+          <form method="post" action="{{ route('flist.destroy', $fanza) }}" onclick='return confirm("削除しますか？");'>
+            @csrf
+            @method('delete')
+            <input type="submit" value="削除" class="p-2 text-white bg-red-500 rounded cursor-pointer">
+          </form>
+        @endif
       @endforeach
     </div>
     <div class="ml-6">

@@ -1,6 +1,6 @@
 <script setup>
 import Layout from '@/Layouts/Layout.vue';
-import { Link } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 
 
 const props = defineProps({
@@ -19,6 +19,8 @@ const props = defineProps({
 </script>
 
 <template>
+    <Head :title="'FANGA FANZA&DUGA FREEMEMO'" />
+
 <Layout>
 
     <section>

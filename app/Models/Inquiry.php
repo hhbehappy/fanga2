@@ -15,8 +15,8 @@ class Inquiry extends Model
         'updated_at' => 'datetime:Y年m月d日',
     ];
     protected $fillable = [
-        'number',
         'title',
+        'email',
         'message'
     ];
 }

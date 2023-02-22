@@ -81,7 +81,6 @@ Route::post('/commentlogin', [RedirectbackController::class, 'direct'])->middlew
 Route::get('/inquiry', [InquiryController::class, 'index'])->name('inquiry');
 Route::get('/inquiry/store', [InquiryController::class, 'store'])->name('inquiry.store');
 Route::post('/inquiry/store', [InquiryController::class, 'store']);
-Route::delete('/inquiry/destroy/{id}', [InquiryController::class, 'destroy'])->name('inquiry.destroy');
 
 // FANZA
 Route::controller(FanzaFreeMemoController::class)->group(function ()

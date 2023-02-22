@@ -17,6 +17,9 @@ import { Head, Link } from '@inertiajs/vue3';
           <p>
             当サイトは、個人がプログラミング学習の一環として制作しているウェブサイトです。機能の不備やレイアウトの崩れなどがおそらくあります。発見次第に改善していきますので予めご了承ください。
           </p>
+          <p>
+            当サイトは、完全リンクフリーです。
+          </p>
           <h2 class="pt-5 pb-1 font-bold md:text-xl leading-tight border-b-4 border-gray-400">メモの種類について</h2>
           <p class="mb-5">メモは３種類あります。利用されると同時に<Link :href="route('rule')" class="text-blue-500 hover:underline">利用規約</Link>に同意したものとされます。</p>
             <p class="w-24 my-2 py-1 px-2 font-semibold bg-amber-200 rounded-2xl">フリーメモ</p>
