@@ -7,9 +7,9 @@ import { Head, Link, useForm } from '@inertiajs/vue3';
 import FlashMessage from '@/Components/FlashMessage.vue';
 
 const form = useForm({
-  title: '',
-  email: '',
-  message: ''
+  title: null,
+  email: null,
+  message: null
 });
 
 const submitfunction = () => {
@@ -40,15 +40,17 @@ const submitfunction = () => {
             <p class="mt-3"><FlashMessage /></p>
             <form @submit.prevent="submitfunction">
               <div class="w-56 mt-5">
-                <InputLabel for="title" value="タイトル" />
-                <TextInput id="title" name="title" type="text" class="h-9 mt-1 block w-full" v-model="form.title" autofocus required/>
+                <input id="title" name="title" type="text" v-model="form.title" autofocus required>
+                <!-- <InputLabel for="title" value="タイトル" />
+                <TextInput id="title" name="title" type="text" class="h-9 mt-1 block w-full" v-model="form.title" autofocus required/> -->
               </div>
               <div class="w-56 mt-5">
-                <InputLabel for="email" value="メールアドレス" />
-                <TextInput id="email" name="email" type="email" class="h-9 mt-1 block w-full" v-model="form.email" autocomplete="email" required/>
+                <input id="email" name="email" type="email" v-model="form.email" autocomplete="email" required>
+                <!-- <InputLabel for="email" value="メールアドレス" />
+                <TextInput id="email" name="email" type="email" class="h-9 mt-1 block w-full" v-model="form.email" autocomplete="email" required/> -->
               </div>
               <div class="mt-5">
-                <InputLabel type="hidden" for="message" value="お問い合わせ内容" />
+                <!-- <InputLabel type="hidden" for="message" value="お問い合わせ内容" /> -->
                 <textarea id="message" name="message" class="w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" rows="5" v-model="form.message" :disabled="form.processing" required></textarea>
               </div>
               <div class="block my-5">
