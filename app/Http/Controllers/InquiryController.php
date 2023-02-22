@@ -17,19 +17,19 @@ class InquiryController extends Controller
     }
 
     public function store(Request $request){
+        
+//         $inputs = $request->validate([
+//             "title"     => "max:64|min:2",
+//             "email"     => "",
+//             "message"   => "max:2000|min:5",
+//         ]);
+$inputs = Inquiry::create($request->validate([
+    'title' => ['required', 'max:50', 'min:2'],
+    'email' => ['required', 'max:50', 'email'],
+    'message' => ['required', 'max:1000', 'min:5'],
+]));
 
-        $inputs = $request->validate([
-            "title"     => "max:64|min:2",
-            "email"     => "",
-            "message"   => "max:2000|min:5",
-        ]);
-dd($inputs);
-        Inquiry::create([
-            'title' => $request->title,
-            'email' => $request->email,
-            'message' => $request->message
-            ]);
-
+// dd($inputs);
         $admin=config('mail.admin');
         Mail::to($admin)->send(new InquiryForm($inputs));
 
