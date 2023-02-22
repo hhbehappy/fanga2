@@ -13,9 +13,9 @@ const form = useForm({
 });
 
 const submitfunction = () => {
-    form.post('/inquiry/store/', {
-      onSuccess: () => form.reset('title', 'email', 'message'),
-      preserveScroll: true
+    form.post('/inquiry/store', {
+      preserveScroll: true,
+      // onSuccess: () => form.reset('title', 'email', 'message'),
     });
 };
 
@@ -34,23 +34,35 @@ const submitfunction = () => {
                 <Link :href="route('fanga')">キャンセル</Link>
               </div>
             </div>
-            <InputError class="my-2" :message="form.errors.title" />
+            <!-- <InputError class="my-2" :message="form.errors.title" />
             <InputError class="my-2" :message="form.errors.email" />
-            <InputError class="my-2" :message="form.errors.message" />
+            <InputError class="my-2" :message="form.errors.message" /> -->
             <p class="mt-3"><FlashMessage /></p>
-            <form @submit.prevent="submitfunction">
+            <form @submit.prevent="form.post('/inquiry/store')">
+    <!-- email -->
+    <input type="email" v-model="form.email">
+    <div v-if="form.errors.email">{{ form.errors.email }}</div>
+    <!-- password -->
+    <input type="text" v-model="form.title">
+    <div v-if="form.errors.title">{{ form.errors.title }}</div>
+    <!-- remember me -->
+    <input type="text" v-model="form.message">
+    <!-- submit -->
+    <button type="submit" :disabled="form.processing">Login</button>
+  </form>
+            <!-- <form @submit.prevent="submitfunction">
               <div class="w-56 mt-5">
                 <input id="title" name="title" type="text" v-model="form.title" autofocus required>
-                <!-- <InputLabel for="title" value="タイトル" />
-                <TextInput id="title" name="title" type="text" class="h-9 mt-1 block w-full" v-model="form.title" autofocus required/> -->
+                <InputLabel for="title" value="タイトル" />
+                <TextInput id="title" name="title" type="text" class="h-9 mt-1 block w-full" v-model="form.title" autofocus required/>
               </div>
               <div class="w-56 mt-5">
                 <input id="email" name="email" type="email" v-model="form.email" autocomplete="email" required>
-                <!-- <InputLabel for="email" value="メールアドレス" />
-                <TextInput id="email" name="email" type="email" class="h-9 mt-1 block w-full" v-model="form.email" autocomplete="email" required/> -->
+                <InputLabel for="email" value="メールアドレス" />
+                <TextInput id="email" name="email" type="email" class="h-9 mt-1 block w-full" v-model="form.email" autocomplete="email" required/>
               </div>
               <div class="mt-5">
-                <!-- <InputLabel type="hidden" for="message" value="お問い合わせ内容" /> -->
+                <InputLabel type="hidden" for="message" value="お問い合わせ内容" />
                 <textarea id="message" name="message" class="w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" rows="5" v-model="form.message" :disabled="form.processing" required></textarea>
               </div>
               <div class="block my-5">
@@ -58,7 +70,7 @@ const submitfunction = () => {
                     送信する
               </button>
             </div>
-          </form>
+          </form> -->
         </div>
     </div>
   </div>
