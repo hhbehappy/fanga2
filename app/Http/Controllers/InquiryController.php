@@ -23,11 +23,11 @@ class InquiryController extends Controller
             "email"     => "",
             "message"   => "max:2000|min:5",
         ]);
-
+dd($inputs);
         Inquiry::create([
-            'title' => $request->get('title'),
-            'email' => $request->get('email'),
-            'message' => $request->get('message')
+            'title' => $request->title,
+            'email' => $request->email,
+            'message' => $request->message
             ]);
 
         $admin=config('mail.admin');
