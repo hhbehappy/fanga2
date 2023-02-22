@@ -21,6 +21,13 @@
           <img src="<?php echo $dugavideo->posterimage ?>" alt="【DUGA】<?php echo $dugavideo->title ?>" class="h-40 w-32 inline-block px-2 mb-4">
           @endif
         </a>
+        @if ($auth_id === 1 && $dugavideo->id !== 1)
+          <form method="post" action="{{ route('dlist.destroy', $dugavideo) }}" onclick='return confirm("削除しますか？");'>
+            @csrf
+            @method('delete')
+            <input type="submit" value="削除" class="p-2 text-white bg-red-500 rounded cursor-pointer">
+          </form>
+        @endif
       @endforeach
     </div>
     <div class="ml-6">

@@ -72,6 +72,7 @@ class FangaController extends Controller
     {
         $onemonths = Carbon::today()->subMonth(1);
         $keyword = $request->keyword;
+        $auth_id = Auth::id();
 
         $request->validate([
             'keyword' => 'required'
@@ -99,13 +100,14 @@ class FangaController extends Controller
             ->paginate(20);
         }
 
-        return view('Search/Fanza', compact('onemonths', 'fanzas', 'keyword'));
+        return view('Search/Fanza', compact('onemonths', 'fanzas', 'keyword', 'auth_id'));
     }
 
     public function searchduga(Request $request)
     {
         $onemonths = Carbon::today()->subMonth(1);
         $keyword = $request->keyword;
+        $auth_id = Auth::id();
 
         $request->validate([
             'keyword' => 'required'
@@ -125,6 +127,6 @@ class FangaController extends Controller
             ->paginate(20);
         }
 
-        return view('Search/Duga', compact('onemonths', 'dugas', 'keyword'));
+        return view('Search/Duga', compact('onemonths', 'dugas', 'keyword', 'auth_id'));
     }
 }

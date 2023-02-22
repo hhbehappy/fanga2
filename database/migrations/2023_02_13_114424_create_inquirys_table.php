@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('inquirys', function (Blueprint $table) {
             $table->id();
-            $table->integer('number');
             $table->string('title');
+            $table->string('email');
             $table->text('message');
             $table->timestamps();
         });
