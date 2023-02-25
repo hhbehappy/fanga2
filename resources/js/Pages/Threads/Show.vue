@@ -56,14 +56,14 @@ const destroycomment = id => {
         </div>
         <div v-for="thread in threads" :key="thread.id" class="">
             <div class="w-4/5 md:w-9/12 max-w-3xl mx-auto bg-white rounded p-2 mb-6">
-                <div class="flex flex-nowrap items-center">
-                    <h2 class="font-bold text-xl text-gray-800 leading-tight whitespace-pre-line">{{ thread.title }}</h2>
+                <div class="flex flex-wrap items-center">
+                    <h2 class="font-bold text-xl text-gray-800 leading-tight whitespace-pre-line break-all">{{ thread.title }}</h2>
                     <span class="inline-block w-28 text-xs text-gray-600 ml-5">{{ thread.updated_at }}</span>
                 </div>
             </div>
         </div>
         <div v-for="comment in comments" :key="comment.id" class="">
-            <div class="w-4/5 md:w-9/12 max-w-3xl mx-auto bg-white rounded p-2 mb-5 whitespace-pre-line">
+            <div class="w-4/5 md:w-9/12 max-w-3xl mx-auto bg-white rounded p-2 mb-5 whitespace-pre-line break-all">
                 <div class="flex mb-2 justify-between items-center">
                     <div class="">
                         <span v-if="comment.nickname === 1 && comment.name " class="text-sm font-bold">{{ comment.id }}. {{ comment.name }}さんのコメント</span>
@@ -88,7 +88,7 @@ const destroycomment = id => {
                     <div class="mb-3 w-full">
                         <div class="mb-8">
                             <label for="content" class="ml-3">コメント</label>
-                            <textarea name="content" v-model="form.content" class="form-control block w-full py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-800 focus:outline-none" id="content" rows="4" placeholder="コメントを入力してください" autofocus>
+                            <textarea name="content" v-model="form.content" class="form-control block w-full py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-800 focus:outline-none" id="content" rows="5" placeholder="コメントを入力してください" autofocus>
                             </textarea>
                         </div>
                         <div class="flex justify-end mr-40 items-center">
