@@ -63,6 +63,9 @@ import { Link } from '@inertiajs/vue3';
             <li class="w-28 text-center hover:bg-red-600 hover:text-white border-r-2 border-gray-500 relative">
                 <Link :href="route('rule')" class="absolute top-0 left-0 w-full h-full">利用規約</Link>
             </li>
+            <li class="w-20 text-center hover:bg-red-600 hover:text-white border-r-2 border-gray-500 relative">
+                <Link :href="route('bbs')" class="absolute top-0 left-0 w-full h-full">BBS</Link>
+            </li>
             <li class="w-32 text-center hover:bg-red-600 hover:text-white relative">
                 <Link :href="route('inquiry')" class="absolute top-0 left-0 w-full h-full">お問い合わせ</Link>
             </li>

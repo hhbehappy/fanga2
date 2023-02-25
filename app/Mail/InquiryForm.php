@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
@@ -28,7 +29,7 @@ class InquiryForm extends Mailable
     public function build()
     {
         return $this->view('inquiry.mail')
-            ->from('support@fanga.jp', 'FANGA')
+            ->from('contact@fanga.jp', 'FANGA')
             ->with('inputs', $this->inputs);
     }
 

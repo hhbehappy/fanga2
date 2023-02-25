@@ -318,7 +318,7 @@ export default {
               </button>
             </div>
           </div>
-          <div class="w-full whitespace-pre-line">
+          <div class="w-full whitespace-pre-line break-all">
             {{ duga_private_memo.private }}
           </div>
         </div>
@@ -354,7 +354,7 @@ export default {
               </button>
             </div>
           </div>
-          <div class="w-full whitespace-pre-line">
+          <div class="w-full whitespace-pre-line break-all">
             {{ duga_release_memo.release }}
           </div>
         </div>
@@ -376,7 +376,7 @@ export default {
             削除
           </button>
         </div>
-        <div class="w-full whitespace-pre-line">
+        <div class="w-full whitespace-pre-line break-all">
             {{ duga_free_memo.free }}
         </div>
       </div>

@@ -38,7 +38,7 @@ const submitFunction = () => {
             </div>
             <div class="mb-8">
               <label for="content" class="ml-3">コメント :</label>
-              <textarea name="content" v-model="form.content" class="whitespace-pre-line form-control block w-full py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-800 focus:outline-none" id="content" rows="4" placeholder="コメントを入力してください">
+              <textarea name="content" v-model="form.content" class="whitespace-pre-line form-control block w-full py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-800 focus:outline-none" id="content" rows="5" placeholder="コメントを入力してください">
               </textarea>
             </div>
             <div class="flex justify-end mr-40 items-center">

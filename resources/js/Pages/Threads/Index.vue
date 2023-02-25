@@ -27,7 +27,7 @@ const destroythread = id => {
         </div>
         <div class="w-4/5 md:w-9/12 max-w-3xl mx-auto">
             <div v-for="thread in threads" :key="thread.id" class="">
-                <div v-if="thread.title" class="flex w-full mx-auto bg-white rounded p-2 mb-5 text-blue-500 whitespace-pre-line justify-between">
+                <div v-if="thread.title" class="flex w-full mx-auto bg-white rounded p-2 mb-5 text-blue-500 whitespace-pre-line justify-between break-all">
                     <Link :href="route('threads.show', thread.id)">
                     {{ thread.title }}</Link>
                     <button v-if="props.user_id === 1 " type="button" @click="destroythread(thread.id)" class="flex h-5 mt-1 mr-2 px-1 bg-red-500 text-white font-semibold text-xs leading-normal uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out items-center">
