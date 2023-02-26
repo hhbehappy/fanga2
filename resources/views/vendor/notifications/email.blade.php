@@ -1,19 +1,12 @@
-{{-- <x-mail::message> --}}
+<x-mail::message>
 {{-- Greeting --}}
-{{-- @if (! empty($greeting))
-# {{ $greeting }} --}}
-{{-- @else --}}
-{{-- @if ($level === 'error')
-# @lang('Whoops!')
-@else
-# @lang('Hello!')
-@endif --}}
-{{-- @endif --}}
+@if (! empty($greeting))
+# {{ $greeting }}
+@endif
 
 {{-- Intro Lines --}}
 @foreach ($introLines as $line)
 {{ $line }}
-
 @endforeach
 
 {{-- Action Button --}}
@@ -32,26 +25,13 @@
 {{-- Outro Lines --}}
 @foreach ($outroLines as $line)
 {{ $line }}
-
 @endforeach
 
 {{-- Salutation --}}
-{{-- @if (! empty($salutation))
+@if (! empty($salutation))
 {{ $salutation }}
-@else --}}
+@else
 @lang('送信元') <a href="https://fanga.jp">{{ config('app.name') }}</a>
-{{-- @endif --}}
+@endif
 
-{{-- Subcopy --}}
-{{-- @isset($actionText)
-<x-slot:subcopy>
-@lang(
-    "If you're having trouble clicking the \":actionText\" button, copy and paste the URL below\n".
-    'into your web browser:',
-    [
-        'actionText' => $actionText,
-    ]
-) <span class="break-all">[{{ $displayableActionUrl }}]({{ $actionUrl }})</span>
-</x-slot:subcopy>
-@endisset --}}
-{{-- </x-mail::message> --}}
+</x-mail::message>

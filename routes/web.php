@@ -2,6 +2,7 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FangaController;
 use App\Http\Controllers\FanzaVideoController;
@@ -31,6 +32,8 @@ use App\Http\Controllers\InquiryController;
 |
 */
 
+Auth::routes(['verify' => true]);
+
 Route::controller(FangaController::class)->group(function ()
 {
     Route::get('/', 'index')->name('fanga');
@@ -46,7 +49,7 @@ Route::controller(FangaController::class)->group(function ()
 });
 
 // マイページ
-Route::middleware('auth')->group(function () {
+Route::middleware('verified')->group(function () {
     Route::get('/mypage', [ProfileController::class, 'edit'])->name('mypage');
     Route::patch('/mypage', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/mypage', [ProfileController::class, 'destroy'])->name('profile.destroy');
