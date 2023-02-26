@@ -59,9 +59,9 @@ const submit = () => {
                                 <Checkbox name="remember" v-model:checked="form.remember" />
                             </label>
 
-                            <Button class="h-10 w-full mt-4 font-bold text-center bg-gray-200 border border-gray-600 rounded hover:bg-amber-300" :disabled="form.processing">
+                            <button class="h-10 w-full mt-4 font-bold text-center bg-gray-200 border border-gray-600 rounded hover:bg-amber-300" :disabled="form.processing">
                                 ログイン
-                            </Button>
+                            </button>
                             
                             
                         </div>

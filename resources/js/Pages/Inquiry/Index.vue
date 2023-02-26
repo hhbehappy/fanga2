@@ -26,7 +26,7 @@ const submit = () => {
 
 <BasicLayout>
   <div class="min-h-screen w-screen pt-8 pb-10 mt-4 md:mt-0 bg-gray-100">
-    <div class="w-4/5 md:w-9/12 max-w-2xl mx-auto p-3 bg-white">
+    <div class="w-11/12 md:w-9/12 max-w-2xl mx-auto p-3 bg-white">
         <div class="mx-auto">
             <div class="flex w-full px-3 items-center justify-between border-b-4 border-gray-400">
               <h1 class="pb-1 font-bold md:text-xl text-gray-700 leading-tight">お問い合わせ</h1>
@@ -59,7 +59,7 @@ const submit = () => {
           </form>
         </div>
       </div>
-        <p class="w-4/5 md:w-9/12 max-w-2xl pt-3 mx-auto text-sm">お問い合わせを送信すると自動返信メールが送信されます。<br>動画の追加は<Link :href="route('bbs')" class="text-blue-500">BBS</Link>でも受け付けています。</p>
+        <p class="w-11/12 md:w-9/12 max-w-2xl pt-3 mx-auto text-sm">お問い合わせを送信すると自動返信メールが送信されます。<br>動画の追加は<Link :href="route('bbs')" class="text-blue-500">BBS</Link>でも受け付けています。</p>
   </div>
 </BasicLayout>
 </template>
