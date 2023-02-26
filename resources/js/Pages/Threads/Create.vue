@@ -23,7 +23,7 @@ const submitFunction = () => {
 
   <div class="min-h-screen w-screen mt-5 md:mt-0 bg-gray-100">
     <div class="pt-8">
-      <h1 class="w-11/12 max-w-3xl mx-auto mb-6 px-4 font-bold md:text-xl text-gray-800 leading-tight border-b-4 border-gray-400">BBS : 新しいスレッドを作成する</h1>
+      <h1 class="w-11/12 max-w-3xl mx-auto mb-6 px-2 font-bold md:text-xl text-gray-800 leading-tight border-b-4 border-gray-400">BBS : 新しいスレッドを作成する</h1>
     </div>
     <InputError class="my-4 text-center text-lg" :message="form.errors.title" />
     <InputError class="my-4 text-center text-lg" :message="form.errors.content" />
