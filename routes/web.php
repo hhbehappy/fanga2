@@ -38,9 +38,12 @@ Route::controller(FangaController::class)->group(function ()
     Route::get('/info/about', 'about')->name('about');
     Route::get('/info/privacy', 'privacy')->name('privacy');
     Route::get('/info/rule', 'rule')->name('rule');
-
+    // ログアウト
+    Route::get('/logout',  'logout')->name('fanga.logout');
+    // 検索ページ
+    Route::get('/search/fanza', 'searchfanza')->name('fanga.searchfanza');
+    Route::get('/search/duga', 'searchduga')->name('fanga.searchduga');
 });
-Route::get('/logout', [FangaController::class, 'logout'])->name('fanga.logout');
 
 // マイページ
 Route::middleware('auth')->group(function () {
@@ -48,10 +51,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/mypage', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/mypage', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-// 検索ページ
-Route::get('/search/fanza', [FangaController::class, 'searchfanza'])->name('fanga.searchfanza');
-Route::get('/search/duga', [FangaController::class, 'searchduga'])->name('fanga.searchduga');
 
 // 気になる動画機能
 Route::get('/nice/{content_id}/{fanza_id}/{duga_id}/{type}', [NiceController::class, 'nice'])->name('nice');

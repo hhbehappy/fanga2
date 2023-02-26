@@ -54,8 +54,8 @@ const submit = () => {
                             <TextInput id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
                             <InputError class="mt-2" :message="form.errors.password_confirmation" />
 
-                            <p class="mt-6 text-xs">
-                                <Link :href="route('fanga')" class="text-blue-500 hover:underline">
+                            <p class="mt-8 text-xs">
+                                <Link :href="route('rule')" class="text-blue-500 hover:underline">
                                 利用規約
                             </Link>に同意のうえで、登録してください。</p>
                             <Button class="h-10 w-full mt-2 font-bold text-center bg-gray-200 border border-gray-600 rounded hover:bg-amber-300" :disabled="form.processing">

@@ -1,14 +1,14 @@
-<x-mail::message>
+{{-- <x-mail::message> --}}
 {{-- Greeting --}}
-@if (! empty($greeting))
-# {{ $greeting }}
+{{-- @if (! empty($greeting))
+# {{ $greeting }} --}}
 {{-- @else --}}
 {{-- @if ($level === 'error')
 # @lang('Whoops!')
 @else
 # @lang('Hello!')
 @endif --}}
-@endif
+{{-- @endif --}}
 
 {{-- Intro Lines --}}
 @foreach ($introLines as $line)
@@ -39,8 +39,7 @@
 {{-- @if (! empty($salutation))
 {{ $salutation }}
 @else --}}
-@lang('送信元'),<br>
-{{ config('app.name') }}
+@lang('送信元') <a href="https://fanga.jp">{{ config('app.name') }}</a>
 {{-- @endif --}}
 
 {{-- Subcopy --}}
@@ -55,4 +54,4 @@
 ) <span class="break-all">[{{ $displayableActionUrl }}]({{ $actionUrl }})</span>
 </x-slot:subcopy>
 @endisset --}}
-</x-mail::message>
+{{-- </x-mail::message> --}}
