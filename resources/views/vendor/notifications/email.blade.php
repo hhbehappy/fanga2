@@ -2,7 +2,7 @@
 {{-- Greeting --}}
 @if (! empty($greeting))
 # {{ $greeting }}
-@else
+{{-- @else --}}
 {{-- @if ($level === 'error')
 # @lang('Whoops!')
 @else
@@ -41,7 +41,7 @@
 @else --}}
 @lang('送信元'),<br>
 {{ config('app.name') }}
-@endif
+{{-- @endif --}}
 
 {{-- Subcopy --}}
 {{-- @isset($actionText)
