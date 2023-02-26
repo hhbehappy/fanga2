@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import GuestLayout from '@/Layouts/GuestLayout.vue';
+import BasicLayout from '@/Layouts/BasicLayout.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
@@ -18,32 +18,29 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
 </script>
 
 <template>
-    <GuestLayout>
-        <Head title="Email Verification" />
+    <BasicLayout>
+    <Head title="メールアドレスを確認してください。" />
 
-        <div class="mb-4 text-sm text-gray-600">
-            Thanks for signing up! Before getting started, could you verify your email address by clicking on the link
-            we just emailed to you? If you didn't receive the email, we will gladly send you another.
-        </div>
-
-        <div class="mb-4 font-medium text-sm text-green-600" v-if="verificationLinkSent">
-            A new verification link has been sent to the email address you provided during registration.
-        </div>
-
-        <form @submit.prevent="submit">
-            <div class="mt-4 flex items-center justify-between">
-                <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Resend Verification Email
-                </PrimaryButton>
-
-                <Link
-                    :href="route('logout')"
-                    method="post"
-                    as="button"
-                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >Log Out</Link
-                >
+    <div class="min-h-screen w-screen bg-gray-100 pt-10">
+        <div class="w-4/5 md:w-[480px] mx-auto bg-white p-5">
+            <div class="mx-auto">
+                <div class="mb-4 text-gray-600">
+                    ご登録ありがとうございます。<br>ご登録いただいたメールアドレスに確認用のリンクを送信しました。始める前にリンクを選択してメールアドレスを確認してください。
+                </div>
+        
+                <div class="mb-4 font-medium text-green-600" v-if="verificationLinkSent">
+                    ご登録いただいたメールアドレスに確認用のメールを送信しました。
+                </div>
+        
+                <form @submit.prevent="submit">
+                    <div class="mt-4 flex items-center justify-between">
+                        <button :class="{ 'opacity-25': form.processing }" :disabled="form.processing" class="h-10 w-full mt-4 font-bold text-center bg-gray-200 border border-gray-600 rounded hover:bg-amber-300">
+                            確認用のメールをもう一度送る
+                        </button>
+                    </div>
+                </form>
             </div>
-        </form>
-    </GuestLayout>
+        </div>
+    </div>
+    </BasicLayout>
 </template>
