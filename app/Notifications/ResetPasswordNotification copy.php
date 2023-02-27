@@ -2,12 +2,16 @@
 
 namespace App\Notifications;
 
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Lang;
 
-class ResetPassword extends Notification
+class ResetPasswordNotification extends Notification
 {
+    use Queueable;
+
     /**
      * The password reset token.
      *
@@ -41,10 +45,10 @@ class ResetPassword extends Notification
     }
 
     /**
-     * Get the notification's channels.
+     * Get the notification's delivery channels.
      *
      * @param  mixed  $notifiable
-     * @return array|string
+     * @return array
      */
     public function via($notifiable)
     {
@@ -52,7 +56,7 @@ class ResetPassword extends Notification
     }
 
     /**
-     * Build the mail representation of the notification.
+     * Get the mail representation of the notification.
      *
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
@@ -79,7 +83,7 @@ class ResetPassword extends Notification
             ->subject(Lang::get('パスワードの再設定'))
             ->line(Lang::get('こちらからパスワードの再設定を行ってください'))
             ->action(Lang::get('パスワードの再設定を行う'), $url)
-            ->line(Lang::get('パスワードの再設定が必要でない場合は何も操作しないようお願いいたします。'));
+            ->line(Lang::get('パスワードの再設定が必要でない場合は何も操作しないでください。'));
     }
 
     /**
@@ -120,5 +124,18 @@ class ResetPassword extends Notification
     public static function toMailUsing($callback)
     {
         static::$toMailCallback = $callback;
+    }
+
+    /**
+     * Get the array representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return array
+     */
+    public function toArray($notifiable)
+    {
+        return [
+            //
+        ];
     }
 }
