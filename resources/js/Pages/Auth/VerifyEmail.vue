@@ -25,17 +25,17 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
         <div class="w-4/5 md:w-[480px] mx-auto bg-white p-5">
             <div class="mx-auto">
                 <div class="mb-4 text-gray-600">
-                    ご登録ありがとうございます。<br>ご登録いただいたメールアドレスに確認用のリンクを送信しました。始める前にリンクを選択してメールアドレスを確認してください。
+                    ご登録ありがとうございます。<br>ご登録いただいたメールアドレスに認証用のリンクを送信しました。はじめにメールアドレスの認証を行なってください。
                 </div>
         
                 <div class="mb-4 font-medium text-green-600" v-if="verificationLinkSent">
-                    ご登録いただいたメールアドレスに確認用のメールを送信しました。
+                    ご登録いただいたメールアドレスに認証用のメールを再送信しました。
                 </div>
         
                 <form @submit.prevent="submit">
                     <div class="mt-4 flex items-center justify-between">
                         <button :class="{ 'opacity-25': form.processing }" :disabled="form.processing" class="h-10 w-full mt-4 font-bold text-center bg-gray-200 border border-gray-600 rounded hover:bg-amber-300">
-                            確認用のメールをもう一度送る
+                            認証用のメールをもう一度送る
                         </button>
                     </div>
                 </form>

@@ -9,10 +9,14 @@
 <body>
     <p>お問い合わせ内容は次のとおりです。</p>
     ーーーーーーーーーーーーーーーーー
-	<p>お名前：<br>{{$inputs['name']}}さんからのお問い合わせです。</p>
+	<p>お名前：{{$inputs['name']}}</p>
 	<p>メールアドレス：<br>{{$inputs['email']}}</p>
 	<p>お問い合わせ内容：<br>{{$inputs['message']}}</p>
     ーーーーーーーーーーーーーーーーー
     <p>このメールは自動返信メールです。</p>
+    <p class="">
+        サイト名:<a href="https://fanga.jp/" class="">FANGA</a><br>
+        URL:https://fanga.jp/
+    </p>
 </body>
 </html>
