@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DugaPrivateMemo extends Model
 {
-    use HasFactory;
+    use HasFactory,SerializeDate;
 
     protected $table = "duga_private_memos";
     protected $casts = [
