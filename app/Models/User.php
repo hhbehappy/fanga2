@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\ResetPasswordNotification;
+use App\Notifications\CustomVerifyEmail;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -43,15 +44,15 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function sendPasswordResetNotification($token)
-    {
-        $url = 'https://fanga.jp/reset-password?token='.$token;
-        $this->notify(new ResetPasswordNotification($url));
-    }
+    // public function sendPasswordResetNotification($token)
+    // {
+    //     $url = 'https://fanga.jp/reset-password?token='.$token;
+    //     $this->notify(new ResetPasswordNotification($url));
+    // }
 
-    public function sendEmailVerificationNotification(){
-        $this->notify(new \App\Notifications\CustomVerifyEmail());
-    }
+    // public function sendEmailVerificationNotification(){
+    //     $this->notify(new CustomVerifyEmail());
+    // }
 
     public function fanza() {
         return $this->hasMany('App\Models\Fanza');
