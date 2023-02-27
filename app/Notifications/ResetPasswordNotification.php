@@ -41,6 +41,7 @@ class ResetPasswordNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+            ->from('support@fanga.jp', 'FANGA')
             ->subject('パスワードの再設定')
             ->line('こちらからパスワードの再設定を行ってください')
             ->action('パスワードの再設定を行う', $this->url)

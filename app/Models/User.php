@@ -49,6 +49,10 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notify(new ResetPasswordNotification($url));
     }
 
+    public function sendEmailVerificationNotification(){
+        $this->notify(new \App\Notifications\CustomVerifyEmail());
+    }
+
     public function fanza() {
         return $this->hasMany('App\Models\Fanza');
     }
