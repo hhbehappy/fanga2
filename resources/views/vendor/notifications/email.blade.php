@@ -21,7 +21,7 @@
 
 {{-- Outro Lines --}}
 @foreach ($outroLines as $line)
-<p class="mt-5">{{ $line }}</p>
+{{ $line }}
 @endforeach
 
 {{-- Salutation --}}
@@ -35,7 +35,7 @@
 @isset($actionText)
 <x-slot:subcopy>
 @lang(
-    "上のボタンが有効でない場合は、以下の URL をコピーして貼り付けてください。\n",
+    "上のボタンが有効でない場合は、こちらの URL をコピーしてブラウザに貼り付けてください。\n",
     [
         'actionText' => $actionText,
     ]
