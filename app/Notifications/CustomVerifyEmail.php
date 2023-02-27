@@ -20,11 +20,24 @@ class CustomVerifyEmail extends Notification
      *
      * @return void
      */
-    public static $toMailCallback;
     public function __construct()
     {
         //
     }
+
+    /**
+     * The callback that should be used to create the verify email URL.
+     *
+     * @var \Closure|null
+     */
+    public static $createUrlCallback;
+
+    /**
+     * The callback that should be used to build the mail message.
+     *
+     * @var \Closure|null
+     */
+    public static $toMailCallback;
 
     /**
      * Get the notification's delivery channels.
@@ -51,12 +64,23 @@ class CustomVerifyEmail extends Notification
             return call_user_func(static::$toMailCallback, $notifiable, $verificationUrl);
         }
 
+        return $this->buildMailMessage($verificationUrl);
+    }
+
+    /**
+     * Get the verify email notification mail message for the given URL.
+     *
+     * @param  string  $url
+     * @return \Illuminate\Notifications\Messages\MailMessage
+     */
+    protected function buildMailMessage($url)
+    {
         return (new MailMessage)
-                    ->from('support@fanga.jp', 'FANGA')
-                    ->subject(Lang::get('メールアドレスの認証'))
-                    ->line('こちらからメールアドレスの認証を行ってください。')
-                    ->action('メールアドレスの認証を行う', $verificationUrl)
-                    ->line('内容にお心当たりがない場合は、本メールは破棄して頂けますようお願いいたします。');
+            ->from('support@fanga.jp', 'FANGA')
+            ->subject(Lang::get('メールアドレスの認証'))
+            ->line(Lang::get('こちらからメールアドレスの認証を行ってください。'))
+            ->action(Lang::get('メールアドレスの認証を行う'), $url)
+            ->line(Lang::get('内容にお心当たりがない場合は、本メールは破棄して頂けますようお願いいたします。'));
     }
 
     /**
@@ -67,6 +91,9 @@ class CustomVerifyEmail extends Notification
      */
     protected function verificationUrl($notifiable)
     {
+        if (static::$createUrlCallback) {
+            return call_user_func(static::$createUrlCallback, $notifiable);
+        }
 
         return URL::temporarySignedRoute(
             'verification.verify',
@@ -76,6 +103,17 @@ class CustomVerifyEmail extends Notification
                 'hash' => sha1($notifiable->getEmailForVerification()),
             ]
         );
+    }
+
+    /**
+     * Set a callback that should be used when creating the email verification URL.
+     *
+     * @param  \Closure  $callback
+     * @return void
+     */
+    public static function createUrlUsing($callback)
+    {
+        static::$createUrlCallback = $callback;
     }
 
     /**
