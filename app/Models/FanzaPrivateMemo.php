@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FanzaPrivateMemo extends Model
 {
-    use HasFactory;
+    use HasFactory,SerializeDate;
 
     protected $table = "fanza_private_memos";
     protected $casts = [
