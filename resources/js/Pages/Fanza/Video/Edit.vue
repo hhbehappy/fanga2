@@ -52,34 +52,26 @@ const toggleStatus = () => { isShow.value = !isShow.value}
     <h1 class="font-bold md:text-xl mb-8 px-4 md:mr-8 bg-gray-200 p-2 border-b-2 border-gray-500"><span class="text-red-500">【FANZA】</span>{{ videoid.title }}</h1>
     <p class="mb-7"><NiceFlashMessage /></p>
     <div class="container mx-auto flex flex-wrap md:flex-nowrap">
-        <div class="mx-14 md:mx-2 w-[190px] shrink-0">
+        <div class="mb-6 mx-10 md:mx-2 w-[190px] shrink-0">
           <button @click="toggleStatus" type="button" data-micromodal-trigger="modal-1" href='javascript:;'>
             <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id  + '/' + videoid.content_id + 'ps.jpg'" :alt="'【FANZA】' + videoid.title + 'のメイン画像'" class="h-56">
             <span class="text-sm text-blue-600">イメージを拡大する</span>
           </button>
-          <div class="flex border border-black p-1 ml-1 my-6 rounded items-center w-40">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 inline-block text-red-500">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
-              </svg>
-              <span class="mx-1 text-sm"><a target="_self" rel="noopener" :href="'https://www.dmm.co.jp/litevideo/-/part/=/cid='+ videoid.content_id + '/size=560_360/'">無料サンプル動画</a></span>
-              <!-- <span class="mx-1 text-sm"><a target="_self" rel="noopener" :href="'https://www.dmm.co.jp/litevideo/-/part/=/cid='+ videoid.content_id + '/size=560_360/affi_id=maxjpblog-995/'">無料サンプル動画</a></span> -->
-          </div>
         </div>
         <div class="mx-6 lg:ml-6 w-full md:w-3/5 lg:w-[380px] shrink-0">
           <div v-if="$page.props.auth.user" class="my-2">
-            <div v-if="nice && nice.user_id === user_id" class="w-44 px-1 border-b border-pink-400 rounded">
+            <div v-if="nice && nice.user_id === user_id" class="w-44 mb-4 pl-0.5 border border-gray-600">
               <Link :href="route('unnice', { content_id: videoid.content_id})">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-1 w-4 h-4 text-pink-400 inline-block">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mx-1 mb-0.5 w-4 h-4 text-pink-400 inline-block">
+                  <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
                 </svg>
                   <span class="text-sm">気になる動画をやめる</span>
               </Link>
           </div>
-          <div v-else class="w-48 px-2 border-b border-pink-400">
+          <div v-else class="w-48 mb-4 pl-0.5 border border-gray-600">
               <Link :href="route('nice', { content_id: videoid.content_id, fanza_id: props.fanza_id, duga_id: '1', type : 'fanza' })">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1 w-4 h-4 inline-block text-pink-400">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-1 mb-0.5 w-4 h-4 text-pink-400 inline-block">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                 </svg>
                 <span class="text-sm">気になる動画に登録する</span>
               </Link>
@@ -182,17 +174,16 @@ const toggleStatus = () => { isShow.value = !isShow.value}
                   配信元
                 </td>
                 <td>
-                  <a :href="'https://www.dmm.co.jp/digital/videoa/-/detail/=/cid=' + videoid.content_id + '/?dmmref=recommend1_detail&i3_ref=recommend&i3_ord=2'" target="_blank" rel="noopener" class="text-blue-500">FANZA</a>
+                  <a :href="'https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D' + videoid.content_id + '%2F&af_id=maxjpblog-017&ch=link_tool&ch_id=text'" rel="nofollow" target="_blank"  class="text-blue-500">FANZA</a>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
       <div class="hidden lg:block w-full mr-8">
-        <div style="width:100%; padding-top: 75%; position:relative;"><iframe width="100%" height="100%" max-width="1280px" style="position: absolute; top: 0; left: 0;" :src="'https://www.dmm.co.jp/litevideo/-/part/=/cid=' + videoid.content_id + '/size=1280_720/'" scrolling="no" frameborder="0" allowfullscreen></iframe></div>
-          <!-- <div style="width:100%; padding-top: 75%; position:relative;">
-            <iframe width="85%" height="85%" max-width="1280px" style="position: absolute; top: 0; left: 0;" :src="'https://www.dmm.co.jp/litevideo/-/part/=/affi_id=maxjpblog-001/cid=' + videoid.content_id + '/size=1280_720/'" scrolling="no" frameborder="0" allowfullscreen></iframe>
-          </div> -->
+        <div style="width:100%; padding-top: 75%; position:relative;">
+          <iframe width="85%" height="85%" max-width="1280px" style="position: absolute; top: 0; left: 0;" :src="'https://www.dmm.co.jp/litevideo/-/part/=/affi_id=maxjpblog-017/cid=' + videoid.content_id + '/size=1280_720/'" scrolling="no" frameborder="0" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
     <!-- 画像リスト -->
@@ -233,7 +224,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
               <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + '-10.jpg'" :alt="'【FANZA】' + videoid.title + '10枚目の画像'" class="h-[6rem]">
             </div>
             <div class="w-30 mr-12 mt-4">
-              <a :href="'https://www.dmm.co.jp/digital/videoa/-/detail/=/cid=' + videoid.content_id + '/?dmmref=recommend1_detail&i3_ref=recommend&i3_ord=2'" target="_blank" rel="noopener">
+              <a :href="'https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D' + videoid.content_id + '%2F&af_id=maxjpblog-017&ch=link_tool&ch_id=text'" rel="nofollow" target="_blank">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 ml-3">
               <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />
               </svg>
@@ -245,10 +236,9 @@ const toggleStatus = () => { isShow.value = !isShow.value}
     </button>
     <!-- サンプル動画 -->
     <div class="block lg:hidden w-1/2 mx-auto">
-      <div style="width:100%; padding-top: 75%; position:relative;"><iframe width="100%" height="100%" max-width="1280px" style="position: absolute; top: 0; left: 0;" :src="'https://www.dmm.co.jp/litevideo/-/part/=/cid=' + videoid.content_id + '/size=1280_720/'" scrolling="no" frameborder="0" allowfullscreen></iframe></div>
-      <!-- <div style="width:100%; padding-top: 75%; position:relative;">
-        <iframe width="85%" height="85%" max-width="1280px" style="position: absolute; top: 0; left: 0;" :src="'https://www.dmm.co.jp/litevideo/-/part/=/affi_id=maxjpblog-001/cid=' + videoid.content_id + '/size=1280_720/'" scrolling="no" frameborder="0" allowfullscreen></iframe>
-      </div> -->
+      <div style="width:100%; padding-top: 75%; position:relative;">
+        <iframe width="85%" height="85%" max-width="1280px" style="position: absolute; top: 0; left: 0;" :src="'https://www.dmm.co.jp/litevideo/-/part/=/affi_id=maxjpblog-017/cid=' + videoid.content_id + '/size=1280_720/'" scrolling="no" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
     <!--メモ -->
     <div id="editmemo" class="border-b-4 border-gray-500 mt-8">
@@ -390,11 +380,11 @@ const toggleStatus = () => { isShow.value = !isShow.value}
               <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-10.jpg'" :alt="'【FANZA】' + videoid.title + '10枚目の画像'" class="h-[30rem]">
             </div>
             <div class="w-80 mx-3 self-center">
-              <a :href="'https://www.dmm.co.jp/digital/videoa/-/detail/=/cid=' + videoid.content_id + '/?dmmref=recommend1_detail&i3_ref=recommend&i3_ord=2'" target="_blank" rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-32 h-32 mx-10 text-white">
+              <a :href="'https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D' + videoid.content_id + '%2F&af_id=maxjpblog-017&ch=link_tool&ch_id=text'" rel="nofollow" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 ml-14 text-white">
               <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />
               </svg>
-              <span class="mx-10 font-bold text-2xl text-white">詳細ページへ</span></a>
+              <span class="ml-10 font-bold text-lg text-white">詳細ページへ</span></a>
 
             </div>
           </div>
