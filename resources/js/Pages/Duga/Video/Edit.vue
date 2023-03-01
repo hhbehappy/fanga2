@@ -60,105 +60,105 @@ const toggleStatus = () => { isShow.value = !isShow.value}
         </div>
         <div class="mx-6 lg:ml-6 w-full md:w-3/5 lg:w-[280px] shrink-0">
             <div v-if="$page.props.auth.user" class="my-2">
-              <div v-if="nice && nice.user_id === user_id " class="w-44 px-1 border-b border-pink-400">
+              <div v-if="nice" class="w-44 mb-4 pl-0.5 border border-gray-600">
                 <Link :href="route('unnice', { content_id: dugavideo.productid})">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-1 w-4 h-4 text-pink-400 inline-block">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mx-1 mb-0.5 w-4 h-4 text-pink-400 inline-block">
+                    <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
                   </svg>
                     <span class="text-sm">気になる動画をやめる</span>
                 </Link>
             </div>
-            <div v-else class="w-48 px-2 border-b border-pink-400">
+            <div v-else class="w-48 mb-4 pl-0.5 border border-gray-600">
                 <Link :href="route('nice', { content_id: dugavideo.productid, fanza_id: '1', duga_id: props.duga_id, type : 'duga' })">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1 w-4 h-4 inline-block text-pink-400">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-1 mb-0.5 w-4 h-4 text-pink-400 inline-block">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                   </svg>
                   <span class="text-sm">気になる動画に登録する</span>
                 </Link>
               </div>
             </div>
             <div class="text-sm mb-2">気になる動画の登録数 : {{ nicecount }}</div>
-            <!-- <table>
-              <tbody>
-                <tr>
-                  <td class="w-24 h-8 py-1 text-sm">配信開始日</td>
-                  <td>
-                    <span v-if="dugavideo.date" class="text-sm">{{ date }}</span>
-                    <span v-else class="text-2xl">----</span>
+            <table>
+            <tbody>
+              <tr>
+                <td class="w-24 h-8 py-1 text-sm">配信開始日</td>
+                <td>
+                  <span v-if="dugavideo.date" class="text-sm">{{ date }}</span>
+                  <span v-else class="text-2xl">----</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="w-24 h-8 py-2 text-sm">収録時間</td>
+                <td>
+                  <span v-if="dugavideo.volume" class="text-sm">{{ dugavideo.volume }}分</span>
+                  <span v-else class="text-2xl">----</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="w-24 h-8 py-2 text-sm">作品ID</td>
+                <td>
+                  <span v-if="dugavideo.productid" class="text-sm">{{ dugavideo.productid }}</span>
+                  <span v-else class="text-2xl">----</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="w-24 h-10 py-2 text-sm">出演者</td>
+                <td>
+                  <span v-if="dugavideo.performer" class="border border-gray-300 lg:border-none rounded p-1 text-blue-500 text-sm">
+                    <a :href="route('dlist.show', { keyword: dugavideo.performer })">{{ dugavideo.performer }}</a></span>
+                  <span v-else class="text-2xl">----</span>
+                </td>
+              </tr>
+              <tr class="">
+                <td class="w-24 h-10 py-2 text-sm">シリーズ</td>
+                <td>
+                  <span v-if="dugavideo.series" class="border border-gray-300 lg:border-none rounded p-1 text-blue-500 text-sm">
+                    <a :href="route('dlist.show', { keyword: dugavideo.series })">{{ dugavideo.series }}</a></span>
+                  <span v-else class="text-2xl">----</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="w-24 h-10 py-2 text-sm">メーカー</td>
+                <td>
+                  <span v-if="dugavideo.maker" class="border border-gray-300 lg:border-none rounded p-1 text-blue-500 text-sm">
+                    <a :href="route('dlist.show', { keyword: dugavideo.maker })">{{ dugavideo.maker }}</a></span>
+                  <span v-else class="text-2xl">----</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="w-24 h-10 py-2 text-sm">レーベル</td>
+                <td>
+                  <span v-if="dugavideo.label" class="border border-gray-300 lg:border-none rounded p-1 text-blue-500 text-sm">
+                    <a :href="route('dlist.show', { keyword: dugavideo.label })">{{ dugavideo.label }}</a></span>
+                  <span v-else class="text-2xl">----</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="w-24 h-10 py-2 text-sm">監督</td>
+                <td>
+                  <span v-if="dugavideo.director" class="border border-gray-300 lg:border-none rounded p-1 text-blue-500 text-sm">
+                    <a :href="route('dlist.show', { keyword: dugavideo.director })">{{ dugavideo.director }}</a></span>
+                  <span v-else class="text-2xl">----</span>
                   </td>
-                </tr>
-                <tr>
-                  <td class="w-24 h-8 py-2 text-sm">収録時間</td>
-                  <td>
-                    <span v-if="dugavideo.volume" class="text-sm">{{ dugavideo.volume }}分</span>
-                    <span v-else class="text-2xl">----</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="w-24 h-8 py-2 text-sm">作品ID</td>
-                  <td>
-                    <span v-if="dugavideo.productid" class="text-sm">{{ dugavideo.productid }}</span>
-                    <span v-else class="text-2xl">----</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="w-24 h-10 py-2 text-sm">出演者</td>
-                  <td>
-                    <span v-if="dugavideo.performer" class="border border-gray-300 lg:border-none rounded p-1 text-blue-500 text-sm">
-                      <a :href="route('dugappv.show', { keyword: dugavideo.performer })">{{ dugavideo.performer }}</a></span>
-                    <span v-else class="text-2xl">----</span>
-                  </td>
-                </tr>
-                <tr class="">
-                  <td class="w-24 h-10 py-2 text-sm">シリーズ</td>
-                  <td>
-                    <span v-if="dugavideo.series" class="border border-gray-300 lg:border-none rounded p-1 text-blue-500 text-sm">
-                      <a :href="route('dugappv.show', { keyword: dugavideo.series })">{{ dugavideo.series }}</a></span>
-                    <span v-else class="text-2xl">----</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="w-24 h-10 py-2 text-sm">メーカー</td>
-                  <td>
-                    <span v-if="dugavideo.maker" class="border border-gray-300 lg:border-none rounded p-1 text-blue-500 text-sm">
-                      <a :href="route('dugappv.show', { keyword: dugavideo.maker })">{{ dugavideo.maker }}</a></span>
-                    <span v-else class="text-2xl">----</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="w-24 h-10 py-2 text-sm">レーベル</td>
-                  <td>
-                    <span v-if="dugavideo.label" class="border border-gray-300 lg:border-none rounded p-1 text-blue-500 text-sm">
-                      <a :href="route('dugappv.show', { keyword: dugavideo.label })">{{ dugavideo.label }}</a></span>
-                    <span v-else class="text-2xl">----</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="w-24 h-10 py-2 text-sm">監督</td>
-                  <td>
-                    <span v-if="dugavideo.director" class="border border-gray-300 lg:border-none rounded p-1 text-blue-500 text-sm">
-                      <a :href="route('dugappv.show', { keyword: dugavideo.director })">{{ dugavideo.director }}</a></span>
-                    <span v-else class="text-2xl">----</span>
-                    </td>
-                </tr>
-                <tr>
-                  <td class="w-24 h-10 text-sm">カテゴリ</td>
-                  <td class="py-2">
-                    <div v-if="dugavideo.category" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                      <a :href="route('dugappv.show', { keyword: dugavideo.category })">{{ dugavideo.category }}</a></div>
-                    <div v-else></div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    配信元
-                  </td>
-                  <td>
-                    <a :href="dugavideo.affiliateurl" target="_blank" rel="noopener" class="text-blue-500">DUGA</a>
-                  </td>
-                </tr>
-              </tbody>
-            </table> -->
+              </tr>
+              <tr>
+                <td class="w-24 h-10 text-sm">カテゴリ</td>
+                <td class="py-2">
+                  <div v-if="dugavideo.category" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
+                    <a :href="route('dlist.show', { keyword: dugavideo.category })">{{ dugavideo.category }}</a></div>
+                  <div v-else></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  配信元
+                </td>
+                <td>
+                  <a :href="'https://click.duga.jp/ppv/' + dugavideo.productid + '/13153-31'" target="_blank" rel="noopener" class="text-blue-500">DUGA</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div class="hidden lg:block w-full mr-12">
           <video controls playsinline :poster="'https://affsample.duga.jp/unsecure/' + dugavideo.productid + '/noauth/flvcap.jpg'" preload="metadata">
@@ -173,10 +173,11 @@ const toggleStatus = () => { isShow.value = !isShow.value}
       </div>
       <!-- 画像リスト -->
       <button @click="toggleStatus" type="button" data-micromodal-trigger="modal-2" href='javascript:;'>
-        <div class="flex overflow-x-scroll m-6 hidden-scrollbar">
+        <div class="flex overflow-x-scroll m-6 pb-3 hidden-scrollbar">
           <div class="flex flex-none flex-nowrap">
             <div v-if="dugavideo.jacketimage" class="w-36 mr-5">
-              <img :src="'https://pic.duga.jp/unsecure/' + re_productid + '/noauth/jacket.jpg'" :alt="'【DUGA】' + dugavideo.title + 'のジャケット画像'" class="h-[6rem]">
+              <img :src="'https://pic.duga.jp/unsecure/' + re_productid + '/noauth/jacket.jpg'" :alt="'【DUGA】' + dugavideo.title + 'のジャケット画像'" class="h-[6rem] -mb-1">
+              <span class="text-xs text-blue-600">イメージを拡大する</span>
             </div>
             <div v-if="dugavideo.thumbnail01" class="mr-5">
               <img :src="dugavideo.thumbnail01" :alt="'【DUGA】' + dugavideo.title + 'の1枚目の画像'" class="h-[5rem]">
@@ -209,7 +210,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
               <img :src="dugavideo.thumbnail10" :alt="'【DUGA】' + dugavideo.title + 'の10枚目の画像'" class="h-[5rem]">
             </div>
             <div class="w-20 ml-4 mt-4">
-              <a :href="dugavideo.affiliateurl" target="_blank" rel="noopener">
+              <a :href="'https://click.duga.jp/ppv/' + dugavideo.productid + '/13153-31'" target="_blank" rel="noopener">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 ml-5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />
               </svg>
@@ -365,7 +366,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
               <img :src="dugavideo.thumbnail10" :alt="'【DUGA】' + dugavideo.title + 'の10枚目の画像'" class="h-[10rem]">
             </div>
             <div class="w-20 ml-4 mt-12">
-              <a :href="dugavideo.affiliateurl" target="_blank" rel="noopener">
+              <a :href="'https://click.duga.jp/ppv/' + dugavideo.productid + '/13153-31'" target="_blank" rel="noopener">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 ml-5 text-white">
               <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />
               </svg>
