@@ -17,14 +17,6 @@ use App\Models\Nice;
 
 class FanzaVideoController extends Controller
 {
-    public function memotype(Request $request)
-    {
-        $id = $request->id;
-
-        return Inertia::render('Fanza/Video/MemoType', [
-            'id' => $id
-        ]);
-    }
 
     public function create()
     {

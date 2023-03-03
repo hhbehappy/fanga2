@@ -17,9 +17,9 @@ import { Head, Link } from '@inertiajs/vue3';
           <p>
             当サイトは、完全リンクフリーです。
           </p>
-          <h2 class="pt-5 pb-1 font-bold md:text-xl leading-tight border-b-4 border-gray-400">メモの種類について</h2>
+          <h2 id="memotype" class="pt-5 pb-1 font-bold md:text-xl leading-tight border-b-4 border-gray-400">メモの種類について</h2>
           <p class="mb-5">メモは３種類あります。利用されると同時に<Link :href="route('rule')" class="text-blue-500 hover:underline">利用規約</Link>に同意したものとされます。</p>
-            <p class="w-24 my-2 py-1 px-2 font-semibold bg-amber-200 rounded-2xl">フリーメモ</p>
+            <p class="w-28 my-2 py-1 px-3 font-semibold border-l-4 border-b border-amber-200">フリーメモ</p>
             <ul class="leading-8 list-disc list-inside">
                 <li>会員登録せずに利用ができます。</li>
                 <li>5文字以上300文字以内でメモができます。</li>
@@ -27,17 +27,17 @@ import { Head, Link } from '@inertiajs/vue3';
                 <li>自分のメモが誰かに削除される可能性があります。</li>
             </ul>
             
-            <p class="w-20 py-1 px-2 mt-5 mb-2 font-semibold bg-blue-200 rounded-2xl">公開メモ</p>
+            <p class="w-24 py-1 px-3 mt-5 mb-2 font-semibold border-l-4 border-b border-blue-200">公開メモ</p>
             <ul class="leading-8 list-disc list-inside">
                 <li>無料会員登録後に利用ができます。</li>
                 <li>5文字以上500文字以内でメモができます。</li>
                 <li>公開時にニックネームを使用するか選択ができます。
-                    <p class="text-sm leading-7">（例）<span class="py-1 px-2 bg-blue-200 rounded-2xl">FANGAさんの公開メモ</span> または<span class="py-1 px-2 bg-blue-200 rounded-2xl">ログインユーザーの公開メモ</span></p>
+                    <p class="text-sm leading-7">（例）<span class="py-1 px-2 border-l-4 border-b border-blue-200">FANGAさんの公開メモ</span> または<span class="ml-2 py-1 px-2 border-l-4 border-b border-blue-200">ログインユーザーの公開メモ</span></p>
                 </li>
                 <li>公開メモの編集や削除はできません。</li>
                 <li>公開メモの内容によっては、運営側の判断により削除又は内容の一部を修正される可能性があります。</li>
             </ul>
-            <p class="w-24 mt-5 mb-2 py-1 px-2 font-semibold bg-red-200 rounded-2xl">非公開メモ</p>
+            <p class="w-28 mt-5 mb-2 py-1 px-3 font-semibold border-l-4 border-b border-red-200">非公開メモ</p>
             <ul class="leading-8 list-disc list-inside">
                 <li>無料会員登録後に利用ができます。</li>
                 <li>5文字以上500文字以内で、1作品につき2つまでメモができます。</li>

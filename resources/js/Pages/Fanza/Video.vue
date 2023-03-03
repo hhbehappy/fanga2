@@ -288,7 +288,7 @@ export default {
           </div>
       </button>
     <!-- サンプル動画 -->
-    <div class="block lg:hidden w-1/2 mx-auto my-4">
+    <div class="block lg:hidden w-4/5 md:w-1/2 mx-auto my-4">
       <div style="width:100%; padding-top: 75%; position:relative;">
         <iframe width="85%" height="85%" max-width="1280px" style="position: absolute; top: 0; left: 0;" :src="'https://www.dmm.co.jp/litevideo/-/part/=/affi_id=maxjpblog-017/cid=' + videoid.content_id + '/size=1280_720/'" scrolling="no" frameborder="0" allowfullscreen></iframe>
       </div>
@@ -302,7 +302,7 @@ export default {
         メモ
       </h2>
       <p class="mr-5 text-blue-500">
-        <Link :href="route('fvideo.memotype', { id: videoid.content_id })" class="cursor-pointer">
+        <Link :href="route('about') + '#memotype'" class="cursor-pointer hover:underline">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mb-1 -mr-1 inline-block">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
           </svg>
@@ -315,7 +315,7 @@ export default {
     <div v-for="fanza_private_memo in fanza_private_memos" :key="fanza_private_memo.id" class="border-dotted border-b border-gray-500 p-2 mx-5">
         <div class="flex flex-wrap mb-3 justify-between items-center">
           <div>
-            <span class="bg-red-200 p-1 px-3 rounded-2xl text-xs font-bold">
+            <span class="border-l-4 border-b border-red-200 p-1 px-3  text-xs font-bold">
               {{ fanza_private_memo.name }}さんの非公開メモ</span>
             <span class="w-28 mt-2 ml-4 text-sm text-zinc-500 inline-block">
               {{ fanza_private_memo.updated_at }}</span>
@@ -348,9 +348,9 @@ export default {
       <div v-if="fanza_release_memo.release" class="border-dotted border-b border-gray-500 p-2 mx-5">
         <div class="flex flex-wrap mb-3 justify-between items-center">
           <div>
-            <span v-if="fanza_release_memo.nickname === 1 && fanza_release_memo.user_id != NULL" class="bg-blue-200 p-1 px-3 rounded-2xl text-xs font-bold">{{ fanza_release_memo.name }}さんのメモ</span>
-            <span v-else-if="fanza_release_memo.nickname === 0 && fanza_release_memo.user_id != NULL" class="bg-blue-200 p-1 px-3 rounded-2xl text-xs font-bold">ログインユーザーのメモ</span>
-            <span v-else class="bg-blue-200 p-1 px-3 rounded-2xl text-xs font-bold">退会済みユーザーのメモ</span>
+            <span v-if="fanza_release_memo.nickname === 1 && fanza_release_memo.user_id != NULL" class="border-l-4 border-b border-blue-200 p-1 px-3 text-xs font-bold">{{ fanza_release_memo.name }}さんのメモ</span>
+            <span v-else-if="fanza_release_memo.nickname === 0 && fanza_release_memo.user_id != NULL" class="border-l-4 border-b border-blue-200 p-1 px-3 text-xs font-bold">ログインユーザーのメモ</span>
+            <span v-else class="border-l-4 border-b border-blue-200 p-1 px-3 text-xs font-bold">退会済みユーザーのメモ</span>
             <span class="w-28 mt-2 ml-4 text-sm text-zinc-500 inline-block">
             {{ fanza_release_memo.updated_at }}
             </span>
@@ -383,7 +383,7 @@ export default {
     <div v-for="fanza_free_memo in fanza_free_memos" :key="fanza_free_memo.id" class="border-dotted border-b border-gray-500 p-2 mx-5">
       <div class="flex flex-wrap mb-3 justify-between items-center">
         <div>
-          <span class="bg-amber-200 p-1 px-3 rounded-2xl text-xs font-bold">フリーメモ</span>
+          <span class="border-l-4 border-b border-amber-200 p-1 px-3 text-xs font-bold">フリーメモ</span>
           <span class="w-28 mt-2 ml-4 text-sm text-zinc-500 inline-block">
           {{ fanza_free_memo.updated_at }}
           </span>

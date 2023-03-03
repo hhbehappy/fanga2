@@ -6,12 +6,15 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreDugaReleaseMemoRequest;
 use App\Http\Requests\UpdateDugaReleaseMemoRequest;
 use App\Models\DugaReleaseMemo;
+use App\Models\Duga;
 
 class DugaReleaseMemoController extends Controller
 {
     public function store(StoreDugaReleaseMemoRequest $request, $duga_id, $productid)
     {
-        // dd($duga_id);
+        $duga = Duga::find($productid);
+        $duga->touch();
+
         $re_productid = str_replace("-", "/", $productid);
 
         DugaReleaseMemo::create([

@@ -17,14 +17,6 @@ use App\Models\Nice;
 
 class DugaVideoController extends Controller
 {
-    public function memotype(Request $request)
-    {
-        $id = $request->id;
-
-        return Inertia::render('Duga/Video/MemoType', [
-            'id' => $id
-        ]);
-    }
 
     public function create(){
 
@@ -40,7 +32,7 @@ class DugaVideoController extends Controller
             'hits'          => '100',
             'offset'        => '',
             'sort'          => '',
-            'keyword'       => 'glayz-1207',
+            'keyword'       => '',
             'output'        => 'json',
             'callback'      =>'',
             );

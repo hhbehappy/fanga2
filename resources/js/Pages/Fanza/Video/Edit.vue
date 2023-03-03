@@ -235,7 +235,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
         </div>
     </button>
     <!-- サンプル動画 -->
-    <div class="block lg:hidden w-1/2 mx-auto">
+    <div class="block lg:hidden w-4/5 md:w-1/2 mx-auto my-4">
       <div style="width:100%; padding-top: 75%; position:relative;">
         <iframe width="85%" height="85%" max-width="1280px" style="position: absolute; top: 0; left: 0;" :src="'https://www.dmm.co.jp/litevideo/-/part/=/affi_id=maxjpblog-017/cid=' + videoid.content_id + '/size=1280_720/'" scrolling="no" frameborder="0" allowfullscreen></iframe>
       </div>
@@ -307,7 +307,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
         <div v-for="fanza_private_memo in fanza_private_memos" :key="fanza_private_memo.id">
           <div v-if="fanza_private_memo.private && props.type === 'private' ">
             <div class="border-dotted border-b border-gray-500 p-2 mb-6">
-              <p class="mb-3"><span class="bg-red-200 p-1 px-3 rounded-2xl text-xs font-bold">{{ fanza_private_memo.name }}さんの非公開メモ</span><span class="ml-6 text-sm text-zinc-500">
+              <p class="mb-3"><span class="border-l-4 border-b border-red-200 p-1 px-3 text-xs font-bold">{{ fanza_private_memo.name }}さんの非公開メモ</span><span class="ml-6 text-sm text-zinc-500">
               {{ fanza_private_memo.updated_at }}
               </span></p>
               <div class="flex items-start">
