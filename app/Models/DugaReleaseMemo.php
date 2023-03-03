@@ -9,6 +9,7 @@ class DugaReleaseMemo extends Model
 {
     use HasFactory,SerializeDate;
 
+    protected $touches = ['duga'];
     protected $table = "duga_release_memos";
     protected $casts = [
         'updated_at' => 'datetime:Y年m月d日',
@@ -31,6 +32,6 @@ class DugaReleaseMemo extends Model
 
     public function duga()
     {
-        return $this->belongsTo(Duga::class);
+        return $this->belongsTo(Duga::class, "foreign_duga_id");
     }
 }

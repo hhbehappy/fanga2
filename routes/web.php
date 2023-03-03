@@ -19,6 +19,7 @@ use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\RedirectbackController;
 use App\Http\Controllers\InquiryController;
+use App\Http\Controllers\SitemapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,13 @@ Route::controller(FangaController::class)->group(function ()
     // 検索ページ
     Route::get('/search/fanza', 'searchfanza')->name('fanga.searchfanza');
     Route::get('/search/duga', 'searchduga')->name('fanga.searchduga');
+});
+
+// サイトマップ
+Route::get('/sitemap.xml', [SitemapController::class, 'index']);
+Route::group(['prefix' => 'sitemap'], function () {
+    Route::get('fanza.xml', [SitemapController::class, 'fanza']);
+    Route::get('duga.xml', [SitemapController::class, 'duga']);
 });
 
 // マイページ
@@ -118,7 +126,6 @@ Route::controller(FanzaListController::class)->group(function ()
 
 Route::controller(FanzaVideoController::class)->group(function ()
 {
-    Route::get('fanza/video/memotype', 'memotype')->name('fvideo.memotype');
     Route::get('fanza/create', 'create')->name('fvideo.create');
     Route::get('/fanza/video/{id}', 'show')->name('fvideo.show');
     Route::get('fanza/store', 'store')->name('fvideo.store');
@@ -163,7 +170,6 @@ Route::controller(DugaListController::class)->group(function ()
 
 Route::controller(DugaVideoController::class)->group(function ()
 {
-    Route::get('duga/video/memotype', 'memotype')->name('dvideo.memotype');
     Route::get('duga/create', 'create')->name('dvideo.create');
     Route::get('/duga/video/{id}', 'show')->name('dvideo.show');
     Route::get('duga/store', 'store')->name('dvideo.store');

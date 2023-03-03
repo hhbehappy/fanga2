@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class FanzaReleaseMemo extends Model
 {
     use HasFactory,SerializeDate;
-
+    
+    protected $touches = ['fanza'];
     protected $table = "fanza_release_memos";
     protected $casts = [
         'updated_at' => 'datetime:Y年m月d日',
@@ -30,6 +31,6 @@ class FanzaReleaseMemo extends Model
 
     public function fanza()
     {
-        return $this->belongsTo(Fanza::class);
+        return $this->belongsTo(Fanza::class, "foreign_fanza_id");
     }
 }

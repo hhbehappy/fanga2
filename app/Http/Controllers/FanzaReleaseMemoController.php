@@ -6,12 +6,15 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreFanzaReleaseMemoRequest;
 use App\Http\Requests\UpdateFanzaReleaseMemoRequest;
 use App\Models\FanzaReleaseMemo;
+use App\Models\Fanza;
 
 class FanzaReleaseMemoController extends Controller
 {
     public function store(StoreFanzaReleaseMemoRequest $request, $fanza_id, $content_id)
     {
-        
+        $fanza = FANZA::find($content_id);
+        $fanza->touch();
+
         FanzaReleaseMemo::create([
             'user_id'      => Auth::id(),
             'name'         => Auth::user()->name,

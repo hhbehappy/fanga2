@@ -293,7 +293,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
           <div v-for="duga_private_memo in duga_private_memos" :key="duga_private_memo.id">
             <div v-if="duga_private_memo.private && props.type === 'private' ">
               <div class="border-dotted border-b border-gray-500 p-2 mb-6">
-                <p class="mb-3"><span class="bg-red-200 p-1 px-3 rounded-2xl text-xs">{{ duga_private_memo.name }}さんの非公開メモ</span><span class="ml-6 text-sm text-zinc-500">
+                <p class="mb-3"><span class="border-l-4 border-b border-red-200 p-1 px-3 text-xs">{{ duga_private_memo.name }}さんの非公開メモ</span><span class="ml-6 text-sm text-zinc-500">
                 {{ duga_private_memo.updated_at }}
                 </span></p>
                 <div class="flex items-start">
