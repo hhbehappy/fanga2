@@ -4,9 +4,9 @@
   @foreach ($dugas as $duga)
     <url>
       <loc>{{ env('APP_URL') }}/duga/video/{{ $duga['productid'] }}</loc>
-      <lastmod>{{ $duga['updated_at'] }}</lastmod>
+      <lastmod>{{ date(DateTime::W3C, strtotime($duga['updated_at'])) }}</lastmod>
       <changefreq>weekly</changefreq>
-      <priority>0.6</priority>
+      <priority>0.8</priority>
     </url>
   @endforeach
 </urlset>

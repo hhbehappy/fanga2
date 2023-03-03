@@ -3,16 +3,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>{{ env('APP_URL') }}</loc>
-    <lastmod>{{ $fanga }}</lastmod>
+    <lastmod>{{ date(DateTime::W3C, strtotime($fanga)) }}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   @foreach ($fanzas as $fanza)
     <url>
       <loc>{{ env('APP_URL') }}/fanza/video/{{ $fanza['content_id'] }}</loc>
-      <lastmod>{{ $fanza['updated_at'] }}</lastmod>
+      <lastmod>{{ date(DateTime::W3C, strtotime($fanza['updated_at'])) }}</lastmod>
       <changefreq>weekly</changefreq>
-      <priority>0.6</priority>
+      <priority>0.8</priority>
     </url>
   @endforeach
 </urlset>
