@@ -13,10 +13,9 @@ class FanzaListController extends Controller
     public function index()
     {
         $today = Carbon::today();
-        $videoids = Fanza::whereDate('date', '<', $today)->latest('date')->paginate(20);
+        $videoids = Fanza::whereDate('date', '<', $today)->latest('date')->paginate(100);
         $onemonths = Carbon::today()->subMonth(1);
         $auth_id = Auth::id();
-
 
         return view('Fanza/Video/All', compact('videoids', 'onemonths', 'auth_id'));
     }
@@ -44,7 +43,7 @@ class FanzaListController extends Controller
             ->orWhere('genre8', 'like', $keyword)
             ->orWhere('genre9', 'like', $keyword)
             ->latest('date')
-            ->paginate(10);
+            ->paginate(100);
         }
 
 

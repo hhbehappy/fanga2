@@ -11,9 +11,7 @@ class FanzaActressController extends Controller
 {
     public function actress()
     {
-        // $str = mb_convert_kana('ﾔﾂｶﾞｹ ｳﾐ','H','utf-8');
-        // dd($str);
-        $actresslists = Fanza::select('content_id', 'title', 'actress', 'updated_at')->latest('updated_at')->get()->unique('actress');
+        $actresslists = Fanza::select('content_id', 'title', 'actress', 'updated_at')->latest('updated_at')->take(60)->get()->unique('actress');
         
         return Inertia::render('Fanza/Video/Actress/Index',[
             'actresslists' => $actresslists,
