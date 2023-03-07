@@ -28,7 +28,7 @@ defineProps({
       </Link>
     </div>
     <div class="border-b-4 border-gray-500 mb-4">
-      <h1 class="font-bold md:text-xl"><span class="text-red-500">【FANZA】</span>女優一覧</h1>
+      <h1 class="font-bold md:text-xl"><span class="text-red-500">【FANZA】</span>女優一覧 : FANGAイチオシAV女優</h1>
     </div>
     <div class="flex flex-wrap ml-4 md:mx-2">
       <div v-for="actresslist in actresslists" :key="actresslist.id">

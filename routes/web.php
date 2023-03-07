@@ -23,9 +23,9 @@ use App\Http\Controllers\Duga\DugaFreeMemoController;
 use App\Http\Controllers\Duga\DugaReleaseMemoController;
 use App\Http\Controllers\Duga\DugaPrivateMemoController;
 use App\Http\Controllers\NiceController;
-use App\Http\Controllers\ThreadController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\RedirectbackController;
+use App\Http\Controllers\Bbs\ThreadController;
+use App\Http\Controllers\Bbs\CommentController;
+use App\Http\Controllers\Bbs\RedirectbackController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\SitemapController;
 
@@ -204,6 +204,8 @@ Route::controller(DugaListController::class)->group(function ()
 Route::controller(DugaPerformerController::class)->group(function ()
 {
     Route::get('duga/video/performer', 'performer')->name('dlist.performer');
+    Route::get('duga/video/performer/memo', 'performer_memo')->name('dlist.performer_memo');
+    Route::get('duga/video/performer/nice', 'performer_nice')->name('dlist.performer_nice');
 });
 
 Route::controller(DugaCategoryController::class)->group(function ()
@@ -214,11 +216,15 @@ Route::controller(DugaCategoryController::class)->group(function ()
 Route::controller(DugaMakerController::class)->group(function ()
 {
     Route::get('duga/video/maker', 'maker')->name('dlist.maker');
+    Route::get('duga/video/maker/memo', 'maker_memo')->name('dlist.maker_memo');
+    Route::get('duga/video/maker/nice', 'maker_nice')->name('dlist.maker_nice');
 });
 
 Route::controller(DugaSeriesController::class)->group(function ()
 {
     Route::get('duga/video/series', 'series')->name('dlist.series');
+    Route::get('duga/video/series/memo', 'series_memo')->name('dlist.series_memo');
+    Route::get('duga/video/series/nice', 'series_nice')->name('dlist.series_nice');
 });
 
 Route::controller(DugaVideoController::class)->group(function ()

@@ -14,16 +14,16 @@ class FangaController extends Controller
     public function index()
     {
         $today = Carbon::today();
-        $fvideoids = Fanza::whereDate('date', '<', $today)->latest('date')->limit(30)->get();
-        $dvideoids = Duga::whereDate('date', '<', $today)->latest('date')->limit(30)->get();
+        $fvideoids = Fanza::whereDate('date', '<', $today)->latest('date')->take(30)->get();
+        $dvideoids = Duga::whereDate('date', '<', $today)->latest('date')->take(30)->get();
         $fanzacount = Fanza::count();
         $dugacount = Duga::count();
-        $fanzaactresss = Fanza::whereDate('date', '<', $today)->latest('updated_at')->limit(30)->get()->unique('actress');
-        $fanzamakers = Fanza::whereDate('date', '<', $today)->latest('date')->limit(30)->get()->unique('maker');
-        $fanzaseriess = Fanza::whereDate('date', '<', $today)->latest('updated_at')->limit(30)->get()->unique('series');
-        $dugaperformers = Duga::whereDate('date', '<', $today)->latest('date')->limit(30)->get()->unique('performer');
-        $dugamakers = Duga::whereDate('date', '<', $today)->latest('date')->limit(30)->get()->unique('maker');
-        $dugaseriess = Duga::whereDate('date', '<', $today)->latest('date')->limit(30)->get()->unique('series');
+        $fanzaactresss = Fanza::whereDate('date', '<', $today)->latest('updated_at')->take(30)->get()->unique('actress');
+        $fanzamakers = Fanza::whereDate('date', '<', $today)->latest('date')->take(30)->get()->unique('maker');
+        $fanzaseriess = Fanza::whereDate('date', '<', $today)->latest('updated_at')->take(30)->get()->unique('series');
+        $dugaperformers = Duga::whereDate('date', '<', $today)->latest('date')->take(30)->get()->unique('performer');
+        $dugamakers = Duga::whereDate('date', '<', $today)->latest('date')->take(30)->get()->unique('maker');
+        $dugaseriess = Duga::whereDate('date', '<', $today)->latest('date')->take(30)->get()->unique('series');
 
         return Inertia::render('Fanga', [
             'fvideoids' => $fvideoids,
@@ -97,7 +97,7 @@ class FangaController extends Controller
             ->orWhere('genre8', 'like', '%'. $keyword. '%')
             ->orWhere('genre9', 'like', '%'. $keyword. '%')
             ->latest('date')
-            ->paginate(20);
+            ->paginate(100);
         }
 
         return view('Search/Fanza', compact('onemonths', 'fanzas', 'keyword', 'auth_id'));
@@ -124,7 +124,7 @@ class FangaController extends Controller
             ->orWhere('director', 'like','%'. $keyword. '%')
             ->orWhere('category', 'like','%'. $keyword. '%')
             ->latest('date')
-            ->paginate(20);
+            ->paginate(100);
         }
 
         return view('Search/Duga', compact('onemonths', 'dugas', 'keyword', 'auth_id'));
