@@ -28,7 +28,7 @@ class SitemapController extends Controller
     public function fanza()
     {
         $fanga = DB::table('fanzas', 'dugas')->max('updated_at');
-        $fanzas = Fanza::select('content_id', 'updated_at')->get();
+        $fanzas = Fanza::select('content_id', 'updated_at')->latest('updated_at')->get();
 
         return response()->view('Sitemap/Fanza', compact('fanga', 'fanzas'))
             ->header('Content-Type', 'text/xml');
@@ -40,7 +40,7 @@ class SitemapController extends Controller
      */
     public function duga()
     {
-        $dugas = Duga::select('productid', 'updated_at')->get();
+        $dugas = Duga::select('productid', 'updated_at')->latest('updated_at')->get();
 
         return response()->view('Sitemap/Duga', compact('dugas'))
             ->header('Content-Type', 'text/xml');
