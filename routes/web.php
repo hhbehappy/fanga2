@@ -4,16 +4,24 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FangaController;
-use App\Http\Controllers\FanzaVideoController;
-use App\Http\Controllers\FanzaListController;
-use App\Http\Controllers\FanzaFreeMemoController;
-use App\Http\Controllers\FanzaReleaseMemoController;
-use App\Http\Controllers\FanzaPrivateMemoController;
-use App\Http\Controllers\DugaVideoController;
-use App\Http\Controllers\DugaListController;
-use App\Http\Controllers\DugaFreeMemoController;
-use App\Http\Controllers\DugaReleaseMemoController;
-use App\Http\Controllers\DugaPrivateMemoController;
+use App\Http\Controllers\Fanza\FanzaVideoController;
+use App\Http\Controllers\Fanza\FanzaListController;
+use App\Http\Controllers\Fanza\FanzaActressController;
+use App\Http\Controllers\Fanza\FanzaGenreController;
+use App\Http\Controllers\Fanza\FanzaMakerController;
+use App\Http\Controllers\Fanza\FanzaSeriesController;
+use App\Http\Controllers\Fanza\FanzaFreeMemoController;
+use App\Http\Controllers\Fanza\FanzaReleaseMemoController;
+use App\Http\Controllers\Fanza\FanzaPrivateMemoController;
+use App\Http\Controllers\Duga\DugaVideoController;
+use App\Http\Controllers\Duga\DugaListController;
+use App\Http\Controllers\Duga\DugaPerformerController;
+use App\Http\Controllers\Duga\DugaCategoryController;
+use App\Http\Controllers\Duga\DugaMakerController;
+use App\Http\Controllers\Duga\DugaSeriesController;
+use App\Http\Controllers\Duga\DugaFreeMemoController;
+use App\Http\Controllers\Duga\DugaReleaseMemoController;
+use App\Http\Controllers\Duga\DugaPrivateMemoController;
 use App\Http\Controllers\NiceController;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\CommentController;
@@ -61,10 +69,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 // 気になる動画機能
-Route::get('/nice/{content_id}/{fanza_id}/{duga_id}/{type}', [NiceController::class, 'nice'])->name('nice');
-Route::post('/nice/{content_id}/{fanza_id}/{duga_id}/{type}', [NiceController::class, 'nice']);
-Route::get('/unnice/{content_id}', [NiceController::class, 'unnice'])->name('unnice');
-Route::post('/unnice/{content_id}', [NiceController::class, 'unnice']);
+Route::controller(NiceController::class)->group(function ()
+{
+    Route::get('/nice/{content_id}/{fanza_id}/{duga_id}/{type}', 'nice')->name('nice');
+    Route::post('/nice/{content_id}/{fanza_id}/{duga_id}/{type}', 'nice');
+    Route::get('/unnice/{content_id}', 'unnice')->name('unnice');
+    Route::post('/unnice/{content_id}', 'unnice');
+});
 
 // BBS
 Route::controller(ThreadController::class)->group(function ()
@@ -85,9 +96,12 @@ Route::controller(CommentController::class)->group(function ()
 Route::post('/commentlogin', [RedirectbackController::class, 'direct'])->middleware(['auth', 'verified']);
 
 // お問い合わせ
-Route::get('/inquiry', [InquiryController::class, 'index'])->name('inquiry');
-Route::get('/inquiry/store', [InquiryController::class, 'store'])->name('inquiry.store');
-Route::post('/inquiry/store', [InquiryController::class, 'store']);
+Route::controller(InquiryController::class)->group(function ()
+{
+    Route::get('/inquiry', 'index')->name('inquiry');
+    Route::get('/inquiry/store', 'store')->name('inquiry.store');
+    Route::post('/inquiry/store', 'store');
+});
 
 // FANZA
 Route::controller(FanzaFreeMemoController::class)->group(function ()
@@ -117,12 +131,35 @@ Route::controller(FanzaListController::class)->group(function ()
 {
     Route::get('fanza/video/all', 'index')->name('flist.index');
     Route::get('fanza/video/list', 'show')->name('flist.show');
-    Route::get('fanza/video/genre', 'genre')->name('flist.genre');
-    Route::get('fanza/video/maker', 'maker')->name('flist.maker');
-    Route::get('fanza/video/actress', 'actress')->name('flist.actress');
-    Route::get('fanza/video/series', 'series')->name('flist.series');
     Route::delete('fanza/destroy/{id}', 'destroy')->name('flist.destroy');
 });
+
+Route::controller(FanzaActressController::class)->group(function ()
+{
+    Route::get('fanza/video/actress', 'actress')->name('flist.actress');
+    Route::get('fanza/video/actress/memo', 'actress_memo')->name('flist.actress_memo');
+    Route::get('fanza/video/actress/nice', 'actress_nice')->name('flist.actress_nice');
+});
+
+Route::controller(FanzaGenreController::class)->group(function ()
+{
+    Route::get('fanza/video/genre', 'genre')->name('flist.genre');
+});
+
+Route::controller(FanzaMakerController::class)->group(function ()
+{
+    Route::get('fanza/video/maker', 'maker')->name('flist.maker');
+    Route::get('fanza/video/maker/memo', 'maker_memo')->name('flist.maker_memo');
+    Route::get('fanza/video/maker/nice', 'maker_nice')->name('flist.maker_nice');
+});
+
+Route::controller(FanzaSeriesController::class)->group(function ()
+{
+    Route::get('fanza/video/series', 'series')->name('flist.series');
+    Route::get('fanza/video/series/memo', 'series_memo')->name('flist.series_memo');
+    Route::get('fanza/video/series/nice', 'series_nice')->name('flist.series_nice');
+});
+
 
 Route::controller(FanzaVideoController::class)->group(function ()
 {
@@ -161,11 +198,27 @@ Route::controller(DugaListController::class)->group(function ()
 {
     Route::get('duga/video/all', 'index')->name('dlist.index');
     Route::get('duga/video/list', 'show')->name('dlist.show');
-    Route::get('duga/video/category', 'category')->name('dlist.category');
-    Route::get('duga/video/maker', 'maker')->name('dlist.maker');
-    Route::get('duga/video/performer', 'performer')->name('dlist.performer');
-    Route::get('duga/video/series', 'series')->name('dlist.series');
     Route::delete('duga/destroy/{id}', 'destroy')->name('dlist.destroy');
+});
+
+Route::controller(DugaPerformerController::class)->group(function ()
+{
+    Route::get('duga/video/performer', 'performer')->name('dlist.performer');
+});
+
+Route::controller(DugaCategoryController::class)->group(function ()
+{
+    Route::get('duga/video/category', 'category')->name('dlist.category');
+});
+
+Route::controller(DugaMakerController::class)->group(function ()
+{
+    Route::get('duga/video/maker', 'maker')->name('dlist.maker');
+});
+
+Route::controller(DugaSeriesController::class)->group(function ()
+{
+    Route::get('duga/video/series', 'series')->name('dlist.series');
 });
 
 Route::controller(DugaVideoController::class)->group(function ()
