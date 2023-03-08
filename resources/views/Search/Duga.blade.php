@@ -1,10 +1,10 @@
 <x-app>
   <x-slot name="title">
-    【DUGA】『 {{ $keyword }} 』の検索一覧
+    【DUGA】『 {{ $keyword }} 』の検索結果
   </x-slot>
 
   <div class="border-b-4 border-gray-500 mb-2">
-    <h1 class="font-bold md:text-xl inline-block"><span class="text-red-500">【DUGA】</span>『 {{ $keyword }} 』の検索一覧</h1>
+    <h1 class="font-bold md:text-xl inline-block"><span class="text-red-500">【DUGA】</span>『 {{ $keyword }} 』の検索結果</h1>
     <span class="ml-5 inline-block">{{ $dugas->total() }}件中 {{ $dugas->firstItem() }}〜{{ $dugas->lastItem() }}件</span>
   </div>
   <p class="text-sm mb-6 ml-6"><span class="font-bold text-white bg-red-500 px-1">NEW</span> : 配信開始日より1ヶ月以内の動画</p>

@@ -61,7 +61,8 @@ class DugaVideoController extends Controller
                     'label'        => $item['item']['label'][0]['name'],
                     'series'        => $item['item']['series'][0]['name'],
                     'performer'        => $item['item']['performer'][0]['data']['name'],
-                    'director'        => $item['item']['director'][0]['data']['name'],
+                    'performer_ruby'   => $item['item']['performer'][0]['data']['kana'],
+                    'director'         => $item['item']['director'][0]['data']['name'],
                     'affiliateurl' => $item['item']['affiliateurl'],
                     'opendate'     => $item['item']['opendate'],
                     'volume'       => $item['item']['volume'],
@@ -82,8 +83,8 @@ class DugaVideoController extends Controller
 
                 $post_html = <<< EOM
                 <div style="float:left;margin:2px;height:280px;width:16em;font-size:50%">
-                <a href="store?productid={$item_list['productid']}&title={$item_list['title']}&caption={$item_list['caption']}&jacketimage={$item_list['jacketimage']}&posterimage={$item_list['posterimage']}&thumbnail01={$item_list['thumbnail01']}&thumbnail02={$item_list['thumbnail02']}&thumbnail03={$item_list['thumbnail03']}&thumbnail04={$item_list['thumbnail04']}&thumbnail05={$item_list['thumbnail05']}&thumbnail06={$item_list['thumbnail06']}&thumbnail07={$item_list['thumbnail07']}&thumbnail08={$item_list['thumbnail08']}&thumbnail09={$item_list['thumbnail09']}&thumbnail10={$item_list['thumbnail10']}&maker={$item_list['makername']}&series={$item_list['series']}&performer={$item_list['performer']}&director={$item_list['director']}&affiliateurl={$item_list['affiliateurl']}&date={$item_list['opendate']}&volume={$item_list['volume']}&label={$item_list['label']}&category={$item_list['category']}"><img src="{$item_list['jacketimage']}" /><br><img src="{$item_list['posterimage']}" /></a>
-                <br>{$item_list['category']}
+                <a href="store?productid={$item_list['productid']}&title={$item_list['title']}&caption={$item_list['caption']}&jacketimage={$item_list['jacketimage']}&posterimage={$item_list['posterimage']}&thumbnail01={$item_list['thumbnail01']}&thumbnail02={$item_list['thumbnail02']}&thumbnail03={$item_list['thumbnail03']}&thumbnail04={$item_list['thumbnail04']}&thumbnail05={$item_list['thumbnail05']}&thumbnail06={$item_list['thumbnail06']}&thumbnail07={$item_list['thumbnail07']}&thumbnail08={$item_list['thumbnail08']}&thumbnail09={$item_list['thumbnail09']}&thumbnail10={$item_list['thumbnail10']}&maker={$item_list['makername']}&series={$item_list['series']}&performer={$item_list['performer']}&performer_ruby={$item_list['performer_ruby']}&director={$item_list['director']}&affiliateurl={$item_list['affiliateurl']}&date={$item_list['opendate']}&volume={$item_list['volume']}&label={$item_list['label']}&category={$item_list['category']}"><img src="{$item_list['jacketimage']}" /><br><img src="{$item_list['posterimage']}" /></a>
+                <br>{$item_list['category']} {$item_list['performer_ruby']}
                 </div>
                 EOM;
                 // HTML出力
@@ -93,6 +94,7 @@ class DugaVideoController extends Controller
 
     public function store(Request $request)
     {
+        $performer_ruby = mb_convert_kana($request->get('performer_ruby'),'H','utf-8');
         
         Duga::updateOrCreate(
             ['productid'        => $request->get('productid')],
@@ -104,6 +106,7 @@ class DugaVideoController extends Controller
             'label'             => $request->get('label'),
             'series'            => $request->get('series'),
             'performer'         => $request->get('performer'),
+            'ruby'              => $performer_ruby,
             'director'          => $request->get('director'),
             'category'          => $request->get('category'),
             'affiliateurl'      => $request->get('affiliateurl'),
