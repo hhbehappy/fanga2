@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Fanza;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Fanza;
 
@@ -15,6 +16,25 @@ class FanzaActressController extends Controller
         
         return Inertia::render('Fanza/Video/Actress/Index',[
             'actresslists' => $actresslists,
+        ]);
+    }
+
+    public function actress_ruby(Request $request)
+    {
+        $keyword = $request->keyword;
+        $request->validate([
+            'keyword' => 'required'
+        ]);
+        
+        if(!empty($keyword)){
+            $actressrubylists = Fanza::select('content_id', 'title', 'actress', 'ruby', 'updated_at')->Where('ruby', 'like',$keyword. '%')
+            ->oldest('ruby')
+            ->get()->unique('actress');
+        }
+
+        return Inertia::render('Fanza/Video/Actress/Ruby', [
+            'actressrubylists' => $actressrubylists,
+            'keyword' => $keyword
         ]);
     }
 
