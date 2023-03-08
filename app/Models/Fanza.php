@@ -20,6 +20,7 @@ class Fanza extends Model
         'content_id',
         'title',
         'actress',
+        'ruby',
         'maker',
         'label',
         'series',

@@ -137,6 +137,7 @@ Route::controller(FanzaListController::class)->group(function ()
 Route::controller(FanzaActressController::class)->group(function ()
 {
     Route::get('fanza/video/actress', 'actress')->name('flist.actress');
+    Route::get('fanza/video/actress/ruby', 'actress_ruby')->name('flist.actress_ruby');
     Route::get('fanza/video/actress/memo', 'actress_memo')->name('flist.actress_memo');
     Route::get('fanza/video/actress/nice', 'actress_nice')->name('flist.actress_nice');
 });
@@ -159,7 +160,6 @@ Route::controller(FanzaSeriesController::class)->group(function ()
     Route::get('fanza/video/series/memo', 'series_memo')->name('flist.series_memo');
     Route::get('fanza/video/series/nice', 'series_nice')->name('flist.series_nice');
 });
-
 
 Route::controller(FanzaVideoController::class)->group(function ()
 {
