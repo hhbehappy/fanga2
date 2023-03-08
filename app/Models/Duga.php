@@ -25,6 +25,7 @@ class Duga extends Model
         'label',
         'series',
         'performer',
+        'ruby',
         'director',
         'category',
         'jacketimage',

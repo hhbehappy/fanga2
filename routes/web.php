@@ -204,6 +204,7 @@ Route::controller(DugaListController::class)->group(function ()
 Route::controller(DugaPerformerController::class)->group(function ()
 {
     Route::get('duga/video/performer', 'performer')->name('dlist.performer');
+    Route::get('duga/video/performer/ruby', 'performer_ruby')->name('dlist.performer_ruby');
     Route::get('duga/video/performer/memo', 'performer_memo')->name('dlist.performer_memo');
     Route::get('duga/video/performer/nice', 'performer_nice')->name('dlist.performer_nice');
 });

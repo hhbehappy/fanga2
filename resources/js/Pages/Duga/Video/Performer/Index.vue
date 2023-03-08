@@ -9,10 +9,16 @@ defineProps({
 
 <template>
 <Layout>
-  <Head :title="'【DUGA】女優一覧'" />
+  <Head :title="'【DUGA】AV女優一覧 : FANGAイチオシAV女優'" />
 
   <section class="">
     <div class="flex flex-wrap mb-5 text-white font-mono">
+      <Link :href="route('dlist.performer_ruby', { keyword: 'あ' })" class="flex py-1 px-6 mx-2 mb-2 bg-gray-800 hover:bg-red-600 items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+        50音順
+      </Link>
       <Link :href="route('dlist.performer_memo')" class="flex py-1 px-6 mx-2 mb-2 bg-gray-800 hover:bg-red-600 items-center">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -27,7 +33,7 @@ defineProps({
       </Link>
     </div>
     <div class="border-b-4 border-gray-500 mb-4">
-      <h1 class="font-bold md:text-xl"><span class="text-red-500">【DUGA】</span>女優一覧 : FANGAイチオシAV女優</h1>
+      <h1 class="font-bold md:text-xl"><span class="text-red-500">【DUGA】</span>AV女優一覧 : FANGAイチオシAV女優</h1>
     </div>
     <div class="flex flex-wrap ml-4 md:mx-2">
       <div v-for="performerlist in performerlists" :key="performerlist.id">

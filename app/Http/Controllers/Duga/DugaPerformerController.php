@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Duga;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Duga;
 
@@ -15,6 +16,25 @@ class DugaPerformerController extends Controller
 
         return Inertia::render('Duga/Video/Performer/Index', [
             'performerlists' => $performerlists
+        ]);
+    }
+
+    public function performer_ruby(Request $request)
+    {
+        $keyword = $request->keyword;
+        $request->validate([
+            'keyword' => 'required'
+        ]);
+        
+        if(!empty($keyword)){
+            $performerrubylists = Duga::select('productid', 'jacketimage', 'posterimage', 'title', 'performer', 'ruby', 'updated_at')->Where('ruby', 'like',$keyword. '%')
+            ->oldest('ruby')
+            ->get()->unique('performer');
+        }
+
+        return Inertia::render('Duga/Video/Performer/Ruby', [
+            'performerrubylists' => $performerrubylists,
+            'keyword' => $keyword
         ]);
     }
 
