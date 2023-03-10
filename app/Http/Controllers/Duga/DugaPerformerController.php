@@ -18,8 +18,13 @@ class DugaPerformerController extends Controller
             'performerlists' => $performerlists
         ]);
     }
+    
+    public function performer_ruby()
+    {
+        return Inertia::render('Duga/Video/Performer/Ruby');
+    }
 
-    public function performer_ruby(Request $request)
+    public function performer_name(Request $request)
     {
         $keyword = $request->keyword;
         $request->validate([
@@ -27,13 +32,13 @@ class DugaPerformerController extends Controller
         ]);
         
         if(!empty($keyword)){
-            $performerrubylists = Duga::select('productid', 'jacketimage', 'posterimage', 'title', 'performer', 'ruby', 'updated_at')->Where('ruby', 'like',$keyword. '%')
+            $performernamelists = Duga::select('productid', 'jacketimage', 'posterimage', 'title', 'performer', 'ruby', 'updated_at')->Where('ruby', 'like',$keyword. '%')
             ->oldest('ruby')
             ->get()->unique('performer');
         }
 
-        return Inertia::render('Duga/Video/Performer/Ruby', [
-            'performerrubylists' => $performerrubylists,
+        return Inertia::render('Duga/Video/Performer/Name', [
+            'performernamelists' => $performernamelists,
             'keyword' => $keyword
         ]);
     }

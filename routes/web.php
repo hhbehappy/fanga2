@@ -137,6 +137,7 @@ Route::controller(FanzaListController::class)->group(function ()
 Route::controller(FanzaActressController::class)->group(function ()
 {
     Route::get('fanza/video/actress', 'actress')->name('flist.actress');
+    Route::get('fanza/video/actress/name', 'actress_name')->name('flist.actress_name');
     Route::get('fanza/video/actress/ruby', 'actress_ruby')->name('flist.actress_ruby');
     Route::get('fanza/video/actress/memo', 'actress_memo')->name('flist.actress_memo');
     Route::get('fanza/video/actress/nice', 'actress_nice')->name('flist.actress_nice');
@@ -204,6 +205,7 @@ Route::controller(DugaListController::class)->group(function ()
 Route::controller(DugaPerformerController::class)->group(function ()
 {
     Route::get('duga/video/performer', 'performer')->name('dlist.performer');
+    Route::get('duga/video/performer/name', 'performer_name')->name('dlist.performer_name');
     Route::get('duga/video/performer/ruby', 'performer_ruby')->name('dlist.performer_ruby');
     Route::get('duga/video/performer/memo', 'performer_memo')->name('dlist.performer_memo');
     Route::get('duga/video/performer/nice', 'performer_nice')->name('dlist.performer_nice');
