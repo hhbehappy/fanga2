@@ -19,7 +19,12 @@ class FanzaActressController extends Controller
         ]);
     }
 
-    public function actress_ruby(Request $request)
+    public function actress_ruby()
+    {
+        return Inertia::render('Fanza/Video/Actress/Ruby');
+    }
+
+    public function actress_name(Request $request)
     {
         $keyword = $request->keyword;
         $request->validate([
@@ -27,13 +32,13 @@ class FanzaActressController extends Controller
         ]);
         
         if(!empty($keyword)){
-            $actressrubylists = Fanza::select('content_id', 'title', 'actress', 'ruby', 'updated_at')->Where('ruby', 'like',$keyword. '%')
+            $actressnamelists = Fanza::select('content_id', 'title', 'actress', 'ruby', 'updated_at')->Where('ruby', 'like',$keyword. '%')
             ->oldest('ruby')
             ->get()->unique('actress');
         }
 
-        return Inertia::render('Fanza/Video/Actress/Ruby', [
-            'actressrubylists' => $actressrubylists,
+        return Inertia::render('Fanza/Video/Actress/Name', [
+            'actressnamelists' => $actressnamelists,
             'keyword' => $keyword
         ]);
     }
