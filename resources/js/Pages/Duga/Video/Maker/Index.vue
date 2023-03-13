@@ -29,9 +29,9 @@ defineProps({
     <div class="border-b-4 border-gray-500 mb-4">
       <h1 class="font-bold md:text-xl"><span class="text-red-500">【DUGA】</span>メーカー一覧</h1>
     </div>
-    <div class="flex flex-wrap ml-4 md:mx-2">
+    <div class="flex flex-wrap ml-4 md:mx-2 justify-center sm:justify-start">
       <div v-for="makerlist in makerlists" :key="makerlist.id">
-        <div v-if="makerlist.maker" class="w-36 mr-1 mb-4">
+        <div v-if="makerlist.maker" class="w-36 mr-5 md:mr-1 mb-4">
           <a :href="route('dlist.show', { keyword: makerlist.maker })" class="p-2 border-2 text-blue-500 text-center inline-block">
             <img v-if="makerlist.jacketimage" :src="makerlist.jacketimage" :alt="'【DUGA】' + makerlist.title" class="h-40 w-28">
             <img v-else :src="makerlist.posterimage" :alt="'【DUGA】' + makerlist.title + 'のメイン画像'" class="h-40 w-28">

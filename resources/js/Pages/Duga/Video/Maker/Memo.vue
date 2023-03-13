@@ -29,9 +29,9 @@ defineProps({
     <div class="border-b-4 border-gray-500 mb-4">
       <h1 class="font-bold md:text-xl"><span class="text-red-500">【DUGA】</span>メーカー一覧 : 公開メモの多い順</h1>
     </div>
-    <div class="flex flex-wrap ml-4 md:mx-2">
+    <div class="flex flex-wrap ml-4 md:mx-2 justify-center sm:justify-start">
       <div v-for="makermemolist in makermemolists" :key="makermemolist.id">
-        <div v-if="makermemolist.maker" class="w-36 mr-1 mb-4">
+        <div v-if="makermemolist.maker" class="w-36 mr-5 md:mr-1 mb-4">
           <a :href="route('dlist.show', { keyword: makermemolist.maker })" class="p-2 border-2 text-blue-500 text-center inline-block">
             <img v-if="makermemolist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + makermemolist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + makermemolist.title" class="h-40 w-28">
             <img v-else :src="'https://pic.duga.jp/unsecure/' + makermemolist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + makermemolist.title + 'のメイン画像'" class="h-40 w-28">

@@ -1,9 +1,12 @@
 <script setup>
 import Layout from '@/Layouts/Layout.vue';
 import { Head, Link } from '@inertiajs/vue3';
+import DugaPerformerRuby from '@/Components/Parts/DugaPerformerRuby.vue';
+
 
 const props = defineProps({
   performernamelists: Object,
+  line: String,
   keyword: String
 })
 </script>
@@ -39,10 +42,11 @@ const props = defineProps({
         気になる動画の登録数順
       </Link>
     </div>
+    <DugaPerformerRuby :line="props.line" :keyword="props.keyword" />
     <div class="border-b-4 border-gray-500 mb-4">
       <h1 class="font-bold md:text-xl"><span class="text-red-500">【DUGA】</span>AV女優一覧 : 名前が『{{ props.keyword }}』から始まるAV女優</h1>
     </div>
-    <div class="flex flex-wrap ml-4 md:mx-2 justify-center md:justify-start">
+    <div class="flex flex-wrap ml-4 md:mx-2 justify-center sm:justify-start">
       <div v-for=" performernamelist in performernamelists" :key=" performernamelist.id">
         <div v-if=" performernamelist.performer" class="w-36 mr-5 md:mr-1 mb-4">
           <a :href="route('dlist.show', { keyword: performernamelist.performer })" class="p-2 border-2 text-blue-500 text-center inline-block">

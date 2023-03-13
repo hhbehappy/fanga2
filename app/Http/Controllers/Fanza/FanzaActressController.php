@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Fanza;
+use App\Services\RubyKeyword;
 
 class FanzaActressController extends Controller
 {
@@ -26,10 +27,8 @@ class FanzaActressController extends Controller
 
     public function actress_name(Request $request)
     {
-        $keyword = $request->keyword;
-        $request->validate([
-            'keyword' => 'required'
-        ]);
+        $line = $request->line;
+        $keyword = RubyKeyword::checkRuby($request->keyword);
         
         if(!empty($keyword)){
             $actressnamelists = Fanza::select('content_id', 'title', 'actress', 'ruby', 'updated_at')->Where('ruby', 'like',$keyword. '%')
@@ -39,6 +38,7 @@ class FanzaActressController extends Controller
 
         return Inertia::render('Fanza/Video/Actress/Name', [
             'actressnamelists' => $actressnamelists,
+            'line' => $line,
             'keyword' => $keyword
         ]);
     }
