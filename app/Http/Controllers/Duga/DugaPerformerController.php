@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Duga;
+use App\Services\RubyKeyword;
 
 class DugaPerformerController extends Controller
 {
@@ -26,10 +27,8 @@ class DugaPerformerController extends Controller
 
     public function performer_name(Request $request)
     {
-        $keyword = $request->keyword;
-        $request->validate([
-            'keyword' => 'required'
-        ]);
+        $line = $request->line;
+        $keyword = RubyKeyword::checkRuby($request->keyword);
         
         if(!empty($keyword)){
             $performernamelists = Duga::select('productid', 'jacketimage', 'posterimage', 'title', 'performer', 'ruby', 'updated_at')->Where('ruby', 'like',$keyword. '%')
@@ -39,6 +38,7 @@ class DugaPerformerController extends Controller
 
         return Inertia::render('Duga/Video/Performer/Name', [
             'performernamelists' => $performernamelists,
+            'line' => $line,
             'keyword' => $keyword
         ]);
     }

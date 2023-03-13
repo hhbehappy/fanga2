@@ -29,9 +29,9 @@ defineProps({
     <div class="border-b-4 border-gray-500 my-4">
       <h1 class="font-bold md:text-xl"><span class="text-red-500">【FANZA】</span>メーカー一覧 : 気になる動画の登録数順</h1>
     </div>
-    <div class="flex flex-wrap ml-4 md:mx-2">
+    <div class="flex flex-wrap ml-4 md:mx-2 justify-center sm:justify-start">
       <div v-for="makernicelist in makernicelists" :key="makernicelist.id">
-        <div v-if="makernicelist.type === 'fanza' && makernicelist.maker" class="w-36 mr-2 mb-4">
+        <div v-if="makernicelist.type === 'fanza' && makernicelist.maker" class="w-36 mr-5 md:mr-2 mb-4">
           <a :href="route('flist.show', { keyword: makernicelist.maker })" class="p-2 border-2 text-blue-500 text-center inline-block">
             <img :src="'https://pics.dmm.co.jp/digital/video/' + makernicelist.content_id  + '/' + makernicelist.content_id + 'ps.jpg'" :alt="'【FANZA】' + makernicelist.title + 'のメイン画像'" class="h-40">
             <span class="w-28 -mb-2 text-sm inline-block truncate">{{ makernicelist.maker }}</span>

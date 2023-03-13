@@ -35,68 +35,68 @@ import { Head, Link } from '@inertiajs/vue3';
     <!-- 50音順 -->
     <div class="flex flex-wrap mb-7 font-mono text-gray-800 justify-center md:justify-start">
       <div class="flex w-80 h-11 p-1 mb-2 mr-3 justify-between items-center">
-        <Link :href="route('dlist.performer_name', { keyword: 'あ' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">あ</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'い' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">い</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'う' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">う</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'え' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">え</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'お' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">お</Link>
+        <Link :href="route('dlist.performer_name', { line: 'a', keyword: 'a' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">あ</Link>
+        <Link :href="route('dlist.performer_name', { line: 'a', keyword: 'i' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">い</Link>
+        <Link :href="route('dlist.performer_name', { line: 'a', keyword: 'u' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">う</Link>
+        <Link :href="route('dlist.performer_name', { line: 'a', keyword: 'e' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">え</Link>
+        <Link :href="route('dlist.performer_name', { line: 'a', keyword: 'o' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">お</Link>
       </div>
       <div class="flex w-80 h-11 p-1 mb-2 mr-3 justify-between items-center">
-        <Link :href="route('dlist.performer_name', { keyword: 'か' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">か</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'き' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">き</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'く' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">く</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'け' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">け</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'こ' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">こ</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ka', keyword: 'ka' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">か</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ka', keyword: 'ki' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">き</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ka', keyword: 'ku' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">く</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ka', keyword: 'ke' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">け</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ka', keyword: 'ko' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">こ</Link>
       </div>
       <div class="flex w-80 h-11 p-1 mb-2 mr-3 justify-between items-center">
-        <Link :href="route('dlist.performer_name', { keyword: 'さ' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">さ</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'し' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">し</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'す' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">す</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'せ' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">せ</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'そ' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">そ</Link>
+        <Link :href="route('dlist.performer_name', { line: 'sa', keyword: 'sa' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">さ</Link>
+        <Link :href="route('dlist.performer_name', { line: 'sa', keyword: 'si' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">し</Link>
+        <Link :href="route('dlist.performer_name', { line: 'sa', keyword: 'su' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">す</Link>
+        <Link :href="route('dlist.performer_name', { line: 'sa', keyword: 'se' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">せ</Link>
+        <Link :href="route('dlist.performer_name', { line: 'sa', keyword: 'so' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">そ</Link>
       </div>
       <div class="flex w-80 h-11 p-1 mb-2 mr-3 justify-between items-center">
-        <Link :href="route('dlist.performer_name', { keyword: 'た' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">た</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'ち' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">ち</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'つ' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">つ</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'て' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">て</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'と' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">と</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ta', keyword: 'ta' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">た</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ta', keyword: 'ti' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">ち</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ta', keyword: 'tu' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">つ</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ta', keyword: 'te' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">て</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ta', keyword: 'to' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">と</Link>
       </div>
       <div class="flex w-80 h-11 p-1 mb-2 mr-3 justify-between items-center">
-        <Link :href="route('dlist.performer_name', { keyword: 'な' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">な</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'に' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">に</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'ぬ' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">ぬ</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'ね' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">ね</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'の' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">の</Link>
+        <Link :href="route('dlist.performer_name', { line: 'na', keyword: 'na' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">な</Link>
+        <Link :href="route('dlist.performer_name', { line: 'na', keyword: 'ni' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">に</Link>
+        <Link :href="route('dlist.performer_name', { line: 'na', keyword: 'nu' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">ぬ</Link>
+        <Link :href="route('dlist.performer_name', { line: 'na', keyword: 'ne' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">ね</Link>
+        <Link :href="route('dlist.performer_name', { line: 'na', keyword: 'no' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">の</Link>
       </div>
       <div class="flex w-80 h-11 p-1 mb-2 mr-3 justify-between items-center">
-        <Link :href="route('dlist.performer_name', { keyword: 'は' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">は</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'ひ' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">ひ</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'ふ' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">ふ</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'へ' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">へ</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'ほ' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">ほ</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ha', keyword: 'ha' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">は</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ha', keyword: 'hi' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">ひ</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ha', keyword: 'hu' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">ふ</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ha', keyword: 'he' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">へ</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ha', keyword: 'ho' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">ほ</Link>
       </div>
       <div class="flex w-80 h-11 p-1 mb-2 mr-3 justify-between items-center">
-        <Link :href="route('dlist.performer_name', { keyword: 'ま' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">ま</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'み' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">み</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'む' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">む</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'め' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">め</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'も' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">も</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ma', keyword: 'ma' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">ま</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ma', keyword: 'mi' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">み</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ma', keyword: 'mu' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">む</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ma', keyword: 'me' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">め</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ma', keyword: 'mo' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">も</Link>
       </div>
       <div class="flex w-80 h-11 p-1 mb-2 mr-3 justify-between items-center">
-        <Link :href="route('dlist.performer_name', { keyword: 'や' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">や</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'ゆ' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">ゆ</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'よ' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">よ</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ya', keyword: 'ya' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">や</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ya', keyword: 'yu' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">ゆ</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ya', keyword: 'yo' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">よ</Link>
       </div>
       <div class="flex w-80 h-11 p-1 mb-2 mr-3 justify-between items-center">
-        <Link :href="route('dlist.performer_name', { keyword: 'ら' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">ら</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'り' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">り</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'る' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">る</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'れ' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">れ</Link>
-        <Link :href="route('dlist.performer_name', { keyword: 'ろ' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">ろ</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ra', keyword: 'ra' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">ら</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ra', keyword: 'ri' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">り</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ra', keyword: 'ru' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">る</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ra', keyword: 're' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">れ</Link>
+        <Link :href="route('dlist.performer_name', { line: 'ra', keyword: 'ro' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">ろ</Link>
       </div>
       <div class="flex w-80 h-11 p-1 mb-2 mr-3 justify-between items-center">
-        <Link :href="route('dlist.performer_name', { keyword: 'わ' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">わ</Link>
+        <Link :href="route('dlist.performer_name', { line: 'wa', keyword: 'wa' })" class="w-14 py-1 px-5 border-2 border-gray-400 bg-gray-200 rounded-sm hover:bg-red-600 hover:text-white">わ</Link>
       </div>
     </div>
   </section>
