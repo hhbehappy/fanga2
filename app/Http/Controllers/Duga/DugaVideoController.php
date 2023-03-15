@@ -31,7 +31,7 @@ class DugaVideoController extends Controller
             // オプション項目
             'hits'          => '100',
             'offset'        => '',
-            'keyword'       => '',
+            'keyword'       => '-総集編 -期間限定セール -VR',
             );
             $url = "http://affapi.duga.jp/search?";
             // リクエストURL生成
@@ -79,8 +79,8 @@ class DugaVideoController extends Controller
                 );
 
                 $post_html = <<< EOM
-                <div style="float:left;margin:2px;height:280px;width:16em;font-size:50%">
-                <a href="store?productid={$item_list['productid']}&title={$item_list['title']}&caption={$item_list['caption']}&jacketimage={$item_list['jacketimage']}&posterimage={$item_list['posterimage']}&thumbnail01={$item_list['thumbnail01']}&thumbnail02={$item_list['thumbnail02']}&thumbnail03={$item_list['thumbnail03']}&thumbnail04={$item_list['thumbnail04']}&thumbnail05={$item_list['thumbnail05']}&thumbnail06={$item_list['thumbnail06']}&thumbnail07={$item_list['thumbnail07']}&thumbnail08={$item_list['thumbnail08']}&thumbnail09={$item_list['thumbnail09']}&thumbnail10={$item_list['thumbnail10']}&maker={$item_list['makername']}&series={$item_list['series']}&performer={$item_list['performer']}&performer_ruby={$item_list['performer_ruby']}&director={$item_list['director']}&affiliateurl={$item_list['affiliateurl']}&date={$item_list['opendate']}&volume={$item_list['volume']}&label={$item_list['label']}&category={$item_list['category']}"><img src="{$item_list['jacketimage']}" /><br><img src="{$item_list['posterimage']}" /><br>{$item_list['category']} {$item_list['performer_ruby']}</a>
+                <div style="float:left;margin:2px;height:290px;width:16em;font-size:50%">
+                <a href="store?productid={$item_list['productid']}&title={$item_list['title']}&caption={$item_list['caption']}&jacketimage={$item_list['jacketimage']}&posterimage={$item_list['posterimage']}&thumbnail01={$item_list['thumbnail01']}&thumbnail02={$item_list['thumbnail02']}&thumbnail03={$item_list['thumbnail03']}&thumbnail04={$item_list['thumbnail04']}&thumbnail05={$item_list['thumbnail05']}&thumbnail06={$item_list['thumbnail06']}&thumbnail07={$item_list['thumbnail07']}&thumbnail08={$item_list['thumbnail08']}&thumbnail09={$item_list['thumbnail09']}&thumbnail10={$item_list['thumbnail10']}&maker={$item_list['makername']}&series={$item_list['series']}&performer={$item_list['performer']}&performer_ruby={$item_list['performer_ruby']}&director={$item_list['director']}&affiliateurl={$item_list['affiliateurl']}&date={$item_list['opendate']}&volume={$item_list['volume']}&label={$item_list['label']}&category={$item_list['category']}"><img src="{$item_list['jacketimage']}" /><br><img src="{$item_list['posterimage']}" /><br>{$item_list['category']}<br>{$item_list['performer_ruby']}</a>
                 
                 </div>
                 EOM;
