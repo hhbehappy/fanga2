@@ -31,7 +31,7 @@ class FanzaVideoController extends Controller
             'hits'          => '100',
             'offset'        => '',
             'sort'          => '',
-            'keyword'       => '-期間限定セール -VR',
+            'keyword'       => '-総集編 -期間限定セール -VR',
             'cid'           => '',
             'article'       => '',
             'article_id'    => '',
@@ -84,8 +84,8 @@ class FanzaVideoController extends Controller
                 );
 
                 $post_html = <<< EOM
-                <div style="float:left;margin:7px;height:320px;width:10em; font-size:50%">
-                <a href="store?content_id={$item_list['content_id']}&title={$item_list['title']}&volume={$item_list['volume']}&date={$item_list['date']}&maker={$item_list['maker']}&label={$item_list['label']}&series={$item_list['series']}&actress={$item_list['actress']}&ruby={$item_list['ruby']}&director={$item_list['director']}&genre={$item_list['genre0']}&genre1={$item_list['genre1']}&genre2={$item_list['genre2']}&genre3={$item_list['genre3']}&genre4={$item_list['genre4']}&genre5={$item_list['genre5']}&genre6={$item_list['genre6']}&genre7={$item_list['genre7']}&genre8={$item_list['genre8']}&genre9={$item_list['genre9']}&affiliateURL={$item_list['affiliateURL']}"><img src="{$item_list['imageURL_small']}" target="_blank" rel="noopener" style="height:120px;"}"><br>{$item_list['content_id']}<br>{$item_list['actress']}<br>{$item_list['ruby']}<br>{$item_list['genre0']}<br>{$item_list['genre1']}<br>{$item_list['genre2']}<br>{$item_list['genre3']}<br>{$item_list['genre4']}<br>{$item_list['genre5']}<br>{$item_list['genre6']}<br>{$item_list['genre7']}<br>{$item_list['genre8']}<br>{$item_list['genre9']}<br></a>
+                <div style="float:left;margin:7px;height:320px;width:10em; font-size:40%">
+                <a href="store?content_id={$item_list['content_id']}&title={$item_list['title']}&volume={$item_list['volume']}&date={$item_list['date']}&maker={$item_list['maker']}&label={$item_list['label']}&series={$item_list['series']}&actress={$item_list['actress']}&ruby={$item_list['ruby']}&director={$item_list['director']}&genre={$item_list['genre0']}&genre1={$item_list['genre1']}&genre2={$item_list['genre2']}&genre3={$item_list['genre3']}&genre4={$item_list['genre4']}&genre5={$item_list['genre5']}&genre6={$item_list['genre6']}&genre7={$item_list['genre7']}&genre8={$item_list['genre8']}&genre9={$item_list['genre9']}&affiliateURL={$item_list['affiliateURL']}"><img src="{$item_list['imageURL_small']}" target="_blank" rel="noopener" style="height:120px;"}"><br>{$item_list['ruby']}<br>{$item_list['genre0']}<br>{$item_list['genre1']}<br>{$item_list['genre2']}<br>{$item_list['genre3']}<br>{$item_list['genre4']}<br>{$item_list['genre5']}<br>{$item_list['genre6']}<br>{$item_list['genre7']}<br>{$item_list['genre8']}<br>{$item_list['genre9']}<br></a>
                 </div>
                 EOM;
                 // HTML出力
@@ -138,7 +138,6 @@ class FanzaVideoController extends Controller
         $nice = Nice::where([['content_id', $content_id], ['user_id', Auth::id()]])->first();
         $nicecount = Nice::whereContent_id($content_id)->count();
         $privatememolimit = FanzaPrivateMemo::where([['content_id', $content_id], ['user_id', Auth::id()]])->count();
-
 
         return Inertia::render('Fanza/Video', [
             'title' => $videoa->title,
