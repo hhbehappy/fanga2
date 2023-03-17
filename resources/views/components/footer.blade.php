@@ -50,9 +50,10 @@
             @endguest
         </ul>
     </div>
+    {{-- pc --}}
     <div class="hidden md:block pt-3">
         <ul class="flex h-5 justify-center text-sm">
-            <li class="w-44 pr-2 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
+            <li class="w-44 pr-2 text-center hover:bg-red-600 hover:text-white border-r-2 border-gray-500 relative">
                 <a href="{{ route('about') }}" class="absolute top-0 left-0 w-full h-full">当サイトについて</a>
             </li>
             <li class="w-44 pr-2 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
@@ -60,6 +61,11 @@
             </li>
             <li class="w-28 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
                 <a href="{{ route('rule') }}" class="absolute top-0 left-0 w-full h-full">利用規約</a>
+            </li>
+            <li class="w-20 text-center hover:bg-red-600 hover:text-white border-r-2 border-gray-500 relative">
+                <a href="{{ route('bbs') }}" class="absolute top-0 left-0 w-full h-full">
+                    BBS
+                </a>
             </li>
             <li class="w-32 text-center hover:bg-red-500 hover:text-white relative">
                 <a href="{{ route('inquiry') }}" class="absolute top-0 left-0 w-full h-full">お問い合わせ</a>
