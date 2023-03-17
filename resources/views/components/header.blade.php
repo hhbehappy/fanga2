@@ -1,6 +1,6 @@
 <header class="py-4">
   <div class="flex items-end justify-between w-full md:mb-5 pb-3 border-b-2 border-gray-500">
-    <div class="w-36 sm:w-44 ml-4 lg:ml-8 shrink-0">
+    <div class="w-36 lg:w-44 ml-4 lg:ml-8 shrink-0">
       <a href="{{ route('fanga') }}">
         <x-applicationlogo />
       </a>

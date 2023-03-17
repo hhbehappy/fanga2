@@ -257,12 +257,12 @@ export default {
           <div v-if="dugavideo.thumbnail10" class="mr-5">
             <img :src="dugavideo.thumbnail10" :alt="'【DUGA】' + dugavideo.title + 'の10枚目の画像'" class="h-[5rem]">
           </div>
-          <div class="w-20 ml-4 mt-4">
+          <div class="flex w-32 mt-4 justify-center text-blue-500 hover:text-red-500">
             <a :href="dugavideo.affiliateurl" target="_blank" rel="noopener">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 ml-5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />
             </svg>
-            <span class="text-xs text-blue-500">詳細ページへ</span>
+            <span class="font-semibold text-sm">DUGAで見る</span>
             </a>
           </div>
         </div>
@@ -522,45 +522,45 @@ export default {
           <main class="modal__content" id="modal-2-content">
             <div class="flex overflow-x-scroll m-6 pb-6 hidden-scrollbar snap-x">
           <div class="flex flex-none flex-nowrap items-start snap-x">
-            <div v-if="dugavideo.jacketimage" class="mr-3 snap-center">
+            <div v-if="dugavideo.jacketimage" class="mr-3">
             <img :src="'https://pic.duga.jp/unsecure/' + re_productid + '/noauth/jacket.jpg'" :alt="'【DUGA】' + dugavideo.title + 'のジャケット画像'" class="h-[20rem]">
           </div>
-          <div v-if="dugavideo.thumbnail01" class="mx-8 snap-center">
+          <div v-if="dugavideo.thumbnail01" class="mx-8">
             <img :src="dugavideo.thumbnail01" :alt="'【DUGA】' + dugavideo.title + 'の1枚目の画像'" class="h-[10rem]">
           </div>
-          <div v-if="dugavideo.thumbnail02" class="mx-8 snap-center">
+          <div v-if="dugavideo.thumbnail02" class="mx-8">
             <img :src="dugavideo.thumbnail02" :alt="'【DUGA】' + dugavideo.title + 'の2枚目の画像'" class="h-[10rem]">
           </div>
-          <div v-if="dugavideo.thumbnail03" class="mx-8 snap-center">
+          <div v-if="dugavideo.thumbnail03" class="mx-8">
             <img :src="dugavideo.thumbnail03" :alt="'【DUGA】' + dugavideo.title + 'の3枚目の画像'" class="h-[10rem]">
           </div>
-          <div v-if="dugavideo.thumbnail04" class="mx-8 snap-center">
+          <div v-if="dugavideo.thumbnail04" class="mx-8">
             <img :src="dugavideo.thumbnail04" :alt="'【DUGA】' + dugavideo.title + 'の4枚目の画像'" class="h-[10rem]">
           </div>
-          <div v-if="dugavideo.thumbnail05" class="mx-8 snap-center">
+          <div v-if="dugavideo.thumbnail05" class="mx-8">
             <img :src="dugavideo.thumbnail05" :alt="'【DUGA】' + dugavideo.title + 'の5枚目の画像'" class="h-[10rem]">
           </div>
-          <div v-if="dugavideo.thumbnail06" class="mx-8 snap-center">
+          <div v-if="dugavideo.thumbnail06" class="mx-8">
             <img :src="dugavideo.thumbnail06" :alt="'【DUGA】' + dugavideo.title + 'の6枚目の画像'" class="h-[10rem]">
           </div>
-          <div v-if="dugavideo.thumbnail07" class="mx-8 snap-center">
+          <div v-if="dugavideo.thumbnail07" class="mx-8">
             <img :src="dugavideo.thumbnail07" :alt="'【DUGA】' + dugavideo.title + 'の7枚目の画像'" class="h-[10rem]">
           </div>
-          <div v-if="dugavideo.thumbnail08" class="mx-8 snap-center">
+          <div v-if="dugavideo.thumbnail08" class="mx-8">
             <img :src="dugavideo.thumbnail08" :alt="'【DUGA】' + dugavideo.title + 'の8枚目の画像'" class="h-[10rem]">
           </div>
-          <div v-if="dugavideo.thumbnail09" class="mx-8 snap-center">
+          <div v-if="dugavideo.thumbnail09" class="mx-8">
             <img :src="dugavideo.thumbnail09" :alt="'【DUGA】' + dugavideo.title + 'の9枚目の画像'" class="h-[10rem]">
           </div>
-          <div v-if="dugavideo.thumbnail10" class="mx-8 snap-center">
+          <div v-if="dugavideo.thumbnail10" class="mx-8">
             <img :src="dugavideo.thumbnail10" :alt="'【DUGA】' + dugavideo.title + 'の10枚目の画像'" class="h-[10rem]">
           </div>
-          <div class="w-20 ml-4 mt-12">
+          <div class="w-36 ml-10 mt-12 text-white hover:text-red-500">
             <a :href="dugavideo.affiliateurl" target="_blank" rel="noopener">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 ml-5 text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 ml-5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />
             </svg>
-            <span class="text-xs text-white">詳細ページへ</span>
+            <span class="font-bold text-sm">DUGAで見る</span>
             </a>
           </div>
           </div>

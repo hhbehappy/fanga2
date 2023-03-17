@@ -8,6 +8,7 @@ import NiceFlashMessage from '@/Components/NiceFlashMessage.vue';
 
 const props = defineProps({
   videoids: Object,
+  fanzasidebers: Object,
   title: String,
   date: String,
   fanza_id: Number,
@@ -92,7 +93,7 @@ export default {
 <template>
   <Head :title="'【FANZA】' + title" />
 
-<Layout>
+<Layout :fanzas="props.fanzasidebers">
   <div v-for="videoid in videoids" :key="videoid.id" class="">
     <h1 class="font-bold md:text-xl mb-8 px-4 md:mr-8 bg-gray-200 p-2 border-b-2 border-gray-500"><span class="text-red-500">【FANZA】</span>{{ videoid.title }}</h1>
     <p class="mb-7"><NiceFlashMessage /></p>
@@ -276,12 +277,12 @@ export default {
               <div class="mr-5">
                 <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + '-10.jpg'" :alt="'【FANZA】' + videoid.title + '10枚目の画像'" class="h-[6rem]">
               </div>
-              <div class="w-30 mr-12 mt-4">
+              <div class="flex w-32 mr-12 mt-4 text-blue-500 hover:text-red-500 justify-center">
                 <a :href="'https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D' + videoid.content_id + '%2F&af_id=maxjpblog-017&ch=link_tool&ch_id=text'" rel="nofollow" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 ml-3">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 ml-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />
                 </svg>
-                <span class="text-xs text-blue-500">詳細ページへ</span>
+                <span class="font-semibold text-sm">FANZAで見る</span>
               </a>
               </div>
             </div>
@@ -541,45 +542,45 @@ export default {
         <main class="modal__content" id="modal-1-content">
           <div class="flex overflow-x-scroll m-6 pb-6 hidden-scrollbar snap-x">
         <div class="flex flex-none flex-nowrap items-start snap-x">
-          <div class="mr-3 snap-center">
+          <div class="mr-3">
             <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'pl.jpg'" :alt="'【FANZA】' + videoid.title + 'のジャケット画像'" class="h-[30rem]">
           </div>
-          <div class="mx-10 snap-center">
+          <div class="mx-10">
             <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-1.jpg'" :alt="'【FANZA】' + videoid.title + '1枚目の画像'" class="h-[30rem]">
           </div>
-          <div class="mx-10 snap-center">
+          <div class="mx-10">
             <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-2.jpg'" :alt="'【FANZA】' + videoid.title + '2枚目の画像'" class="h-[30rem]">
           </div>
-          <div class="mx-10 snap-center">
+          <div class="mx-10">
             <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-3.jpg'" :alt="'【FANZA】' + videoid.title + '3枚目の画像'" class="h-[30rem]">
           </div>
-          <div class="mx-10 snap-center">
+          <div class="mx-10">
             <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-4.jpg'" :alt="'【FANZA】' + videoid.title + '4枚目の画像'" class="h-[30rem]">
           </div>
-          <div class="mx-10 snap-center">
+          <div class="mx-10">
             <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-5.jpg'" :alt="'【FANZA】' + videoid.title + '5枚目の画像'" class="h-[30rem]">
           </div>
-          <div class="mx-10 snap-center">
+          <div class="mx-10">
             <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-6.jpg'" :alt="'【FANZA】' + videoid.title + '6枚目の画像'" class="h-[30rem]">
           </div>
-          <div class="mx-10 snap-center">
+          <div class="mx-10">
             <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-7.jpg'" :alt="'【FANZA】' + videoid.title + '7枚目の画像'" class="h-[30rem]">
           </div>
-          <div class="mx-10 snap-center">
+          <div class="mx-10">
             <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-8.jpg'" :alt="'【FANZA】' + videoid.title + '8枚目の画像'" class="h-[30rem]">
           </div>
-          <div class="mx-10 snap-center">
+          <div class="mx-10">
             <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-9.jpg'" :alt="'【FANZA】' + videoid.title + '9枚目の画像'" class="h-[30rem]">
           </div>
           <div class="mx-10">
             <img :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + 'jp-10.jpg'" :alt="'【FANZA】' + videoid.title + '10枚目の画像'" class="h-[30rem]">
           </div>
-          <div class="w-80 mx-3 self-center">
+          <div class="flex w-72 mx-3 text-white hover:text-red-500 justify-center self-center">
             <a :href="'https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D' + videoid.content_id + '%2F&af_id=maxjpblog-017&ch=link_tool&ch_id=text'" rel="nofollow" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 ml-14 text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 ml-4">
             <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />
             </svg>
-            <span class="ml-10 font-bold text-lg text-white">詳細ページへ</span>
+            <span class="font-bold text-sm">FANZAで見る</span>
             </a>
           </div>
         </div>

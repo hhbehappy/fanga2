@@ -3,7 +3,7 @@ import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
-  <aside class="hidden md:flex flex-col w-[160px] shrink-0 bg-white border-4 border-black mx-4 lg:mx-8 mb-10">
+  <aside class="hidden md:flex flex-col md:w-[140px] lg:w-[160px] shrink-0 bg-white border-4 border-black mx-4 lg:mx-8 mb-10">
     <div class="flex flex-col space-y-1">
       <p class="pb-1 pl-3 text-left text-gray-300 font-bold bg-black">MENU</p>
       <h1 class="pt-2 pl-3 text-left text-red-500 font-bold text-xl">FANZA</h1>

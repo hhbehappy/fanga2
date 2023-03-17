@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <aside class="hidden md:flex flex-col w-[160px] shrink-0 bg-white border-4 text-left border-black mx-4 lg:mx-8 mb-10">
+  <aside class="hidden md:flex flex-col md:w-[140px] lg:w-[160px] shrink-0 bg-white border-4 text-left border-black mx-4 lg:mx-8 mb-10">
     <div class="flex flex-col pb-3 space-y-1">
       <p class="pb-1 pl-3 text-lg text-gray-300 bg-black">MENU</p>
         <div class="pb-4 pl-3 space-y-1">

@@ -1,4 +1,4 @@
-<aside class="hidden md:flex flex-col w-[160px] shrink-0 bg-white border-4 border-black mx-4 lg:mx-8 mb-10">
+<aside class="hidden md:flex flex-col md:w-[140px] lg:w-[160px] shrink-0 bg-white border-4 border-black mx-4 lg:mx-8 mb-10">
   <div class="flex flex-col space-y-1">
     <h1 class="pb-1 pl-3 text-lg text-left text-gray-300 font-bold bg-black">FANZA</h1>
     <h2 class="py-2 pl-3 text-left text-red-500 font-bold">ジャンル</h2>
