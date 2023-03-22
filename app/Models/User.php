@@ -53,6 +53,12 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notify(new CustomVerifyEmail());
     }
 
+    public function id1middleware(){ 
+        if($this->id=='1'){ 
+            return true; 
+        } return false; 
+    }
+
     public function fanza() {
         return $this->hasMany('App\Models\Fanza');
     }
