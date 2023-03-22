@@ -164,7 +164,7 @@ Route::controller(FanzaSeriesController::class)->group(function ()
 
 Route::controller(FanzaVideoController::class)->group(function ()
 {
-    Route::get('fanza/create', 'create')->name('fvideo.create');
+    Route::get('fanza/create', 'create')->middleware('auth', 'Id1Middleware');
     Route::get('/fanza/video/{id}', 'show')->name('fvideo.show');
     Route::get('fanza/store', 'store')->name('fvideo.store');
     Route::post('fanza/store', 'store');
@@ -232,7 +232,7 @@ Route::controller(DugaSeriesController::class)->group(function ()
 
 Route::controller(DugaVideoController::class)->group(function ()
 {
-    Route::get('duga/create', 'create')->name('dvideo.create');
+    Route::get('duga/create', 'create')->middleware('auth', 'Id1Middleware');
     Route::get('/duga/video/{id}', 'show')->name('dvideo.show');
     Route::get('duga/store', 'store')->name('dvideo.store');
     Route::post('duga/store', 'store');
