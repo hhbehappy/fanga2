@@ -18,12 +18,12 @@ class FangaController extends Controller
         $dvideoids = Duga::whereDate('date', '<', $today)->latest('date')->take(30)->get();
         $fanzacount = Fanza::count();
         $dugacount = Duga::count();
-        $fanzaactresss = Fanza::whereDate('date', '<', $today)->latest('updated_at')->take(30)->get()->unique('actress');
-        $fanzamakers = Fanza::whereDate('date', '<', $today)->latest('date')->take(30)->get()->unique('maker');
-        $fanzaseriess = Fanza::whereDate('date', '<', $today)->latest('updated_at')->take(30)->get()->unique('series');
-        $dugaperformers = Duga::whereDate('date', '<', $today)->latest('date')->take(30)->get()->unique('performer');
-        $dugamakers = Duga::whereDate('date', '<', $today)->latest('date')->take(30)->get()->unique('maker');
-        $dugaseriess = Duga::whereDate('date', '<', $today)->latest('date')->take(30)->get()->unique('series');
+        $fanzaactresss = Fanza::whereDate('date', '<', $today)->whereNotIn('actress', [''])->latest('updated_at')->get()->unique('actress')->take(30);
+        $fanzamakers = Fanza::whereDate('date', '<', $today)->whereNotIn('maker', [''])->latest('updated_at')->get()->unique('maker')->take(30);
+        $fanzaseriess = Fanza::whereDate('date', '<', $today)->whereNotIn('series', [''])->latest('updated_at')->get()->unique('series')->take(30);
+        $dugaperformers = Duga::whereDate('date', '<', $today)->whereNotIn('performer', [''])->latest('updated_at')->get()->unique('performer')->take(30);
+        $dugamakers = Duga::whereDate('date', '<', $today)->whereNotIn('maker', [''])->latest('updated_at')->get()->unique('maker')->take(30);
+        $dugaseriess = Duga::whereDate('date', '<', $today)->whereNotIn('series', [''])->latest('updated_at')->get()->unique('series')->take(30);
 
         return Inertia::render('Fanga', [
             'fvideoids' => $fvideoids,
