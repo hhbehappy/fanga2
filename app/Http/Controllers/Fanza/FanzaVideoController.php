@@ -72,13 +72,14 @@ class FanzaVideoController extends Controller
                     'genre9'             => $item['iteminfo']['genre'][9]['name'], 
                     'date'               => $item['date'], 
                     'imageURL_small'     => $item['imageURL']['small'], 
+                    'sampleImageURL'     => $item['sampleImageURL']['sample_s']['image'], 
                     'sampleMovieURL'     => $item['sampleMovieURL']['size_476_306'], 
                     'affiliateURL'       => $item['affiliateURL'], 
                 );
 
                 $post_html = <<< EOM
                 <div style="float:left;margin:3px;height:180px;width:7em; font-size:40%;overflow: hidden;">
-                <a href="store?content_id={$item_list['content_id']}&title={$item_list['title']}&volume={$item_list['volume']}&date={$item_list['date']}&maker={$item_list['maker']}&label={$item_list['label']}&series={$item_list['series']}&actress={$item_list['actress']}&ruby={$item_list['ruby']}&director={$item_list['director']}&genre={$item_list['genre0']}&genre1={$item_list['genre1']}&genre2={$item_list['genre2']}&genre3={$item_list['genre3']}&genre4={$item_list['genre4']}&genre5={$item_list['genre5']}&genre6={$item_list['genre6']}&genre7={$item_list['genre7']}&genre8={$item_list['genre8']}&genre9={$item_list['genre9']}&affiliateURL={$item_list['affiliateURL']}"><img src="{$item_list['imageURL_small']}" target="_blank" rel="noopener" style="height:120px;"}"><br>{$item_list['content_id']}<br><br>{$item_list['sampleMovieURL']}<br></a>
+                <a href="store?content_id={$item_list['content_id']}&title={$item_list['title']}&volume={$item_list['volume']}&date={$item_list['date']}&maker={$item_list['maker']}&label={$item_list['label']}&series={$item_list['series']}&actress={$item_list['actress']}&ruby={$item_list['ruby']}&director={$item_list['director']}&genre={$item_list['genre0']}&genre1={$item_list['genre1']}&genre2={$item_list['genre2']}&genre3={$item_list['genre3']}&genre4={$item_list['genre4']}&genre5={$item_list['genre5']}&genre6={$item_list['genre6']}&genre7={$item_list['genre7']}&genre8={$item_list['genre8']}&genre9={$item_list['genre9']}&affiliateURL={$item_list['affiliateURL']}"><img src="https://pics.dmm.co.jp/digital/video/{$item_list['content_id']}/{$item_list['content_id']}ps.jpg" target="_blank" rel="noopener" style="height:120px;"}"><br>{$item_list['content_id']}<br><br>{$item_list['sampleMovieURL']}<br></a>
                 </div>
                 EOM;
                 // HTML出力
