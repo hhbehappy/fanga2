@@ -38,7 +38,7 @@ defineProps({
     <div class="flex flex-wrap ml-4 md:mx-2 justify-center md:justify-start">
       <div v-for="performermemolist in performermemolists" :key="performermemolist.id">
         <div v-if="performermemolist.performer" class="w-36 mr-5 md:mr-1 mb-4">
-          <a :href="route('dlist.show', { keyword: performermemolist.performer })" class="p-2 border-2 text-blue-500 text-center inline-block">
+          <a :href="route('dlist.show', { sort: 'performer', keyword: performermemolist.performer })" class="p-2 border-2 text-blue-500 text-center inline-block">
             <img v-if="performermemolist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + performermemolist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + performermemolist.title" class="h-40 w-28">
             <img v-else :src="'https://pic.duga.jp/unsecure/' + performermemolist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + performermemolist.title + 'のメイン画像'" class="h-40 w-28">
             <span class="w-28 -mb-2 text-sm inline-block truncate">{{ performermemolist.performer }}</span>

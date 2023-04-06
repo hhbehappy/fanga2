@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\Duga;
+use App\Services\SortKeyword;
 
 class DugaListController extends Controller
 {
@@ -25,6 +26,7 @@ class DugaListController extends Controller
 
         $onemonths = Carbon::today()->subMonth(1);
         $keyword = $request->keyword;
+        $sort = SortKeyword::listSort($request->sort);
 
         if(!empty($keyword)){
             $videolists = Duga::where('maker', 'like', $keyword)
@@ -37,11 +39,7 @@ class DugaListController extends Controller
             ->paginate(100);
         }
 
-        return view('Duga/Video/List', [           
-            'onemonths' => $onemonths,
-            'videolists' => $videolists,   
-            'keyword' => $keyword   
-        ]);
+        return view('Duga/Video/List', compact('onemonths', 'videolists','sort', 'keyword'));
     }
 
     public function destroy($id)

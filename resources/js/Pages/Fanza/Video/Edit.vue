@@ -98,7 +98,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
                 <td class="w-24 h-10 py-2 text-sm">出演者</td>
                 <td>
                   <span v-if="videoid.actress" class="border border-gray-300 lg:border-none rounded p-1 text-sm text-blue-500">
-                    <a :href="route('flist.show', { keyword: videoid.actress })">{{ videoid.actress }}</a></span>
+                    <a :href="route('flist.show', { sort: 'actress', keyword: videoid.actress })">{{ videoid.actress }}</a></span>
                   <span v-else class="text-2xl">----</span>
                 </td>
               </tr>
@@ -106,7 +106,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
                 <td class="w-24 h-10 py-2 text-sm">シリーズ</td>
                 <td>
                   <span v-if="videoid.series" class="border border-gray-300 lg:border-none rounded p-1 text-sm text-blue-500">
-                    <a :href="route('flist.show', { keyword: videoid.series })">{{ videoid.series }}</a></span>
+                    <a :href="route('flist.show', { sort: 'series', keyword: videoid.series })">{{ videoid.series }}</a></span>
                   <span v-else class="text-2xl">----</span>
                 </td>
               </tr>
@@ -114,7 +114,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
                 <td class="w-24 h-10 py-2 text-sm">メーカー</td>
                 <td>
                   <span v-if="videoid.maker" class="border border-gray-300 lg:border-none rounded p-1 text-sm text-blue-500">
-                    <a :href="route('flist.show', { keyword: videoid.maker })">{{ videoid.maker }}</a></span>
+                    <a :href="route('flist.show', { sort: 'maker', keyword: videoid.maker })">{{ videoid.maker }}</a></span>
                   <span v-else class="text-2xl">----</span>
                 </td>
               </tr>
@@ -122,7 +122,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
                 <td class="w-24 h-10 py-2 text-sm">レーベル</td>
                 <td>
                   <span v-if="videoid.label" class="border border-gray-300 lg:border-none rounded p-1 text-sm text-blue-500">
-                    <a :href="route('flist.show', { keyword: videoid.label })">{{ videoid.label }}</a></span>
+                    <a :href="route('flist.show', { sort: 'label', keyword: videoid.label })">{{ videoid.label }}</a></span>
                   <span v-else class="text-2xl">----</span>
                 </td>
               </tr>
@@ -130,7 +130,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
                 <td class="w-24 h-10 py-2 text-sm">監督</td>
                 <td>
                   <span v-if="videoid.director" class="border border-gray-300 lg:border-none rounded p-1 text-sm text-blue-500">
-                    <a :href="route('flist.show', { keyword: videoid.director })">{{ videoid.director }}</a></span>
+                    <a :href="route('flist.show', { sort: 'director', keyword: videoid.director })">{{ videoid.director }}</a></span>
                   <span v-else class="text-2xl">----</span>
                   </td>
               </tr>
@@ -138,34 +138,34 @@ const toggleStatus = () => { isShow.value = !isShow.value}
                 <td class="w-24 h-10 text-sm">ジャンル</td>
                 <td class="py-2">
                   <div v-if="videoid.genre" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('flist.show', { keyword: videoid.genre })">{{ videoid.genre }}</a></div>
+                    <a :href="route('flist.show', { sort: 'genre', keyword: videoid.genre })">{{ videoid.genre }}</a></div>
                   <div v-else></div>
                   <div v-if="videoid.genre1" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('flist.show', { keyword: videoid.genre1 })">{{ videoid.genre1 }}</a></div>
+                    <a :href="route('flist.show', { sort: 'genre', keyword: videoid.genre1 })">{{ videoid.genre1 }}</a></div>
                   <div v-else></div>
                   <div v-if="videoid.genre2" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('flist.show', { keyword: videoid.genre2 })">{{ videoid.genre2 }}</a></div>
+                    <a :href="route('flist.show', { sort: 'genre', keyword: videoid.genre2 })">{{ videoid.genre2 }}</a></div>
                   <div v-else></div>
                   <div v-if="videoid.genre3" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('flist.show', { keyword: videoid.genre3 })">{{ videoid.genre3 }}</a></div>
+                    <a :href="route('flist.show', { sort: 'genre', keyword: videoid.genre3 })">{{ videoid.genre3 }}</a></div>
                   <div v-else></div>
                   <div v-if="videoid.genre4" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('flist.show', { keyword: videoid.genre4 })">{{ videoid.genre4 }}</a></div>
+                    <a :href="route('flist.show', { sort: 'genre', keyword: videoid.genre4 })">{{ videoid.genre4 }}</a></div>
                   <div v-else></div>
                   <div v-if="videoid.genre5" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('flist.show', { keyword: videoid.genre5 })">{{ videoid.genre5 }}</a></div>
+                    <a :href="route('flist.show', { sort: 'genre', keyword: videoid.genre5 })">{{ videoid.genre5 }}</a></div>
                   <div v-else></div>
                   <div v-if="videoid.genre6" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('flist.show', { keyword: videoid.genre6 })">{{ videoid.genre6 }}</a></div>
+                    <a :href="route('flist.show', { sort: 'genre', keyword: videoid.genre6 })">{{ videoid.genre6 }}</a></div>
                   <div v-else></div>
                   <div v-if="videoid.genre7" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('flist.show', { keyword: videoid.genre7 })">{{ videoid.genre7 }}</a></div>
+                    <a :href="route('flist.show', { sort: 'genre', keyword: videoid.genre7 })">{{ videoid.genre7 }}</a></div>
                   <div v-else></div>
                   <div v-if="videoid.genre8" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('flist.show', { keyword: videoid.genre8 })">{{ videoid.genre8 }}</a></div>
+                    <a :href="route('flist.show', { sort: 'genre', keyword: videoid.genre8 })">{{ videoid.genre8 }}</a></div>
                   <div v-else></div>
                   <div v-if="videoid.genre9" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('flist.show', { keyword: videoid.genre9 })">{{ videoid.genre9 }}</a></div>
+                    <a :href="route('flist.show', { sort: 'genre', keyword: videoid.genre9 })">{{ videoid.genre9 }}</a></div>
                   <div v-else></div>
                 </td>
               </tr>

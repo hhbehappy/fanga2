@@ -105,7 +105,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
                 <td class="w-24 h-10 py-2 text-sm">出演者</td>
                 <td>
                   <span v-if="dugavideo.performer" class="border border-gray-300 lg:border-none rounded p-1 text-blue-500 text-sm">
-                    <a :href="route('dlist.show', { keyword: dugavideo.performer })">{{ dugavideo.performer }}</a></span>
+                    <a :href="route('dlist.show', { sort: 'performer', keyword: dugavideo.performer })">{{ dugavideo.performer }}</a></span>
                   <span v-else class="text-2xl">----</span>
                 </td>
               </tr>
@@ -113,7 +113,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
                 <td class="w-24 h-10 py-2 text-sm">シリーズ</td>
                 <td>
                   <span v-if="dugavideo.series" class="border border-gray-300 lg:border-none rounded p-1 text-blue-500 text-sm">
-                    <a :href="route('dlist.show', { keyword: dugavideo.series })">{{ dugavideo.series }}</a></span>
+                    <a :href="route('dlist.show', { sort: 'series', keyword: dugavideo.series })">{{ dugavideo.series }}</a></span>
                   <span v-else class="text-2xl">----</span>
                 </td>
               </tr>
@@ -121,7 +121,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
                 <td class="w-24 h-10 py-2 text-sm">メーカー</td>
                 <td>
                   <span v-if="dugavideo.maker" class="border border-gray-300 lg:border-none rounded p-1 text-blue-500 text-sm">
-                    <a :href="route('dlist.show', { keyword: dugavideo.maker })">{{ dugavideo.maker }}</a></span>
+                    <a :href="route('dlist.show', { sort: 'maker', keyword: dugavideo.maker })">{{ dugavideo.maker }}</a></span>
                   <span v-else class="text-2xl">----</span>
                 </td>
               </tr>
@@ -129,7 +129,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
                 <td class="w-24 h-10 py-2 text-sm">レーベル</td>
                 <td>
                   <span v-if="dugavideo.label" class="border border-gray-300 lg:border-none rounded p-1 text-blue-500 text-sm">
-                    <a :href="route('dlist.show', { keyword: dugavideo.label })">{{ dugavideo.label }}</a></span>
+                    <a :href="route('dlist.show', { sort: 'label', keyword: dugavideo.label })">{{ dugavideo.label }}</a></span>
                   <span v-else class="text-2xl">----</span>
                 </td>
               </tr>
@@ -137,7 +137,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
                 <td class="w-24 h-10 py-2 text-sm">監督</td>
                 <td>
                   <span v-if="dugavideo.director" class="border border-gray-300 lg:border-none rounded p-1 text-blue-500 text-sm">
-                    <a :href="route('dlist.show', { keyword: dugavideo.director })">{{ dugavideo.director }}</a></span>
+                    <a :href="route('dlist.show', { sort: 'director', keyword: dugavideo.director })">{{ dugavideo.director }}</a></span>
                   <span v-else class="text-2xl">----</span>
                   </td>
               </tr>
@@ -145,7 +145,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
                 <td class="w-24 h-10 text-sm">カテゴリ</td>
                 <td class="py-2">
                   <div v-if="dugavideo.category" class="inline-block border border-gray-300 lg:border-none rounded p-1 mr-2 mb-2 text-sm text-blue-500">
-                    <a :href="route('dlist.show', { keyword: dugavideo.category })">{{ dugavideo.category }}</a></div>
+                    <a :href="route('dlist.show', { sort: 'category', keyword: dugavideo.category })">{{ dugavideo.category }}</a></div>
                   <div v-else></div>
                 </td>
               </tr>

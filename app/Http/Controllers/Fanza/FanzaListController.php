@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\Fanza;
+use App\Services\SortKeyword;
 
 class FanzaListController extends Controller
 {
     public function index()
     {
-        $today = Carbon::today();
-        $videoids = Fanza::whereDate('date', '<', $today)->latest('date')->paginate(100);
+        $videoids = Fanza::latest('date')->paginate(100);
         $onemonths = Carbon::today()->subMonth(1);
         $auth_id = Auth::id();
 
@@ -25,7 +25,8 @@ class FanzaListController extends Controller
 
         $onemonths = Carbon::today()->subMonth(1);
         $keyword = $request->keyword;
-
+        $sort = SortKeyword::listSort($request->sort);
+        
         if(!empty($keyword)){
             $videolists = Fanza::where('maker', 'like', $keyword)
             ->orWhere('label', 'like', $keyword)
@@ -47,7 +48,7 @@ class FanzaListController extends Controller
         }
 
 
-        return view('Fanza/Video/List', compact('onemonths', 'videolists', 'keyword'));
+        return view('Fanza/Video/List', compact('onemonths', 'videolists', 'sort', 'keyword'));
     }
 
     public function destroy($id)

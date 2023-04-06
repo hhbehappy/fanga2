@@ -48,7 +48,7 @@ const props = defineProps({
     <div class="flex flex-wrap ml-4 md:mx-2 justify-center sm:justify-start">
       <div v-for="actressnamelist in actressnamelists" :key="actressnamelist.id">
         <div v-if="actressnamelist.actress" class="w-36 mr-5 md:mr-2 mb-4">
-          <a :href="route('flist.show', { keyword: actressnamelist.actress })" class="p-2 border-2 text-blue-500 text-center inline-block">
+          <a :href="route('flist.show', { sort: 'actress', keyword: actressnamelist.actress })" class="p-2 border-2 text-blue-500 text-center inline-block">
             <img :src="'https://pics.dmm.co.jp/digital/video/' + actressnamelist.content_id  + '/' + actressnamelist.content_id + 'ps.jpg'" :alt="'【FANZA】' + actressnamelist.title + 'のメイン画像'" class="h-40">
             <span class="w-28 -mb-2 text-sm inline-block truncate">{{ actressnamelist.actress }}</span>
             <span class="w-28 text-xs text-gray-600 block truncate">{{ actressnamelist.ruby }}</span>

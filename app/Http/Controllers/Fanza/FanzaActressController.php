@@ -13,7 +13,7 @@ class FanzaActressController extends Controller
 {
     public function actress()
     {
-        $actresslists = Fanza::select('content_id', 'title', 'actress', 'updated_at')->latest('updated_at')->take(60)->get()->unique('actress');
+        $actresslists = Fanza::select('content_id', 'title', 'actress', 'updated_at')->whereNotIn('actress', [''])->latest('updated_at')->get()->unique('actress')->take(60);
         
         return Inertia::render('Fanza/Video/Actress/Index',[
             'actresslists' => $actresslists,
