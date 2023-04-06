@@ -151,6 +151,8 @@ Route::controller(FanzaGenreController::class)->group(function ()
 Route::controller(FanzaMakerController::class)->group(function ()
 {
     Route::get('fanza/video/maker', 'maker')->name('flist.maker');
+    Route::get('fanza/video/maker/all', 'maker_all')->name('flist.maker_all');
+    Route::get('fanza/video/maker/search', 'maker_search')->name('flist.maker_search');
     Route::get('fanza/video/maker/memo', 'maker_memo')->name('flist.maker_memo');
     Route::get('fanza/video/maker/nice', 'maker_nice')->name('flist.maker_nice');
 });
@@ -158,6 +160,8 @@ Route::controller(FanzaMakerController::class)->group(function ()
 Route::controller(FanzaSeriesController::class)->group(function ()
 {
     Route::get('fanza/video/series', 'series')->name('flist.series');
+    Route::get('fanza/video/series/all', 'series_all')->name('flist.series_all');
+    Route::get('fanza/video/series/search', 'series_search')->name('flist.series_search');
     Route::get('fanza/video/series/memo', 'series_memo')->name('flist.series_memo');
     Route::get('fanza/video/series/nice', 'series_nice')->name('flist.series_nice');
 });
@@ -219,6 +223,8 @@ Route::controller(DugaCategoryController::class)->group(function ()
 Route::controller(DugaMakerController::class)->group(function ()
 {
     Route::get('duga/video/maker', 'maker')->name('dlist.maker');
+    Route::get('duga/video/maker/all', 'maker_all')->name('dlist.maker_all');
+    Route::get('duga/video/maker/search', 'maker_search')->name('dlist.maker_search');
     Route::get('duga/video/maker/memo', 'maker_memo')->name('dlist.maker_memo');
     Route::get('duga/video/maker/nice', 'maker_nice')->name('dlist.maker_nice');
 });
@@ -226,6 +232,8 @@ Route::controller(DugaMakerController::class)->group(function ()
 Route::controller(DugaSeriesController::class)->group(function ()
 {
     Route::get('duga/video/series', 'series')->name('dlist.series');
+    Route::get('duga/video/series/all', 'series_all')->name('dlist.series_all');
+    Route::get('duga/video/series/search', 'series_search')->name('dlist.series_search');
     Route::get('duga/video/series/memo', 'series_memo')->name('dlist.series_memo');
     Route::get('duga/video/series/nice', 'series_nice')->name('dlist.series_nice');
 });

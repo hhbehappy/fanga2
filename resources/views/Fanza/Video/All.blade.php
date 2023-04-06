@@ -13,10 +13,13 @@
       @foreach ( $videoids as $videoid )
       <div>
         <a href="{{ route('fvideo.show', [ 'id' => $videoid->content_id ]) }}">
-            @if( $videoid->date > $onemonths )
+            @if( $videoid->date > $onemonths && $videoid->date < \Carbon\Carbon::today() )
               <span class="text-white bg-red-500 text-sm font-bold absolute ml-1.5 px-1">NEW</span>
             @endif
-            <img src="<?php echo 'https://pics.dmm.co.jp/digital/video/' .  $videoid->content_id  . '/' .  $videoid->content_id   . 'ps.jpg'; ?>" alt="【FANZA】 <?php echo $videoid->title ?>" class="w-[120px] inline-block px-1 mb-4">
+            @if( $videoid->date > \Carbon\Carbon::today() )
+              <span class="text-white bg-blue-600 text-sm font-bold absolute ml-1.5 px-1">配信予定</span>
+            @endif
+            <img src="<?php echo 'https://pics.dmm.co.jp/digital/video/' .  $videoid->content_id  . '/' .  $videoid->content_id   . 'ps.jpg'; ?>" alt="【FANZA】 <?php echo $videoid->title ?>のメイン画像" class="w-[120px] inline-block px-1 mb-4">
           </a>
           @if ($auth_id === 1 && $videoid->id !== 1)
           <form method="post" action="{{ route('flist.destroy', $videoid) }}" onclick='return confirm("削除しますか？");'>

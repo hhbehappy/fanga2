@@ -45,7 +45,7 @@ const props = defineProps({
         <div class="flex overflow-x-scroll pb-4">
             <div class="flex flex-none flex-wrap">
                 <div v-for="fvideoid in fvideoids" :key="fvideoid.id" class="">
-                    <div class="w-28 h-40 mx-2 border-none overflow-hidden bg-white">
+                    <div class="w-[117px] h-40 mx-2 border-none overflow-hidden">
                         <Link :href="route('fvideo.show', { id: fvideoid.content_id })">
                         <img :src="'https://pics.dmm.co.jp/digital/video/' + fvideoid.content_id  + '/' + fvideoid.content_id + 'ps.jpg'" :alt="'【FANZA】' + fvideoid.title + 'のメイン画像'" class="h-40">
                         </Link>
@@ -60,7 +60,7 @@ const props = defineProps({
         <div class="flex overflow-x-scroll pb-4">
             <div class="flex flex-none flex-wrap">
                 <div v-for="fanzaactress in fanzaactresss" :key="fanzaactress.id" class="">
-                    <div v-if="fanzaactress.actress" class="h-48 border-none bg-white">
+                    <div v-if="fanzaactress.actress" class="w-[133px] h-48 border-none">
                         <a :href="route('flist.show', { keyword: fanzaactress.actress })" class="p-2 text-blue-500 text-center inline-block">
                             <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzaactress.content_id  + '/' + fanzaactress.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzaactress.title + 'のメイン画像'" class="h-40">
                             <span class="w-28 mt-0.5 text-sm inline-block truncate">{{ fanzaactress.actress }}</span>
@@ -76,7 +76,7 @@ const props = defineProps({
         <div class="flex overflow-x-scroll pb-4">
             <div class="flex flex-none flex-wrap">
                 <div v-for="fanzamaker in fanzamakers" :key="fanzamaker.id" class="">
-                    <div v-if="fanzamaker.maker" class="h-48 border-none bg-white">
+                    <div v-if="fanzamaker.maker" class="w-[133px] h-48 border-none">
                         <a :href="route('flist.show', { keyword: fanzamaker.maker })" class="p-2 text-blue-500 text-center inline-block">
                             <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzamaker.content_id  + '/' + fanzamaker.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzamaker.title + 'のメイン画像'" class="h-40">
                             <span class="w-28 -mb-2 text-sm inline-block truncate">{{ fanzamaker.maker }}</span>
@@ -92,7 +92,7 @@ const props = defineProps({
         <div class="flex overflow-x-scroll pb-4">
             <div class="flex flex-none flex-wrap">
                 <div v-for="fanzaseries in fanzaseriess" :key="fanzaseries.id" class="">
-                    <div v-if="fanzaseries.series" class="h-48 border-none bg-white">
+                    <div v-if="fanzaseries.series" class="w-[133px] h-48 border-none">
                         <a :href="route('flist.show', { keyword: fanzaseries.series })" class="p-2 text-blue-500 text-center inline-block">
                             <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzaseries.content_id  + '/' + fanzaseries.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzaseries.title + 'のメイン画像'" class="h-40">
                             <span class="w-28 -mb-2 text-sm inline-block truncate">{{ fanzaseries.series }}</span>
@@ -124,7 +124,7 @@ const props = defineProps({
         <div class="flex overflow-x-scroll pb-4">
             <div class="flex flex-none flex-wrap">
                 <div v-for="dvideoid in dvideoids" :key="dvideoid.id" class="">
-                    <div class="h-40 border-none bg-white">
+                    <div class="w-[133px] h-40 border-none">
                         <Link :href="route('dvideo.show', { id: dvideoid.productid })">
                         <img v-if="dvideoid.jacketimage" :src="dvideoid.jacketimage" :alt="'【DUGA】' + dvideoid.title + 'のメイン画像'" class="w-28 h-40 mx-2">
                         <img v-else :src="dvideoid.posterimage" :alt="'【DUGA】' + dvideoid.title + 'のメイン画像'" class="w-28 h-40 mx-2">
@@ -140,7 +140,7 @@ const props = defineProps({
         <div class="flex overflow-x-scroll pb-4">
             <div class="flex flex-none flex-wrap">
                 <div v-for="dugaperformer in dugaperformers" :key="dugaperformer.id" class="">
-                    <div v-if="dugaperformer.performer" class="h-48 border-none bg-white">
+                    <div v-if="dugaperformer.performer" class="w-[133px] h-48 border-none">
                         <a :href="route('dlist.show', { keyword: dugaperformer.performer })" class="p-2 text-blue-500 text-center inline-block">
                             <img v-if="dugaperformer.jacketimage" :src="dugaperformer.jacketimage" :alt="'【DUGA】' + dugaperformer.title + 'のメイン画像'" class="w-28 h-40">
                             <img v-else :src="dugaperformer.posterimage" :alt="'【DUGA】' + dugaperformer.title + 'のメイン画像'" class="w-28 h-40">
@@ -157,7 +157,7 @@ const props = defineProps({
         <div class="flex overflow-x-scroll pb-4">
             <div class="flex flex-none flex-wrap">
                 <div v-for="dugamaker in dugamakers" :key="dugamaker.id" class="">
-                    <div v-if="dugamaker.maker" class="h-48 border-none bg-white">
+                    <div v-if="dugamaker.maker" class="w-[133px] h-48 border-none">
                         <a :href="route('dlist.show', { keyword: dugamaker.maker })" class="p-2 text-blue-500 text-center inline-block">
                             <img v-if="dugamaker.jacketimage" :src="dugamaker.jacketimage" :alt="'【DUGA】' + dugamaker.title + 'のメイン画像'" class="w-28 h-40">
                             <img v-else :src="dugamaker.posterimage" :alt="'【DUGA】' + dugamaker.title + 'のメイン画像'" class="w-28 h-40">
@@ -174,7 +174,7 @@ const props = defineProps({
         <div class="flex overflow-x-scroll pb-4 mb-10">
             <div class="flex flex-none flex-wrap">
                 <div v-for="dugaseries in dugaseriess" :key="dugaseries.id" class="">
-                    <div v-if="dugaseries.series" class="h-48 border-none bg-white">
+                    <div v-if="dugaseries.series" class="w-[133px] h-48 border-none">
                         <a :href="route('dlist.show', { keyword: dugaseries.series })" class="p-2 text-blue-500 text-center inline-block">
                             <img v-if="dugaseries.jacketimage" :src="dugaseries.jacketimage" :alt="'【DUGA】' + dugaseries.title" class="w-28 h-40">
                             <img v-else :src="dugaseries.posterimage" :alt="'【DUGA】' + dugaseries.title + 'のメイン画像'" class="w-28 h-40">

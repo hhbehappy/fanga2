@@ -38,7 +38,7 @@ defineProps({
     <div class="flex flex-wrap ml-4 md:mx-2 justify-center md:justify-start">
       <div v-for="performerlist in performerlists" :key="performerlist.id">
         <div v-if="performerlist.performer" class="w-36 mr-5 md:mr-1 mb-4">
-          <a :href="route('dlist.show', { keyword: performerlist.performer })" class="p-2 border-2 text-blue-500 text-center inline-block">
+          <a :href="route('dlist.show', { sort: 'performer', keyword: performerlist.performer })" class="p-2 border-2 text-blue-500 text-center inline-block">
             <img v-if="performerlist.jacketimage" :src="performerlist.jacketimage" :alt="'【DUGA】' + performerlist.title" class="h-40 w-28">
             <img v-else :src="performerlist.posterimage" :alt="'【DUGA】' + performerlist.title + 'のメイン画像'" class="h-40 w-28">
             <span class="w-28 -mb-2 text-sm inline-block truncate">{{ performerlist.performer }}</span>

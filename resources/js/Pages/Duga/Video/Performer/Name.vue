@@ -49,7 +49,7 @@ const props = defineProps({
     <div class="flex flex-wrap ml-4 md:mx-2 justify-center sm:justify-start">
       <div v-for=" performernamelist in performernamelists" :key=" performernamelist.id">
         <div v-if=" performernamelist.performer" class="w-36 mr-5 md:mr-1 mb-4">
-          <a :href="route('dlist.show', { keyword: performernamelist.performer })" class="p-2 border-2 text-blue-500 text-center inline-block">
+          <a :href="route('dlist.show', { sort: 'performer', keyword: performernamelist.performer })" class="p-2 border-2 text-blue-500 text-center inline-block">
             <img v-if=" performernamelist.jacketimage" :src=" performernamelist.jacketimage" :alt="'【DUGA】' + performernamelist.title" class="h-40 w-28">
             <img v-else :src=" performernamelist.posterimage" :alt="'【DUGA】' + performernamelist.title + 'のメイン画像'" class="h-40 w-28">
             <span class="w-28 -mb-2 text-sm inline-block truncate">{{ performernamelist.performer }}</span>
