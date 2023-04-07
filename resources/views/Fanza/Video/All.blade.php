@@ -12,8 +12,8 @@
     <div class="flex flex-none flex-wrap mb-4 relative">
       @foreach ( $videoids as $videoid )
       <div>
-        <a href="{{ route('fvideo.show', [ 'id' => $videoid->content_id ]) }}">
-            @if( $videoid->date > $onemonths && $videoid->date < \Carbon\Carbon::today() )
+            <a href="{{ route('fvideo.show', [ 'id' => $videoid->content_id ]) }}">
+            @if( $videoid->date > $onemonths && $videoid->date <= \Carbon\Carbon::today() )
               <span class="text-white bg-red-500 text-sm font-bold absolute ml-1.5 px-1">NEW</span>
             @endif
             @if( $videoid->date > \Carbon\Carbon::today() )
@@ -31,9 +31,13 @@
       </div>
       @endforeach
     </div>
-    <div class="ml-2">
-      <span class="block mb-2">{{ $videoids->total() }}件中 {{ $videoids->firstItem() }}〜{{ $videoids->lastItem() }}件</span>
-      {{ $videoids->links('vendor.pagination.tailwind3') }}
+    <div class="mt-5">
+      <div class="block sm:hidden">
+        {{ $videoids->onEachSide(0)->links('vendor.pagination.tailwind2') }}
+      </div>
+      <div class="sm:block hidden">
+        {{ $videoids->onEachSide(2)->links('vendor.pagination.tailwind3') }}
+      </div>
     </div>
   </div>
 </x-app>

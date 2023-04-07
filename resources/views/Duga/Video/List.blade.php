@@ -23,9 +23,13 @@
         </a>
       @endforeach
     </div>
-    <div class="ml-6">
-      <span class="block mb-2 ml-2">{{ $videolists->total() }}件中 {{ $videolists->firstItem() }}〜{{ $videolists->lastItem() }}件</span>
-      {{ $videolists->appends(request()->input())->links('vendor.pagination.tailwind3') }}
+    <div class="mt-5">
+      <div class="block sm:hidden">
+        {{ $videolists->onEachSide(0)->appends(request()->input())->links('vendor.pagination.tailwind2') }}
+      </div>
+      <div class="hidden sm:block">
+        {{ $videolists->onEachSide(2)->appends(request()->input())->links('vendor.pagination.tailwind3') }}
+      </div>
     </div>
   </div>
 </x-app>
