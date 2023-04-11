@@ -49,9 +49,16 @@
         </div>
         @endforeach
       </div>
-      <div class="ml-2">
-        <span class="block mb-2">{{ $makeralllists->total() }}件中 {{ $makeralllists->firstItem() }}〜{{ $makeralllists->lastItem() }}件</span>
-        {{ $makeralllists->links('vendor.pagination.tailwind3') }}
+      <div class="mt-5">
+        <div class="block md:hidden">
+          {{ $makeralllists->onEachSide(0)->links('vendor.pagination.tailwind2') }}
+        </div>
+        <div class="md:block lg:hidden">
+          {{ $makeralllists->onEachSide(1)->links('vendor.pagination.tailwind3') }}
+        </div>
+        <div class="lg:block hidden">
+          {{ $makeralllists->onEachSide(2)->links('vendor.pagination.tailwind3') }}
+        </div>
       </div>
     </div>
   </section>

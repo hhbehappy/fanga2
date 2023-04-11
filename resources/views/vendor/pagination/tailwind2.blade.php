@@ -1,6 +1,6 @@
 @if ($paginator->hasPages())
     <nav role="navigation" aria-label="{{ __('Pagination Navigation') }}" class="flex flex-col items-center justify-between">
-        <div class="flex justify-center flex-1 sm:hidden">
+        <div class="flex justify-center flex-1 md:hidden">
             @if ($paginator->onFirstPage())
                 <span></span>
             @else
@@ -24,7 +24,7 @@
             @endif
         </div>
 
-        <div class="flex justify-center flex-1 sm:hidden mt-7">
+        <div class="flex justify-center flex-1 md:hidden mt-7">
             {{-- Pagination Elements --}}
             @foreach ($elements as $element)
                 {{-- "Three Dots" Separator --}}

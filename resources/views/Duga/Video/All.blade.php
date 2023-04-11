@@ -33,10 +33,13 @@
       @endforeach
     </div>
     <div class="mt-5">
-      <div class="block sm:hidden">
+      <div class="block md:hidden">
         {{ $videoids->onEachSide(0)->links('vendor.pagination.tailwind2') }}
       </div>
-      <div class="sm:block hidden">
+      <div class="md:block lg:hidden">
+        {{ $videoids->onEachSide(1)->links('vendor.pagination.tailwind3') }}
+      </div>
+      <div class="lg:block hidden">
         {{ $videoids->onEachSide(2)->links('vendor.pagination.tailwind3') }}
       </div>
     </div>

@@ -19,7 +19,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <Head :title="'FANGA FANZA&DUGA FREEMEMO'" />
+    <Head :title="'FANZA&DUGA FREEMEMO'" />
 
 <Layout>
 

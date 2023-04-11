@@ -24,10 +24,13 @@
       @endforeach
     </div>
     <div class="mt-5">
-      <div class="block sm:hidden">
+      <div class="block md:hidden">
         {{ $videolists->onEachSide(0)->appends(request()->input())->links('vendor.pagination.tailwind2') }}
       </div>
-      <div class="hidden sm:block">
+      <div class="md:block lg:hidden">
+        {{ $videolists->onEachSide(1)->appends(request()->input())->links('vendor.pagination.tailwind3') }}
+      </div>
+      <div class="lg:block hidden">
         {{ $videolists->onEachSide(2)->appends(request()->input())->links('vendor.pagination.tailwind3') }}
       </div>
     </div>
