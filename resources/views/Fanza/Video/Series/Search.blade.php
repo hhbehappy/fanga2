@@ -51,9 +51,16 @@
         </div>
         @endforeach
       </div>
-      <div class="ml-6">
-        <span class="block mb-2 ml-2">{{ $seriessearchlists->total() }}件中 {{ $seriessearchlists->firstItem() }}〜{{ $seriessearchlists->lastItem() }}件</span>
-        {{ $seriessearchlists->appends(request()->input())->links('vendor.pagination.tailwind3') }}
+      <div class="mt-5">
+        <div class="block md:hidden">
+          {{ $seriessearchlists->onEachSide(0)->appends(request()->input())->links('vendor.pagination.tailwind2') }}
+        </div>
+        <div class="md:block lg:hidden">
+          {{ $seriessearchlists->onEachSide(1)->appends(request()->input())->links('vendor.pagination.tailwind3') }}
+        </div>
+        <div class="lg:block hidden">
+          {{ $seriessearchlists->onEachSide(2)->appends(request()->input())->links('vendor.pagination.tailwind3') }}
+        </div>
       </div>
     </div>
   </section>
