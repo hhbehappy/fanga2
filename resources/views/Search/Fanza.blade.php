@@ -26,9 +26,16 @@
         @endif
       @endforeach
     </div>
-    <div class="ml-6">
-      <span class="block mb-2 ml-2">{{ $fanzas->total() }}件中 {{ $fanzas->firstItem() }}〜{{ $fanzas->lastItem() }}件</span>
-      {{ $fanzas->appends(request()->input())->links('vendor.pagination.tailwind3') }}
+    <div class="mt-5">
+      <div class="block md:hidden">
+        {{ $fanzas->onEachSide(0)->appends(request()->input())->links('vendor.pagination.tailwind2') }}
+      </div>
+      <div class="md:block lg:hidden">
+        {{ $fanzas->onEachSide(1)->appends(request()->input())->links('vendor.pagination.tailwind3') }}
+      </div>
+      <div class="lg:block hidden">
+        {{ $fanzas->onEachSide(2)->appends(request()->input())->links('vendor.pagination.tailwind3') }}
+      </div>
     </div>
   </div>
 </x-app>
