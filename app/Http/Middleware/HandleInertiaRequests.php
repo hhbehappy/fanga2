@@ -3,16 +3,10 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
-use App\Models\FanzaFreeMemo;
-use App\Models\FanzaReleaseMemo;
-use App\Models\FanzaPrivateMemo;
-use App\Models\DugaFreeMemo;
-use App\Models\DugaReleaseMemo;
-use App\Models\DugaPrivateMemo;
-use App\Models\Nice;
+use App\Services\SideBarRandomOrder;
+use App\Services\MemoCount;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -53,15 +47,25 @@ class HandleInertiaRequests extends Middleware
                 'status' => fn () => $request->session()->get('status'),
             ],
             'count' => [
-                'fanzafreememo' => FanzaFreeMemo::whereUser_id(Auth::id())->select('content_id')->get()->unique('content_id')->count(),
-                'fanzareleasememo' => FanzaReleaseMemo::whereUser_id(Auth::id())->select('content_id')->get()->unique('content_id')->count(),
-                'fanzaprivatememo' => FanzaprivateMemo::whereUser_id(Auth::id())->select('content_id')->get()->unique('content_id')->count(),
-                'dugafreememo' => DugaFreeMemo::whereUser_id(Auth::id())->select('productid')->get()->unique('productid')->count(),
-                'dugareleasememo' => DugaReleaseMemo::whereUser_id(Auth::id())->select('productid')->get()->unique('productid')->count(),
-                'dugaprivatememo' => DugaPrivateMemo::whereUser_id(Auth::id())->select('productid')->get()->unique('productid')->count(),
-                'fanzanice' => Nice::where([['user_id', Auth::id()], ['type', 'fanza']])->select('content_id')->get()->unique('content_id')->count(),
-                'duganice' => Nice::where([['user_id', Auth::id()], ['type', 'duga']])->select('content_id')->get()->unique('content_id')->count(),
+                'fanzafreememo' => MemoCount::fanzafreememo(),
+                'fanzareleasememo' => MemoCount::fanzareleasememo(),
+                'fanzaprivatememo' => MemoCount::fanzaprivatememo(),
+                'dugafreememo' => MemoCount::dugafreememo(),
+                'dugareleasememo' => MemoCount::dugareleasememo(),
+                'dugaprivatememo' => MemoCount::dugaprivatememo(),
+                'fanzanice' => MemoCount::fanzanice(),
+                'duganice' => MemoCount::duganice(),
             ],
+            'sidebar' => [
+                'fanzagenre' => SideBarRandomOrder::fanzagenre(),
+                'fanzaactress' => SideBarRandomOrder::fanzaactress(),
+                'fanzamaker' => SideBarRandomOrder::fanzamaker(),
+                'fanzaseries' => SideBarRandomOrder::fanzaseries(),
+                'dugacategory' => SideBarRandomOrder::dugacategory(),
+                'dugaperformer' => SideBarRandomOrder::dugaperformer(),
+                'dugamaker' => SideBarRandomOrder::dugamaker(),
+                'dugaseries' => SideBarRandomOrder::dugaseries(),
+            ]
         ]);
     }
 }

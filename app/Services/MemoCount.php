@@ -1,0 +1,64 @@
+<?php
+
+namespace App\Services;
+
+use Illuminate\Support\Facades\Auth;
+use App\Models\FanzaFreeMemo;
+use App\Models\FanzaReleaseMemo;
+use App\Models\FanzaPrivateMemo;
+use App\Models\DugaFreeMemo;
+use App\Models\DugaReleaseMemo;
+use App\Models\DugaPrivateMemo;
+use App\Models\Nice;
+
+class MemoCount
+{
+  public static function fanzafreememo(){
+    $fanzafreememo = FanzaFreeMemo::whereUser_id(Auth::id())->select('content_id')->get()->unique('content_id')->count();
+
+    return $fanzafreememo;
+  }
+
+  public static function fanzareleasememo(){
+    $fanzareleasememo = FanzaReleaseMemo::whereUser_id(Auth::id())->select('content_id')->get()->unique('content_id')->count();
+
+    return $fanzareleasememo;
+  }
+
+  public static function fanzaprivatememo(){
+    $fanzaprivatememo = FanzaprivateMemo::whereUser_id(Auth::id())->select('content_id')->get()->unique('content_id')->count();
+
+    return $fanzaprivatememo;
+  }
+
+  public static function dugafreememo(){
+    $dugafreememo = DugaFreeMemo::whereUser_id(Auth::id())->select('productid')->get()->unique('productid')->count();
+
+    return $dugafreememo;
+  }
+
+  public static function dugareleasememo(){
+    $dugareleasememo = DugaReleaseMemo::whereUser_id(Auth::id())->select('productid')->get()->unique('productid')->count();
+
+    return $dugareleasememo;
+  }
+
+  public static function dugaprivatememo(){
+    $dugaprivatememo = DugaPrivateMemo::whereUser_id(Auth::id())->select('productid')->get()->unique('productid')->count();
+
+    return $dugaprivatememo;
+  }
+
+  public static function fanzanice(){
+    $fanzanice = Nice::where([['user_id', Auth::id()], ['type', 'fanza']])->select('content_id')->get()->unique('content_id')->count();
+
+    return $fanzanice;
+  }
+
+  public static function duganice(){
+    $duganice = Nice::where([['user_id', Auth::id()], ['type', 'duga']])->select('content_id')->get()->unique('content_id')->count();
+
+    return $duganice;
+  }
+
+}
