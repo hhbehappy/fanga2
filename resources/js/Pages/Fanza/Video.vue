@@ -7,15 +7,23 @@ import FlashMessage from '@/Components/FlashMessage.vue';
 import NiceFlashMessage from '@/Components/NiceFlashMessage.vue';
 
 const props = defineProps({
+  videoa: Object,
   videoids: Object,
-  fanzasidebers: Object,
-  title: String,
   date: String,
-  fanza_id: Number,
-  content_id: String,
+  fanzaactresss: Object,
+  fanzaactresscount: Number,
+  fanzamakers: Object,
+  fanzamakercount: Number,
+  fanzaseriess: Object,
+  fanzaseriescount: Number,
+  fanzadirectors: Object,
+  fanzadirectorcount: Number,
+  fanzagenre2s: Object,
+  fanzagenre2count: Number,
   fanza_free_memos: Object,
   fanza_release_memos: Object,
   fanza_private_memos: Object,
+  mylists: Object,
   releaselists: Object,
   auth_id: Number,
   nice: Object,
@@ -34,19 +42,19 @@ const isShow = ref(false)
 const toggleStatus = () => { isShow.value = !isShow.value}
 
 const submitFunction = () => {
-  form.post('/fanzafreememo/store/' + props.fanza_id + '/' + props.content_id, {
+  form.post('/fanzafreememo/store/' + props.videoa.id + '/' + props.videoa.content_id, {
     onSuccess: () => form.reset('free', 'release', 'private'),
     preserveScroll: true
   })
 }
 const submitFunction2 = () => {
-  form.post('/fanzareleasememo/store/' + props.fanza_id + '/' + props.content_id, {
+  form.post('/fanzareleasememo/store/' + props.videoa.id + '/' + props.videoa.content_id, {
     onSuccess: () => form.reset('free', 'release', 'private'),
     preserveScroll: true
   })
 }
 const submitFunction3 = () => {
-  form.post('/fanzaprivatememo/store/' + props.fanza_id + '/' + props.content_id, {
+  form.post('/fanzaprivatememo/store/' + props.videoa.id + '/' + props.videoa.content_id, {
     onSuccess: () => form.reset('free', 'release', 'private'),
     preserveScroll: true
   })
@@ -91,9 +99,9 @@ export default {
 </script>
 
 <template>
-  <Head :title="'【FANZA】' + title" />
+  <Head :title="'【FANZA】' + videoa.title" />
 
-<Layout :fanzas="props.fanzasidebers">
+<Layout>
   <div v-for="videoid in videoids" :key="videoid.id" class="">
     <h1 class="font-bold md:text-xl mb-8 px-4 md:mr-8 bg-gray-200 p-2 border-b-2 border-gray-500"><span class="text-red-500">【FANZA】</span>{{ videoid.title }}</h1>
     <p class="mb-7"><NiceFlashMessage /></p>
@@ -115,7 +123,7 @@ export default {
               </Link>
           </div>
           <div v-else class="w-48 pl-0.5 mb-4 border border-gray-600">
-              <Link :href="route('nice', { content_id: videoid.content_id, fanza_id: props.fanza_id, duga_id: '1', type : 'fanza' })">
+              <Link :href="route('nice', { content_id: videoid.content_id, fanza_id: props.videoa.id, duga_id: '1', type : 'fanza' })">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-1 mb-0.5 w-4 h-4 text-pink-400 inline-block">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                 </svg>
@@ -356,7 +364,7 @@ export default {
             {{ fanza_release_memo.updated_at }}
             </span>
           </div>
-          <div v-if="props.auth_id === 1" class="flex">
+          <div v-if="auth_id === 1" class="flex">
             <Link as="button" :href="route('fvideo.edit', { type: 'release', content_id: videoid.content_id, memoid: fanza_release_memo.id}) + '#editmemo'">
               <button type="button" class="mt-2 mx-2 px-3 py-1 bg-green-600 text-white font-semibold text-xs leading-normal uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out flex align-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-4 mr-1 inline-block">
@@ -522,18 +530,157 @@ export default {
   </div>
   <!-- 最近のメモ動画 -->
   <div class="border-b-4 border-gray-500 mb-8 mx-auto">
-    <h2 class="ml-2 mb-1 text-xl font-bold"><span class="text-red-500">FANZA</span>の最近公開メモされた動画</h2>
+    <h2 class="ml-3 mb-1 text-xl font-bold">最近公開メモされた動画</h2>
   </div>
   <div class="flex overflow-x-auto hidden-scrollbar h-52 ml-4">
     <div class="flex flex-none flex-nowrap">
       <div v-for="releaselist in releaselists" :key="releaselist.id" class="">
-          <div v-if="releaselist.content_id" class="mr-4">
+          <div class="mr-4">
             <Link :href="route('fvideo.show', { id: releaselist.content_id })">
-              <img :src="'https://pics.dmm.co.jp/digital/video/' + releaselist.content_id  + '/' + releaselist.content_id + 'ps.jpg'" :alt="'【FANZA】' + videoid.title" class="w-32">
+              <img :src="'https://pics.dmm.co.jp/digital/video/' + releaselist.content_id  + '/' + releaselist.content_id + 'ps.jpg'" :alt="'【FANZA】' + videoid.title + 'のジャケット画像'" class="w-32">
             </Link>
           </div>
       </div>
     </div>
+  </div>
+  <!-- マイリスト -->
+  <div v-if="$page.props.auth.user">
+    <div class="my-8 mx-auto border-b-4 border-gray-500">
+      <h2 class="ml-3 mb-1 text-xl font-bold">{{ $page.props.auth.user.name }}さんの公開メモした動画</h2>
+    </div>
+    <div class="flex overflow-x-auto hidden-scrollbar h-52 ml-4">
+      <div class="flex flex-none flex-nowrap">
+        <div v-for="mylist in mylists" :key="mylist.id">
+            <div class="mr-4">
+              <Link :href="route('fvideo.show', { id: mylist.content_id })">
+                <img :src="'https://pics.dmm.co.jp/digital/video/' + mylist.content_id  + '/' + mylist.content_id + 'ps.jpg'" :alt="'【FANZA】' + videoid.title + 'のジャケット画像'" class="w-32">
+              </Link>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 関連動画 -->
+  <!-- AV女優 -->
+  <div v-if="videoid.actress && fanzaactresscount !== 0">
+    <div class="my-8 mx-auto border-b-4 border-gray-500">
+      <h2 class="ml-3 mb-1 text-xl font-bold">AV女優『{{ videoid.actress }}』</h2>
+    </div>
+    <div class="flex overflow-x-auto hidden-scrollbar h-52 ml-4">
+      <div class="flex flex-none flex-nowrap">
+        <div v-for="fanzaactress in fanzaactresss" :key="fanzaactress.id" class="">
+            <div class="mr-4">
+              <Link :href="route('fvideo.show', { id: fanzaactress.content_id })">
+                <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzaactress.content_id  + '/' + fanzaactress.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzaactress.title + 'のジャケット画像'" class="w-32">
+              </Link>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- AVメーカー -->
+  <div v-if="videoid.maker && fanzamakercount !== 0">
+    <div class="my-8 mx-auto border-b-4 border-gray-500">
+      <h2 class="ml-3 mb-1 text-xl font-bold">AVメーカー『{{ videoid.maker }}』</h2>
+    </div>
+    <div class="flex overflow-x-auto hidden-scrollbar h-52 ml-4">
+      <div class="flex flex-none flex-nowrap">
+        <div v-for="fanzamaker in fanzamakers" :key="fanzamaker.id" class="">
+            <div class="mr-4">
+              <Link :href="route('fvideo.show', { id: fanzamaker.content_id })">
+                <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzamaker.content_id  + '/' + fanzamaker.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzamaker.title + 'のジャケット画像'" class="w-32">
+              </Link>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- シリーズ -->
+  <div v-if="videoid.series && fanzaseriescount !== 0">
+    <div class="my-8 mx-auto border-b-4 border-gray-500">
+      <h2 class="ml-3 mb-1 text-xl font-bold">シリーズ『{{ videoid.series }}』</h2>
+    </div>
+    <div class="flex overflow-x-auto hidden-scrollbar h-52 ml-4">
+      <div class="flex flex-none flex-nowrap">
+        <div v-for="fanzaseries in fanzaseriess" :key="fanzaseries.id" class="">
+            <div class="mr-4">
+              <Link :href="route('fvideo.show', { id: fanzaseries.content_id })">
+                <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzaseries.content_id  + '/' + fanzaseries.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzaseries.title + 'のジャケット画像'" class="w-32">
+              </Link>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 監督 -->
+  <div v-if="videoid.director && fanzadirectorcount !== 0">
+    <div class="my-8 mx-auto border-b-4 border-gray-500">
+      <h2 class="ml-3 mb-1 text-xl font-bold">監督『{{ videoid.director }}』</h2>
+    </div>
+    <div class="flex overflow-x-auto hidden-scrollbar h-52 ml-4">
+      <div class="flex flex-none flex-nowrap">
+        <div v-for="fanzadirector in fanzadirectors" :key="fanzadirector.id" class="">
+            <div class="mr-4">
+              <Link :href="route('fvideo.show', { id: fanzadirector.content_id })">
+                <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzadirector.content_id  + '/' + fanzadirector.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzadirector.title + 'のジャケット画像'" class="w-32">
+              </Link>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ジャンル -->
+  <div v-if="videoid.genre2 && fanzagenre2count !== 0">
+    <div class="my-8 mx-auto border-b-4 border-gray-500">
+      <h2 class="ml-3 mb-1 text-xl font-bold">ジャンル『{{ videoid.genre2 }}』</h2>
+    </div>
+    <div class="flex overflow-x-auto hidden-scrollbar h-52 ml-4">
+      <div class="flex flex-none flex-nowrap">
+        <div v-for="fanzagenre2 in fanzagenre2s" :key="fanzagenre2.id" class="">
+            <div class="mr-4">
+              <Link :href="route('fvideo.show', { id: fanzagenre2.content_id })">
+                <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzagenre2.content_id  + '/' + fanzagenre2.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzagenre2.title + 'のジャケット画像'" class="w-32">
+              </Link>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- DUGA -->
+  <div class="my-8 mx-auto border-b-4 border-gray-500">
+    <h2 class="ml-3 mb-1 text-xl font-bold">配信サイト『DUGA』</h2>
+  </div>
+  <div class="flex flex-wrap mb-5 text-white font-mono">
+    <a :href="route('dlist.index')" class="flex py-1 px-6 mx-2 mb-3 bg-gray-800 hover:bg-red-600 items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg>
+      動画一覧
+    </a>
+    <Link :href="route('dlist.category')" class="flex py-1 px-6 mx-2 mb-3 bg-gray-800 hover:bg-red-600 items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg>
+      カテゴリ一覧
+    </Link>
+    <Link :href="route('dlist.performer')" class="flex py-1 px-6 mx-2 mb-3 bg-gray-800 hover:bg-red-600 items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg>
+      女優一覧
+    </Link>
+    <Link :href="route('dlist.maker')" class="flex py-1 px-6 mx-2 mb-3 bg-gray-800 hover:bg-red-600 items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg>
+      メーカー一覧
+    </Link>
+    <Link :href="route('dlist.series')" class="flex py-1 px-6 mx-2 mb-3 bg-gray-800 hover:bg-red-600 items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg>
+      シリーズ一覧
+    </Link>
   </div>
   <!-- モーダルウィンドウの中 -->
   <div v-show="isShow" class="modal" id="modal-1" aria-hidden="true" @click="toggleStatus">

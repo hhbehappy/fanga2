@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class FanzaReleaseMemo extends Model
 {
@@ -33,4 +34,29 @@ class FanzaReleaseMemo extends Model
     {
         return $this->belongsTo(Fanza::class, "foreign_fanza_id");
     }
+
+    public static function mylists(){
+        $mylists = FanzaReleaseMemo::where('user_id', Auth::id())->latest('updated_at')->get()->unique('content_id')->take(20);
+    
+        return $mylists;
+    }
+
+    public static function releaselists(){
+        $releaselists = FanzaReleaseMemo::latest('updated_at')->get()->unique('content_id')->take(20);
+    
+        return $releaselists;
+    }
+
+    public static function fanza_release_memos($content_id){
+        $fanza_release_memos = FanzaReleaseMemo::whereContent_id($content_id)->oldest('updated_at')->get();
+    
+        return $fanza_release_memos;
+    }
+
+    public static function edit_release_memos($memoid){
+        $edit_release_memos = FanzaReleaseMemo::whereId($memoid)->get();
+    
+        return $edit_release_memos;
+    }
+
 }
