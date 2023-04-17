@@ -5,14 +5,12 @@ import { ref } from 'vue';
 import NiceFlashMessage from '@/Components/NiceFlashMessage.vue';
 
 const props = defineProps({
+  videoa: Object,
   videoids: Object,
-  title: String,
   date: String,
-  fanza_id: Number,
   type:String,
-  content_id: String,
-  fanza_release_memos: Object,
-  fanza_private_memos: Object,
+  edit_release_memos: Object,
+  edit_private_memos: Object,
   update_release_id: Object,
   update_private_id: Object,
   user_id: Number,
@@ -21,20 +19,19 @@ const props = defineProps({
 })
 
 const form = useForm({
-  // content_id: props.content_id,
   release: null,
   private: null,
   nickname: 1
 });
 
 const updateReleaseMemo = id => {
-    router.put(`/fanzareleasememo/update/${id}/` + props.content_id, form, {
+    router.put(`/fanzareleasememo/update/${id}/` + props.videoa.content_id, form, {
     preserveScroll: true
   })
 };
 
 const updatePrivateMemo = id => {
-    router.put(`/fanzaprivatememo/update/${id}/` + props.content_id, form, {
+    router.put(`/fanzaprivatememo/update/${id}/` + props.videoa.content_id, form, {
     preserveScroll: true
   })
 };
@@ -46,7 +43,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
 
 <template>
 <Layout>
-  <Head :title="'【FANZA】' + title" />
+  <Head :title="'【FANZA】' + videoa.title" />
   
   <div v-for="videoid in videoids" :key="videoid.id">
     <h1 class="font-bold md:text-xl mb-8 px-4 md:mr-8 bg-gray-200 p-2 border-b-2 border-gray-500"><span class="text-red-500">【FANZA】</span>{{ videoid.title }}</h1>
@@ -69,7 +66,7 @@ const toggleStatus = () => { isShow.value = !isShow.value}
               </Link>
           </div>
           <div v-else class="w-48 mb-4 pl-0.5 border border-gray-600">
-              <Link :href="route('nice', { content_id: videoid.content_id, fanza_id: props.fanza_id, duga_id: '1', type : 'fanza' })">
+              <Link :href="route('nice', { content_id: videoid.content_id, fanza_id: props.videoa.id, duga_id: '1', type : 'fanza' })">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-1 mb-0.5 w-4 h-4 text-pink-400 inline-block">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                 </svg>
@@ -251,24 +248,24 @@ const toggleStatus = () => { isShow.value = !isShow.value}
     </div>
     <!-- メモの編集 -->
     <div class="flex flex-col justify-center w-11/12 mx-auto p-2 mb-12">
-      <div v-for="fanza_release_memo in fanza_release_memos" :key="fanza_release_memo.id">
-        <div v-if="fanza_release_memo.release && props.type === 'release' ">
+      <div v-for="edit_release_memo in edit_release_memos" :key="edit_release_memo.id">
+        <div v-if="edit_release_memo.release && type === 'release' ">
           <div class="border-dotted border-b border-gray-500 p-2 mb-6">
             <p class="my-3">
-              <span v-if="fanza_release_memo.nickname === 1" class="bg-blue-200 p-1 px-3 rounded-2xl text-xs font-bold">{{ fanza_release_memo.name }}さんのメモ</span>
-              <span v-else-if="fanza_release_memo.nickname === 0" class="bg-blue-200 p-1 px-3 rounded-2xl text-xs font-bold">ログインユーザーのメモ</span>
+              <span v-if="edit_release_memo.nickname === 1" class="border-l-4 border-b border-blue-200 p-1 px-3 text-xs font-bold">{{ edit_release_memo.name }}さんのメモ</span>
+              <span v-else-if="edit_release_memo.nickname === 0" class="border-l-4 border-b border-blue-200 p-1 px-3 text-xs font-bold">ログインユーザーのメモ</span>
               <span class="ml-6 text-sm text-zinc-500">
-              {{ fanza_release_memo.updated_at }}
+              {{ edit_release_memo.updated_at }}
               </span>
             </p>
             <div class="">
-            {{ fanza_release_memo.release }}
+            {{ edit_release_memo.release }}
             </div>
           </div>
           <p class="text-sm text-center text-red-500 my-4">ー メモは5文字以上500文字以内で入力してください ー</p>
           <div class="flex flex-wrap justify-center">
         <div class="w-full">
-          <form @submit.prevent="updateReleaseMemo(update_release_id.id, fanza_release_memo.content_id)">
+          <form @submit.prevent="updateReleaseMemo(update_release_id.id, edit_release_memo.content_id)">
             <div class="flex justify-center relative">
               <div class="mb-3 w-full">
                   <textarea name="release" v-model="form.release" class="form-control block w-full py-1.5 mb-4 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-800 focus:outline-none" id="release" rows="5" placeholder="公開メモの編集">
@@ -304,20 +301,20 @@ const toggleStatus = () => { isShow.value = !isShow.value}
         </div>
       </div>
         <!-- 非公開メモ -->
-        <div v-for="fanza_private_memo in fanza_private_memos" :key="fanza_private_memo.id">
-          <div v-if="fanza_private_memo.private && props.type === 'private' ">
+        <div v-for="edit_private_memo in edit_private_memos" :key="edit_private_memo.id">
+          <div v-if="edit_private_memo.private && type === 'private' ">
             <div class="border-dotted border-b border-gray-500 p-2 mb-6">
-              <p class="mb-3"><span class="border-l-4 border-b border-red-200 p-1 px-3 text-xs font-bold">{{ fanza_private_memo.name }}さんの非公開メモ</span><span class="ml-6 text-sm text-zinc-500">
-              {{ fanza_private_memo.updated_at }}
+              <p class="mb-3"><span class="border-l-4 border-b border-red-200 p-1 px-3 text-xs font-bold">{{ edit_private_memo.name }}さんの非公開メモ</span><span class="ml-6 text-sm text-zinc-500">
+              {{ edit_private_memo.updated_at }}
               </span></p>
               <div class="flex items-start">
-                {{ fanza_private_memo.private }}
+                {{ edit_private_memo.private }}
               </div>
             </div>
           <p class="text-sm text-center text-red-400 my-4">ー メモは5文字以上500文字以内で入力してください ー</p>
       <div class="flex flex-wrap justify-center">
         <div class="w-full">
-          <form @submit.prevent="updatePrivateMemo(update_private_id.id, fanza_private_memo.content_id)">
+          <form @submit.prevent="updatePrivateMemo(update_private_id.id, edit_private_memo.content_id)">
             <div class="flex justify-center relative">
               <div class="mb-3 w-full">
                   <textarea name="private" v-model="form.private" class="form-control block w-full py-1.5 mb-4 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-800 focus:outline-none" id="private" rows="5" placeholder="非公開メモの編集">

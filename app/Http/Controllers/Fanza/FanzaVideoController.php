@@ -14,6 +14,7 @@ use App\Models\FanzaFreeMemo;
 use App\Models\FanzaReleaseMemo;
 use App\Models\FanzaPrivateMemo;
 use App\Models\Nice;
+use App\Services\Kanren;
 
 class FanzaVideoController extends Controller
 {
@@ -124,29 +125,30 @@ class FanzaVideoController extends Controller
         
         $videoa = Fanza::whereContent_id($content_id)->first();
         $content_id_1 = Fanza::findOrFail($content_id);
-        $fanza_free_memos = FanzaFreeMemo::whereContent_id($content_id)->oldest('updated_at')->get();
-        $fanza_release_memos = FanzaReleaseMemo::whereContent_id($content_id)->oldest('updated_at')->get();
-        $fanza_private_memos = FanzaPrivateMemo::where([['content_id', $content_id], ['user_id', Auth::id()]])->oldest('updated_at')->get();
-        $releaselists = FanzaReleaseMemo::latest('updated_at')->limit(30)->get()->unique('content_id');
-        $auth_id = Auth::id();
-        $nice = Nice::where([['content_id', $content_id], ['user_id', Auth::id()]])->first();
-        $nicecount = Nice::whereContent_id($content_id)->count();
-        $privatememolimit = FanzaPrivateMemo::where([['content_id', $content_id], ['user_id', Auth::id()]])->count();
 
         return Inertia::render('Fanza/Video', [
-            'title' => $videoa->title,
-            'videoids' => Fanza::find($content_id_1),
+            'videoa' => $videoa,
             'date' => $videoa->date->format('Y/m/d'), 
-            'fanza_id' => $videoa->id,
-            'content_id' => $videoa->content_id,
-            'fanza_free_memos' => $fanza_free_memos,
-            'fanza_release_memos' => $fanza_release_memos,
-            'fanza_private_memos' => $fanza_private_memos,
-            'releaselists' => $releaselists,
-            'auth_id' => $auth_id,
-            'nice' => $nice,
-            'nicecount' => $nicecount,
-            'privatememolimit' => $privatememolimit
+            'videoids' => Fanza::find($content_id_1),
+            'fanzaactresss' => Kanren::fanzaactresss($content_id),
+            'fanzaactresscount' => Kanren::fanzaactresss($content_id)->count(),
+            'fanzamakers' => Kanren::fanzamakers($content_id),
+            'fanzamakercount' => Kanren::fanzamakers($content_id)->count(),
+            'fanzaseriess' => Kanren::fanzaseriess($content_id),
+            'fanzaseriescount' => Kanren::fanzaseriess($content_id)->count(),
+            'fanzadirectors' => Kanren::fanzadirectors($content_id),
+            'fanzadirectorcount' => Kanren::fanzadirectors($content_id)->count(),
+            'fanzagenre2s' => Kanren::fanzagenre2s($content_id),
+            'fanzagenre2count' => Kanren::fanzagenre2s($content_id)->count(),
+            'fanza_free_memos' => FanzaFreememo::fanza_free_memos($content_id),
+            'fanza_release_memos' => FanzaReleasememo::fanza_release_memos($content_id),
+            'fanza_private_memos' => FanzaPrivateMemo::fanza_private_memos($content_id),
+            'mylists' => FanzaReleaseMemo::mylists(),
+            'releaselists' => FanzaReleasememo::releaselists(),
+            'auth_id' => Auth::id(),
+            'nice' => Nice::nice($content_id),
+            'nicecount' => Nice::nicecount($content_id),
+            'privatememolimit' => FanzaPrivateMemo::privatememolimit($content_id),
         ]);
     }
 
@@ -154,28 +156,19 @@ class FanzaVideoController extends Controller
     {
         $videoa = Fanza::whereContent_id($content_id)->first();
         $content_id_1 = Fanza::findOrFail($content_id);
-        $fanza_release_memos = FanzaReleaseMemo::whereId($memoid)->get();
-        $fanza_private_memos = FanzaPrivateMemo::where([['id', $memoid], ['user_id', Auth::id()]])->get();
-        $update_release_id = FanzaReleaseMemo::whereId($memoid)->first();
-        $update_private_id = FanzaPrivateMemo::whereId($memoid)->first();
-        $user_id = Auth::id();
-        $nice=Nice::where([['content_id', $content_id], ['user_id', Auth::id()]])->first();
-        $nicecount = Nice::whereContent_id($content_id)->count();
 
         return Inertia::render('Fanza/Video/Edit', [
             'type' => $type, // privatememoかreleasememoか判断
-            'title' => $videoa->title,
-            'videoids' => Fanza::find($content_id_1),
+            'videoa' => $videoa,
             'date' => $videoa->date->format('Y/m/d'),
-            'fanza_id' => $videoa->id,
-            'content_id' => $videoa->content_id,
-            'fanza_release_memos' => $fanza_release_memos,
-            'fanza_private_memos' => $fanza_private_memos,
-            'update_release_id' => $update_release_id,
-            'update_private_id' => $update_private_id,
-            'user_id' => $user_id,
-            'nice' => $nice,
-            'nicecount' => $nicecount
+            'videoids' => Fanza::find($content_id_1),
+            'edit_release_memos' => FanzaReleaseMemo::edit_release_memos($memoid),
+            'edit_private_memos' => FanzaPrivateMemo::edit_private_memos($memoid),
+            'update_release_id' => FanzaReleaseMemo::whereId($memoid)->first(),
+            'update_private_id' => FanzaPrivateMemo::whereId($memoid)->first(),
+            'user_id' => Auth::id(),
+            'nice' => Nice::nice($content_id),
+            'nicecount' => Nice::nicecount($content_id),
         ]);
     }
 

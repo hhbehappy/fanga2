@@ -30,4 +30,10 @@ class FanzaFreeMemo extends Model
     {
         return $this->belongsTo(Fanza::class);
     }
+
+    public static function fanza_free_memos($content_id){
+        $fanza_free_memos = FanzaFreeMemo::whereContent_id($content_id)->oldest('updated_at')->get();
+    
+        return $fanza_free_memos;
+    }
 }

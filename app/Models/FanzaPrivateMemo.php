@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class FanzaPrivateMemo extends Model
 {
@@ -30,5 +31,23 @@ class FanzaPrivateMemo extends Model
     public function fanza()
     {
         return $this->belongsTo(Fanza::class);
+    }
+
+    public static function fanza_private_memos($content_id){
+        $fanza_private_memos = FanzaPrivateMemo::where([['content_id', $content_id], ['user_id', Auth::id()]])->oldest('updated_at')->get();
+    
+        return $fanza_private_memos;
+    }
+
+    public static function privatememolimit($content_id){
+        $privatememolimit = FanzaPrivateMemo::where([['content_id', $content_id], ['user_id', Auth::id()]])->count();
+    
+        return $privatememolimit;
+    }
+
+    public static function edit_private_memos($memoid){
+        $edit_private_memos = FanzaPrivateMemo::where([['id', $memoid], ['user_id', Auth::id()]])->get();
+    
+        return $edit_private_memos;
     }
 }

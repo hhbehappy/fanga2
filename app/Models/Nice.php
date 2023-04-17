@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Nice extends Model
 {
@@ -32,4 +33,17 @@ class Nice extends Model
     public function duga() {
         return $this->belongsTo('App\Models\Duga');
     }
+
+    public static function nice($content_id){
+        $nice = Nice::where([['content_id', $content_id], ['user_id', Auth::id()]])->first();
+
+        return $nice;
+    }
+
+    public static function nicecount($content_id){
+        $nicecount = Nice::whereContent_id($content_id)->count();
+        
+        return $nicecount;
+    }
+
 }
