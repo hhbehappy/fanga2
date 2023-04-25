@@ -16,7 +16,7 @@ class FangaController extends Controller
     public function index()
     {
         return Inertia::render('Fanga', [
-            'fvideoids'     => Fanza::fvideoids(),
+            'fvideoids'     => Fanza::fvideoids(30),
             'fanzacount'    => Fanza::count(),
             'fanzaactresss' => Fanza::fanzaactresss(),
             'fanzamakers'   => Fanza::fanzamakers(),
@@ -24,7 +24,7 @@ class FangaController extends Controller
             'fanzamemos'    => FanzaReleasememo::releaselists(),
             'myflists'      => FanzaReleaseMemo::mylists(),
             'myflistcount'  => FanzaReleaseMemo::mylists()->count(),
-            'dvideoids'     => Duga::dvideoids(),
+            'dvideoids'     => Duga::dvideoids(30),
             'dugacount'     => Duga::count(),
             'dugaperformers'=> Duga::dugaperformers(),
             'dugamakers'    => Duga::dugamakers(),

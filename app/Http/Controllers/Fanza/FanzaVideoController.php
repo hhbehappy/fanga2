@@ -130,7 +130,7 @@ class FanzaVideoController extends Controller
             'videoa' => $videoa,
             'date' => $videoa->date->format('Y/m/d'), 
             'videoids' => Fanza::find($content_id_1),
-            'fvideoids' => Fanza::fvideoids(),
+            'fvideoids' => Fanza::fvideoids(20),
             'fanzaactresss' => Kanren::fanzaactresss($content_id),
             'fanzaactresscount' => Kanren::fanzaactresss($content_id)->count(),
             'fanzamakers' => Kanren::fanzamakers($content_id),
