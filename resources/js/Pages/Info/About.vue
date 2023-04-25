@@ -27,15 +27,15 @@ import { Head, Link } from '@inertiajs/vue3';
                 <li>自分のメモが誰かに削除される可能性があります。</li>
             </ul>
             
-            <p class="w-24 py-1 px-3 mt-5 mb-2 font-semibold border-l-4 border-b border-blue-200">公開メモ</p>
+            <p class="w-24 py-1 px-3 mt-5 mb-2 font-semibold border-l-4 border-b border-blue-200">メモ</p>
             <ul class="leading-8 list-disc list-inside">
                 <li>無料会員登録後に利用ができます。</li>
                 <li>5文字以上500文字以内でメモができます。</li>
                 <li>公開時にニックネームを使用するか選択ができます。
-                    <p class="text-sm leading-7">（例）<span class="py-1 px-2 border-l-4 border-b border-blue-200">FANGAさんの公開メモ</span> または<span class="ml-2 py-1 px-2 border-l-4 border-b border-blue-200">ログインユーザーの公開メモ</span></p>
+                    <p class="text-sm leading-7">（例）<span class="py-1 px-2 border-l-4 border-b border-blue-200">FANGAさんのメモ</span> または<span class="ml-2 py-1 px-2 border-l-4 border-b border-blue-200">ログインユーザーのメモ</span></p>
                 </li>
-                <li>公開メモの編集や削除はできません。</li>
-                <li>公開メモの内容によっては、運営側の判断により削除又は内容の一部を修正される可能性があります。</li>
+                <li>メモの編集や削除はできません。</li>
+                <li>メモの内容によっては、運営側の判断により削除又は内容の一部を修正させる可能性があります。</li>
             </ul>
             <p class="w-28 mt-5 mb-2 py-1 px-3 font-semibold border-l-4 border-b border-red-200">非公開メモ</p>
             <ul class="leading-8 list-disc list-inside">

@@ -34,15 +34,27 @@ class Nice extends Model
         return $this->belongsTo('App\Models\Duga');
     }
 
-    public static function nice($content_id){
+    public static function fanzanice($content_id){
         $nice = Nice::where([['content_id', $content_id], ['user_id', Auth::id()]])->first();
 
         return $nice;
     }
 
-    public static function nicecount($content_id){
+    public static function fanzanicecount($content_id){
         $nicecount = Nice::whereContent_id($content_id)->count();
         
+        return $nicecount;
+    }
+
+    public static function duganice($productid){
+        $nice = Nice::where([['content_id', $productid], ['user_id', Auth::id()]])->first();
+
+        return $nice;
+    }
+
+    public static function duganicecount($productid){
+        $nicecount = Nice::whereContent_id($productid)->count();
+
         return $nicecount;
     }
 

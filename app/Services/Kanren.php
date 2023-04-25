@@ -52,5 +52,49 @@ class Kanren
 
     return $fanzagenre2s;
   }
+  
+  public static function dugaperformers($productid){
 
+    $dugavideo = Duga::whereProductid($productid)->first();
+
+    $dugaperformers = Duga::where('performer', $dugavideo->performer)->whereNotIn('productid', [$productid])->latest('updated_at')->get()->take(20);
+
+    return $dugaperformers;
+  }
+
+  public static function dugamakers($productid){
+
+    $dugavideo = Duga::whereProductid($productid)->first();
+
+    $dugamakers = Duga::where('maker', $dugavideo->maker)->whereNotIn('productid', [$productid])->latest('updated_at')->get()->take(20);
+
+    return $dugamakers;
+  }
+
+  public static function dugaseriess($productid){
+
+    $dugavideo = Duga::whereProductid($productid)->first();
+
+    $dugaseriess = Duga::where('series', $dugavideo->series)->whereNotIn('productid', [$productid])->latest('updated_at')->get()->take(20);
+
+    return $dugaseriess;
+  }
+
+  public static function dugadirectors($productid){
+
+    $dugavideo = Duga::whereProductid($productid)->first();
+
+    $dugadirectors = Duga::where('director', $dugavideo->director)->whereNotIn('productid', [$productid])->latest('updated_at')->get()->take(20);
+
+    return $dugadirectors;
+  }
+
+  public static function dugacategorys($productid){
+
+    $dugavideo = Duga::whereProductid($productid)->first();
+
+    $dugacategorys = Duga::where('category', $dugavideo->category)->whereNotIn('productid', [$productid])->latest('updated_at')->get()->take(20);
+
+    return $dugacategorys;
+  }
 }

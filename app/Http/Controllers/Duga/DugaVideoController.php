@@ -14,6 +14,7 @@ use App\Models\DugaFreeMemo;
 use App\Models\DugaReleaseMemo;
 use App\Models\DugaPrivateMemo;
 use App\Models\Nice;
+use App\Services\Kanren;
 
 class DugaVideoController extends Controller
 {
@@ -131,32 +132,33 @@ class DugaVideoController extends Controller
 
         $dugavideo = Duga::whereProductid($productid)->first();
         $productid_1 = Duga::findOrFail($productid);
-        $duga_free_memos = DugaFreeMemo::whereProductid($productid)->oldest('updated_at')->get();
-        $duga_release_memos = DugaReleaseMemo::whereProductid($productid)->oldest('updated_at')->get();
-        $duga_private_memos = DugaPrivateMemo::where([['productid', $productid], ['user_id', Auth::id()]])->oldest('updated_at')->get();
-        $releaselists = DugaReleaseMemo::select('title', 'duga_release_memos.productid', 're_productid', 'jacketimage', 'duga_release_memos.updated_at')
-        ->latest('updated_at')->limit(20)->leftJoin('dugas', 'duga_release_memos.productid', '=', 'dugas.productid')->get()->unique('re_productid');
-        $re_productid = str_replace("-", "/", $dugavideo->productid);
-        $auth_id = Auth::id();
-        $nice = Nice::where([['content_id', $productid], ['user_id', Auth::id()]])->first();
-        $nicecount = Nice::whereContent_id($productid)->count();
-        $privatememolimit = DugaPrivateMemo::where([['productid', $productid], ['user_id', Auth::id()]])->count();
         
         return Inertia::render('Duga/Video', [
-            'title'             => $dugavideo->title,
+            'dugavideo'         => $dugavideo,
             'dugavideos'        => Duga::find($productid_1),
             'date'              => $dugavideo->date->format('Y/m/d'),
-            'duga_id'           => $dugavideo->id,
-            'productid'         => $dugavideo->productid,
-            'duga_free_memos'   => $duga_free_memos,
-            'duga_release_memos'=> $duga_release_memos,
-            'duga_private_memos'=> $duga_private_memos,
-            'releaselists'      => $releaselists,
-            're_productid'      => $re_productid,
-            'auth_id'           => $auth_id,
-            'nice'              => $nice,
-            'nicecount'         => $nicecount,
-            'privatememolimit'         => $privatememolimit
+            're_productid'      => str_replace("-", "/", $dugavideo->productid),
+            'dvideoids'         => Duga::dvideoids(),
+            'dugaperformers'    => Kanren::dugaperformers($productid),
+            'dugaperformercount'=> Kanren::dugaperformers($productid)->count(),
+            'dugamakers'        => Kanren::dugamakers($productid),
+            'dugamakercount'    => Kanren::dugamakers($productid)->count(),
+            'dugaseriess'       => Kanren::dugaseriess($productid),
+            'dugaseriescount'   => Kanren::dugaseriess($productid)->count(),
+            'dugadirectors'     => Kanren::dugadirectors($productid),
+            'dugadirectorcount' => Kanren::dugadirectors($productid)->count(),
+            'dugacategorys'     => Kanren::dugacategorys($productid),
+            'dugacategorycount' => Kanren::dugacategorys($productid)->count(),
+            'duga_free_memos'   => DugaFreeMemo::duga_free_memos($productid),
+            'duga_release_memos'=> DugaReleaseMemo::duga_release_memos($productid),
+            'mylists'           => DugaReleaseMemo::mylists(),
+            'mylistcount'       => DugaReleaseMemo::mylists()->count(),
+            'releaselists'      => DugaReleaseMemo::releaselists(),
+            'duga_private_memos'=> DugaPrivateMemo::duga_private_memos($productid),
+            'privatememolimit'  => DugaPrivateMemo::privatememolimit($productid),
+            'auth_id'           => Auth::id(),
+            'nice'              => Nice::duganice($productid),
+            'nicecount'         => Nice::duganicecount($productid),
         ]);
     }
 
@@ -165,30 +167,23 @@ class DugaVideoController extends Controller
         
         $dugavideo = Duga::whereProductid($productid)->first();
         $productid_1 = Duga::findOrFail($productid);
-        $re_productid = str_replace("-", "/", $dugavideo->productid);
-        $duga_release_memos = DugaReleaseMemo::whereId($memoid)->get();
-        $duga_private_memos = DugaPrivateMemo::where([['id', $memoid], ['user_id', Auth::id()]])->get();
-        $update_release_id = DugaReleaseMemo::whereId($memoid)->first();
-        $update_private_id = DugaPrivateMemo::whereId($memoid)->first();
-        $auth_id = Auth::id();
-        $nice=Nice::where([['content_id', $productid], ['user_id', Auth::id()]])->first();
-        $nicecount = Nice::whereContent_id($productid)->count();
 
         return Inertia::render('Duga/Video/Edit', [
             'type' => $type, // privatememoかreleasememoか判断
-            'title' => $dugavideo->title,
+            // 'title' => $dugavideo->title,
+            'dugavideoa' => $dugavideo,
             'dugavideos' => Duga::find($productid_1),
             'date' => $dugavideo->date->format('Y/m/d'), 
-            'duga_id'           => $dugavideo->id,
-            'productid' => $dugavideo->productid,
-            're_productid' => $re_productid,
-            'duga_release_memos' => $duga_release_memos,
-            'duga_private_memos' => $duga_private_memos,
-            'update_release_id' => $update_release_id,
-            'update_private_id' => $update_private_id,
-            'auth_id' => $auth_id,
-            'nice' => $nice,
-            'nicecount' => $nicecount
+            // 'duga_id'           => $dugavideo->id,
+            // 'productid' => $dugavideo->productid,
+            're_productid' => str_replace("-", "/", $dugavideo->productid),
+            'duga_release_memos' => DugaReleaseMemo::edit_release_memos($memoid),
+            'duga_private_memos' => DugaPrivateMemo::edit_private_memos($memoid),
+            'update_release_id'  => DugaReleaseMemo::whereId($memoid)->first(),
+            'update_private_id'  => DugaPrivateMemo::whereId($memoid)->first(),
+            'auth_id'            => Auth::id(),
+            'nice'               => Nice::duganice($productid),
+            'nicecount'          => Nice::duganicecount($productid)
         ]);
     }
 }

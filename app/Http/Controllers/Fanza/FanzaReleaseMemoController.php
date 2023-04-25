@@ -11,6 +11,13 @@ use App\Models\Fanza;
 
 class FanzaReleaseMemoController extends Controller
 {
+    public function index()
+    {
+        $releasealllists = FanzaReleaseMemo::releasealllists();
+
+        return view('Fanza/Video/Memo/All', compact('releasealllists'));
+    }
+
     public function store(StoreFanzaReleaseMemoRequest $request, $fanza_id, $content_id)
     {
         $fanza = FANZA::find($content_id);

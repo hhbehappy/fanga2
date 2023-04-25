@@ -60,19 +60,19 @@ class Duga extends Model
     }
 
     public static function dugaperformers(){
-        $dugaperformers = Duga::whereDate('date', '<', Carbon::today())->whereNotIn('performer', [''])->latest('updated_at')->get()->unique('performer')->take(30);
+        $dugaperformers = Duga::whereDate('date', '<', Carbon::today())->whereNotIn('performer', [''])->inRandomOrder()->get()->unique('performer')->take(30);
     
         return $dugaperformers;
     }
 
     public static function dugamakers(){
-        $dugamakers = Duga::whereDate('date', '<', Carbon::today())->whereNotIn('maker', [''])->latest('updated_at')->get()->unique('maker')->take(30);
+        $dugamakers = Duga::whereDate('date', '<', Carbon::today())->whereNotIn('maker', [''])->inRandomOrder()->get()->unique('maker')->take(30);
     
         return $dugamakers;
     }
 
     public static function dugaseriess(){
-        $dugaseriess = Duga::whereDate('date', '<', Carbon::today())->whereNotIn('series', [''])->latest('updated_at')->get()->unique('series')->take(30);
+        $dugaseriess = Duga::whereDate('date', '<', Carbon::today())->whereNotIn('series', [''])->inRandomOrder()->get()->unique('series')->take(30);
     
         return $dugaseriess;
     }

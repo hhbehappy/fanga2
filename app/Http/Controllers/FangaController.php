@@ -7,23 +7,31 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Carbon\Carbon;
 use App\Models\Fanza;
+use App\Models\FanzaReleaseMemo;
 use App\Models\Duga;
+use App\Models\DugaReleaseMemo;
 
 class FangaController extends Controller
 {
     public function index()
     {
         return Inertia::render('Fanga', [
-            'fvideoids' => Fanza::fvideoids(),
-            'fanzacount' => Fanza::count(),
+            'fvideoids'     => Fanza::fvideoids(),
+            'fanzacount'    => Fanza::count(),
             'fanzaactresss' => Fanza::fanzaactresss(),
-            'fanzamakers' => Fanza::fanzamakers(),
-            'fanzaseriess' => Fanza::fanzaseriess(),
-            'dvideoids' => Duga::dvideoids(),
-            'dugacount' => Duga::count(),
-            'dugaperformers' => Duga::dugaperformers(),
-            'dugamakers' => Duga::dugamakers(),
-            'dugaseriess' => Duga::dugaseriess(),
+            'fanzamakers'   => Fanza::fanzamakers(),
+            'fanzaseriess'  => Fanza::fanzaseriess(),
+            'fanzamemos'    => FanzaReleasememo::releaselists(),
+            'myflists'      => FanzaReleaseMemo::mylists(),
+            'myflistcount'  => FanzaReleaseMemo::mylists()->count(),
+            'dvideoids'     => Duga::dvideoids(),
+            'dugacount'     => Duga::count(),
+            'dugaperformers'=> Duga::dugaperformers(),
+            'dugamakers'    => Duga::dugamakers(),
+            'dugaseriess'   => Duga::dugaseriess(),
+            'dugamemos'     => DugaReleasememo::releaselists(),
+            'mydlists'      => DugaReleaseMemo::mylists(),
+            'mydlistcount'  => DugaReleaseMemo::mylists()->count(),
         ]);
     }
 

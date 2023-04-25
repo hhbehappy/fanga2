@@ -113,6 +113,7 @@ Route::controller(FanzaFreeMemoController::class)->group(function ()
 
 Route::controller(FanzaReleaseMemoController::class)->group(function ()
 {
+    Route::get('fanza/video/memo/all', 'index')->name('fmemo.index');
     Route::get('fanzareleasememo/store/{fanza_id}/{content_id}', 'store');
     Route::post('fanzareleasememo/store/{fanza_id}/{content_id}', 'store');
     Route::put('/fanzareleasememo/update/{type}/{content_id}', 'update');
@@ -185,6 +186,7 @@ Route::controller(DugaFreeMemoController::class)->group(function ()
 
 Route::controller(DugaReleaseMemoController::class)->group(function ()
 {
+    Route::get('duga/video/memo/all', 'index')->name('dmemo.index');
     Route::get('dugareleasememo/store/{duga_id}/{productid}', 'store');
     Route::post('dugareleasememo/store/{duga_id}/{productid}', 'store');
     Route::put('/dugareleasememo/update/{type}/{productid}', 'update');
