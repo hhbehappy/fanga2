@@ -49,8 +49,8 @@ class Fanza extends Model
         return $this->hasMany('App\Models\Nice');
     }
 
-    public static function fvideoids(){
-        $fvideoids = Fanza::whereDate('date', '<', Carbon::today())->latest('date')->take(30)->get();
+    public static function fvideoids($hits){
+        $fvideoids = Fanza::whereDate('date', '<', Carbon::today())->latest('date')->take($hits)->get();
     
         return $fvideoids;
     }

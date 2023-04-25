@@ -138,7 +138,7 @@ class DugaVideoController extends Controller
             'dugavideos'        => Duga::find($productid_1),
             'date'              => $dugavideo->date->format('Y/m/d'),
             're_productid'      => str_replace("-", "/", $dugavideo->productid),
-            'dvideoids'         => Duga::dvideoids(),
+            'dvideoids'         => Duga::dvideoids(20),
             'dugaperformers'    => Kanren::dugaperformers($productid),
             'dugaperformercount'=> Kanren::dugaperformers($productid)->count(),
             'dugamakers'        => Kanren::dugamakers($productid),

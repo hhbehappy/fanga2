@@ -78,7 +78,7 @@ const props = defineProps({
             </div>
             <div v-if="myflistcount !== 0">
                 <div class="flex overflow-x-scroll pb-4 mb-8">
-                    <div class="flex flex-none flex-nowrap">
+                    <div class="flex flex-none flex-wrap">
                         <div v-for="myflist in myflists" :key="myflist.id">
                             <div class="w-[117px] h-40 mx-2 border-none overflow-hidden">
                             <Link :href="route('fvideo.show', { id: myflist.content_id })">
@@ -233,7 +233,7 @@ const props = defineProps({
             </div>
             <div v-if="mydlistcount !== 0">
                 <div class="flex overflow-x-scroll pb-4 mb-8">
-                    <div class="flex flex-none flex-nowrap">
+                    <div class="flex flex-none flex-wrap">
                         <div v-for="mydlist in mydlists" :key="mydlist.id">
                             <div class="w-[117px] h-40 mx-2 border-none overflow-hidden">
                                 <Link :href="route('dvideo.show', { id: mydlist.productid })">

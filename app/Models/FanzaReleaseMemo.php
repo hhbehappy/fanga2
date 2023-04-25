@@ -39,8 +39,7 @@ class FanzaReleaseMemo extends Model
     public static function mylists(){
         $mylists = DB::table('fanza_release_memos')
         ->select('fanza_release_memos.content_id', 'title', 'fanza_release_memos.updated_at')->leftJoin('fanzas', 'fanza_release_memos.content_id', '=', 'fanzas.content_id')->where('user_id', Auth::id())->latest('updated_at')->get()->unique('content_id')->take(20);
-        // $mylists = FanzaReleaseMemo::where('user_id', Auth::id())->latest('updated_at')->get()->unique('content_id')->take(20);
-    
+        
         return $mylists;
     }
 

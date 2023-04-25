@@ -53,8 +53,8 @@ class Duga extends Model
         return $this->hasMany('App\Models\Nice');
     }
 
-    public static function dvideoids(){
-        $dvideoids = Duga::whereDate('date', '<', Carbon::today())->latest('date')->take(30)->get();
+    public static function dvideoids($hits){
+        $dvideoids = Duga::whereDate('date', '<', Carbon::today())->latest('date')->take($hits)->get();
     
         return $dvideoids;
     }
