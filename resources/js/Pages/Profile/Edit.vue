@@ -86,7 +86,7 @@ export default {
                     </div>
                   </div>
                   <div class="flex">
-                    <h2 class="font-bold bg-blue-200 rounded-xl py-1 px-4 ml-1 mb-4">公開メモをした動画<span class="md:hidden ml-2">({{ $page.props.count.fanzareleasememo }})</span></h2>
+                    <h2 class="font-bold bg-blue-200 rounded-xl py-1 px-4 ml-1 mb-4">メモをした動画<span class="md:hidden ml-2">({{ $page.props.count.fanzareleasememo }})</span></h2>
                   </div>
                   <div class="flex flex-wrap mx-2 mb-8">
                     <div v-for="fanzareleasememolist in fanzareleasememolists" :key="fanzareleasememolist.id" class="">
@@ -140,7 +140,7 @@ export default {
                     </div>
                   </div>
                   <div class="flex">
-                    <h2 class="font-bold bg-blue-200 rounded-xl py-1 px-4 ml-1 mb-4">公開メモをした動画<span class="md:hidden ml-2">({{ $page.props.count.dugareleasememo }})</span></h2>
+                    <h2 class="font-bold bg-blue-200 rounded-xl py-1 px-4 ml-1 mb-4">メモをした動画<span class="md:hidden ml-2">({{ $page.props.count.dugareleasememo }})</span></h2>
                   </div>
                   <div class="flex flex-wrap mx-2 mb-8">
                     <div v-for="dugareleasememolist in dugareleasememolists" :key="dugareleasememolist.id" class="">

@@ -31,4 +31,10 @@ class DugaFreeMemo extends Model
     {
         return $this->belongsTo(Duga::class);
     }
+
+    public static function duga_free_memos($productid){
+        $duga_free_memos = DugaFreeMemo::whereProductid($productid)->oldest('updated_at')->get();
+    
+        return $duga_free_memos;
+    }
 }

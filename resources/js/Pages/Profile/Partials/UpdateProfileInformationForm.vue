@@ -59,14 +59,14 @@ const form = useForm({
 
             <div v-if="props.mustVerifyEmail && user.email_verified_at === null">
                 <p class="text-sm mt-2 text-gray-800">
-                    Your email address is unverified.
+                    こちらのメールアドレスは認証されていません。
                     <Link
                         :href="route('verification.send')"
                         method="post"
                         as="button"
-                        class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        class="underline text-sm text-gray-600 hover:text-red-500 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                        Click here to re-send the verification email.
+                    認証用のメールを再送信するには、ここを選択してください。
                     </Link>
                 </p>
 
@@ -74,7 +74,7 @@ const form = useForm({
                     v-show="props.status === 'verification-link-sent'"
                     class="mt-2 font-medium text-sm text-green-600"
                 >
-                    A new verification link has been sent to your email address.
+                    認証用のメールが送信されました。
                 </div>
             </div>
 

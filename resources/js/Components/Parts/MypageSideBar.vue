@@ -10,7 +10,7 @@ import {  Link } from '@inertiajs/vue3';
         <div class="pb-4 pl-3 space-y-1">
           <h1 class="pb-1 text-lg text-red-500 font-bold">FANZA</h1>
           <p class="">非公開メモ（{{ $page.props.count.fanzaprivatememo }}）</p>
-          <p class="">公開メモ（{{ $page.props.count.fanzareleasememo }}）</p>
+          <p class="">メモ（{{ $page.props.count.fanzareleasememo }}）</p>
           <p class="">フリーメモ（{{ $page.props.count.fanzafreememo }}）</p>
           <p class="">気になる動画（{{ $page.props.count.fanzanice }}）</p>
         </div>
@@ -18,7 +18,7 @@ import {  Link } from '@inertiajs/vue3';
           <h1 class="pb-1 text-lg text-red-500 font-bold">DUGA</h1>
           <div class="space-y-1">
             <p class="">非公開メモ（{{ $page.props.count.dugaprivatememo }}）</p>
-            <p class="">公開メモ（{{ $page.props.count.dugareleasememo }}）</p>
+            <p class="">メモ（{{ $page.props.count.dugareleasememo }}）</p>
             <p class="">フリーメモ（{{ $page.props.count.dugafreememo }}）</p>
             <p class="">気になる動画（{{ $page.props.count.duganice }}）</p>
           </div>

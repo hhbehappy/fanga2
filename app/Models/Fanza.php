@@ -56,19 +56,19 @@ class Fanza extends Model
     }
 
     public static function fanzaactresss(){
-        $fanzaactresss = Fanza::whereDate('date', '<', Carbon::today())->whereNotIn('actress', [''])->latest('updated_at')->get()->unique('actress')->take(30);
+        $fanzaactresss = Fanza::whereDate('date', '<', Carbon::today())->whereNotIn('actress', [''])->inRandomOrder()->get()->unique('actress')->take(30);
     
         return $fanzaactresss;
     }
 
     public static function fanzamakers(){
-        $fanzamakers = Fanza::whereDate('date', '<', Carbon::today())->whereNotIn('maker', [''])->latest('updated_at')->get()->unique('maker')->take(30);
-    
+        $fanzamakers = Fanza::whereDate('date', '<', Carbon::today())->whereNotIn('maker', [''])->inRandomOrder()->get()->unique('maker')->take(30);
+        
         return $fanzamakers;
     }
 
     public static function fanzaseriess(){
-        $fanzaseriess = Fanza::whereDate('date', '<', Carbon::today())->whereNotIn('series', [''])->latest('updated_at')->get()->unique('series')->take(30);
+        $fanzaseriess = Fanza::whereDate('date', '<', Carbon::today())->whereNotIn('series', [''])->inRandomOrder()->get()->unique('series')->take(30);
     
         return $fanzaseriess;
     }

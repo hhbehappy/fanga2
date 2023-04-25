@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FanzaReleaseMemo extends Model
 {
@@ -36,15 +37,25 @@ class FanzaReleaseMemo extends Model
     }
 
     public static function mylists(){
-        $mylists = FanzaReleaseMemo::where('user_id', Auth::id())->latest('updated_at')->get()->unique('content_id')->take(20);
+        $mylists = DB::table('fanza_release_memos')
+        ->select('fanza_release_memos.content_id', 'title', 'fanza_release_memos.updated_at')->leftJoin('fanzas', 'fanza_release_memos.content_id', '=', 'fanzas.content_id')->where('user_id', Auth::id())->latest('updated_at')->get()->unique('content_id')->take(20);
+        // $mylists = FanzaReleaseMemo::where('user_id', Auth::id())->latest('updated_at')->get()->unique('content_id')->take(20);
     
         return $mylists;
     }
 
     public static function releaselists(){
-        $releaselists = FanzaReleaseMemo::latest('updated_at')->get()->unique('content_id')->take(20);
+        $releaselists = DB::table('fanza_release_memos')
+        ->select('fanza_release_memos.content_id', 'title', 'fanza_release_memos.updated_at')->leftJoin('fanzas', 'fanza_release_memos.content_id', '=', 'fanzas.content_id')->latest('updated_at')->get()->unique('content_id')->take(20);
     
         return $releaselists;
+    }
+
+    public static function releasealllists(){
+        $releasealllists = DB::table('fanza_release_memos')
+        ->select('fanza_release_memos.content_id', 'title', 'fanza_release_memos.updated_at')->leftJoin('fanzas', 'fanza_release_memos.content_id', '=', 'fanzas.content_id')->groupBy('content_id')->latest('updated_at')->paginate(100);
+
+        return $releasealllists;
     }
 
     public static function fanza_release_memos($content_id){

@@ -130,6 +130,7 @@ class FanzaVideoController extends Controller
             'videoa' => $videoa,
             'date' => $videoa->date->format('Y/m/d'), 
             'videoids' => Fanza::find($content_id_1),
+            'fvideoids' => Fanza::fvideoids(),
             'fanzaactresss' => Kanren::fanzaactresss($content_id),
             'fanzaactresscount' => Kanren::fanzaactresss($content_id)->count(),
             'fanzamakers' => Kanren::fanzamakers($content_id),
@@ -144,10 +145,11 @@ class FanzaVideoController extends Controller
             'fanza_release_memos' => FanzaReleasememo::fanza_release_memos($content_id),
             'fanza_private_memos' => FanzaPrivateMemo::fanza_private_memos($content_id),
             'mylists' => FanzaReleaseMemo::mylists(),
+            'mylistcount'  => FanzaReleaseMemo::mylists()->count(),
             'releaselists' => FanzaReleasememo::releaselists(),
             'auth_id' => Auth::id(),
-            'nice' => Nice::nice($content_id),
-            'nicecount' => Nice::nicecount($content_id),
+            'nice' => Nice::fanzanice($content_id),
+            'nicecount' => Nice::fanzanicecount($content_id),
             'privatememolimit' => FanzaPrivateMemo::privatememolimit($content_id),
         ]);
     }
@@ -167,8 +169,8 @@ class FanzaVideoController extends Controller
             'update_release_id' => FanzaReleaseMemo::whereId($memoid)->first(),
             'update_private_id' => FanzaPrivateMemo::whereId($memoid)->first(),
             'user_id' => Auth::id(),
-            'nice' => Nice::nice($content_id),
-            'nicecount' => Nice::nicecount($content_id),
+            'nice' => Nice::fanzanice($content_id),
+            'nicecount' => Nice::fanzanicecount($content_id),
         ]);
     }
 
