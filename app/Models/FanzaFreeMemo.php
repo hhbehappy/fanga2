@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class FanzaFreeMemo extends Model
 {
@@ -35,5 +36,34 @@ class FanzaFreeMemo extends Model
         $fanza_free_memos = FanzaFreeMemo::whereContent_id($content_id)->oldest('updated_at')->get();
     
         return $fanza_free_memos;
+    }
+
+    public static function store($request, $fanza_id, $content_id)
+    {
+        FanzaFreeMemo::create([
+            'user_id'      => Auth::id(),
+            'fanza_id'     => $fanza_id,
+            'content_id'   => $content_id,
+            'free'         => $request->get('free')
+        ]);
+
+        return back()
+        ->with([
+            'message' => 'フリーメモを送信しました。',
+            'status'  => 'store'
+        ]);
+    }
+
+    public static function destroy($id)
+    {
+        
+        $free_memo = FanzaFreeMemo::findOrFail($id);
+        $free_memo->delete();
+
+        return back()
+        ->with([
+            'message' => 'フリーメモを削除しました。',
+            'status'  => 'delete'
+        ]);
     }
 }

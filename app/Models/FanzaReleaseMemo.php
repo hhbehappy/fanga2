@@ -69,4 +69,59 @@ class FanzaReleaseMemo extends Model
         return $edit_release_memos;
     }
 
+    public static function memolist($column)
+    {
+        $memolists = DB::table('fanza_release_memos')
+            ->select('fanza_release_memos.content_id', 'title', $column, DB::raw('count(*) as total'))
+            ->groupBy('content_id', 'title', $column)->latest('total')
+            ->leftJoin('fanzas', 'fanza_release_memos.content_id', '=', 'fanzas.content_id')
+            ->get()->unique($column)->take(100);
+
+        return $memolists;
+    }
+
+    public static function store($request, $fanza_id, $content_id)
+    {
+        $fanza = Fanza::find($content_id);
+        $fanza->touch();
+
+        FanzaReleaseMemo::create([
+            'user_id'      => Auth::id(),
+            'name'         => Auth::user()->name,
+            'nickname'     => $request->get('nickname'),
+            'fanza_id'     => $fanza_id,
+            'content_id'   => $content_id,
+            'release'      => $request->get('release')
+        ]);
+
+        return back()
+        ->with([
+            'message' => 'メモを送信しました。',
+            'status'  => 'store'
+        ]);
+    }
+
+    public static function change($request, $id)
+    {
+        $releasememo = FanzaReleaseMemo::findOrFail($id);
+
+        $releasememo->update([
+            'nickname'    => $request->get('nickname'),
+            'release'     => $request->get('release')
+        ]);
+    }
+
+    public static function destroy($id)
+    {
+        
+        $release_memo = FanzaReleaseMemo::findOrFail($id);
+        $release_memo->delete();
+
+        return back()
+        ->with([
+            'message' => 'メモを削除しました。',
+            'status'  => 'delete'
+        ]);
+    }
+
 }

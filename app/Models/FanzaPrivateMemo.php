@@ -50,4 +50,42 @@ class FanzaPrivateMemo extends Model
     
         return $edit_private_memos;
     }
+
+    public static function store($request, $fanza_id, $content_id)
+    {
+        FanzaPrivateMemo::create([
+            'user_id'      => Auth::id(),
+            'name'         => Auth::user()->name,
+            'fanza_id'     => $fanza_id,
+            'content_id'   => $content_id,
+            'private'      => $request->get('private')
+        ]);
+
+        return back()
+        ->with([
+            'message' => '非公開メモを送信しました。',
+            'status'  => 'store'
+        ]);
+    }
+
+    public static function change($request, $id)
+    {
+        $privatememo = FanzaPrivateMemo::findOrFail($id);
+
+        $privatememo->update([
+            'private'     => $request->get('private')
+        ]);
+    }
+
+    public static function destroy($id)
+    {
+        $private_memo = FanzaPrivateMemo::findOrFail($id);
+        $private_memo->delete();
+
+        return back()
+        ->with([
+            'message' => '非公開メモを削除しました。',
+            'status'  => 'delete'
+        ]);
+    }
 }

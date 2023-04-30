@@ -13,7 +13,7 @@ class FanzaListController extends Controller
 {
     public function index()
     {
-        $videoids = Fanza::latest('date')->paginate(100);
+        $videoids = Fanza::index();
         $onemonths = Carbon::today()->subMonth(1);
         $auth_id = Auth::id();
 
@@ -26,39 +26,16 @@ class FanzaListController extends Controller
         $onemonths = Carbon::today()->subMonth(1);
         $keyword = $request->keyword;
         $sort = SortKeyword::listSort($request->sort);
-        
-        if(!empty($keyword)){
-            $videolists = Fanza::where('maker', 'like', $keyword)
-            ->orWhere('label', 'like', $keyword)
-            ->orWhere('series', 'like', $keyword)
-            ->orWhere('actress', 'like', $keyword)
-            ->orWhere('director', 'like', $keyword)
-            ->orWhere('genre', 'like', $keyword)
-            ->orWhere('genre1', 'like', $keyword)
-            ->orWhere('genre2', 'like', $keyword)
-            ->orWhere('genre3', 'like', $keyword)
-            ->orWhere('genre4', 'like', $keyword)
-            ->orWhere('genre5', 'like', $keyword)
-            ->orWhere('genre6', 'like', $keyword)
-            ->orWhere('genre7', 'like', $keyword)
-            ->orWhere('genre8', 'like', $keyword)
-            ->orWhere('genre9', 'like', $keyword)
-            ->latest('date')
-            ->paginate(100);
-        }
-
+        $videolists = Fanza::videolists($keyword);
 
         return view('Fanza/Video/List', compact('onemonths', 'videolists', 'sort', 'keyword'));
     }
 
     public function destroy($id)
     {
-        
-        $fanzavideo = Fanza::findOrFail($id);
-        $fanzavideo->delete();
+        Fanza::destroy($id);
 
         return back();
-
     }
 
 }

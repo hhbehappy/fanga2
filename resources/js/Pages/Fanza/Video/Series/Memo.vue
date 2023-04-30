@@ -9,7 +9,7 @@ defineProps({
 
 <template>
 <Layout>
-  <Head :title="'【FANZA】シリーズ一覧 : 公開メモの多い順'" />
+  <Head :title="'【FANZA】シリーズ一覧 : メモの多い順'" />
 
   <section class="">
     <div class="flex flex-wrap mb-5 text-white font-mono">
@@ -39,7 +39,7 @@ defineProps({
       </div>
     </div>
     <div class="border-b-4 border-gray-500 mb-4">
-      <h1 class="font-bold md:text-xl"><span class="text-red-500">【FANZA】</span>シリーズ一覧 : 公開メモの多い順</h1>
+      <h1 class="font-bold md:text-xl"><span class="text-red-500">【FANZA】</span>シリーズ一覧 : メモの多い順</h1>
     </div>
     <div class="flex flex-wrap ml-4 md:mx-2 justify-center sm:justify-start">
       <div v-for="seriesmemolist in seriesmemolists" :key="seriesmemolist.id">
