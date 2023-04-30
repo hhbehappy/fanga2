@@ -9,7 +9,7 @@ defineProps({
 
 <template>
 <Layout>
-  <Head :title="'【FANZA】AV女優一覧 : 公開メモの多い順'" />
+  <Head :title="'【FANZA】AV女優一覧 : メモの多い順'" />
 
   <section class="">
     <div class="flex flex-wrap mb-5 text-white font-mono">
@@ -33,7 +33,7 @@ defineProps({
       </Link>
     </div>
     <div class="border-b-4 border-gray-500 mb-4">
-      <h1 class="font-bold md:text-xl"><span class="text-red-500">【FANZA】</span>AV女優一覧 : 公開メモの多い順</h1>
+      <h1 class="font-bold md:text-xl"><span class="text-red-500">【FANZA】</span>AV女優一覧 : メモの多い順</h1>
     </div>
     <div class="flex flex-wrap ml-4 md:mx-2 justify-center md:justify-start">
       <div v-for="actressmemolist in actressmemolists" :key="actressmemolist.id">

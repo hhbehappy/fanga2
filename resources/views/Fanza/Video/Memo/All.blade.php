@@ -4,16 +4,20 @@
   </x-slot>
 
   <div class="border-b-4 border-gray-500 mb-5">
-    <h1 class="ml-2 md:ml-0 font-bold md:text-xl inline-block"><span class="text-red-500">【FANZA】</span>メモされた動画一覧<span class="ml-1 text-sm text-gray-500">(更新順)</span></h1>
-    <span class="ml-5 inline-block">{{ $releasealllists->total() }}件中 {{ $releasealllists->firstItem() }}〜{{ $releasealllists->lastItem() }}件</span>
+    <h1 class="ml-2 md:ml-0 font-bold md:text-xl inline-block"><span class="text-red-500">【FANZA】</span>メモされた動画一覧<span
+        class="ml-1 text-sm text-gray-500">(更新順)</span></h1>
+    <span class="ml-5 inline-block">{{ $releasealllists->total() }}件中 {{ $releasealllists->firstItem() }}〜{{
+      $releasealllists->lastItem() }}件</span>
   </div>
   <div class="container ml-1 md:ml-0 flex flex-col">
     <div class="flex flex-none flex-wrap mb-4 relative">
       @foreach ( $releasealllists as $releasealllist )
       <div>
-            <a href="{{ route('fvideo.show', [ 'id' => $releasealllist->content_id ]) }}">
-            <img src="<?php echo 'https://pics.dmm.co.jp/digital/video/' .  $releasealllist->content_id  . '/' .  $releasealllist->content_id   . 'ps.jpg'; ?>" alt="【FANZA】 <?php echo $releasealllist->title ?>のメイン画像" class="w-[120px] inline-block px-1 mb-4">
-          </a>
+        <a href="{{ route('fvideo.show', [ 'id' => $releasealllist->content_id ]) }}">
+          <img
+            src="<?php echo 'https://pics.dmm.co.jp/digital/video/' .  $releasealllist->content_id  . '/' .  $releasealllist->content_id   . 'ps.jpg'; ?>"
+            alt="【FANZA】 <?php echo $releasealllist->title ?>のメイン画像" class="w-[120px] inline-block px-1 mb-4">
+        </a>
       </div>
       @endforeach
     </div>

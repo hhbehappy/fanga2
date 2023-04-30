@@ -18,9 +18,9 @@ class FangaController extends Controller
         return Inertia::render('Fanga', [
             'fvideoids'     => Fanza::fvideoids(30),
             'fanzacount'    => Fanza::count(),
-            'fanzaactresss' => Fanza::fanzaactresss(),
-            'fanzamakers'   => Fanza::fanzamakers(),
-            'fanzaseriess'  => Fanza::fanzaseriess(),
+            'fanzaactresss' => Fanza::fanzalists('actress'),
+            'fanzamakers'   => Fanza::fanzalists('maker'),
+            'fanzaseriess'  => Fanza::fanzalists('series'),
             'fanzamemos'    => FanzaReleasememo::releaselists(),
             'myflists'      => FanzaReleaseMemo::mylists(),
             'myflistcount'  => FanzaReleaseMemo::mylists()->count(),

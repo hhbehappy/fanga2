@@ -54,7 +54,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function id1middleware(){ 
-        if($this->id=='1'){ 
+        if($this->id === '1' || '6'){ 
             return true; 
         } return false; 
     }

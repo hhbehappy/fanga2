@@ -3,20 +3,19 @@
 namespace App\Http\Controllers\Fanza;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Fanza;
+use App\Models\FanzaNice;
+use App\Models\FanzaReleaseMemo;
 use App\Services\RubyKeyword;
 
 class FanzaActressController extends Controller
 {
     public function actress()
-    {
-        $actresslists = Fanza::select('content_id', 'title', 'actress', 'updated_at')->whereNotIn('actress', [''])->latest('updated_at')->get()->unique('actress')->take(60);
-        
+    {   
         return Inertia::render('Fanza/Video/Actress/Index',[
-            'actresslists' => $actresslists,
+            'actresslists' => Fanza::itioshilists('actress')
         ]);
     }
 
@@ -29,15 +28,9 @@ class FanzaActressController extends Controller
     {
         $line = $request->line;
         $keyword = RubyKeyword::checkRuby($request->keyword);
-        
-        if(!empty($keyword)){
-            $actressnamelists = Fanza::select('content_id', 'title', 'actress', 'ruby', 'updated_at')->Where('ruby', 'like',$keyword. '%')
-            ->oldest('ruby')
-            ->get()->unique('actress');
-        }
 
         return Inertia::render('Fanza/Video/Actress/Name', [
-            'actressnamelists' => $actressnamelists,
+            'actressnamelists' => Fanza::actress_name($keyword),
             'line' => $line,
             'keyword' => $keyword
         ]);
@@ -45,27 +38,15 @@ class FanzaActressController extends Controller
 
     public function actress_memo()
     {
-        $actressmemolists = DB::table('fanza_release_memos')
-            ->select('fanza_release_memos.content_id', 'title', 'actress', DB::raw('count(*) as total'))
-            ->groupBy('content_id', 'title', 'actress')->latest('total')
-            ->leftJoin('fanzas', 'fanza_release_memos.content_id', '=', 'fanzas.content_id')
-            ->take(100)->get()->unique('actress');
-
-            return Inertia::render('Fanza/Video/Actress/Memo',[
-                'actressmemolists' => $actressmemolists,
-            ]);
+        return Inertia::render('Fanza/Video/Actress/Memo',[
+            'actressmemolists' => FanzaReleaseMemo::memolist('actress')
+        ]);
     }
 
     public function actress_nice()
     {
-        $actressnicelists = DB::table('nices')
-            ->select('nices.content_id', 'title', 'actress', 'type',DB::raw('count(*) as total'))
-            ->groupBy('content_id', 'title', 'actress', 'type')->latest('total')
-            ->leftJoin('fanzas', 'nices.content_id', '=', 'fanzas.content_id')
-            ->take(100)->get()->unique('actress');
-
         return Inertia::render('Fanza/Video/Actress/Nice',[
-            'actressnicelists' => $actressnicelists
+            'actressnicelists' => FanzaNice::nicelist('actress')
         ]);
     }
 }
