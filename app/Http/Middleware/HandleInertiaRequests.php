@@ -62,9 +62,9 @@ class HandleInertiaRequests extends Middleware
                 'fanzamaker' => SideBarRandomOrder::fanzamaker(),
                 'fanzaseries' => SideBarRandomOrder::fanzaseries(),
                 'dugacategory' => SideBarRandomOrder::dugacategory(),
-                'dugaperformer' => SideBarRandomOrder::dugaperformer(),
-                'dugamaker' => SideBarRandomOrder::dugamaker(),
-                'dugaseries' => SideBarRandomOrder::dugaseries(),
+                'dugaperformer' => SideBarRandomOrder::dugaSideBar('performer'),
+                'dugamaker' => SideBarRandomOrder::dugaSideBar('maker'),
+                'dugaseries' => SideBarRandomOrder::dugaSideBar('series'),
             ]
         ]);
     }

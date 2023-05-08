@@ -53,7 +53,7 @@ class Kanren
     return $fanzagenre2s;
   }
   
-  public static function dugaperformers($productid){
+  public static function dugaPerformers($productid){
 
     $dugavideo = Duga::whereProductid($productid)->first();
 
@@ -62,7 +62,7 @@ class Kanren
     return $dugaperformers;
   }
 
-  public static function dugamakers($productid){
+  public static function dugaMakers($productid){
 
     $dugavideo = Duga::whereProductid($productid)->first();
 
@@ -71,7 +71,7 @@ class Kanren
     return $dugamakers;
   }
 
-  public static function dugaseriess($productid){
+  public static function dugaSeriess($productid){
 
     $dugavideo = Duga::whereProductid($productid)->first();
 
@@ -80,7 +80,7 @@ class Kanren
     return $dugaseriess;
   }
 
-  public static function dugadirectors($productid){
+  public static function dugaDirectors($productid){
 
     $dugavideo = Duga::whereProductid($productid)->first();
 
@@ -89,7 +89,7 @@ class Kanren
     return $dugadirectors;
   }
 
-  public static function dugacategorys($productid){
+  public static function dugaCategorys($productid){
 
     $dugavideo = Duga::whereProductid($productid)->first();
 

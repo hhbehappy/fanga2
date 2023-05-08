@@ -59,7 +59,7 @@ class SideBarRandomOrder
     return $fanzaseries;
   }
 
-  public static function dugacategory(){
+  public static function dugaCategory(){
     $dugacategorys = collect([
       '素人',
       'ギャル',
@@ -106,21 +106,10 @@ class SideBarRandomOrder
     return $dugacategory;
   }
 
-  public static function dugaperformer(){
-    $dugaperformer =  Duga::select('performer')->whereNotIn('performer', [''])->inRandomOrder()->get()->unique('performer')->take(6);
+  public static function dugaSideBar($column){
+    $dugasidebar =  Duga::select($column)->whereNotIn($column, [''])->inRandomOrder()->get()->unique($column)->take(6);
 
-    return $dugaperformer;
+    return $dugasidebar;
   }
-
-  public static function dugamaker(){
-    $dugamaker =  Duga::select('maker')->whereNotIn('maker', [''])->inRandomOrder()->get()->unique('maker')->take(6);
-
-    return $dugamaker;
-  }
-
-  public static function dugaseries(){
-    $dugaseries =  Duga::select('series')->whereNotIn('series', [''])->inRandomOrder()->get()->unique('series')->take(6);
-
-    return $dugaseries;
-  }
+  
 }

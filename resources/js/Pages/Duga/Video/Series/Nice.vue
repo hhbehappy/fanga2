@@ -29,7 +29,7 @@ defineProps({
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
         </svg>
-        公開メモの多い順
+        メモの多い順
       </Link>
       <div class="h-8 ml-2">
         <form :action="route('dlist.series_search')" method="GET">
@@ -43,9 +43,9 @@ defineProps({
     </div>
     <div class="flex flex-wrap ml-4 md:mx-2 justify-center sm:justify-start">
       <div v-for="seriesnicelist in seriesnicelists" :key="seriesnicelist.id">
-        <div v-if="seriesnicelist.type === 'duga' && seriesnicelist.series" class="w-36 mr-5 md:mr-1 mb-4">
+        <div v-if="seriesnicelist.series" class="w-36 mr-5 md:mr-1 mb-4">
           <a :href="route('dlist.show', { sort: 'series', keyword: seriesnicelist.series })" class="p-2 border-2 text-blue-500 text-center inline-block">
-            <img v-if="seriesnicelist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + seriesnicelist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + seriesnicelist.title" class="h-40 w-28">
+            <img v-if="seriesnicelist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + seriesnicelist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + seriesnicelist.title + 'のジャケット画像'" class="h-40 w-28">
             <img v-else :src="'https://pic.duga.jp/unsecure/' + seriesnicelist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + seriesnicelist.title + 'のメイン画像'" class="h-40 w-28">
             <span class="w-28 -mb-2 text-sm inline-block truncate">{{ seriesnicelist.series }}</span>
           </a>

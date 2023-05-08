@@ -69,13 +69,13 @@ class FanzaNice extends Model
 
     public static function nicelist($column)
     {
-        $actressnicelists = DB::table('fanza_nices')
-            ->select('fanza_nices.content_id', 'title', $column,DB::raw('count(*) as total'))
+        $nicelists = DB::table('fanza_nices')
+            ->select('fanza_nices.content_id', 'title', $column, DB::raw('count(*) as total'))
             ->groupBy('content_id', 'title', $column)->latest('total')
             ->leftJoin('fanzas', 'fanza_nices.content_id', '=', 'fanzas.content_id')
             ->get()->unique($column)->take(100);
 
-        return $actressnicelists;
+        return $nicelists;
     }
     
 }

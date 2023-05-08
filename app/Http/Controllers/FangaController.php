@@ -24,14 +24,14 @@ class FangaController extends Controller
             'fanzamemos'    => FanzaReleasememo::releaselists(),
             'myflists'      => FanzaReleaseMemo::mylists(),
             'myflistcount'  => FanzaReleaseMemo::mylists()->count(),
-            'dvideoids'     => Duga::dvideoids(30),
+            'dvideoids'     => Duga::dVideoIds(30),
             'dugacount'     => Duga::count(),
-            'dugaperformers'=> Duga::dugaperformers(),
-            'dugamakers'    => Duga::dugamakers(),
-            'dugaseriess'   => Duga::dugaseriess(),
-            'dugamemos'     => DugaReleasememo::releaselists(),
-            'mydlists'      => DugaReleaseMemo::mylists(),
-            'mydlistcount'  => DugaReleaseMemo::mylists()->count(),
+            'dugaperformers'=> Duga::dugaLists('performer'),
+            'dugamakers'    => Duga::dugaLists('maker'),
+            'dugaseriess'   => Duga::dugaLists('series'),
+            'dugamemos'     => DugaReleasememo::releaseLists(),
+            'mydlists'      => DugaReleaseMemo::myLists(),
+            'mydlistcount'  => DugaReleaseMemo::myLists()->count(),
         ]);
     }
 
