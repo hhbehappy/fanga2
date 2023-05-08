@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
 
 class Fanza extends Model
@@ -131,7 +130,6 @@ class Fanza extends Model
             return $videolists;
         }
     }
-
 
     public static function fanzakeyword($keyword)
     {

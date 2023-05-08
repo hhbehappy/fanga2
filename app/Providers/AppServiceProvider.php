@@ -30,8 +30,8 @@ class AppServiceProvider extends ServiceProvider
         View::share('fanzamakers', SideBarRandomOrder::fanzamaker());
         View::share('fanzaseriess', SideBarRandomOrder::fanzaseries());
         View::share('dugacategorys', SideBarRandomOrder::dugacategory());
-        View::share('dugaperformers', SideBarRandomOrder::dugaperformer());
-        View::share('dugamakers', SideBarRandomOrder::dugamaker());
-        View::share('dugaseriess', SideBarRandomOrder::dugaseries());
+        View::share('dugaperformers', SideBarRandomOrder::dugaSideBar('performer'));
+        View::share('dugamakers', SideBarRandomOrder::dugaSideBar('maker'));
+        View::share('dugaseriess', SideBarRandomOrder::dugaSideBar('series'));
     }
 }

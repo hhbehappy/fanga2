@@ -10,13 +10,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Models\FanzaNice;
 use App\Models\FanzaFreeMemo;
 use App\Models\FanzaReleaseMemo;
 use App\Models\FanzaPrivateMemo;
+use App\Models\DugaNice;
 use App\Models\DugaFreeMemo;
 use App\Models\DugaReleaseMemo;
 use App\Models\DugaPrivateMemo;
-use App\Models\Nice;
 
 class ProfileController extends Controller
 {
@@ -26,22 +27,20 @@ class ProfileController extends Controller
     public function edit(Request $request): Response
     {
         $user = auth()->user();
-        $fanzaprivatememolists = FanzaPrivateMemo::where('user_id', Auth::id())->latest('updated_at')->get()->unique('content_id');
-        $fanzareleasememolists = FanzaReleaseMemo::where('user_id', Auth::id())->latest('updated_at')->get()->unique('content_id');
-        $fanzafreememolists = FanzaFreeMemo::where('user_id', Auth::id())->latest('updated_at')->get()->unique('content_id');
+        $fanzaprivatememolists = FanzaPrivateMemo::select('fanza_private_memos.content_id', 'title', 'fanzas.updated_at')->whereUser_id(Auth::id())->latest('updated_at')->leftJoin('fanzas', 'fanza_private_memos.content_id', '=', 'fanzas.content_id')->get()->unique('content_id');
+        $fanzareleasememolists = FanzaReleaseMemo::select('fanza_release_memos.content_id', 'title', 'fanzas.updated_at')->whereUser_id(Auth::id())->latest('updated_at')->leftJoin('fanzas', 'fanza_release_memos.content_id', '=', 'fanzas.content_id')->get()->unique('content_id');
+        $fanzafreememolists = FanzaFreeMemo::select('fanza_free_memos.content_id', 'title', 'fanzas.updated_at')->whereUser_id(Auth::id())->latest('updated_at')->leftJoin('fanzas', 'fanza_free_memos.content_id', '=', 'fanzas.content_id')->get()->unique('content_id');
         $dugaprivatememolists = DugaPrivateMemo::select('title', 'duga_private_memos.productid', 're_productid', 'jacketimage', 'duga_private_memos.updated_at')
-        ->where('user_id', Auth::id())->latest('updated_at')
+        ->whereUser_id(Auth::id())->latest('updated_at')
         ->leftJoin('dugas', 'duga_private_memos.productid', '=', 'dugas.productid')->get()->unique('re_productid');
         $dugareleasememolists = DugaReleaseMemo::select('title', 'duga_release_memos.productid', 're_productid', 'jacketimage', 'duga_release_memos.updated_at')
-        ->where('user_id', Auth::id())->latest('updated_at')
+        ->whereUser_id(Auth::id())->latest('updated_at')
         ->leftJoin('dugas', 'duga_release_memos.productid', '=', 'dugas.productid')->get()->unique('re_productid');
         $dugafreememolists = DugaFreeMemo::select('title', 'duga_free_memos.productid', 're_productid', 'jacketimage', 'duga_free_memos.updated_at')
-        ->where('user_id', Auth::id())->latest('updated_at')
+        ->whereUser_id(Auth::id())->latest('updated_at')
         ->leftJoin('dugas', 'duga_free_memos.productid', '=', 'dugas.productid')->get()->unique('re_productid');
-        $nicelists = Nice::where('user_id', Auth::id())->latest('updated_at')->get()->unique('content_id');
-        $duganicelists = Nice::select('type', 'title', 'productid', 're_productid', 'jacketimage', 'nices.updated_at')
-        ->where('user_id', Auth::id())->latest('updated_at')
-        ->leftJoin('dugas', 'content_id', '=', 'dugas.productid')->get()->unique('re_productid');
+        $fanzanicelists = FanzaNice::select('fanza_nices.content_id', 'title', 'fanzas.updated_at')->whereUser_id(Auth::id())->latest('updated_at')->leftJoin('fanzas', 'fanza_nices.content_id', '=', 'fanzas.content_id')->get()->unique('content_id');
+        $duganicelists = DugaNice::select('title', 'duga_nices.productid', 're_productid', 'jacketimage', 'duga_nices.updated_at')->whereUser_id(Auth::id())->latest('updated_at') ->leftJoin('dugas', 'duga_nices.productid', '=', 'dugas.productid')->get()->unique('re_productid');
 
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
@@ -53,7 +52,7 @@ class ProfileController extends Controller
             'dugaprivatememolists'      => $dugaprivatememolists,
             'dugareleasememolists'      => $dugareleasememolists,
             'dugafreememolists'         => $dugafreememolists,
-            'nicelists'                 => $nicelists,
+            'fanzanicelists'            => $fanzanicelists,
             'duganicelists'             => $duganicelists
         ]);
     }

@@ -9,7 +9,7 @@ defineProps({
 
 <template>
 <Layout>
-  <Head :title="'【DUGA】AV女優一覧 : 公開メモの多い順'" />
+  <Head :title="'【DUGA】AV女優一覧 : メモの多い順'" />
 
   <section class="">
     <div class="flex flex-wrap mb-5 text-white font-mono">

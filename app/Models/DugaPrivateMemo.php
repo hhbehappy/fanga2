@@ -36,21 +36,62 @@ class DugaPrivateMemo extends Model
         return $this->belongsTo(Duga::class);
     }
 
-    public static function duga_private_memos($productid){
+    public static function dugaPrivateMemos($productid){
         $duga_private_memos = DugaPrivateMemo::where([['productid', $productid], ['user_id', Auth::id()]])->oldest('updated_at')->get();
     
         return $duga_private_memos;
     }
 
-    public static function privatememolimit($productid){
+    public static function privateMemoLimit($productid){
         $privatememolimit = DugaPrivateMemo::where([['productid', $productid], ['user_id', Auth::id()]])->count();
     
         return $privatememolimit;
     }
 
-    public static function edit_private_memos($memoid){
+    public static function editPrivateMemos($memoid){
         $edit_private_memos = DugaPrivateMemo::where([['id', $memoid], ['user_id', Auth::id()]])->get();
         
         return $edit_private_memos;
+    }
+
+    public static function store($request, $duga_id, $productid)
+    {
+        $re_productid = str_replace("-", "/", $productid);
+
+        DugaPrivateMemo::create([
+            'user_id'      => Auth::id(),
+            'name'         => Auth::user()->name,
+            'duga_id'      => $duga_id,
+            'productid'    => $productid,
+            're_productid' => $re_productid,
+            'private'      => $request->get('private')
+        ]);
+
+        return back()
+        ->with([
+            'message' => '非公開メモを送信しました。',
+            'status'  => 'store'
+        ]);
+    }
+
+    public static function change($request, $id)
+    {
+        $privatememo = DugaPrivateMemo::findOrFail($id);
+
+        $privatememo->update([
+            'private'     => $request->get('private')
+        ]);
+    }
+
+    public static function destroy($id)
+    {
+        $free_memo = DugaPrivateMemo::findOrFail($id);
+        $free_memo->delete();
+
+        return back()
+        ->with([
+            'message' => '非公開メモを削除しました。',
+            'status'  => 'delete'
+        ]);
     }
 }

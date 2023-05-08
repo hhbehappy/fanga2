@@ -13,7 +13,7 @@ const props = defineProps({
   dugaprivatememolists: Object,
   dugareleasememolists: Object,
   dugafreememolists: Object,
-  nicelists: Object,
+  fanzanicelists: Object,
   duganicelists: Object,
   assetsPath: Object,
   mustVerifyEmail: Boolean,
@@ -80,7 +80,7 @@ export default {
                     <div v-for="fanzaprivatememolist in fanzaprivatememolists" :key="fanzaprivatememolist.id" class="">
                       <div class="mr-4 mb-4">
                         <Link :href="route('fvideo.show', { id: fanzaprivatememolist.content_id })">
-                          <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzaprivatememolist.content_id  + '/' + fanzaprivatememolist.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzaprivatememolist.title" class="h-44 w-32">
+                          <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzaprivatememolist.content_id  + '/' + fanzaprivatememolist.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzaprivatememolist.title + 'のジャケット画像'" class="h-44 w-32">
                         </Link>
                       </div>
                     </div>
@@ -92,7 +92,7 @@ export default {
                     <div v-for="fanzareleasememolist in fanzareleasememolists" :key="fanzareleasememolist.id" class="">
                       <div class="mr-4 mb-4">
                         <Link :href="route('fvideo.show', { id: fanzareleasememolist.content_id })">
-                          <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzareleasememolist.content_id  + '/' + fanzareleasememolist.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzareleasememolist.title" class="h-44 w-32">
+                          <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzareleasememolist.content_id  + '/' + fanzareleasememolist.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzareleasememolist.title + 'のジャケット画像'" class="h-44 w-32">
                         </Link>
                       </div>
                     </div>
@@ -104,7 +104,7 @@ export default {
                     <div v-for="fanzafreememolist in fanzafreememolists" :key="fanzafreememolist.id" class="">
                       <div v-if="fanzafreememolist.content_id" class="mr-4 mb-4">
                         <Link :href="route('fvideo.show', { id: fanzafreememolist.content_id })">
-                          <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzafreememolist.content_id  + '/' + fanzafreememolist.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzafreememolist.title" class="h-44 w-32">
+                          <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzafreememolist.content_id  + '/' + fanzafreememolist.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzafreememolist.title + 'のジャケット画像'" class="h-44 w-32">
                         </Link>
                       </div>
                     </div>
@@ -113,10 +113,10 @@ export default {
                     <h2 class="font-bold px-4 py-1 ml-1 mb-4 bg-pink-300 rounded-xl">気になる動画<span class="md:hidden ml-2">({{ $page.props.count.fanzanice }})</span></h2>
                   </div>
                   <div class="flex flex-wrap mx-2 mb-8">
-                    <div v-for="nicelist in nicelists" :key="nicelist.id" class="">
-                      <div v-if="nicelist.type === 'fanza'" class="mr-4 mb-4">
-                        <Link :href="route('fvideo.show', { id: nicelist.content_id })">
-                          <img :src="'https://pics.dmm.co.jp/digital/video/' + nicelist.content_id  + '/' + nicelist.content_id + 'ps.jpg'" :alt="'【FANZA】' + nicelist.title" class="h-44 w-32">
+                    <div v-for="fanzanicelist in fanzanicelists" :key="fanzanicelist.id" class="">
+                      <div class="mr-4 mb-4">
+                        <Link :href="route('fvideo.show', { id: fanzanicelist.content_id })">
+                          <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzanicelist.content_id  + '/' + fanzanicelist.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzanicelist.title + 'のジャケット画像'" class="h-44 w-32">
                         </Link>
                       </div>
                     </div>
@@ -133,8 +133,8 @@ export default {
                     <div v-for="dugaprivatememolist in dugaprivatememolists" :key="dugaprivatememolist.productid" class="">
                       <div class="mr-4 mb-4">
                         <Link :href="route('dvideo.show', { id: dugaprivatememolist.productid })">
-                          <img v-if="dugaprivatememolist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + dugaprivatememolist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + dugaprivatememolist.title" class="h-44 w-32">
-                          <img v-else :src="'https://pic.duga.jp/unsecure/' + dugaprivatememolist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + dugaprivatememolist.title" class="h-44 w-32">
+                          <img v-if="dugaprivatememolist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + dugaprivatememolist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + dugaprivatememolist.title + 'のジャケット画像'" class="h-44 w-32">
+                          <img v-else :src="'https://pic.duga.jp/unsecure/' + dugaprivatememolist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + dugaprivatememolist.title + 'のメイン画像'" class="h-44 w-32">
                         </Link>
                       </div>
                     </div>
@@ -146,8 +146,8 @@ export default {
                     <div v-for="dugareleasememolist in dugareleasememolists" :key="dugareleasememolist.id" class="">
                       <div class="mr-4 mb-4">
                         <Link :href="route('dvideo.show', { id: dugareleasememolist.productid })">
-                          <img v-if="dugareleasememolist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + dugareleasememolist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + dugareleasememolist.title" class="h-44 w-32">
-                          <img v-else :src="'https://pic.duga.jp/unsecure/' + dugareleasememolist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + dugareleasememolist.title" class="h-44 w-32">
+                          <img v-if="dugareleasememolist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + dugareleasememolist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + dugareleasememolist.title + 'のジャケット画像'" class="h-44 w-32">
+                          <img v-else :src="'https://pic.duga.jp/unsecure/' + dugareleasememolist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + dugareleasememolist.title + 'のメイン画像'" class="h-44 w-32">
                         </Link>
                       </div>
                     </div>
@@ -159,8 +159,8 @@ export default {
                     <div v-for="dugafreememolist in dugafreememolists" :key="dugafreememolist.id" class="">
                       <div class="mr-4 mb-4">
                         <Link :href="route('dvideo.show', { id: dugafreememolist.productid })">
-                          <img v-if="dugafreememolist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + dugafreememolist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + dugafreememolist.title" class="h-44 w-32">
-                          <img v-else :src="'https://pic.duga.jp/unsecure/' + dugafreememolist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + dugafreememolist.title" class="h-44 w-32">
+                          <img v-if="dugafreememolist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + dugafreememolist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + dugafreememolist.title + 'のジャケット画像'" class="h-44 w-32">
+                          <img v-else :src="'https://pic.duga.jp/unsecure/' + dugafreememolist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + dugafreememolist.title + 'のメイン画像'" class="h-44 w-32">
                         </Link>
                       </div>
                     </div>
@@ -170,10 +170,10 @@ export default {
                   </div>
                   <div class="flex flex-wrap mx-2 mb-8">
                     <div v-for="duganicelist in duganicelists" :key="duganicelist.productid" class="">
-                      <div v-if="duganicelist.type === 'duga'" class="mr-4 mb-4">
+                      <div class="mr-4 mb-4">
                         <Link :href="route('dvideo.show', { id: duganicelist.productid })">
-                          <img v-if="duganicelist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + duganicelist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + duganicelist.title" class="h-44 w-32">
-                          <img v-else :src="'https://pic.duga.jp/unsecure/' + duganicelist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + duganicelist.title" class="h-44 w-32">
+                          <img v-if="duganicelist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + duganicelist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + duganicelist.title + 'のジャケット画像'" class="h-44 w-32">
+                          <img v-else :src="'https://pic.duga.jp/unsecure/' + duganicelist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + duganicelist.title + 'のメイン画像'" class="h-44 w-32">
                         </Link>
                       </div>
                     </div>
