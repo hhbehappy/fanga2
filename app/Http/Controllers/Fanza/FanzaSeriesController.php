@@ -14,36 +14,36 @@ class FanzaSeriesController extends Controller
     public function series()
     {
         return Inertia::render('Fanza/Video/Series/Index', [
-            'serieslists' => Fanza::itioshilists('series')
+            'serieslists' => Fanza::itioshiLists('series')
         ]);
     }
 
-    public function series_all()
+    public function seriesAll()
     {
-        $seriesalllists = Fanza::column_all('series');
+        $seriesalllists = Fanza::columnAll('series');
 
         return view('Fanza/Video/Series/All', compact('seriesalllists'));
     }
 
-    public function series_search(Request $request)
+    public function seriesSearch(Request $request)
     {
         $keyword = $request->keyword;
-        $seriessearchlists = Fanza::column_search('series', $keyword);
+        $seriessearchlists = Fanza::columnSearch('series', $keyword);
 
         return view('Fanza/Video/Series/Search', compact('seriessearchlists', 'keyword'));
     }
 
-    public function series_memo()
+    public function seriesMemo()
     {
         return Inertia::render('Fanza/Video/Series/Memo',[
-            'seriesmemolists' => FanzaReleaseMemo::memolist('series')
+            'seriesmemolists' => FanzaReleaseMemo::memoList('series')
         ]);
     }
 
-    public function series_nice()
+    public function seriesNice()
     {
         return Inertia::render('Fanza/Video/Series/Nice',[
-            'seriesnicelists' => FanzaNice::nicelist('series')
+            'seriesnicelists' => FanzaNice::niceList('series')
         ]);
     }
 

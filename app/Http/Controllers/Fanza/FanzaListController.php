@@ -26,7 +26,7 @@ class FanzaListController extends Controller
         $onemonths = Carbon::today()->subMonth(1);
         $keyword = $request->keyword;
         $sort = SortKeyword::listSort($request->sort);
-        $videolists = Fanza::videolists($keyword);
+        $videolists = Fanza::videoLists($keyword);
 
         return view('Fanza/Video/List', compact('onemonths', 'videolists', 'sort', 'keyword'));
     }

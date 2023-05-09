@@ -33,22 +33,28 @@ class FanzaPrivateMemo extends Model
         return $this->belongsTo(Fanza::class);
     }
 
-    public static function fanza_private_memos($content_id){
+    public static function fanzaPrivateMemos($content_id){
         $fanza_private_memos = FanzaPrivateMemo::where([['content_id', $content_id], ['user_id', Auth::id()]])->oldest('updated_at')->get();
     
         return $fanza_private_memos;
     }
 
-    public static function privatememolimit($content_id){
+    public static function privateMemoLimit($content_id){
         $privatememolimit = FanzaPrivateMemo::where([['content_id', $content_id], ['user_id', Auth::id()]])->count();
     
         return $privatememolimit;
     }
 
-    public static function edit_private_memos($memoid){
+    public static function editPrivateMemos($memoid){
         $edit_private_memos = FanzaPrivateMemo::where([['id', $memoid], ['user_id', Auth::id()]])->get();
     
         return $edit_private_memos;
+    }
+
+    public static function privateMemoList(){
+        $private_memo_lists = FanzaPrivateMemo::select('fanza_private_memos.content_id', 'title', 'fanzas.updated_at')->whereUser_id(Auth::id())->latest('updated_at')->leftJoin('fanzas', 'fanza_private_memos.content_id', '=', 'fanzas.content_id')->get()->unique('content_id');
+    
+        return $private_memo_lists;
     }
 
     public static function store($request, $fanza_id, $content_id)
@@ -88,4 +94,5 @@ class FanzaPrivateMemo extends Model
             'status'  => 'delete'
         ]);
     }
+
 }

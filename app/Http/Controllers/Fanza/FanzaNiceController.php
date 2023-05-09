@@ -14,6 +14,6 @@ class FanzaNiceController extends Controller
 
     public function destroy($content_id)
     {
-        FanzaNice::unnice($content_id);
+        FanzaNice::unNice($content_id);
     }
 }

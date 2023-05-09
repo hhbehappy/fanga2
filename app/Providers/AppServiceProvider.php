@@ -25,11 +25,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::share('fanzagenres', SideBarRandomOrder::fanzagenre());
-        View::share('fanzaactresss', SideBarRandomOrder::fanzaactress());
-        View::share('fanzamakers', SideBarRandomOrder::fanzamaker());
-        View::share('fanzaseriess', SideBarRandomOrder::fanzaseries());
-        View::share('dugacategorys', SideBarRandomOrder::dugacategory());
+        View::share('fanzagenres', SideBarRandomOrder::fanzaGenre());
+        View::share('fanzaactresss', SideBarRandomOrder::fanzaSideBar('actress'));
+        View::share('fanzamakers', SideBarRandomOrder::fanzaSideBar('maker'));
+        View::share('fanzaseriess', SideBarRandomOrder::fanzaSideBar('series'));
+        View::share('dugacategorys', SideBarRandomOrder::dugaCategory());
         View::share('dugaperformers', SideBarRandomOrder::dugaSideBar('performer'));
         View::share('dugamakers', SideBarRandomOrder::dugaSideBar('maker'));
         View::share('dugaseriess', SideBarRandomOrder::dugaSideBar('series'));

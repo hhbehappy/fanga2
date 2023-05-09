@@ -54,6 +54,14 @@ class DugaPrivateMemo extends Model
         return $edit_private_memos;
     }
 
+    public static function privateMemoList(){
+        $private_memo_lists = DugaPrivateMemo::select('title', 'duga_private_memos.productid', 're_productid', 'jacketimage', 'duga_private_memos.updated_at')
+        ->whereUser_id(Auth::id())->latest('updated_at')
+        ->leftJoin('dugas', 'duga_private_memos.productid', '=', 'dugas.productid')->get()->unique('re_productid');
+        
+        return $private_memo_lists;
+    }
+
     public static function store($request, $duga_id, $productid)
     {
         $re_productid = str_replace("-", "/", $productid);

@@ -32,10 +32,16 @@ class FanzaFreeMemo extends Model
         return $this->belongsTo(Fanza::class);
     }
 
-    public static function fanza_free_memos($content_id){
+    public static function fanzaFreeMemos($content_id){
         $fanza_free_memos = FanzaFreeMemo::whereContent_id($content_id)->oldest('updated_at')->get();
     
         return $fanza_free_memos;
+    }
+
+    public static function freeMemoList(){
+        $free_memo_lists = FanzaFreeMemo::select('fanza_free_memos.content_id', 'title', 'fanzas.updated_at')->whereUser_id(Auth::id())->latest('updated_at')->leftJoin('fanzas', 'fanza_free_memos.content_id', '=', 'fanzas.content_id')->get()->unique('content_id');
+    
+        return $free_memo_lists;
     }
 
     public static function store($request, $fanza_id, $content_id)

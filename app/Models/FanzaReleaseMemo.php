@@ -36,40 +36,40 @@ class FanzaReleaseMemo extends Model
         return $this->belongsTo(Fanza::class, "foreign_fanza_id");
     }
 
-    public static function mylists(){
+    public static function myLists(){
         $mylists = DB::table('fanza_release_memos')
         ->select('fanza_release_memos.content_id', 'title', 'fanza_release_memos.updated_at')->leftJoin('fanzas', 'fanza_release_memos.content_id', '=', 'fanzas.content_id')->where('user_id', Auth::id())->latest('updated_at')->get()->unique('content_id')->take(20);
         
         return $mylists;
     }
 
-    public static function releaselists(){
+    public static function releaseLists(){
         $releaselists = DB::table('fanza_release_memos')
         ->select('fanza_release_memos.content_id', 'title', 'fanza_release_memos.updated_at')->leftJoin('fanzas', 'fanza_release_memos.content_id', '=', 'fanzas.content_id')->latest('updated_at')->get()->unique('content_id')->take(20);
     
         return $releaselists;
     }
 
-    public static function releasealllists(){
+    public static function releaseAllLists(){
         $releasealllists = DB::table('fanza_release_memos')
         ->select('fanza_release_memos.content_id', 'title', 'fanza_release_memos.updated_at')->leftJoin('fanzas', 'fanza_release_memos.content_id', '=', 'fanzas.content_id')->groupBy('content_id')->latest('updated_at')->paginate(100);
 
         return $releasealllists;
     }
 
-    public static function fanza_release_memos($content_id){
+    public static function fanzaReleaseMemos($content_id){
         $fanza_release_memos = FanzaReleaseMemo::whereContent_id($content_id)->oldest('updated_at')->get();
     
         return $fanza_release_memos;
     }
 
-    public static function edit_release_memos($memoid){
+    public static function editReleaseMemos($memoid){
         $edit_release_memos = FanzaReleaseMemo::whereId($memoid)->get();
     
         return $edit_release_memos;
     }
 
-    public static function memolist($column)
+    public static function memoList($column)
     {
         $memolists = DB::table('fanza_release_memos')
             ->select('fanza_release_memos.content_id', 'title', $column, DB::raw('count(*) as total'))
@@ -78,6 +78,13 @@ class FanzaReleaseMemo extends Model
             ->get()->unique($column)->take(100);
 
         return $memolists;
+    }
+
+    public static function releaseMemoList()
+    {
+        $release_memo_lists = FanzaReleaseMemo::select('fanza_release_memos.content_id', 'title', 'fanzas.updated_at')->whereUser_id(Auth::id())->latest('updated_at')->leftJoin('fanzas', 'fanza_release_memos.content_id', '=', 'fanzas.content_id')->get()->unique('content_id');
+
+        return $release_memo_lists;
     }
 
     public static function store($request, $fanza_id, $content_id)

@@ -39,6 +39,14 @@ class DugaFreeMemo extends Model
         return $duga_free_memos;
     }
 
+    public static function freeMemoList(){
+        $free_memo_lists = DugaFreeMemo::select('title', 'duga_free_memos.productid', 're_productid', 'jacketimage', 'duga_free_memos.updated_at')
+        ->whereUser_id(Auth::id())->latest('updated_at')
+        ->leftJoin('dugas', 'duga_free_memos.productid', '=', 'dugas.productid')->get()->unique('re_productid');
+    
+        return $free_memo_lists;
+    }
+
     public static function store($request, $duga_id, $productid)
     {
         $re_productid = str_replace("-", "/", $productid);
