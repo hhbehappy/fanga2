@@ -81,6 +81,15 @@ class DugaReleaseMemo extends Model
         return $memolists;
     }
 
+    public static function releaseMemoList()
+    {
+        $release_memo_lists = DugaReleaseMemo::select('title', 'duga_release_memos.productid', 're_productid', 'jacketimage', 'duga_release_memos.updated_at')
+        ->whereUser_id(Auth::id())->latest('updated_at')
+        ->leftJoin('dugas', 'duga_release_memos.productid', '=', 'dugas.productid')->get()->unique('re_productid');
+
+        return $release_memo_lists;
+    }
+
     public static function store($request, $duga_id, $productid)
     {
         $duga = Duga::find($productid);

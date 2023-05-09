@@ -13,7 +13,7 @@ class DugaReleaseMemoController extends Controller
     {
         $releasealllists = DugaReleaseMemo::releaseAllLists();
 
-        return view('Duga/Video/Memo/all', compact('releasealllists'));
+        return view('Duga/Video/Memo/All', compact('releasealllists'));
     }
 
     public function store(StoreDugaReleaseMemoRequest $request, $duga_id, $productid)

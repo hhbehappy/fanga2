@@ -22,7 +22,7 @@ class DugaSeriesController extends Controller
     {
         $seriesalllists = Duga::columnAll('series');
 
-        return view('Duga/Video/Series/all', compact('seriesalllists'));
+        return view('Duga/Video/Series/All', compact('seriesalllists'));
     }
 
     public function seriesSearch(Request $request)
@@ -30,7 +30,7 @@ class DugaSeriesController extends Controller
         $keyword = $request->keyword;
         $seriessearchlists = Duga::columnSearch('series', $keyword);
 
-        return view('Duga/Video/Series/search', compact('seriessearchlists', 'keyword'));
+        return view('Duga/Video/Series/Search', compact('seriessearchlists', 'keyword'));
     }
 
     public function seriesMemo()

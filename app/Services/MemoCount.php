@@ -14,19 +14,19 @@ use App\Models\DugaPrivateMemo;
 
 class MemoCount
 {
-  public static function fanzafreememo(){
+  public static function fanzaFreeMemo(){
     $fanzafreememo = FanzaFreeMemo::whereUser_id(Auth::id())->select('content_id')->get()->unique('content_id')->count();
 
     return $fanzafreememo;
   }
 
-  public static function fanzareleasememo(){
+  public static function fanzaReleaseMemo(){
     $fanzareleasememo = FanzaReleaseMemo::whereUser_id(Auth::id())->select('content_id')->get()->unique('content_id')->count();
 
     return $fanzareleasememo;
   }
 
-  public static function fanzaprivatememo(){
+  public static function fanzaPrivateMemo(){
     $fanzaprivatememo = FanzaprivateMemo::whereUser_id(Auth::id())->select('content_id')->get()->unique('content_id')->count();
 
     return $fanzaprivatememo;
@@ -50,7 +50,7 @@ class MemoCount
     return $dugaprivatememo;
   }
 
-  public static function fanzanice(){
+  public static function fanzaNice(){
     $fanzanice = FanzaNice::whereUser_id(Auth::id())->select('content_id')->get()->unique('content_id')->count();
 
     return $fanzanice;

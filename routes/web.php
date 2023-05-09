@@ -50,8 +50,8 @@ Route::controller(FangaController::class)->group(function () {
     // ログアウト
     Route::get('/logout',  'logout')->name('fanga.logout');
     // 検索ページ
-    Route::get('/search/fanza', 'searchfanza')->name('fanga.searchfanza');
-    Route::get('/search/duga', 'searchduga')->name('fanga.searchduga');
+    Route::get('/search/fanza', 'searchFanza')->name('fanga.searchfanza');
+    Route::get('/search/duga', 'searchDuga')->name('fanga.searchduga');
 });
 
 // サイトマップ
@@ -128,10 +128,10 @@ Route::controller(FanzaListController::class)->group(function () {
 
 Route::controller(FanzaActressController::class)->group(function () {
     Route::get('fanza/video/actress', 'actress')->name('flist.actress');
-    Route::get('fanza/video/actress/name', 'actress_name')->name('flist.actress_name');
-    Route::get('fanza/video/actress/ruby', 'actress_ruby')->name('flist.actress_ruby');
-    Route::get('fanza/video/actress/memo', 'actress_memo')->name('flist.actress_memo');
-    Route::get('fanza/video/actress/nice', 'actress_nice')->name('flist.actress_nice');
+    Route::get('fanza/video/actress/name', 'actressName')->name('flist.actress_name');
+    Route::get('fanza/video/actress/ruby', 'actressRuby')->name('flist.actress_ruby');
+    Route::get('fanza/video/actress/memo', 'actressMemo')->name('flist.actress_memo');
+    Route::get('fanza/video/actress/nice', 'actressNice')->name('flist.actress_nice');
 });
 
 Route::controller(FanzaGenreController::class)->group(function () {
@@ -140,18 +140,18 @@ Route::controller(FanzaGenreController::class)->group(function () {
 
 Route::controller(FanzaMakerController::class)->group(function () {
     Route::get('fanza/video/maker', 'maker')->name('flist.maker');
-    Route::get('fanza/video/maker/all', 'maker_all')->name('flist.maker_all');
-    Route::get('fanza/video/maker/search', 'maker_search')->name('flist.maker_search');
-    Route::get('fanza/video/maker/memo', 'maker_memo')->name('flist.maker_memo');
-    Route::get('fanza/video/maker/nice', 'maker_nice')->name('flist.maker_nice');
+    Route::get('fanza/video/maker/all', 'makerAll')->name('flist.maker_all');
+    Route::get('fanza/video/maker/search', 'makerSearch')->name('flist.maker_search');
+    Route::get('fanza/video/maker/memo', 'makerMemo')->name('flist.maker_memo');
+    Route::get('fanza/video/maker/nice', 'makerNice')->name('flist.maker_nice');
 });
 
 Route::controller(FanzaSeriesController::class)->group(function () {
     Route::get('fanza/video/series', 'series')->name('flist.series');
-    Route::get('fanza/video/series/all', 'series_all')->name('flist.series_all');
-    Route::get('fanza/video/series/search', 'series_search')->name('flist.series_search');
-    Route::get('fanza/video/series/memo', 'series_memo')->name('flist.series_memo');
-    Route::get('fanza/video/series/nice', 'series_nice')->name('flist.series_nice');
+    Route::get('fanza/video/series/all', 'seriesAll')->name('flist.series_all');
+    Route::get('fanza/video/series/search', 'seriesSearch')->name('flist.series_search');
+    Route::get('fanza/video/series/memo', 'seriesMemo')->name('flist.series_memo');
+    Route::get('fanza/video/series/nice', 'seriesNice')->name('flist.series_nice');
 });
 
 Route::controller(FanzaVideoController::class)->group(function () {

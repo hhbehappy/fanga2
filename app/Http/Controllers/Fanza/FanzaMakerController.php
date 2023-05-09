@@ -14,36 +14,36 @@ class FanzaMakerController extends Controller
     public function maker()
     {        
         return Inertia::render('Fanza/Video/Maker/Index',[
-            'makerlists' => Fanza::itioshilists('maker')
+            'makerlists' => Fanza::itioshiLists('maker')
         ]);
     }
 
-    public function maker_all()
+    public function makerAll()
     {
-        $makeralllists = Fanza::column_all('maker');
+        $makeralllists = Fanza::columnAll('maker');
 
         return view('Fanza/Video/Maker/All', compact('makeralllists'));
     }
 
-    public function maker_search(Request $request)
+    public function makerSearch(Request $request)
     {
         $keyword = $request->keyword;
-        $makersearchlists = Fanza::column_search('maker', $keyword);
+        $makersearchlists = Fanza::columnSearch('maker', $keyword);
         
         return view('Fanza/Video/Maker/Search', compact('makersearchlists', 'keyword'));
     }
 
-    public function maker_memo()
+    public function makerMemo()
     {
         return Inertia::render('Fanza/Video/Maker/Memo',[
-            'makermemolists' => FanzaReleaseMemo::memolist('maker')
+            'makermemolists' => FanzaReleaseMemo::memoList('maker')
         ]);
     }
 
-    public function maker_nice()
+    public function makerNice()
     {
         return Inertia::render('Fanza/Video/Maker/Nice',[
-            'makernicelists' => FanzaNice::nicelist('maker')
+            'makernicelists' => FanzaNice::niceList('maker')
         ]);
     }
 

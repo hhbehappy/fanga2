@@ -43,7 +43,7 @@ class FanzaNice extends Model
         ]);
     }
 
-    public static function unnice($content_id){
+    public static function unNice($content_id){
         
         $nice=FanzaNice::where('content_id', $content_id)->first();
         $nice->delete();
@@ -55,19 +55,19 @@ class FanzaNice extends Model
         ]);
     }
 
-    public static function fanzanice($content_id){
+    public static function fanzaNice($content_id){
         $nice = FanzaNice::where([['content_id', $content_id], ['user_id', Auth::id()]])->first();
 
         return $nice;
     }
 
-    public static function fanzanicecount($content_id){
+    public static function fanzaNiceCount($content_id){
         $nicecount = FanzaNice::whereContent_id($content_id)->count();
         
         return $nicecount;
     }
 
-    public static function nicelist($column)
+    public static function niceList($column)
     {
         $nicelists = DB::table('fanza_nices')
             ->select('fanza_nices.content_id', 'title', $column, DB::raw('count(*) as total'))
@@ -76,6 +76,13 @@ class FanzaNice extends Model
             ->get()->unique($column)->take(100);
 
         return $nicelists;
+    }
+
+    public static function profileNiceList()
+    {
+        $profile_nice_lists = FanzaNice::select('fanza_nices.content_id', 'title', 'fanzas.updated_at')->whereUser_id(Auth::id())->latest('updated_at')->leftJoin('fanzas', 'fanza_nices.content_id', '=', 'fanzas.content_id')->get()->unique('content_id');
+
+        return $profile_nice_lists;
     }
     
 }

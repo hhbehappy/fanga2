@@ -15,38 +15,38 @@ class FanzaActressController extends Controller
     public function actress()
     {   
         return Inertia::render('Fanza/Video/Actress/Index',[
-            'actresslists' => Fanza::itioshilists('actress')
+            'actresslists' => Fanza::itioshiLists('actress')
         ]);
     }
 
-    public function actress_ruby()
+    public function actressRuby()
     {
         return Inertia::render('Fanza/Video/Actress/Ruby');
     }
 
-    public function actress_name(Request $request)
+    public function actressName(Request $request)
     {
         $line = $request->line;
         $keyword = RubyKeyword::checkRuby($request->keyword);
 
         return Inertia::render('Fanza/Video/Actress/Name', [
-            'actressnamelists' => Fanza::actress_name($keyword),
+            'actressnamelists' => Fanza::actressName($keyword),
             'line' => $line,
             'keyword' => $keyword
         ]);
     }
 
-    public function actress_memo()
+    public function actressMemo()
     {
         return Inertia::render('Fanza/Video/Actress/Memo',[
-            'actressmemolists' => FanzaReleaseMemo::memolist('actress')
+            'actressmemolists' => FanzaReleaseMemo::memoList('actress')
         ]);
     }
 
-    public function actress_nice()
+    public function actressNice()
     {
         return Inertia::render('Fanza/Video/Actress/Nice',[
-            'actressnicelists' => FanzaNice::nicelist('actress')
+            'actressnicelists' => FanzaNice::niceList('actress')
         ]);
     }
 }

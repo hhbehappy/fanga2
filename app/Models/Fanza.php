@@ -92,21 +92,21 @@ class Fanza extends Model
         $fanzavideo->delete();
     }
 
-    public static function fvideoids($hits)
+    public static function fVideoIds($hits)
     {
         $fvideoids = Fanza::whereDate('date', '<', Carbon::today())->latest('date')->take($hits)->get();
 
         return $fvideoids;
     }
 
-    public static function fanzalists($column)
+    public static function fanzaLists($column)
     {
         $fanzalists = Fanza::whereDate('date', '<', Carbon::today())->whereNotIn($column, [''])->inRandomOrder()->get()->unique($column)->take(30);
 
         return $fanzalists;
     }
 
-    public static function videolists($keyword)
+    public static function videoLists($keyword)
     {
         if (!empty($keyword)) {
             $videolists = Fanza::where('maker', 'like', $keyword)
@@ -131,7 +131,7 @@ class Fanza extends Model
         }
     }
 
-    public static function fanzakeyword($keyword)
+    public static function fanzaKeyword($keyword)
     {
         if (!empty($keyword)) {
             $fanzas = Fanza::where('content_id', 'like', '%' . $keyword . '%')
@@ -158,14 +158,14 @@ class Fanza extends Model
         return $fanzas;
     }
 
-    public static function itioshilists($column)
+    public static function itioshiLists($column)
     {
         $itioshilists = Fanza::select('content_id', 'title', $column, 'updated_at')->whereNotIn($column, [''])->latest('updated_at')->get()->unique($column)->take(60);
 
         return $itioshilists;
     }
 
-    public static function actress_name($keyword)
+    public static function actressName($keyword)
     {
         if (!empty($keyword)) {
             $actressnamelists = Fanza::select('content_id', 'title', 'actress', 'ruby', 'updated_at')->Where('ruby', 'like', $keyword . '%')->oldest('ruby')->get()->unique('actress');
@@ -174,14 +174,14 @@ class Fanza extends Model
         return $actressnamelists;
     }
 
-    public static function column_all($column)
+    public static function columnAll($column)
     {
         $columnalllists = Fanza::groupBy($column)->whereNotIn($column, [''])->oldest($column)->paginate(100);
 
         return $columnalllists;
     }
 
-    public static function column_search($column, $keyword)
+    public static function columnSearch($column, $keyword)
     {
         if(!empty($keyword)){
             $columnsearchlists = Fanza::where($column, 'like', $keyword . '%')->groupBy($column)->oldest($column)->paginate(100);

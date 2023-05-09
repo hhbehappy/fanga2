@@ -22,7 +22,7 @@ class DugaMakerController extends Controller
     {
         $makeralllists = Duga::columnAll('maker');
 
-        return view('Duga/Video/Maker/all', compact('makeralllists'));
+        return view('Duga/Video/Maker/All', compact('makeralllists'));
     }
 
     public function makerSearch(Request $request)
@@ -30,7 +30,7 @@ class DugaMakerController extends Controller
         $keyword = $request->keyword;
         $makersearchlists = Duga::columnSearch('maker', $keyword);
 
-        return view('Duga/Video/Maker/search', compact('makersearchlists', 'keyword'));
+        return view('Duga/Video/Maker/Search', compact('makersearchlists', 'keyword'));
     }
 
     public function makerMemo()

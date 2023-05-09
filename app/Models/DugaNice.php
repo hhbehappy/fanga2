@@ -81,4 +81,11 @@ class DugaNice extends Model
 
         return $nicelists;
     }
+
+    public static function profileNiceList()
+    {
+        $profile_nice_lists = DugaNice::select('title', 'duga_nices.productid', 're_productid', 'jacketimage', 'duga_nices.updated_at')->whereUser_id(Auth::id())->latest('updated_at') ->leftJoin('dugas', 'duga_nices.productid', '=', 'dugas.productid')->get()->unique('re_productid');
+
+        return $profile_nice_lists;
+    }
 }

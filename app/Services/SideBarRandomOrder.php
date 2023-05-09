@@ -7,7 +7,7 @@ use App\Models\Duga;
 
 class SideBarRandomOrder
 {
-  public static function fanzagenre(){
+  public static function fanzaGenre(){
     $fanzagenres = collect([
       '4時間以上作品',
       'ハイビジョン',
@@ -41,22 +41,10 @@ class SideBarRandomOrder
     return $fanzagenre;
   }
 
-  public static function fanzaactress(){
-    $fanzaactress =  Fanza::select('actress')->whereNotIn('actress', [''])->inRandomOrder()->get()->unique('actress')->take(6);
+  public static function fanzaSideBar($column){
+    $fanzasidebar =  Fanza::select($column)->whereNotIn($column, [''])->inRandomOrder()->get()->unique($column)->take(6);
 
-    return $fanzaactress;
-  }
-
-  public static function fanzamaker(){
-    $fanzamaker =  Fanza::select('maker')->whereNotIn('maker', [''])->inRandomOrder()->get()->unique('maker')->take(6);
-
-    return $fanzamaker;
-  }
-
-  public static function fanzaseries(){
-    $fanzaseries =  Fanza::select('series')->whereNotIn('series', [''])->inRandomOrder()->get()->unique('series')->take(6);
-
-    return $fanzaseries;
+    return $fanzasidebar;
   }
 
   public static function dugaCategory(){

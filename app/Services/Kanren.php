@@ -8,7 +8,7 @@ use App\Models\Duga;
 
 class Kanren
 {
-  public static function fanzaactresss($content_id){
+  public static function fanzaActresss($content_id){
 
     $videoa = Fanza::whereContent_id($content_id)->first();
 
@@ -17,7 +17,7 @@ class Kanren
     return $fanzaactresss;
   }
 
-  public static function fanzamakers($content_id){
+  public static function fanzaMakers($content_id){
 
     $videoa = Fanza::whereContent_id($content_id)->first();
 
@@ -26,7 +26,7 @@ class Kanren
     return $fanzamakers;
   }
 
-  public static function fanzaseriess($content_id){
+  public static function fanzaSeriess($content_id){
 
     $videoa = Fanza::whereContent_id($content_id)->first();
 
@@ -35,7 +35,7 @@ class Kanren
     return $fanzaseriess;
   }
 
-  public static function fanzadirectors($content_id){
+  public static function fanzaDirectors($content_id){
 
     $videoa = Fanza::whereContent_id($content_id)->first();
 
@@ -44,7 +44,7 @@ class Kanren
     return $fanzadirectors;
   }
 
-  public static function fanzagenre2s($content_id){
+  public static function fanzaGenre2s($content_id){
 
     $videoa = Fanza::whereContent_id($content_id)->first();
 

@@ -16,14 +16,14 @@ class FangaController extends Controller
     public function index()
     {
         return Inertia::render('Fanga', [
-            'fvideoids'     => Fanza::fvideoids(30),
+            'fvideoids'     => Fanza::fVideoIds(30),
             'fanzacount'    => Fanza::count(),
-            'fanzaactresss' => Fanza::fanzalists('actress'),
-            'fanzamakers'   => Fanza::fanzalists('maker'),
-            'fanzaseriess'  => Fanza::fanzalists('series'),
-            'fanzamemos'    => FanzaReleasememo::releaselists(),
-            'myflists'      => FanzaReleaseMemo::mylists(),
-            'myflistcount'  => FanzaReleaseMemo::mylists()->count(),
+            'fanzaactresss' => Fanza::fanzaLists('actress'),
+            'fanzamakers'   => Fanza::fanzaLists('maker'),
+            'fanzaseriess'  => Fanza::fanzaLists('series'),
+            'fanzamemos'    => FanzaReleasememo::releaseLists(),
+            'myflists'      => FanzaReleaseMemo::myLists(),
+            'myflistcount'  => FanzaReleaseMemo::myLists()->count(),
             'dvideoids'     => Duga::dVideoIds(30),
             'dugacount'     => Duga::count(),
             'dugaperformers'=> Duga::dugaLists('performer'),
@@ -64,7 +64,7 @@ class FangaController extends Controller
         return redirect('/');
     }
 
-    public function searchfanza(Request $request)
+    public function searchFanza(Request $request)
     {
         $onemonths = Carbon::today()->subMonth(1);
         $keyword = $request->keyword;
@@ -74,12 +74,12 @@ class FangaController extends Controller
             'keyword' => 'required'
         ]);
 
-        $fanzas = Fanza::fanzakeyword($keyword);
+        $fanzas = Fanza::fanzaKeyword($keyword);
 
         return view('Search/Fanza', compact('onemonths', 'fanzas', 'keyword', 'auth_id'));
     }
 
-    public function searchduga(Request $request)
+    public function searchDuga(Request $request)
     {
         $onemonths = Carbon::today()->subMonth(1);
         $keyword = $request->keyword;

@@ -11,7 +11,7 @@ class FanzaReleaseMemoController extends Controller
 {
     public function index()
     {
-        $releasealllists = FanzaReleaseMemo::releasealllists();
+        $releasealllists = FanzaReleaseMemo::releaseAllLists();
 
         return view('Fanza/Video/Memo/All', compact('releasealllists'));
     }

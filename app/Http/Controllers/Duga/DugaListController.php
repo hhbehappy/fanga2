@@ -17,7 +17,7 @@ class DugaListController extends Controller
         $onemonths = Carbon::today()->subMonth(1);
         $auth_id = Auth::id();
 
-        return view('Duga/Video/all', compact('videoids', 'onemonths', 'auth_id'));
+        return view('Duga/Video/All', compact('videoids', 'onemonths', 'auth_id'));
     }
 
     public function show(Request $request)
@@ -28,7 +28,7 @@ class DugaListController extends Controller
         $sort = SortKeyword::listSort($request->sort);
         $videolists = Duga::videoLists($keyword);
 
-        return view('Duga/Video/list', compact('onemonths', 'videolists', 'sort', 'keyword'));
+        return view('Duga/Video/List', compact('onemonths', 'videolists', 'sort', 'keyword'));
     }
 
     public function destroy($id)
