@@ -59,7 +59,7 @@ const props = defineProps({
                 <div v-for="fanzamemo in fanzamemos" :key="fanzamemo.id" class="">
                     <div class="w-[117px] h-40 mx-2 border-none overflow-hidden">
                         <Link :href="route('fvideo.show', { id: fanzamemo.content_id })">
-                        <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzamemo.content_id  + '/' + fanzamemo.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzamemo.title + 'のメイン画像'" class="h-40">
+                        <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzamemo.content_id  + '/' + fanzamemo.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzamemo.fanza.title + 'のメイン画像'" class="h-40">
                         </Link>
                     </div>
                 </div>
@@ -82,7 +82,7 @@ const props = defineProps({
                         <div v-for="myflist in myflists" :key="myflist.id">
                             <div class="w-[117px] h-40 mx-2 border-none overflow-hidden">
                             <Link :href="route('fvideo.show', { id: myflist.content_id })">
-                                <img :src="'https://pics.dmm.co.jp/digital/video/' + myflist.content_id  + '/' + myflist.content_id + 'ps.jpg'" :alt="'【FANZA】' + myflist.title + 'のジャケット画像'" class="h-40">
+                                <img :src="'https://pics.dmm.co.jp/digital/video/' + myflist.content_id  + '/' + myflist.content_id + 'ps.jpg'" :alt="'【FANZA】' + myflist.fanza.title + 'のジャケット画像'" class="h-40">
                             </Link>
                             </div>
                         </div>

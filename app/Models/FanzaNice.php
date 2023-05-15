@@ -24,8 +24,9 @@ class FanzaNice extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function fanza() {
-        return $this->belongsTo('App\Models\Fanza');
+    public function fanza()
+    {
+        return $this->belongsTo(Fanza::class, 'content_id');
     }
 
     public static function nice($content_id, $fanza_id){
@@ -80,7 +81,7 @@ class FanzaNice extends Model
 
     public static function profileNiceList()
     {
-        $profile_nice_lists = FanzaNice::select('fanza_nices.content_id', 'title', 'fanzas.updated_at')->whereUser_id(Auth::id())->latest('updated_at')->leftJoin('fanzas', 'fanza_nices.content_id', '=', 'fanzas.content_id')->get()->unique('content_id');
+        $profile_nice_lists = FanzaNice::with('fanza')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('content_id')->take(10);
 
         return $profile_nice_lists;
     }
