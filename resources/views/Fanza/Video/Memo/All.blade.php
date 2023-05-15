@@ -16,7 +16,7 @@
         <a href="{{ route('fvideo.show', [ 'id' => $releasealllist->content_id ]) }}">
           <img
             src="<?php echo 'https://pics.dmm.co.jp/digital/video/' .  $releasealllist->content_id  . '/' .  $releasealllist->content_id   . 'ps.jpg'; ?>"
-            alt="【FANZA】 <?php echo $releasealllist->title ?>のメイン画像" class="w-[120px] inline-block px-1 mb-4">
+            alt="【FANZA】 <?php echo $releasealllist->fanza->title ?>のジャケット画像" class="w-[120px] inline-block px-1 mb-4">
         </a>
       </div>
       @endforeach

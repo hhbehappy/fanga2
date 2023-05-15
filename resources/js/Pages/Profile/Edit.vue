@@ -80,7 +80,7 @@ export default {
                     <div v-for="fanzaprivatememolist in fanzaprivatememolists" :key="fanzaprivatememolist.id" class="">
                       <div class="mr-4 mb-4">
                         <Link :href="route('fvideo.show', { id: fanzaprivatememolist.content_id })">
-                          <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzaprivatememolist.content_id  + '/' + fanzaprivatememolist.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzaprivatememolist.title + 'のジャケット画像'" class="h-44 w-32">
+                          <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzaprivatememolist.content_id  + '/' + fanzaprivatememolist.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzaprivatememolist.fanza.title + 'のジャケット画像'" class="h-44 w-32">
                         </Link>
                       </div>
                     </div>
@@ -92,7 +92,7 @@ export default {
                     <div v-for="fanzareleasememolist in fanzareleasememolists" :key="fanzareleasememolist.id" class="">
                       <div class="mr-4 mb-4">
                         <Link :href="route('fvideo.show', { id: fanzareleasememolist.content_id })">
-                          <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzareleasememolist.content_id  + '/' + fanzareleasememolist.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzareleasememolist.title + 'のジャケット画像'" class="h-44 w-32">
+                          <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzareleasememolist.content_id  + '/' + fanzareleasememolist.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzareleasememolist.fanza.title + 'のジャケット画像'" class="h-44 w-32">
                         </Link>
                       </div>
                     </div>
@@ -104,7 +104,7 @@ export default {
                     <div v-for="fanzafreememolist in fanzafreememolists" :key="fanzafreememolist.id" class="">
                       <div v-if="fanzafreememolist.content_id" class="mr-4 mb-4">
                         <Link :href="route('fvideo.show', { id: fanzafreememolist.content_id })">
-                          <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzafreememolist.content_id  + '/' + fanzafreememolist.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzafreememolist.title + 'のジャケット画像'" class="h-44 w-32">
+                          <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzafreememolist.content_id  + '/' + fanzafreememolist.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzafreememolist.fanza.title + 'のジャケット画像'" class="h-44 w-32">
                         </Link>
                       </div>
                     </div>
@@ -116,7 +116,7 @@ export default {
                     <div v-for="fanzanicelist in fanzanicelists" :key="fanzanicelist.id" class="">
                       <div class="mr-4 mb-4">
                         <Link :href="route('fvideo.show', { id: fanzanicelist.content_id })">
-                          <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzanicelist.content_id  + '/' + fanzanicelist.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzanicelist.title + 'のジャケット画像'" class="h-44 w-32">
+                          <img :src="'https://pics.dmm.co.jp/digital/video/' + fanzanicelist.content_id  + '/' + fanzanicelist.content_id + 'ps.jpg'" :alt="'【FANZA】' + fanzanicelist.fanza.title + 'のジャケット画像'" class="h-44 w-32">
                         </Link>
                       </div>
                     </div>

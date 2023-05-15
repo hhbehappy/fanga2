@@ -30,7 +30,7 @@ class FanzaPrivateMemo extends Model
 
     public function fanza()
     {
-        return $this->belongsTo(Fanza::class);
+        return $this->belongsTo(Fanza::class, 'content_id');
     }
 
     public static function fanzaPrivateMemos($content_id){
@@ -52,7 +52,8 @@ class FanzaPrivateMemo extends Model
     }
 
     public static function privateMemoList(){
-        $private_memo_lists = FanzaPrivateMemo::select('fanza_private_memos.content_id', 'title', 'fanzas.updated_at')->whereUser_id(Auth::id())->latest('updated_at')->leftJoin('fanzas', 'fanza_private_memos.content_id', '=', 'fanzas.content_id')->get()->unique('content_id');
+        // マイページ
+        $private_memo_lists = FanzaPrivateMemo::with('fanza')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('content_id')->take(10);
     
         return $private_memo_lists;
     }

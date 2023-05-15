@@ -33,34 +33,50 @@ class FanzaReleaseMemo extends Model
 
     public function fanza()
     {
-        return $this->belongsTo(Fanza::class, "foreign_fanza_id");
+        return $this->belongsTo(Fanza::class, 'content_id');
+    }
+    
+    public static function fanzaReleaseMemoCount($content_id){
+        $fanzareleasememocount = FanzaReleaseMemo::whereContent_id($content_id)->select('release')->get()->count();
+    
+        return $fanzareleasememocount;
     }
 
     public static function myLists(){
-        $mylists = DB::table('fanza_release_memos')
-        ->select('fanza_release_memos.content_id', 'title', 'fanza_release_memos.updated_at')->leftJoin('fanzas', 'fanza_release_memos.content_id', '=', 'fanzas.content_id')->where('user_id', Auth::id())->latest('updated_at')->get()->unique('content_id')->take(20);
-        
+        // 詳細ページのユーザーのメモした動画
+        $mylists = FanzaReleaseMemo::with('fanza')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('content_id')->take(20);
+
         return $mylists;
     }
 
     public static function releaseLists(){
-        $releaselists = DB::table('fanza_release_memos')
-        ->select('fanza_release_memos.content_id', 'title', 'fanza_release_memos.updated_at')->leftJoin('fanzas', 'fanza_release_memos.content_id', '=', 'fanzas.content_id')->latest('updated_at')->get()->unique('content_id')->take(20);
-    
+        // トップページのメモされた動画
+        // 詳細ページの最近メモされた動画
+        $releaselists = FanzaReleaseMemo::with('fanza')->latest('updated_at')->get()->unique('content_id')->take(20);
+
         return $releaselists;
     }
 
     public static function releaseAllLists(){
-        $releasealllists = DB::table('fanza_release_memos')
-        ->select('fanza_release_memos.content_id', 'title', 'fanza_release_memos.updated_at')->leftJoin('fanzas', 'fanza_release_memos.content_id', '=', 'fanzas.content_id')->groupBy('content_id')->latest('updated_at')->paginate(100);
+        // 最近メモされた動画の一覧ページ
+        $releasealllists = FanzaReleaseMemo::with('fanza')->groupBy('content_id')->latest('updated_at')->paginate(100);
 
         return $releasealllists;
     }
 
     public static function fanzaReleaseMemos($content_id){
-        $fanza_release_memos = FanzaReleaseMemo::whereContent_id($content_id)->oldest('updated_at')->get();
-    
+        // 詳細ページのメモリスト
+        $fanza_release_memos = FanzaReleaseMemo::whereContent_id($content_id)->latest('updated_at')->take(10)->get();
+        
         return $fanza_release_memos;
+    }
+
+    public static function fanzaReleaseMemoAllList($content_id)
+    {
+        // メモの一覧ページ
+        $release_memo_all_lists = FanzaReleaseMemo::whereContent_id($content_id)->oldest('updated_at')->paginate(100);
+
+        return $release_memo_all_lists;
     }
 
     public static function editReleaseMemos($memoid){
@@ -71,6 +87,7 @@ class FanzaReleaseMemo extends Model
 
     public static function memoList($column)
     {
+        // 一覧ページのメモの多い順
         $memolists = DB::table('fanza_release_memos')
             ->select('fanza_release_memos.content_id', 'title', $column, DB::raw('count(*) as total'))
             ->groupBy('content_id', 'title', $column)->latest('total')
@@ -82,7 +99,8 @@ class FanzaReleaseMemo extends Model
 
     public static function releaseMemoList()
     {
-        $release_memo_lists = FanzaReleaseMemo::select('fanza_release_memos.content_id', 'title', 'fanzas.updated_at')->whereUser_id(Auth::id())->latest('updated_at')->leftJoin('fanzas', 'fanza_release_memos.content_id', '=', 'fanzas.content_id')->get()->unique('content_id');
+        // マイページ
+        $release_memo_lists = FanzaReleaseMemo::with('fanza')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('content_id')->take(10);
 
         return $release_memo_lists;
     }
