@@ -30,7 +30,7 @@ class DugaFreeMemo extends Model
 
     public function duga()
     {
-        return $this->belongsTo(Duga::class);
+        return $this->belongsTo(Duga::class, 'productid');
     }
 
     public static function dugaFreeMemos($productid){
@@ -40,9 +40,8 @@ class DugaFreeMemo extends Model
     }
 
     public static function freeMemoList(){
-        $free_memo_lists = DugaFreeMemo::select('title', 'duga_free_memos.productid', 're_productid', 'jacketimage', 'duga_free_memos.updated_at')
-        ->whereUser_id(Auth::id())->latest('updated_at')
-        ->leftJoin('dugas', 'duga_free_memos.productid', '=', 'dugas.productid')->get()->unique('re_productid');
+        // マイページ
+        $free_memo_lists = DugaFreeMemo::with('duga')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('re_productid')->take(10);
     
         return $free_memo_lists;
     }

@@ -25,8 +25,9 @@ class DugaNice extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function duga() {
-        return $this->belongsTo('App\Models\Duga');
+    public function duga()
+    {
+        return $this->belongsTo(Duga::class, 'productid');
     }
 
     public static function nice($productid, $duga_id){
@@ -84,7 +85,7 @@ class DugaNice extends Model
 
     public static function profileNiceList()
     {
-        $profile_nice_lists = DugaNice::select('title', 'duga_nices.productid', 're_productid', 'jacketimage', 'duga_nices.updated_at')->whereUser_id(Auth::id())->latest('updated_at') ->leftJoin('dugas', 'duga_nices.productid', '=', 'dugas.productid')->get()->unique('re_productid');
+        $profile_nice_lists = DugaNice::with('duga')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('re_productid')->take(10);
 
         return $profile_nice_lists;
     }

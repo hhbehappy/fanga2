@@ -46,11 +46,6 @@ class Fanza extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    public function nices()
-    {
-        return $this->hasMany('App\Models\Nice');
-    }
-
     public static function index()
     {
         $videoids = Fanza::latest('date')->paginate(100);

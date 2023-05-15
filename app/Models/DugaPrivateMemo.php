@@ -33,19 +33,13 @@ class DugaPrivateMemo extends Model
 
     public function duga()
     {
-        return $this->belongsTo(Duga::class);
+        return $this->belongsTo(Duga::class, 'productid');
     }
 
     public static function dugaPrivateMemos($productid){
         $duga_private_memos = DugaPrivateMemo::where([['productid', $productid], ['user_id', Auth::id()]])->oldest('updated_at')->get();
-    
-        return $duga_private_memos;
-    }
 
-    public static function privateMemoLimit($productid){
-        $privatememolimit = DugaPrivateMemo::where([['productid', $productid], ['user_id', Auth::id()]])->count();
-    
-        return $privatememolimit;
+        return $duga_private_memos;
     }
 
     public static function editPrivateMemos($memoid){

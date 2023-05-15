@@ -213,8 +213,8 @@ const props = defineProps({
                 <div v-for="dugamemo in dugamemos" :key="dugamemo.id" class="">
                     <div class="w-[117px] h-40 mx-2 border-none overflow-hidden">
                         <Link :href="route('dvideo.show', { id: dugamemo.productid })">
-                        <img v-if="dugamemo.jacketimage" :src="dugamemo.jacketimage" :alt="'【DUGA】' + dugamemo.title + 'のメイン画像'" class="w-28 h-40 mx-2">
-                        <img v-else :src="dugamemo.posterimage" :alt="'【DUGA】' + dugamemo.title + 'のメイン画像'" class="w-28 h-40 mx-2">
+                        <img v-if="dugamemo.duga.jacketimage" :src="dugamemo.duga.jacketimage" :alt="'【DUGA】' + dugamemo.duga.title + 'のジャケット画像'" class="w-28 h-40">
+                        <img v-else :src="dugamemo.duga.posterimage" :alt="'【DUGA】' + dugamemo.duga.title + 'のメイン画像'" class="w-28 h-40">
                         </Link>
                     </div>
                 </div>
@@ -237,8 +237,8 @@ const props = defineProps({
                         <div v-for="mydlist in mydlists" :key="mydlist.id">
                             <div class="w-[117px] h-40 mx-2 border-none overflow-hidden">
                                 <Link :href="route('dvideo.show', { id: mydlist.productid })">
-                                <img v-if="mydlist.jacketimage" :src="mydlist.jacketimage" :alt="'【DUGA】' + mydlist.title + 'のメイン画像'" class="w-28 h-40 mx-2">
-                                <img v-else :src="mydlist.posterimage" :alt="'【DUGA】' + mydlist.title + 'のメイン画像'" class="w-28 h-40 mx-2">
+                                <img v-if="mydlist.duga.jacketimage" :src="mydlist.duga.jacketimage" :alt="'【DUGA】' + mydlist.duga.title + 'のジャケット画像'" class="w-28 h-40">
+                                <img v-else :src="mydlist.duga.posterimage" :alt="'【DUGA】' + mydlist.duga.title + 'のメイン画像'" class="w-28 h-40">
                             </Link>
                             </div>
                         </div>
@@ -261,13 +261,13 @@ const props = defineProps({
                 全動画一覧
             </a>
         </div>
-        <div class="flex overflow-x-scroll pb-4 mb-8">
+        <div class="flex overflow-x-scroll pb-4 mb-8 mx-2">
             <div class="flex flex-none flex-wrap">
                 <div v-for="dvideoid in dvideoids" :key="dvideoid.id" class="">
                     <div class="w-[133px] h-40 border-none">
                         <Link :href="route('dvideo.show', { id: dvideoid.productid })">
-                        <img v-if="dvideoid.jacketimage" :src="dvideoid.jacketimage" :alt="'【DUGA】' + dvideoid.title + 'のメイン画像'" class="w-28 h-40 mx-2">
-                        <img v-else :src="dvideoid.posterimage" :alt="'【DUGA】' + dvideoid.title + 'のメイン画像'" class="w-28 h-40 mx-2">
+                        <img v-if="dvideoid.jacketimage" :src="dvideoid.jacketimage" :alt="'【DUGA】' + dvideoid.title + 'のメイン画像'" class="w-28 h-40">
+                        <img v-else :src="dvideoid.posterimage" :alt="'【DUGA】' + dvideoid.title + 'のメイン画像'" class="w-28 h-40">
                         </Link>
                     </div>
                 </div>

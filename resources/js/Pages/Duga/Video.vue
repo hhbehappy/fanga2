@@ -501,7 +501,7 @@ export default {
                   </form>
                 </div>
                 <div v-else class="flex mt-10 justify-center">
-                <p class="pl-2 text-center border-b-2 border-red-400">非公開メモは1作品につき2つまでとなっています。</p>
+                <p class="pl-2 text-center border-b-2 border-red-400">非公開メモは2つまでとなっています。</p>
               </div>
               </div>
             </div>
@@ -525,8 +525,8 @@ export default {
         <div v-for="releaselist in releaselists" :key="releaselist.id" class="">
             <div class="mr-4">
               <Link :href="route('dvideo.show', { id: releaselist.productid })">
-                <img v-if="releaselist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + releaselist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + releaselist.title" class="h-44">
-                <img v-else :src="'https://pic.duga.jp/unsecure/' + releaselist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + releaselist.title + 'のジャケット画像'" class="h-44 w-32">
+                <img v-if="releaselist.duga.jacketimage" :src="'https://pic.duga.jp/unsecure/' + releaselist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + releaselist.duga.title + 'のジャケット画像'" class="h-44">
+                <img v-else :src="'https://pic.duga.jp/unsecure/' + releaselist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + releaselist.duga.title + 'のメイン画像'" class="h-44 w-32">
               </Link>
             </div>
         </div>
@@ -550,8 +550,8 @@ export default {
           <div v-for="mylist in mylists" :key="mylist.id">
               <div class="mr-4">
                 <Link :href="route('dvideo.show', { id: mylist.productid })">
-                  <img v-if="mylist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + mylist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + mylist.title + 'のジャケット画像'" class="h-44">
-                  <img v-else :src="'https://pic.duga.jp/unsecure/' + mylist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + mylist.title + 'のジャケット画像'" class="h-44 w-32">
+                  <img v-if="mylist.duga.jacketimage" :src="'https://pic.duga.jp/unsecure/' + mylist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + mylist.duga.title + 'のジャケット画像'" class="h-44">
+                  <img v-else :src="'https://pic.duga.jp/unsecure/' + mylist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + mylist.duga.title + 'のメイン画像'" class="h-44 w-32">
                 </Link>
               </div>
           </div>
