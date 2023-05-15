@@ -49,10 +49,6 @@ class Duga extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    public function nices() {
-        return $this->hasMany('App\Models\Nice');
-    }
-
     public static function index()
     {
         $videoids = Duga::latest('date')->paginate(100);

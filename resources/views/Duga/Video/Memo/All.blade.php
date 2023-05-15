@@ -12,10 +12,10 @@
       @foreach ( $releasealllists as $releasealllist )
       <div>
         <a href="{{ route('dvideo.show', [ 'id' => $releasealllist->productid ]) }}">
-          @if( $releasealllist->jacketimage )
-          <img src="<?php echo $releasealllist->jacketimage ?>" alt="【DUGA】<?php echo $releasealllist->title ?>のメイン画像" class="h-40 w-[118px] inline-block px-1 mb-4">
+          @if( $releasealllist->duga->jacketimage )
+          <img src="<?php echo $releasealllist->duga->jacketimage ?>" alt="【DUGA】<?php echo $releasealllist->duga->title ?>のジャケット画像" class="h-40 w-[118px] inline-block px-1 mb-4">
           @else
-          <img src="<?php echo $releasealllist->posterimage ?>" alt="【DUGA】<?php echo $releasealllist->title ?>のメイン画像" class="h-40 w-[118px] inline-block px-1 mb-4">
+          <img src="<?php echo $releasealllist->duga->posterimage ?>" alt="【DUGA】<?php echo $releasealllist->duga->title ?>のメイン画像" class="h-40 w-[118px] inline-block px-1 mb-4">
           @endif
         </a>
       </div>

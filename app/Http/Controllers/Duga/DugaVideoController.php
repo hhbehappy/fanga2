@@ -57,7 +57,7 @@ class DugaVideoController extends Controller
             'mylistcount'       => DugaReleaseMemo::myLists()->count(),
             'releaselists'      => DugaReleaseMemo::releaseLists(),
             'duga_private_memos'=> DugaPrivateMemo::dugaPrivateMemos($productid),
-            'privatememolimit'  => DugaPrivateMemo::privateMemoLimit($productid),
+            'privatememolimit'  => DugaPrivateMemo::dugaPrivateMemos($productid)->count(),
             'auth_id'           => Auth::id(),
             'nice'              => DugaNice::dugaNice($productid),
             'nicecount'         => DugaNice::dugaNicecount($productid),

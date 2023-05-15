@@ -34,31 +34,33 @@ class DugaReleaseMemo extends Model
 
     public function duga()
     {
-        return $this->belongsTo(Duga::class, "foreign_duga_id");
+        return $this->belongsTo(Duga::class, 'productid');
     }
 
     public static function myLists(){
-        $mylists = DB::table('duga_release_memos')
-        ->select( 'duga_release_memos.productid', 're_productid', 'title', 'jacketimage', 'posterimage', 'duga_release_memos.updated_at')->leftJoin('dugas', 'duga_release_memos.productid', '=', 'dugas.productid')->where('user_id', Auth::id())->latest('updated_at')->get()->unique('re_productid')->take(20);
+        // 詳細ページのユーザーのメモした動画
+        $mylists = DugaReleaseMemo::with('duga')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('re_productid')->take(20);
 
         return $mylists;
     }
 
     public static function releaseLists(){
-        $releaselists = DB::table('duga_release_memos')
-        ->select('duga_release_memos.productid', 're_productid', 'title', 'jacketimage', 'posterimage', 'duga_release_memos.updated_at')->leftJoin('dugas', 'duga_release_memos.productid', '=', 'dugas.productid')->latest('updated_at')->get()->unique('re_productid')->take(20);
+        // トップページのメモされた動画
+        // 詳細ページの最近メモされた動画
+        $releaselists = DugaReleaseMemo::with('duga')->latest('updated_at')->get()->unique('re_productid')->take(20);
     
         return $releaselists;
     }
 
     public static function releaseAllLists(){
-        $releasealllists = DB::table('duga_release_memos')
-        ->select('duga_release_memos.productid', 're_productid', 'title', 'jacketimage', 'posterimage', 'duga_release_memos.updated_at')->leftJoin('dugas', 'duga_release_memos.productid', '=', 'dugas.productid')->groupBy('re_productid')->latest('updated_at')->paginate(100);
+        // 最近メモされた動画の一覧ページ
+        $releasealllists = DugaReleaseMemo::with('duga')->groupBy('re_productid')->latest('updated_at')->paginate(100);
 
         return $releasealllists;
     }
 
     public static function dugaReleaseMemos($productid){
+        // 詳細ページのメモリスト
         $duga_release_memos = DugaReleaseMemo::whereProductid($productid)->oldest('updated_at')->get();
     
         return $duga_release_memos;
@@ -72,6 +74,7 @@ class DugaReleaseMemo extends Model
 
     public static function memoList($column)
     {
+        // 一覧ページのメモの多い順
         $memolists = DB::table('duga_release_memos')
         ->select('duga_release_memos.productid', 're_productid', 'title', 'jacketimage', $column, DB::raw('count(*) as total'))
         ->groupBy('productid', 're_productid', 'title', 'jacketimage', $column)->latest('total')
@@ -83,9 +86,8 @@ class DugaReleaseMemo extends Model
 
     public static function releaseMemoList()
     {
-        $release_memo_lists = DugaReleaseMemo::select('title', 'duga_release_memos.productid', 're_productid', 'jacketimage', 'duga_release_memos.updated_at')
-        ->whereUser_id(Auth::id())->latest('updated_at')
-        ->leftJoin('dugas', 'duga_release_memos.productid', '=', 'dugas.productid')->get()->unique('re_productid');
+        // マイページ
+        $release_memo_lists = DugaReleaseMemo::with('duga')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('re_productid')->take(10);
 
         return $release_memo_lists;
     }

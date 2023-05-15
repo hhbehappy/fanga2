@@ -51,17 +51,17 @@ export default {
       <div class="w-full">
         <ul class="flex mb-0 list-none flex-nowrap mx-3 md:mx-1 pt-3 pb-2 flex-row cursor-pointer">
           <li class="-mb-px flex-auto text-center w-1/3">
-            <a class="font-bold uppercase py-2 shadow-md rounded block leading-normal" @click="toggleTabs(1)" :class="{'text-gray-600 bg-gray-200': openTab !== 1, 'text-white bg-red-500': openTab === 1}">
+            <a class="font-bold uppercase py-2 shadow-md rounded block leading-normal" @click="toggleTabs(1)" :class="{'text-gray-600 bg-gray-200 hover:text-white hover:bg-red-500': openTab !== 1, 'text-white bg-red-500': openTab === 1}">
               FANZA
             </a>
           </li>
           <li class="-mb-px flex-auto text-center w-1/3 px-2">
-            <a class="font-bold uppercase py-2 shadow-md rounded block leading-normal" @click="toggleTabs(2)" :class="{'text-gray-600 bg-gray-200': openTab !== 2, 'text-white bg-red-500': openTab === 2}">
+            <a class="font-bold uppercase py-2 shadow-md rounded block leading-normal" @click="toggleTabs(2)" :class="{'text-gray-600 bg-gray-200 hover:text-white hover:bg-red-500': openTab !== 2, 'text-white bg-red-500': openTab === 2}">
               DUGA
             </a>
           </li>
           <li class="-mb-px flex-auto text-center w-1/3">
-            <a class="font-bold uppercase py-2 shadow-md rounded block leading-normal" @click="toggleTabs(3)" :class="{'text-gray-600 bg-gray-200': openTab !== 3, 'text-white bg-red-500': openTab === 3}">
+            <a class="font-bold uppercase py-2 shadow-md rounded block leading-normal" @click="toggleTabs(3)" :class="{'text-gray-600 bg-gray-200 hover:text-white hover:bg-red-500': openTab !== 3, 'text-white bg-red-500': openTab === 3}">
               アカウント
             </a>
           </li>
@@ -146,8 +146,8 @@ export default {
                     <div v-for="dugareleasememolist in dugareleasememolists" :key="dugareleasememolist.id" class="">
                       <div class="mr-4 mb-4">
                         <Link :href="route('dvideo.show', { id: dugareleasememolist.productid })">
-                          <img v-if="dugareleasememolist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + dugareleasememolist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + dugareleasememolist.title + 'のジャケット画像'" class="h-44 w-32">
-                          <img v-else :src="'https://pic.duga.jp/unsecure/' + dugareleasememolist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + dugareleasememolist.title + 'のメイン画像'" class="h-44 w-32">
+                          <img v-if="dugareleasememolist.duga.jacketimage" :src="'https://pic.duga.jp/unsecure/' + dugareleasememolist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + dugareleasememolist.duga.title + 'のジャケット画像'" class="h-44 w-32">
+                          <img v-else :src="'https://pic.duga.jp/unsecure/' + dugareleasememolist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + dugareleasememolist.duga.title + 'のメイン画像'" class="h-44 w-32">
                         </Link>
                       </div>
                     </div>
@@ -159,8 +159,8 @@ export default {
                     <div v-for="dugafreememolist in dugafreememolists" :key="dugafreememolist.id" class="">
                       <div class="mr-4 mb-4">
                         <Link :href="route('dvideo.show', { id: dugafreememolist.productid })">
-                          <img v-if="dugafreememolist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + dugafreememolist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + dugafreememolist.title + 'のジャケット画像'" class="h-44 w-32">
-                          <img v-else :src="'https://pic.duga.jp/unsecure/' + dugafreememolist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + dugafreememolist.title + 'のメイン画像'" class="h-44 w-32">
+                          <img v-if="dugafreememolist.duga.jacketimage" :src="'https://pic.duga.jp/unsecure/' + dugafreememolist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + dugafreememolist.duga.title + 'のジャケット画像'" class="h-44 w-32">
+                          <img v-else :src="'https://pic.duga.jp/unsecure/' + dugafreememolist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + dugafreememolist.duga.title + 'のメイン画像'" class="h-44 w-32">
                         </Link>
                       </div>
                     </div>
@@ -172,8 +172,8 @@ export default {
                     <div v-for="duganicelist in duganicelists" :key="duganicelist.productid" class="">
                       <div class="mr-4 mb-4">
                         <Link :href="route('dvideo.show', { id: duganicelist.productid })">
-                          <img v-if="duganicelist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + duganicelist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + duganicelist.title + 'のジャケット画像'" class="h-44 w-32">
-                          <img v-else :src="'https://pic.duga.jp/unsecure/' + duganicelist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + duganicelist.title + 'のメイン画像'" class="h-44 w-32">
+                          <img v-if="duganicelist.duga.jacketimage" :src="'https://pic.duga.jp/unsecure/' + duganicelist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + duganicelist.duga.title + 'のジャケット画像'" class="h-44 w-32">
+                          <img v-else :src="'https://pic.duga.jp/unsecure/' + duganicelist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + duganicelist.duga.title + 'のメイン画像'" class="h-44 w-32">
                         </Link>
                       </div>
                     </div>
