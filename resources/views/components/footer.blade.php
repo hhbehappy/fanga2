@@ -1,4 +1,4 @@
-<footer class="flex flex-col flexed w-screen mt-10 -mb-3 pb-3 bg-gray-800 text-gray-300">
+<footer class="flex flex-col flexed w-full mt-10 -mb-3 pb-3 bg-gray-800 text-gray-300">
     <!-- スマホ -->
     <div class="block md:hidden">
         <ul class="flex flex-col">

@@ -21,7 +21,7 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
     <BasicLayout>
     <Head title="メールアドレスを確認してください。" />
 
-    <div class="min-h-screen w-screen bg-gray-100 pt-10">
+    <div class="min-h-screen w-screen max-w-[1320px] bg-gray-100 pt-10">
         <div class="w-4/5 md:w-[480px] mx-auto bg-white p-5">
             <div class="mx-auto">
                 <div class="mb-4 text-gray-600">

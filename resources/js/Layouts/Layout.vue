@@ -10,8 +10,8 @@ const path = location.pathname;
 </script>
 
 <template>
-  <Header />
-  <div class="flex flex-col min-h-screen">
+  <div class="flex flex-col mx-auto min-h-screen max-w-[1320px]">
+    <Header />
     <div class="flex flex-grow">
       <div class="">
         <div v-if="path.includes('fanza') === true">

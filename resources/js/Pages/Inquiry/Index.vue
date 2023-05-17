@@ -25,7 +25,7 @@ const submit = () => {
 <Head :title="'お問い合わせ'" />
 
 <BasicLayout>
-  <div class="min-h-screen w-screen pt-8 pb-10 mt-4 md:mt-0 bg-gray-100">
+  <div class="min-h-screen w-screen max-w-[1320px] pt-8 pb-10 mt-4 md:mt-0 bg-gray-100">
     <div class="w-11/12 md:w-9/12 max-w-2xl mx-auto p-3 bg-white">
         <div class="mx-auto">
             <div class="flex w-full px-3 items-center justify-between border-b-4 border-gray-400">
