@@ -30,7 +30,7 @@ const submit = () => {
         <Head title="パスワードの再設定" />
 
         <form @submit.prevent="submit">
-            <div class="min-h-screen w-screen bg-gray-100 pt-10">
+            <div class="min-h-screen w-screen max-w-[1320px] bg-gray-100 pt-10">
                 <div class="w-4/5 md:w-[480px] mx-auto bg-white p-5">
                     <div class="mx-auto">
                         <h1 class="pb-1 mb-5 font-bold text-xl text-gray-700 leading-tight border-b-4 border-gray-400">パスワードの再設定</h1>

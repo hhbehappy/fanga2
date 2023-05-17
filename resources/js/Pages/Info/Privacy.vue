@@ -7,7 +7,7 @@ import { Head } from '@inertiajs/vue3';
 <BasicLayout>
   <Head :title="'プライバシーポリシー'" />
 
-  <div class="min-h-screen w-screen bg-gray-100 py-10">
+  <div class="min-h-screen w-screen max-w-[1320px] bg-gray-100 py-10">
     <div class="w-11/12 md:w-9/12 max-w-3xl mx-auto p-2 bg-white">
       <div class="mx-auto">
         <div class="w-full px-2 space-y-3">

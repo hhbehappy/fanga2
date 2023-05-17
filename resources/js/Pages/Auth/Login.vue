@@ -28,7 +28,7 @@ const submit = () => {
     <BasicLayout>
         <Head title="ログイン" />
 
-        <div class="min-h-screen w-screen bg-gray-100 pt-10">
+        <div class="min-h-screen w-screen max-w-[1320px] bg-gray-100 pt-10">
             <div class="w-4/5 md:w-[480px] mx-auto bg-white p-5">
                 <div class="mx-auto">
                     <div class="flex w-full px-2 mb-5 items-center justify-between border-b-4 border-gray-400">

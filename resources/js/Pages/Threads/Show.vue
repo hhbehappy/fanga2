@@ -39,7 +39,7 @@ const destroycomment = id => {
 <BasicLayout>
     <Head :title="'BBS 詳細ページ'" />
 
-    <div class="min-h-screen w-screen mt-5 md:mt-0 pb-10 bg-gray-100">
+    <div class="min-h-screen w-screen max-w-[1320px] mt-5 md:mt-0 pb-10 bg-gray-100">
         <div class="flex w-11/12 md:w-9/12 max-w-3xl mx-auto mb-6 px-2 pt-8 items-center justify-between border-b-4 border-gray-400">
             <h1 class="font-bold text-2xl text-gray-800 leading-tight">BBS</h1>
             <div class="">

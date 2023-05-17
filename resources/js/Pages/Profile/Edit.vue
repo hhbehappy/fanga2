@@ -42,7 +42,7 @@ export default {
   <Head :title="$page.props.auth.user.name + 'さんのマイページ'" />
 
 <Layout>
-  <div class="w-screen md:w-full mx-auto mt-5 md:mt-0">
+  <div class="w-screen max-w-[1320px] md:w-full mx-auto mt-5 md:mt-0">
     <div class="border-b-4 border-gray-500 mb-3">
       <h1 class="font-bold text-lg md:text-2xl pl-6">{{ $page.props.auth.user.name }}さんのマイページ</h1>
     </div>
