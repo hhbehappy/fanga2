@@ -87,6 +87,14 @@ class Fanza extends Model
         $fanzavideo->delete();
     }
 
+    public static function videoIds($content_id)
+    {
+        $content_id_1 = Fanza::findOrFail($content_id);
+        $videoids = Fanza::find($content_id_1);
+
+        return $videoids;
+    }
+
     public static function fVideoIds($hits)
     {
         $fvideoids = Fanza::whereDate('date', '<', Carbon::today())->latest('date')->take($hits)->get();

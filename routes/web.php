@@ -106,7 +106,6 @@ Route::controller(FanzaFreeMemoController::class)->group(function () {
 });
 
 Route::controller(FanzaReleaseMemoController::class)->group(function () {
-    Route::get('fanza/video/memo/all', 'index')->name('fmemo.index');
     Route::get('fanzareleasememo/store/{fanza_id}/{content_id}', 'store');
     Route::post('fanzareleasememo/store/{fanza_id}/{content_id}', 'store');
     Route::put('/fanzareleasememo/update/{id}/{content_id}', 'update');
@@ -123,6 +122,10 @@ Route::controller(FanzaPrivateMemoController::class)->group(function () {
 Route::controller(FanzaListController::class)->group(function () {
     Route::get('fanza/video/all', 'index')->name('flist.index');
     Route::get('fanza/video/list', 'show')->name('flist.show');
+    Route::get('fanza/video/memo/list/all', 'memoAll')->name('fmemo.memoAll');
+    Route::get('fanza/video/memo/list/100/{content_id}', 'memoListChunk')->name('fmemo.memoListChunk');
+    Route::get('fanza/video/memo/list/sort/{sort}/{content_id}', 'memoListSort')->name('fmemo.memoListSort');
+    Route::get('fanza/video/memo/list/latest/{content_id}', 'memoListLatest')->name('fmemo.memoListLatest');
     Route::delete('fanza/destroy/{id}', 'destroy')->name('flist.destroy');
 });
 

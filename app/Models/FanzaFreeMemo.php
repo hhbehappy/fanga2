@@ -12,7 +12,7 @@ class FanzaFreeMemo extends Model
 
     protected $table = "fanza_free_memos";
     protected $casts = [
-        'updated_at' => 'datetime:Y年m月d日',
+        'updated_at' => 'datetime:Y年m月d日 H:i:s',
     ];
 
     protected $fillable = [
@@ -57,7 +57,7 @@ class FanzaFreeMemo extends Model
         return back()
         ->with([
             'message' => 'フリーメモを送信しました。',
-            'status'  => 'store'
+            'status'  => 'free'
         ]);
     }
 

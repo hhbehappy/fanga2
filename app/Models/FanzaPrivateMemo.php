@@ -12,7 +12,7 @@ class FanzaPrivateMemo extends Model
 
     protected $table = "fanza_private_memos";
     protected $casts = [
-        'updated_at' => 'datetime:Y年m月d日',
+        'updated_at' => 'datetime:Y年m月d日 H:i:s',
     ];
 
     protected $fillable = [
@@ -37,12 +37,6 @@ class FanzaPrivateMemo extends Model
         $fanza_private_memos = FanzaPrivateMemo::where([['content_id', $content_id], ['user_id', Auth::id()]])->oldest('updated_at')->get();
     
         return $fanza_private_memos;
-    }
-
-    public static function privateMemoLimit($content_id){
-        $privatememolimit = FanzaPrivateMemo::where([['content_id', $content_id], ['user_id', Auth::id()]])->count();
-    
-        return $privatememolimit;
     }
 
     public static function editPrivateMemos($memoid){
@@ -71,7 +65,7 @@ class FanzaPrivateMemo extends Model
         return back()
         ->with([
             'message' => '非公開メモを送信しました。',
-            'status'  => 'store'
+            'status'  => 'private'
         ]);
     }
 
