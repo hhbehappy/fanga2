@@ -68,6 +68,13 @@ class FanzaNice extends Model
         return $nicecount;
     }
 
+    public static function myNices(){
+        // 詳細ページのユーザーの気になる動画
+        $mynices = FanzaNice::with('fanza')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('content_id')->take(20);
+
+        return $mynices;
+    }
+
     public static function niceList($column)
     {
         $nicelists = DB::table('fanza_nices')

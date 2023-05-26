@@ -718,7 +718,7 @@ export default {
     <h2 class="ml-3 mb-1 text-xl font-bold">配信サイト『FANZA』</h2>
   </div>
   <div class="flex flex-wrap mb-5 text-white font-mono">
-    <a :href="route('fmemo.index')" class="flex py-1 px-6 mx-2 mb-3 bg-gray-800 hover:bg-red-600 items-center">
+    <a :href="route('fmemo.memoAll')" class="flex py-1 px-6 mx-2 mb-3 bg-gray-800 hover:bg-red-600 items-center">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
       </svg>

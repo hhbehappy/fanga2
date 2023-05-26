@@ -1,7 +1,7 @@
 <script setup>
 import Layout from '@/Layouts/Layout.vue';
 import { Head, Link } from '@inertiajs/vue3';
-import FanzaActressRuby from '@/Components/Parts/FanzaActressRuby.vue';
+import FanzaActressRuby from '@/Components/Fanza/ActressRuby.vue';
 
 const props = defineProps({
   actressnamelists: Object,

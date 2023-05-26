@@ -35,7 +35,7 @@ import { Head, Link } from '@inertiajs/vue3';
             </h3>
             <ul class="leading-8 list-disc list-inside">
               <li>会員登録せずに利用ができます。</li>
-              <li>5文字以上300文字以内でメモができます。</li>
+              <li>2文字以上300文字以内でメモができます。</li>
               <li>誰でも自由にメモやメモの削除ができます。</li>
               <li>自分のメモが誰かに削除される可能性があります。</li>
             </ul>
@@ -53,7 +53,7 @@ import { Head, Link } from '@inertiajs/vue3';
             </h3>
             <ul class="leading-8 list-disc list-inside">
               <li>無料会員登録後に利用ができます。</li>
-              <li>5文字以上500文字以内でメモができます。</li>
+              <li>2文字以上500文字以内でメモができます。</li>
               <li>公開時にニックネームを使用するか選択ができます。
                 <p class="text-sm leading-7">（例）<span class="py-1 px-1">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -64,9 +64,9 @@ import { Head, Link } from '@inertiajs/vue3';
                       <path
                         d="M12.971 1.816A5.23 5.23 0 0114.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 013.434 1.279 9.768 9.768 0 00-6.963-6.963z" />
                     </svg>
-                    FANGAさんのメモ
+                    FANGA
                   </span>
-                  または、
+                  、
                   <span class="py-1">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                       class="w-4 h-4 mb-1 text-green-500 inline-block">
@@ -76,8 +76,20 @@ import { Head, Link } from '@inertiajs/vue3';
                       <path
                         d="M12.971 1.816A5.23 5.23 0 0114.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 013.434 1.279 9.768 9.768 0 00-6.963-6.963z" />
                     </svg>
-                    ログインユーザーのメモ
+                    ログインユーザー
                   </span>
+                </p>
+                <p class="text-sm leading-7">（退会後）<span class="py-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                      class="w-4 h-4 mb-1 text-gray-400 inline-block">
+                      <path fill-rule="evenodd"
+                        d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0016.5 9h-1.875a1.875 1.875 0 01-1.875-1.875V5.25A3.75 3.75 0 009 1.5H5.625zM7.5 15a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5A.75.75 0 017.5 15zm.75 2.25a.75.75 0 000 1.5H12a.75.75 0 000-1.5H8.25z"
+                        clip-rule="evenodd" />
+                      <path
+                        d="M12.971 1.816A5.23 5.23 0 0114.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 013.434 1.279 9.768 9.768 0 00-6.963-6.963z" />
+                    </svg>
+                    退会済みユーザー
+                </span>
                 </p>
               </li>
               <li>メモの編集や削除はできません。</li>
@@ -96,7 +108,7 @@ import { Head, Link } from '@inertiajs/vue3';
           </h3>
           <ul class="leading-8 list-disc list-inside">
             <li>無料会員登録後に利用ができます。</li>
-            <li>5文字以上500文字以内で、1作品に2つまでメモができます。</li>
+            <li>2文字以上500文字以内で、1作品に2つまでメモができます。</li>
             <li>誰にも見られない自分だけのメモです。</li>
             <li>非公開メモの編集や削除ができます。</li>
           </ul>
