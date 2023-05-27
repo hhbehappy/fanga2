@@ -240,7 +240,7 @@ export default {
                           </div>
                           <div class="w-[88px] mb-1">
                             <button type="submit"
-                              class="px-5 py-3 bg-blue-600 text-white font-bold text-sm leading-normal uppercase rounded shadow-md hover:bg-blue-700 flex">
+                              class="px-4 py-3 bg-blue-600 text-white font-bold text-sm leading-normal uppercase rounded shadow-md hover:bg-blue-700 flex">
                               <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="download"
                                 class="w-3 mt-1 mr-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                 <path fill="currentColor"
