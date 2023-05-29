@@ -12,7 +12,7 @@ class DugaPrivateMemo extends Model
 
     protected $table = "duga_private_memos";
     protected $casts = [
-        'updated_at' => 'datetime:Y年m月d日',
+        'updated_at' => 'datetime:Y年m月d日 H:i:s',
     ];
 
     protected $keyType = 'string';
@@ -72,7 +72,7 @@ class DugaPrivateMemo extends Model
         return back()
         ->with([
             'message' => '非公開メモを送信しました。',
-            'status'  => 'store'
+            'status'  => 'private'
         ]);
     }
 

@@ -96,6 +96,14 @@ class Duga extends Model
         $fanzavideo->delete();
     }
 
+    public static function videoIds($productid)
+    {
+        $productid_1 = Duga::findOrFail($productid);
+        $videoids = Duga::find($productid_1);
+
+        return $videoids;
+    }
+
     public static function dVideoIds($hits){
         $dvideoids = Duga::whereDate('date', '<', Carbon::today())->latest('date')->take($hits)->get();
     

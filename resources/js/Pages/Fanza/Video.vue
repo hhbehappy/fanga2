@@ -1,6 +1,6 @@
 <script setup>
 import Layout from '@/Layouts/Layout.vue';
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import Detail from '@/Components/Fanza/Detail.vue';
 import PostTab from '@/Components/Fanza/PostTab.vue';
 import FreeMemo from '@/Components/Fanza/FreeMemo.vue';
@@ -11,7 +11,7 @@ import MyList from '@/Components/Fanza/Kanren/MyList.vue';
 import NewVideo from '@/Components/Fanza/Kanren/NewVideo.vue';
 import Actress from '@/Components/Fanza/Kanren/Actress.vue';
 import Maker from '@/Components/Fanza/Kanren/Maker.vue';
-import Selease from '@/Components/Fanza/Kanren/Selease.vue';
+import Series from '@/Components/Fanza/Kanren/Series.vue';
 import Director from '@/Components/Fanza/Kanren/Director.vue';
 import Genre2 from '@/Components/Fanza/Kanren/Genre2.vue';
 import Site from '@/Components/Fanza/Kanren/Site.vue';
@@ -93,11 +93,11 @@ const props = defineProps({
       <NewMemo :releaselists="releaselists" />
       <MyList :mylists="mylists" :mylistcount="mylistcount" :mynices="mynices" :mynicecount="mynicecount" />
       <NewVideo :fvideoids="fvideoids" />
-      <Actress :videoids="videoids" :fanzaactresss="fanzaactresss" :fanzaactresscount="fanzaactresscount" />
-      <Maker :videoids="videoids" :fanzamakers="fanzamakers" :fanzamakercount="fanzamakercount" />
-      <Selease :videoids="videoids" :fanzaseriess="fanzaseriess" :fanzaseriescount="fanzaseriescount" />
-      <Director :videoids="videoids" :fanzadirectors="fanzadirectors" :fanzadirectorcount="fanzadirectorcount" />
-      <Genre2 :videoids="videoids" :fanzagenre2s="fanzagenre2s" :fanzagenre2count="fanzagenre2count" />
+      <Actress :actress="videoa.actress" :fanzaactresss="fanzaactresss" :fanzaactresscount="fanzaactresscount" />
+      <Maker :maker="videoa.maker" :fanzamakers="fanzamakers" :fanzamakercount="fanzamakercount" />
+      <Series :series="videoa.series" :fanzaseriess="fanzaseriess" :fanzaseriescount="fanzaseriescount" />
+      <Director :director="videoa.director" :fanzadirectors="fanzadirectors" :fanzadirectorcount="fanzadirectorcount" />
+      <Genre2 :genre2="videoa.genre2" :fanzagenre2s="fanzagenre2s" :fanzagenre2count="fanzagenre2count" />
       <Site />
   </Layout>
 </template>

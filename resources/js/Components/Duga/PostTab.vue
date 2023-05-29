@@ -4,7 +4,7 @@ import InputError from '@/Components/InputError.vue';
 import FlashMessage from '@/Components/FlashMessage.vue';
 
 const props = defineProps({
-  videoa: Object,
+  videod: Object,
   privatememolimit: Number
 })
 
@@ -20,19 +20,19 @@ const form = useForm({
 });
 
 const submitFunction = () => {
-  form.post('/fanzafreememo/store/' + props.videoa.id + '/' + props.videoa.content_id, {
+  form.post('/dugafreememo/store/' + props.videod.id + '/' + props.videod.productid, {
     onSuccess: () => form.reset('free', 'release', 'private', 'f_no', 'd_no'),
     preserveScroll: true
   })
 }
 const submitFunction2 = () => {
-  form.post('/fanzareleasememo/store/' + props.videoa.id + '/' + props.videoa.content_id, {
+  form.post('/dugareleasememo/store/' + props.videod.id + '/' + props.videod.productid, {
     onSuccess: () => form.reset('free', 'release', 'private', 'f_no', 'd_no'),
     preserveScroll: true
   })
 }
 const submitFunction3 = () => {
-  form.post('/fanzaprivatememo/store/' + props.videoa.id + '/' + props.videoa.content_id, {
+  form.post('/dugaprivatememo/store/' + props.videod.id + '/' + props.videod.productid, {
     onSuccess: () => form.reset('free', 'release', 'private', 'f_no', 'd_no'),
     preserveScroll: true
   })
@@ -109,7 +109,7 @@ export default {
                     <textarea name="free" v-model="form.free"
                       class="form-control block w-full mb-6 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-800 focus:outline-none"
                       id="free" rows="5" placeholder="フリーメモ">
-                        </textarea>
+                      </textarea>
                     <div class="flex justify-end mr-6 ml-auto">
                       <button type="submit"
                         class="flex px-6 py-2 bg-blue-600 text-white font-bold text-sm leading-normal uppercase rounded shadow-md hover:bg-blue-700">
@@ -289,7 +289,7 @@ export default {
                       <textarea name="private" v-model="form.private"
                         class="form-control block w-full mb-6 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-800 focus:outline-none"
                         id="private" rows="5" placeholder="非公開メモ">
-                          </textarea>
+                        </textarea>
                       <div class="flex justify-end mr-6 ml-auto">
                         <button type="submit"
                           class="flex px-6 py-2 bg-blue-600 text-white font-bold text-sm leading-normal uppercase rounded shadow-md hover:bg-blue-700">

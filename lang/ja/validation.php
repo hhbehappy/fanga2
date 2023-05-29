@@ -155,7 +155,7 @@ return [
 
     'attributes' => [
         'free' => 'フリーメモ',
-        'release' => '公開メモ',
+        'release' => 'メモ',
         'private' => '非公開メモ',
         'title' => 'タイトル',
         'content' => '本文',
