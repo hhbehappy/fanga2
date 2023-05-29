@@ -2,17 +2,17 @@
 import { Link } from '@inertiajs/vue3';
 
 const props = defineProps({
-  maker: String,
-  fanzamakers: Object,
-  fanzamakercount: Number
+  series: String,
+  fanzaseriess: Object,
+  fanzaseriescount: Number
 })
 </script>
 
 <template>
-  <div v-if="maker && fanzamakercount !== 0">
+  <div v-if="series && fanzaseriescount !== 0">
     <div class="flex flex-wrap my-8 mx-auto border-b-4 border-gray-500 items-center justify-between">
-      <h2 class="ml-3 mb-1 text-xl font-bold">AVメーカー『{{ maker }}』</h2>
-      <a :href="route('flist.show', { sort: 'maker', keyword: maker })"
+      <h2 class="ml-3 mb-1 text-xl font-bold">シリーズ『{{ series }}』</h2>
+      <a :href="route('flist.show', { sort: 'series', keyword: series })"
         class="px-6 text-blue-500 hover:underline hover:text-red-500">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
           class="mb-1 w-3 h-3 inline-block text-gray-800">
@@ -28,12 +28,12 @@ const props = defineProps({
     </div>
     <div class="flex overflow-x-auto hidden-scrollbar h-52 ml-4">
       <div class="flex flex-none flex-nowrap">
-        <div v-for="fanzamaker in fanzamakers" :key="fanzamaker.id" class="">
+        <div v-for="fanzaseries in fanzaseriess" :key="fanzaseries.id" class="">
           <div class="mr-4">
-            <Link :href="route('fvideo.show', { id: fanzamaker.content_id })">
+            <Link :href="route('fvideo.show', { id: fanzaseries.content_id })">
             <img
-              :src="'https://pics.dmm.co.jp/digital/video/' + fanzamaker.content_id + '/' + fanzamaker.content_id + 'ps.jpg'"
-              :alt="'【FANZA】' + fanzamaker.title + 'のジャケット画像'" class="w-32">
+              :src="'https://pics.dmm.co.jp/digital/video/' + fanzaseries.content_id + '/' + fanzaseries.content_id + 'ps.jpg'"
+              :alt="'【FANZA】' + fanzaseries.title + 'のジャケット画像'" class="w-32">
             </Link>
           </div>
         </div>

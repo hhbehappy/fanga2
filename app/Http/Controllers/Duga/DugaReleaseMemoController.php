@@ -9,12 +9,6 @@ use App\Models\DugaReleaseMemo;
 
 class DugaReleaseMemoController extends Controller
 {
-    public function index()
-    {
-        $releasealllists = DugaReleaseMemo::releaseAllLists();
-
-        return view('Duga/Video/Memo/All', compact('releasealllists'));
-    }
 
     public function store(StoreDugaReleaseMemoRequest $request, $duga_id, $productid)
     {

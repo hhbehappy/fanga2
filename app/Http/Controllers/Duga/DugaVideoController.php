@@ -31,15 +31,13 @@ class DugaVideoController extends Controller
 
     public function show($productid)
     {
-
-        $dugavideo = Duga::whereProductid($productid)->first();
-        $productid_1 = Duga::findOrFail($productid);
+        $videod = Duga::whereProductid($productid)->first();
         
         return Inertia::render('Duga/Video', [
-            'dugavideo'         => $dugavideo,
-            'dugavideos'        => Duga::find($productid_1),
-            'date'              => $dugavideo->date->format('Y/m/d'),
-            're_productid'      => str_replace("-", "/", $dugavideo->productid),
+            'videod'            => $videod,
+            'dugavideos'        => Duga::videoIds($productid),
+            'date'              => $videod->date->format('Y/m/d'),
+            're_productid'      => str_replace("-", "/", $videod->productid),
             'dvideoids'         => Duga::dVideoIds(20),
             'dugaperformers'    => Kanren::dugaKanren($productid, 'performer'),
             'dugaperformercount'=> Kanren::dugaKanren($productid, 'performer')->count(),
@@ -53,8 +51,11 @@ class DugaVideoController extends Controller
             'dugacategorycount' => Kanren::dugaKanren($productid, 'category')->count(),
             'duga_free_memos'   => DugaFreeMemo::dugaFreeMemos($productid),
             'duga_release_memos'=> DugaReleaseMemo::dugaReleaseMemos($productid),
+            'duga_release_memo_count'=> DugaReleaseMemo::dugaReleaseMemos($productid)->count(),
             'mylists'           => DugaReleaseMemo::myLists(),
             'mylistcount'       => DugaReleaseMemo::myLists()->count(),
+            'mynices'           => DugaNice::myNices(),
+            'mynicecount'       => DugaNice::myNices()->count(),
             'releaselists'      => DugaReleaseMemo::releaseLists(),
             'duga_private_memos'=> DugaPrivateMemo::dugaPrivateMemos($productid),
             'privatememolimit'  => DugaPrivateMemo::dugaPrivateMemos($productid)->count(),
@@ -66,16 +67,14 @@ class DugaVideoController extends Controller
 
     public function edit($type, $productid, $memoid)
     {
-        
-        $dugavideo = Duga::whereProductid($productid)->first();
-        $productid_1 = Duga::findOrFail($productid);
+        $videod = Duga::whereProductid($productid)->first();
 
         return Inertia::render('Duga/Video/Edit', [
             'type' => $type, // privatememoかreleasememoか判断
-            'dugavideoa' => $dugavideo,
-            'dugavideos' => Duga::find($productid_1),
-            'date' => $dugavideo->date->format('Y/m/d'), 
-            're_productid' => str_replace("-", "/", $dugavideo->productid),
+            'videod' => $videod,
+            'dugavideos' => Duga::videoIds($productid),
+            'date' => $videod->date->format('Y/m/d'), 
+            're_productid' => str_replace("-", "/", $videod->productid),
             'duga_release_memos' => DugaReleaseMemo::editReleaseMemos($memoid),
             'duga_private_memos' => DugaPrivateMemo::editPrivateMemos($memoid),
             'update_release_id'  => DugaReleaseMemo::whereId($memoid)->first(),

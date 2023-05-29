@@ -12,7 +12,7 @@ class DugaFreeMemo extends Model
 
     protected $table = "duga_free_memos";
     protected $casts = [
-        'updated_at' => 'datetime:Y年m月d日',
+        'updated_at' => 'datetime:Y年m月d日 H:i:s',
     ];
 
     protected $fillable = [
@@ -61,7 +61,7 @@ class DugaFreeMemo extends Model
         return back()
         ->with([
             'message' => 'フリーメモを送信しました。',
-            'status'  => 'store'
+            'status'  => 'free'
         ]);
     }
 

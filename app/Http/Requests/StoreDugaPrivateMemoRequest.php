@@ -24,7 +24,7 @@ class StoreDugaPrivateMemoRequest extends FormRequest
     public function rules()
     {
         return [
-            "private"       => "required|max:500|min:5",
+            "private"       => "required|max:500|min:2",
         ];
     }
 }

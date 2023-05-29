@@ -180,7 +180,6 @@ Route::controller(DugaFreeMemoController::class)->group(function () {
 });
 
 Route::controller(DugaReleaseMemoController::class)->group(function () {
-    Route::get('duga/video/memo/all', 'index')->name('dmemo.index');
     Route::get('dugareleasememo/store/{duga_id}/{productid}', 'store');
     Route::post('dugareleasememo/store/{duga_id}/{productid}', 'store');
     Route::put('/dugareleasememo/update/{type}/{productid}', 'update');
@@ -197,6 +196,10 @@ Route::controller(DugaPrivateMemoController::class)->group(function () {
 Route::controller(DugaListController::class)->group(function () {
     Route::get('duga/video/all', 'index')->name('dlist.index');
     Route::get('duga/video/list', 'show')->name('dlist.show');
+    Route::get('duga/video/memo/list/all', 'memoAll')->name('dmemo.memoAll');
+    Route::get('duga/video/memo/list/100/{productid}', 'memoListChunk')->name('dmemo.memoListChunk');
+    Route::get('duga/video/memo/list/sort/{sort}/{productid}', 'memoListSort')->name('dmemo.memoListSort');
+    Route::get('duga/video/memo/list/latest/{productid}', 'memoListLatest')->name('dmemo.memoListLatest');
     Route::delete('duga/destroy/{id}', 'destroy')->name('dlist.destroy');
 });
 

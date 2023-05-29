@@ -14,7 +14,7 @@ class DugaReleaseMemo extends Model
     protected $touches = ['duga'];
     protected $table = "duga_release_memos";
     protected $casts = [
-        'updated_at' => 'datetime:Y年m月d日',
+        'updated_at' => 'datetime:Y年m月d日 H:i:s',
     ];
 
     protected $fillable = [
@@ -24,7 +24,13 @@ class DugaReleaseMemo extends Model
         'duga_id',
         'productid',
         're_productid',
-        'release'
+        'release',
+        'f_position',
+        'f_link',
+        'f_no',
+        'd_position',
+        'd_link',
+        'd_no'
     ];
 
     public function user()
@@ -66,6 +72,35 @@ class DugaReleaseMemo extends Model
         return $duga_release_memos;
     }
 
+    public static function dugaReleaseMemoAllListChunk($productid)
+    {
+        // メモの一覧のページネーション
+        $release_memo_all_lists = DugaReleaseMemo::with('duga')->whereProductid($productid)->oldest('updated_at')->paginate(100);
+
+        return $release_memo_all_lists;
+    }
+
+    public static function dugaReleaseMemoAllListSort($sort, $productid)
+    {
+        // メモの一覧ページ
+        if($sort === 'oldest'){
+            $releasememosort = DugaReleaseMemo::with('duga')->whereProductid($productid)->oldest('updated_at')->get();
+        }
+        if($sort === 'latest'){
+            $releasememosort = DugaReleaseMemo::with('duga')->whereProductid($productid)->latest('updated_at')->get();
+        }
+
+        return $releasememosort;
+    }
+
+    public static function dugaReleaseMemoAllListLatest($productid)
+    {
+        // メモの最新50件のページ
+            $releasememolatest = DugaReleaseMemo::with('duga')->whereProductid($productid)->latest('updated_at')->take(50)->get();
+
+        return $releasememolatest;
+    }
+
     public static function editReleaseMemos($memoid){
         $edit_release_memos = DugaReleaseMemo::whereId($memoid)->get();
         
@@ -96,8 +131,26 @@ class DugaReleaseMemo extends Model
     {
         $duga = Duga::find($productid);
         $duga->touch();
-
         $re_productid = str_replace("-", "/", $productid);
+
+        if (FanzaReleaseMemo::whereId($request->get('f_no'))->exists()){
+            $f_links = FanzaReleaseMemo::whereId($request->get('f_no'))->select('content_id')->get();
+            foreach ($f_links as $f_link){
+                $f_link = $f_link->content_id;
+            }
+        } else {
+            $f_link = '';
+        }
+
+        if (DugaReleaseMemo::whereId($request->get('d_no'))->exists()){
+            $d_links = DugaReleaseMemo::whereId($request->get('d_no'))->select('productid')->get();
+            foreach($d_links as $d_link){
+                $d_link = $d_link->productid;
+            }
+        } else {
+            $d_link = '';
+        }
+
 
         DugaReleaseMemo::create([
             'user_id'      => Auth::id(),
@@ -106,13 +159,19 @@ class DugaReleaseMemo extends Model
             'duga_id'      => $duga_id,
             'productid'    => $productid,
             're_productid' => $re_productid,
-            'release'      => $request->get('release')
+            'release'      => $request->get('release'),
+            'f_position'   => $request->get('f_position'),
+            'f_link'       => $f_link,
+            'f_no'         => $request->get('f_no'),
+            'd_position'   => $request->get('d_position'),
+            'd_link'       => $d_link,
+            'd_no'         => $request->get('d_no')
         ]);
 
         return back()
         ->with([
             'message' => 'メモを送信しました。',
-            'status'  => 'store'
+            'status'  => 'release'
         ]);
     }
 

@@ -1,7 +1,7 @@
 <script setup>
 import Layout from '@/Layouts/Layout.vue';
 import { Head, Link } from '@inertiajs/vue3';
-import DugaPerformerRuby from '@/Components/Parts/DugaPerformerRuby.vue';
+import PerformerRuby from '@/Components/Duga/PerformerRuby.vue';
 
 
 const props = defineProps({
@@ -42,7 +42,7 @@ const props = defineProps({
         気になる動画の登録数順
       </Link>
     </div>
-    <DugaPerformerRuby :line="props.line" :keyword="props.keyword" />
+    <PerformerRuby :line="props.line" :keyword="props.keyword" />
     <div class="border-b-4 border-gray-500 mb-4">
       <h1 class="font-bold md:text-xl"><span class="text-red-500">【DUGA】</span>AV女優一覧 : 名前が『{{ props.keyword }}』から始まるAV女優</h1>
     </div>
