@@ -25,11 +25,11 @@
         <x-duga_sidebar />
         @endif
       </div>
-      <div>
+      <main>
         <article>
           {{ $slot }}
         </article>
-      </div>
+      </main>
     </div>
     <x-footer />
   </div>

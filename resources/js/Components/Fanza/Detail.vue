@@ -270,7 +270,7 @@ const toggleStatus = () => { isShow.value = !isShow.value }
       </div>
     </button>
     <!-- モーダルウィンドウの中 -->
-    <div v-show="isShow" class="modal" id="modal-1" aria-hidden="true" @click="toggleStatus">
+    <div v-show="isShow" class="modal relative z-40" id="modal-1" aria-hidden="true" @click="toggleStatus">
       <div class="modal__overlay" tabindex="-1" data-micromodal-close>
         <div class="modal__container h-[40rem]" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
           <main class="modal__content" id="modal-1-content">

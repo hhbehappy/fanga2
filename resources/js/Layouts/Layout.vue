@@ -27,11 +27,11 @@ const path = location.pathname;
           <SideBar />
         </div>
       </div>
-      <div class="">
+      <main class="">
         <article>
           <slot />
         </article>
-      </div>
+      </main>
     </div>
     <Footer />
   </div>
