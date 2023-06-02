@@ -97,12 +97,12 @@ export default {
           </a>
         </li>
       </ul>
-      <div class="relative flex flex-col min-w-0 break-words bg-white">
+      <div class="flex flex-col break-words">
         <div class="py-5 flex-auto">
           <div class="tab-content tab-space">
             <div :class="{ 'hidden': openTab !== 1, 'block': openTab === 1 }">
               <form @submit.prevent="submitFunction">
-                <div class="flex justify-center relative">
+                <div class="flex justify-center">
                   <div class="mb-8 w-full">
                     <InputError class="mb-4 text-center" :message="form.errors.free" />
                     <FlashMessage />
@@ -167,7 +167,7 @@ export default {
                                       <label class="cursor-pointer text-sm font-bold">
                                         <input type="radio" class="mr-1 mb-1 cursor-pointer" name="nickname"
                                           v-model="form.nickname" value="1" checked>
-                                        <span>
+                                        <span v-if="$page.props.auth.user">
                                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                             class="w-4 h-4 mb-1 text-blue-400 inline-block">
                                             <path fill-rule="evenodd"
@@ -283,7 +283,7 @@ export default {
               <FlashMessage />
               <div v-if="props.privatememolimit < 2">
                 <form @submit.prevent="submitFunction3">
-                  <div class="flex justify-center relative">
+                  <div class="flex justify-center">
                     <div class="mb-8 w-full">
                       <InputError class="mb-4 text-center" :message="form.errors.private" />
                       <textarea name="private" v-model="form.private"

@@ -305,13 +305,13 @@ const destroyReleaseMemo = id => {
                 F-{{ memolistsort.f_no }}
                 </Link>
               </p>
-              <!-- <p v-if="memolistsort.d_position === 'top' && memolistsort.d_link" class="mb-3">>> No.
+              <p v-if="memolistsort.d_position === 'top' && memolistsort.d_link" class="mb-3">>> No.
                 <Link
-                  :href="route('dmemo.memoListSort', { sort: 'oldest', content_id: memolistsort.d_link }) + '#d-' + memolistsort.d_no"
+                  :href="route('dmemo.memoListSort', { sort: 'oldest', productid: memolistsort.d_link }) + '#d-' + memolistsort.d_no"
                   class="ml-1 text-blue-500 hover:text-red-500 hover:underline">
                 D-{{ memolistsort.d_no }}
                 </Link>
-              </p> -->
+              </p>
               {{ memolistsort.release }}
               <p v-if="memolistsort.f_position === 'bottom' && memolistsort.f_link" class="mt-3">>> No.
                 <Link
@@ -320,13 +320,13 @@ const destroyReleaseMemo = id => {
                 F-{{ memolistsort.f_no }}
                 </Link>
               </p>
-              <!-- <p v-if="memolistsort.d_position === 'bottom' && memolistsort.d_link" class="mt-3">>> No.
+              <p v-if="memolistsort.d_position === 'bottom' && memolistsort.d_link" class="mt-3">>> No.
                 <Link
-                  :href="route('dmemo.memoListSort', { sort: 'oldest', content_id: memolistsort.d_link }) + '#d-' + memolistsort.d_no"
+                  :href="route('dmemo.memoListSort', { sort: 'oldest', productid: memolistsort.d_link }) + '#d-' + memolistsort.d_no"
                   class="ml-1 text-blue-500 hover:text-red-500 hover:underline">
                 D-{{ memolistsort.d_no }}
                 </Link>
-              </p> -->
+              </p>
               <p class="flex text-xs text-gray-500 font-mono justify-end">
                 No.F-{{ memolistsort.id }}
               </p>
@@ -377,9 +377,9 @@ const destroyReleaseMemo = id => {
         </div>
       </div>
       <!-- 最近のメモ動画 -->
-      <div class="flex flex-wrap mt-16 mb-4 mx-auto border-b-4 border-gray-500 items-center justify-between">
+      <div class="flex flex-wrap mt-16 mb-4 mx-auto border-b-4 border-gray-500 items-center">
         <h2 class="ml-3 mb-1 text-xl font-bold">最近メモされた動画</h2>
-        <a :href="route('fmemo.memoAll')" class="px-6 text-blue-500 hover:underline hover:text-red-500">
+        <a :href="route('fmemo.memoAll')" class="ml-auto px-6 text-blue-500 hover:underline hover:text-red-500">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
             class="mb-1 w-3 h-3 inline-block text-gray-800">
             <path fill-rule="evenodd"

@@ -336,9 +336,9 @@ const destroyReleaseMemo = id => {
         </div>
       </div>
       <!-- 最近のメモ動画 -->
-      <div class="flex flex-wrap mt-16 mb-4 mx-auto border-b-4 border-gray-500 items-center justify-between">
+      <div class="flex flex-wrap mt-16 mb-4 mx-auto border-b-4 border-gray-500 items-center">
         <h2 class="ml-3 mb-1 text-xl font-bold">最近メモされた動画</h2>
-        <a :href="route('dmemo.memoAll')" class="px-6 text-blue-500 hover:underline hover:text-red-500">
+        <a :href="route('dmemo.memoAll')" class="ml-auto px-6 text-blue-500 hover:underline hover:text-red-500">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
             class="mb-1 w-3 h-3 inline-block text-gray-800">
             <path fill-rule="evenodd"
