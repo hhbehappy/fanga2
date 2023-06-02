@@ -266,13 +266,13 @@ const toggleStatus = () => { isShow.value = !isShow.value }
                 F-{{ memolistlatest.f_no }}
                 </Link>
               </p>
-              <!-- <p v-if="memolistlatest.d_position === 'top' && memolistlatest.d_link" class="mb-3">>> No.
+              <p v-if="memolistlatest.d_position === 'top' && memolistlatest.d_link" class="mb-3">>> No.
                 <Link
-                  :href="route('dmemo.memoListSort', { sort: 'oldest', content_id: memolistlatest.d_link }) + '#d-' + memolistlatest.d_no"
+                  :href="route('dmemo.memoListSort', { sort: 'oldest', productid: memolistlatest.d_link }) + '#d-' + memolistlatest.d_no"
                   class="ml-1 text-blue-500 hover:text-red-500 hover:underline">
                 D-{{ memolistlatest.d_no }}
                 </Link>
-              </p> -->
+              </p>
               {{ memolistlatest.release }}
               <p v-if="memolistlatest.f_position === 'bottom' && memolistlatest.f_link" class="mt-3">>> No.
                 <Link
@@ -281,13 +281,13 @@ const toggleStatus = () => { isShow.value = !isShow.value }
                 F-{{ memolistlatest.f_no }}
                 </Link>
               </p>
-              <!-- <p v-if="memolistlatest.d_position === 'bottom' && memolistlatest.d_link" class="mt-3">>> No.
+              <p v-if="memolistlatest.d_position === 'bottom' && memolistlatest.d_link" class="mt-3">>> No.
                 <Link
-                  :href="route('dmemo.memoListSort', { sort: 'oldest', content_id: memolistlatest.d_link }) + '#d-' + memolistlatest.d_no"
+                  :href="route('dmemo.memoListSort', { sort: 'oldest', productid: memolistlatest.d_link }) + '#d-' + memolistlatest.d_no"
                   class="ml-1 text-blue-500 hover:text-red-500 hover:underline">
                 D-{{ memolistlatest.d_no }}
                 </Link>
-              </p> -->
+              </p>
               <p class="flex text-xs text-gray-500 font-mono justify-end">
                 No.F-{{ memolistlatest.id }}
               </p>
@@ -331,9 +331,9 @@ const toggleStatus = () => { isShow.value = !isShow.value }
         </div>
       </div>
       <!-- 最近のメモ動画 -->
-      <div class="flex flex-wrap mt-16 mb-4 md:mr-8 mx-auto border-b-4 border-gray-500 items-center justify-between">
+      <div class="flex flex-wrap mt-16 mb-4 md:mr-8 mx-auto border-b-4 border-gray-500 items-center">
         <h2 class="ml-3 mb-1 text-xl font-bold">最近メモされた動画</h2>
-        <a :href="route('fmemo.memoAll')" class="px-6 text-blue-500 hover:underline hover:text-red-500">
+        <a :href="route('fmemo.memoAll')" class="ml-auto px-6 text-blue-500 hover:underline hover:text-red-500">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
             class="mb-1 w-3 h-3 inline-block text-gray-800">
             <path fill-rule="evenodd"

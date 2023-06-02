@@ -60,9 +60,9 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-wrap justify-center h-full my-24">
+  <div class="flex flex-wrap justify-center bg-green-200 h-full my-24">
     <div class="w-11/12">
-      <ul class="flex mb-0 list-none flex-wrap pt-3 pb-2 flex-row text-xs md:text-base cursor-pointer">
+      <ul class="flex list-none flex-wrap pt-3 pb-2 flex-row text-xs md:text-base cursor-pointer">
         <li class="-mb-px flex-auto text-center w-1/3">
           <a class="font-bold uppercase pr-2 py-2 shadow-md rounded block leading-normal" @click="toggleTabs(1)"
             :class="{ 'text-black bg-gray-200 hover:bg-amber-200': openTab !== 1, 'text-black bg-amber-200': openTab === 1 }">
@@ -97,12 +97,12 @@ export default {
           </a>
         </li>
       </ul>
-      <div class="relative flex flex-col min-w-0 break-words bg-white">
+      <div class="flex flex-col break-words">
         <div class="py-5 flex-auto">
           <div class="tab-content tab-space">
             <div :class="{ 'hidden': openTab !== 1, 'block': openTab === 1 }">
               <form @submit.prevent="submitFunction">
-                <div class="flex justify-center relative">
+                <div class="flex justify-center">
                   <div class="mb-8 w-full">
                     <InputError class="mb-4 text-center" :message="form.errors.free" />
                     <FlashMessage />
@@ -167,7 +167,7 @@ export default {
                                       <label class="cursor-pointer text-sm font-bold">
                                         <input type="radio" class="mr-1 mb-1 cursor-pointer" name="nickname"
                                           v-model="form.nickname" value="1" checked>
-                                        <span>
+                                        <span v-if="$page.props.auth.user">
                                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                             class="w-4 h-4 mb-1 text-blue-400 inline-block">
                                             <path fill-rule="evenodd"
@@ -283,7 +283,7 @@ export default {
               <FlashMessage />
               <div v-if="props.privatememolimit < 2">
                 <form @submit.prevent="submitFunction3">
-                  <div class="flex justify-center relative">
+                  <div class="flex justify-center">
                     <div class="mb-8 w-full">
                       <InputError class="mb-4 text-center" :message="form.errors.private" />
                       <textarea name="private" v-model="form.private"
