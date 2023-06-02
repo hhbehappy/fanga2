@@ -60,7 +60,7 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-wrap justify-center h-80 mt-12 mb-20">
+  <div class="flex flex-wrap justify-center h-full my-24">
     <div class="w-11/12">
       <ul class="flex mb-0 list-none flex-wrap pt-3 pb-2 flex-row text-xs md:text-base cursor-pointer">
         <li class="-mb-px flex-auto text-center w-1/3">
@@ -128,7 +128,7 @@ export default {
             </div>
             <div :class="{ 'hidden': openTab !== 2, 'block': openTab === 2 }">
               <form @submit.prevent="submitFunction2">
-                <div class="flex justify-center relative">
+                <div class="flex justify-center">
                   <div class="w-full">
                     <InputError class="mb-4 text-center" :message="form.errors.release" />
                     <FlashMessage />

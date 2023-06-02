@@ -9,7 +9,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="flex flex-col justify-center mx-auto">
+  <div class="flex flex-col-reverse justify-center mx-auto">
     <div v-for="duga_release_memo in duga_release_memos" :key="duga_release_memo.id">
       <div v-if="duga_release_memo.release" class="border-dotted border-b border-gray-500 mx-5">
         <div class="flex mb-3 items-center">
@@ -90,7 +90,7 @@ const props = defineProps({
   </div>
   <!-- メモを一覧で見る -->
   <div v-if="props.duga_release_memo_count !== 0"
-    class="flex mt-5 mx-5 pb-6 justify-center border-dotted border-b border-gray-500">
+    class="flex py-6 justify-center border-dotted border-b border-gray-500">
     <Link :href="route('dmemo.memoListSort', { productid: props.videod.productid, sort: 'oldest' })"
       class="w-56 p-1.5 font-mono text-center bg-gray-300 rounded-3xl hover:bg-blue-200 shadow-md">
     メモを一覧で見る

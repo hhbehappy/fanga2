@@ -67,7 +67,7 @@ class DugaReleaseMemo extends Model
 
     public static function dugaReleaseMemos($productid){
         // 詳細ページのメモリスト
-        $duga_release_memos = DugaReleaseMemo::whereProductid($productid)->oldest('updated_at')->get();
+        $duga_release_memos = DugaReleaseMemo::whereProductid($productid)->latest('updated_at')->take(10)->get();
     
         return $duga_release_memos;
     }

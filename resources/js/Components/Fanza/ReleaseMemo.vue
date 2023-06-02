@@ -11,8 +11,7 @@ const props = defineProps({
 <template>
   <div class="flex flex-col-reverse justify-center mx-auto">
     <div v-for="fanza_release_memo in fanza_release_memos" :key="fanza_release_memo.id">
-      <div v-if="fanza_release_memo.release" :id="'f-' + fanza_release_memo.id"
-        class="border-dotted border-b border-gray-500 mx-5">
+      <div v-if="fanza_release_memo.release" class="border-dotted border-b border-gray-500 mx-5">
         <div class="flex mb-3 items-center">
           <div>
             <span v-if="fanza_release_memo.user_id && fanza_release_memo.nickname === 1" class="text-sm font-bold">
@@ -61,13 +60,13 @@ const props = defineProps({
             F-{{ fanza_release_memo.f_no }}
             </Link>
           </p>
-          <!-- <p v-if="fanza_release_memo.d_position === 'top' && fanza_release_memo.d_link" class="mb-3 font-mono">>> No.
+          <p v-if="fanza_release_memo.d_position === 'top' && fanza_release_memo.d_link" class="mb-3 font-mono">>> No.
             <Link
-              :href="route('dmemo.memoListSort', { sort: 'oldest', content_id: fanza_release_memo.d_link }) + '#d-' + fanza_release_memo.d_no"
+              :href="route('dmemo.memoListSort', { sort: 'oldest', productid: fanza_release_memo.d_link }) + '#d-' + fanza_release_memo.d_no"
               class="text-blue-500 hover:text-red-500 hover:underline">
             D-{{ fanza_release_memo.d_no }}
             </Link>
-          </p> -->
+          </p>
           {{ fanza_release_memo.release }}
           <p v-if="fanza_release_memo.f_position === 'bottom' && fanza_release_memo.f_link" class="mt-3 font-mono">>> No.
             <Link
@@ -76,12 +75,12 @@ const props = defineProps({
             F-{{ fanza_release_memo.f_no }}
             </Link>
           </p>
-          <!-- <p v-if="fanza_release_memo.d_position === 'bottom' && fanza_release_memo.d_link" class="mt-2 font-mono">>> No.
+          <p v-if="fanza_release_memo.d_position === 'bottom' && fanza_release_memo.d_link" class="mt-2 font-mono">>> No.
             <Link
-              :href="route('dmemo.memoListSort', { sort: 'oldest', content_id: fanza_release_memo.d_link }) + '#d-' + fanza_release_memo.d_no"
+              :href="route('dmemo.memoListSort', { sort: 'oldest', productid: fanza_release_memo.d_link }) + '#d-' + fanza_release_memo.d_no"
               class="text-blue-500 hover:text-red-500 hover:underline">D-{{ fanza_release_memo.d_no }}
             </Link>
-          </p> -->
+          </p>
           <p class="flex text-xs text-gray-500 font-mono justify-end">
             No.F-{{ fanza_release_memo.id }}
           </p>
@@ -91,7 +90,7 @@ const props = defineProps({
   </div>
   <!-- メモを一覧で見る -->
   <div v-if="props.fanza_release_memo_count !== 0"
-    class="flex mt-5 mx-5 pb-6 justify-center border-dotted border-b border-gray-500">
+    class="flex py-6 justify-center border-dotted border-b border-gray-500">
     <Link :href="route('fmemo.memoListSort', { content_id: props.videoa.content_id, sort: 'oldest' })"
       class="w-56 p-1.5 font-mono text-center bg-gray-300 rounded-3xl hover:bg-blue-200 shadow-md">メモを一覧で見る</Link>
   </div>

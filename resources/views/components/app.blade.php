@@ -17,14 +17,14 @@
   <div class="flex flex-col mx-auto min-h-screen max-w-[1320px]">
     <x-header />
     <div class="flex flex-grow">
-      <div>
+      <aside>
         @if (Request::is('fanza/*', 'search/fanza'))
         <x-fanza_sidebar />
         @endif
         @if (Request::is('duga/*', 'search/duga'))
         <x-duga_sidebar />
         @endif
-      </div>
+      </aside>
       <main>
         <article>
           {{ $slot }}
