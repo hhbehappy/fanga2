@@ -60,7 +60,7 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-wrap justify-center bg-green-200 h-full my-24">
+  <div class="flex flex-wrap justify-center h-full my-24">
     <div class="w-11/12">
       <ul class="flex list-none flex-wrap pt-3 pb-2 flex-row text-xs md:text-base cursor-pointer">
         <li class="-mb-px flex-auto text-center w-1/3">
