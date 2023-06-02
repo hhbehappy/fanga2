@@ -13,28 +13,21 @@ const path = location.pathname;
   <div class="flex flex-col mx-auto min-h-screen max-w-[1320px]">
     <Header />
     <div class="flex flex-grow">
-      <div class="">
+      <aside>
         <div v-if="path.includes('fanza') === true">
           <FanzaSideBar />
         </div>
         <div v-else-if="path.includes('duga') === true">
           <DugaSideBar />
         </div>
-        <div v-else-if="path.includes('mypage') === true">
-          <MypageSideBar />
-        </div>
         <div v-else>
           <SideBar />
         </div>
-      </div>
-      <main class="">
-        <article>
-          <slot />
-        </article>
+      </aside>
+      <main>
+        <slot />
       </main>
     </div>
     <Footer />
   </div>
-  
-
 </template>

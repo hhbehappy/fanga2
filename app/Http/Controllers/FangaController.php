@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Carbon\Carbon;
 use App\Models\Fanza;
+use App\Models\FanzaNice;
 use App\Models\FanzaReleaseMemo;
 use App\Models\Duga;
+use App\Models\DugaNice;
 use App\Models\DugaReleaseMemo;
 
 class FangaController extends Controller
@@ -24,6 +26,8 @@ class FangaController extends Controller
             'fanzamemos'    => FanzaReleasememo::releaseLists(),
             'myflists'      => FanzaReleaseMemo::myLists(),
             'myflistcount'  => FanzaReleaseMemo::myLists()->count(),
+            'myfnices'      => FanzaNice::myNices(),
+            'myfnicecount'  => FanzaNice::myNices()->count(),
             'dvideoids'     => Duga::dVideoIds(30),
             'dugacount'     => Duga::count(),
             'dugaperformers'=> Duga::dugaLists('performer'),
@@ -32,6 +36,8 @@ class FangaController extends Controller
             'dugamemos'     => DugaReleasememo::releaseLists(),
             'mydlists'      => DugaReleaseMemo::myLists(),
             'mydlistcount'  => DugaReleaseMemo::myLists()->count(),
+            'mydnices'      => DugaNice::myNices(),
+            'mydnicecount'  => DugaNice::myNices()->count(),
         ]);
     }
 
