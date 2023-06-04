@@ -23,7 +23,7 @@ defineProps({
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
         </svg>
-        公開メモの多い順
+        メモの多い順
       </Link>
       <Link :href="route('dlist.series_nice')" class="flex py-1 px-6 mx-2 mb-2 bg-gray-800 hover:bg-red-600 items-center">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
@@ -45,8 +45,8 @@ defineProps({
       <div v-for="serieslist in serieslists" :key="serieslist.id">
         <div v-if="serieslist.series" class="w-36 mr-5 md:mr-1 mb-4">
           <a :href="route('dlist.show', { sort: 'series', keyword: serieslist.series })" class="p-2 border-2 text-blue-500 text-center inline-block">
-            <img v-if="serieslist.jacketimage" :src="serieslist.jacketimage" :alt="'【DUGA】' + serieslist.title" class="h-40 w-28">
-            <img v-else :src="serieslist.posterimage" :alt="'【DUGA】' + serieslist.title + 'のメイン画像'" class="h-40 w-28">
+            <img v-if="serieslist.jacketimage" :src="serieslist.jacketimage" :alt="'【DUGA】シリーズ「' + serieslist.series + '」'" class="h-40 w-28">
+            <img v-else :src="serieslist.posterimage" :alt="'【DUGA】シリーズ「' + serieslist.series + '」'" class="h-40 w-28">
             <span class="w-28 -mb-2 text-sm inline-block truncate">{{ serieslist.series }}</span>
           </a>
         </div>

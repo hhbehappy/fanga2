@@ -45,8 +45,8 @@ defineProps({
       <div v-for="makernicelist in makernicelists" :key="makernicelist.id">
         <div v-if="makernicelist.maker" class="w-36 mr-5 md:mr-1 mb-4">
           <a :href="route('dlist.show', { sort: 'maker', keyword: makernicelist.maker })" class="p-2 border-2 text-blue-500 text-center inline-block">
-            <img v-if="makernicelist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + makernicelist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + makernicelist.title + 'のジャケット画像'" class="h-40 w-28">
-            <img v-else :src="'https://pic.duga.jp/unsecure/' + makernicelist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + makernicelist.title + 'のメイン画像'" class="h-40 w-28">
+            <img v-if="makernicelist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + makernicelist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】AVメーカー「' + makernicelist.maker + '」'" class="h-40 w-28">
+            <img v-else :src="'https://pic.duga.jp/unsecure/' + makernicelist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】AVメーカー「' + makernicelist.maker + '」'" class="h-40 w-28">
             <span class="w-28 -mb-2 text-sm inline-block truncate">{{ makernicelist.maker }}</span>
           </a>
         </div>

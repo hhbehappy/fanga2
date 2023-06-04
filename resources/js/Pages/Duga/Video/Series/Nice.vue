@@ -45,8 +45,8 @@ defineProps({
       <div v-for="seriesnicelist in seriesnicelists" :key="seriesnicelist.id">
         <div v-if="seriesnicelist.series" class="w-36 mr-5 md:mr-1 mb-4">
           <a :href="route('dlist.show', { sort: 'series', keyword: seriesnicelist.series })" class="p-2 border-2 text-blue-500 text-center inline-block">
-            <img v-if="seriesnicelist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + seriesnicelist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】' + seriesnicelist.title + 'のジャケット画像'" class="h-40 w-28">
-            <img v-else :src="'https://pic.duga.jp/unsecure/' + seriesnicelist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】' + seriesnicelist.title + 'のメイン画像'" class="h-40 w-28">
+            <img v-if="seriesnicelist.jacketimage" :src="'https://pic.duga.jp/unsecure/' + seriesnicelist.re_productid + '/noauth/jacket_240.jpg'" :alt="'【DUGA】シリーズ「' + seriesnicelist.series + '」'" class="h-40 w-28">
+            <img v-else :src="'https://pic.duga.jp/unsecure/' + seriesnicelist.re_productid + '/noauth/180x180.jpg'" :alt="'【DUGA】シリーズ「' + seriesnicelist.series + '」'" class="h-40 w-28">
             <span class="w-28 -mb-2 text-sm inline-block truncate">{{ seriesnicelist.series }}</span>
           </a>
         </div>

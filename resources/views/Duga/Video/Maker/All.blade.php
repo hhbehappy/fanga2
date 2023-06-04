@@ -40,9 +40,9 @@
         <div class="w-36 mr-5 md:mr-2 mb-4">
           <a href="{{ route('dlist.show', [ 'sort' => 'maker', 'keyword' => $makeralllist->maker ]) }}" class="p-2 border-2 text-blue-500 text-center inline-block">
             @if( $makeralllist->jacketimage )
-            <img src="<?php echo $makeralllist->jacketimage ?>" alt="【DUGA】<?php echo $makeralllist->title ?>のメイン画像" class="h-40 w-[118px] inline-block px-1 mb-4">
+            <img src="<?php echo $makeralllist->jacketimage ?>" alt="【DUGA】AVメーカー「<?php echo $makeralllist->maker ?>」" class="h-40 w-[118px] inline-block px-1">
             @else
-            <img src="<?php echo $makeralllist->posterimage ?>" alt="【DUGA】<?php echo $makeralllist->title ?>のメイン画像" class="h-40 w-[118px] inline-block px-1 mb-4">
+            <img src="<?php echo $makeralllist->posterimage ?>" alt="【DUGA】AVメーカー「<?php echo $makeralllist->maker ?>」" class="h-40 w-[118px] inline-block px-1">
             @endif
             <span class="w-28 -mb-2 text-sm inline-block truncate">{{ $makeralllist->maker }}</span>
           </a>

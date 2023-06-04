@@ -39,7 +39,7 @@ defineProps({
       <div v-for="actressnicelist in actressnicelists" :key="actressnicelist.id">
         <div v-if="actressnicelist.actress" class="w-36 mr-5 md:mr-2 mb-4">
           <a :href="route('flist.show', { sort: 'actress', keyword: actressnicelist.actress })" class="p-2 border-2 text-blue-500 text-center inline-block">
-            <img :src="'https://pics.dmm.co.jp/digital/video/' + actressnicelist.content_id  + '/' + actressnicelist.content_id + 'ps.jpg'" :alt="'【FANZA】' + actressnicelist.title + 'のメイン画像'" class="h-40">
+            <img :src="'https://pics.dmm.co.jp/digital/video/' + actressnicelist.content_id  + '/' + actressnicelist.content_id + 'ps.jpg'" :alt="'【FANZA】AV女優「' + actressnicelist.actress + '」'" class="h-40">
             <span class="w-28 -mb-2 text-sm inline-block truncate">{{ actressnicelist.actress }}</span>
           </a>
         </div>

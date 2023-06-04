@@ -39,7 +39,7 @@
         @foreach ( $seriesalllists as $seriesalllist )
         <div class="w-36 mr-5 md:mr-2 mb-4">
           <a href="{{ route('flist.show', [ 'sort' => 'series', 'keyword' => $seriesalllist->series ]) }}" class="p-2 border-2 text-blue-500 text-center inline-block">
-            <img src="<?php echo 'https://pics.dmm.co.jp/digital/video/' .  $seriesalllist->content_id  . '/' .  $seriesalllist->content_id   . 'ps.jpg'; ?>" alt="【FANZA】 <?php echo $seriesalllist->title ?>のメイン画像" class="h-40">
+            <img src="<?php echo 'https://pics.dmm.co.jp/digital/video/' .  $seriesalllist->content_id  . '/' .  $seriesalllist->content_id   . 'ps.jpg'; ?>" alt="【FANZA】シリーズ「<?php echo $seriesalllist->series ?>」" class="h-40">
             <span class="w-28 -mb-2 text-sm inline-block truncate">{{ $seriesalllist->series }}</span>
           </a>
         </div>

@@ -45,8 +45,8 @@ defineProps({
       <div v-for="makerlist in makerlists" :key="makerlist.id">
         <div v-if="makerlist.maker" class="w-36 mr-5 md:mr-1 mb-4">
           <a :href="route('dlist.show', { sort: 'maker', keyword: makerlist.maker })" class="p-2 border-2 text-blue-500 text-center inline-block">
-            <img v-if="makerlist.jacketimage" :src="makerlist.jacketimage" :alt="'【DUGA】' + makerlist.title + 'のジャケット画像'" class="h-40 w-28">
-            <img v-else :src="makerlist.posterimage" :alt="'【DUGA】' + makerlist.title + 'のメイン画像'" class="h-40 w-28">
+            <img v-if="makerlist.jacketimage" :src="makerlist.jacketimage" :alt="'【DUGA】AVメーカー「' + makerlist.maker + '」'" class="h-40 w-28">
+            <img v-else :src="makerlist.posterimage" :alt="'【DUGA】AVメーカー「' + makerlist.maker + '」'" class="h-40 w-28">
             <span class="w-28 -mb-2 text-sm inline-block truncate">{{ makerlist.maker }}</span>
           </a>
         </div>
