@@ -45,7 +45,7 @@ class DugaReleaseMemo extends Model
 
     public static function myLists(){
         // 詳細ページのユーザーのメモした動画
-        $mylists = DugaReleaseMemo::with('duga')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('re_productid')->take(20);
+        $mylists = DugaReleaseMemo::with('duga')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('re_productid')->take(30);
 
         return $mylists;
     }
@@ -53,7 +53,7 @@ class DugaReleaseMemo extends Model
     public static function releaseLists(){
         // トップページのメモされた動画
         // 詳細ページの最近メモされた動画
-        $releaselists = DugaReleaseMemo::with('duga')->latest('updated_at')->get()->unique('re_productid')->take(20);
+        $releaselists = DugaReleaseMemo::with('duga')->latest('updated_at')->get()->unique('re_productid')->take(30);
     
         return $releaselists;
     }

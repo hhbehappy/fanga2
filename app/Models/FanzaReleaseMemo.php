@@ -44,7 +44,7 @@ class FanzaReleaseMemo extends Model
 
     public static function myLists(){
         // 詳細ページのユーザーのメモした動画
-        $mylists = FanzaReleaseMemo::with('fanza')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('content_id')->take(20);
+        $mylists = FanzaReleaseMemo::with('fanza')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('content_id')->take(30);
 
         return $mylists;
     }
@@ -52,7 +52,7 @@ class FanzaReleaseMemo extends Model
     public static function releaseLists(){
         // トップページのメモされた動画
         // 詳細ページの最近メモされた動画
-        $releaselists = FanzaReleaseMemo::with('fanza')->latest('updated_at')->get()->unique('content_id')->take(20);
+        $releaselists = FanzaReleaseMemo::with('fanza')->latest('updated_at')->get()->unique('content_id')->take(30);
 
         return $releaselists;
     }
