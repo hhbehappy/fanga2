@@ -45,7 +45,7 @@ defineProps({
       <div v-for="seriesnicelist in seriesnicelists" :key="seriesnicelist.id">
         <div v-if="seriesnicelist.series" class="w-36 mr-5 md:mr-2 mb-4">
           <a :href="route('flist.show', { sort: 'series', keyword: seriesnicelist.series })" class="p-2 border-2 text-blue-500 text-center inline-block">
-            <img :src="'https://pics.dmm.co.jp/digital/video/' + seriesnicelist.content_id  + '/' + seriesnicelist.content_id + 'ps.jpg'" :alt="'【FANZA】' + seriesnicelist.title + 'のメイン画像'" class="h-40">
+            <img :src="'https://pics.dmm.co.jp/digital/video/' + seriesnicelist.content_id  + '/' + seriesnicelist.content_id + 'ps.jpg'" :alt="'【FANZA】シリーズ「' + seriesnicelist.series + '」'" class="h-40">
             <span class="w-28 -mb-2 text-sm inline-block truncate">{{ seriesnicelist.series }}</span>
           </a>
         </div>

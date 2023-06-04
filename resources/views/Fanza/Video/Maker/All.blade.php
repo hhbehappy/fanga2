@@ -49,7 +49,7 @@
             class="p-2 border-2 text-blue-500 text-center inline-block">
             <img
               src="<?php echo 'https://pics.dmm.co.jp/digital/video/' .  $makeralllist->content_id  . '/' .  $makeralllist->content_id   . 'ps.jpg'; ?>"
-              alt="【FANZA】 <?php echo $makeralllist->title ?>のメイン画像" class="h-40">
+              alt="【FANZA】AVメーカー「<?php echo $makeralllist->maker ?>」" class="h-40">
             <span class="w-28 -mb-2 text-sm inline-block truncate">{{ $makeralllist->maker }}</span>
           </a>
         </div>

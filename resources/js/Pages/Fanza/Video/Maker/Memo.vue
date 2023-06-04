@@ -45,7 +45,7 @@ defineProps({
       <div v-for="makermemolist in makermemolists" :key="makermemolist.id">
         <div v-if="makermemolist.maker" class="w-36 mr-5 md:mr-2 mb-4">
           <a :href="route('flist.show', { sort: 'maker', keyword: makermemolist.maker })" class="p-2 border-2 text-blue-500 text-center inline-block">
-            <img :src="'https://pics.dmm.co.jp/digital/video/' + makermemolist.content_id  + '/' + makermemolist.content_id + 'ps.jpg'" :alt="'【FANZA】' + makermemolist.title + 'のメイン画像'" class="h-40">
+            <img :src="'https://pics.dmm.co.jp/digital/video/' + makermemolist.content_id  + '/' + makermemolist.content_id + 'ps.jpg'" :alt="'【FANZA】AVメーカー「' + makermemolist.maker + '」'" class="h-40">
             <span class="w-28 -mb-2 text-sm inline-block truncate">{{ makermemolist.maker }}</span>
           </a>
         </div>

@@ -55,7 +55,7 @@ defineProps({
               class="p-2 border-2 text-blue-500 text-center inline-block">
               <img
                 :src="'https://pics.dmm.co.jp/digital/video/' + makerlist.content_id  + '/' + makerlist.content_id + 'ps.jpg'"
-                :alt="'【FANZA】' + makerlist.title + 'のメイン画像'" class="h-40">
+                :alt="'【FANZA】AVメーカー「' + makerlist.maker + '」'" class="h-40">
             <span class="w-28 -mb-2 text-sm inline-block truncate">{{ makerlist.maker }}</span>
           </a>
         </div>
