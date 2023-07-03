@@ -21,7 +21,7 @@ const form = useForm({
 <template>
     <section>
         <header>
-            <h2 class="text-lg font-medium text-gray-900">アカウント情報の変更ができます。</h2>
+            <h2 class="text-lg font-bold text-gray-900">アカウント情報の変更ができます。</h2>
 
         </header>
 

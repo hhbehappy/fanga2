@@ -63,7 +63,15 @@ Route::group(['prefix' => 'sitemap'], function () {
 
 // マイページ
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/mypage', [ProfileController::class, 'edit'])->name('mypage');
+Route::get('/mypage/fanza/release', [ProfileController::class, 'fanza_release'])->name('mypage');
+Route::get('/mypage/fanza/private', [ProfileController::class, 'fanza_private'])->name('mypage.fanza_private');
+Route::get('/mypage/fanza/free', [ProfileController::class, 'fanza_free'])->name('mypage.fanza_free');
+Route::get('/mypage/fanza/nice', [ProfileController::class, 'fanza_nice'])->name('mypage.fanza_nice');
+Route::get('/mypage/duga/private', [ProfileController::class, 'duga_private'])->name('mypage.duga_private');
+Route::get('/mypage/duga/release', [ProfileController::class, 'duga_release'])->name('mypage.duga_release');
+Route::get('/mypage/duga/free', [ProfileController::class, 'duga_free'])->name('mypage.duga_free');
+Route::get('/mypage/duga/nice', [ProfileController::class, 'duga_nice'])->name('mypage.duga_nice');
+Route::get('/mypage/account', [ProfileController::class, 'account'])->name('mypage.account');
     Route::patch('/mypage', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/mypage', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FanzaFreeMemo extends Model
 {
@@ -38,11 +39,44 @@ class FanzaFreeMemo extends Model
         return $fanza_free_memos;
     }
 
-    public static function freeMemoList(){
+    public static function freeMemoLists($group, $sort, $hits)
+    {
         // マイページ
-        $free_memo_lists = FanzaFreeMemo::with('fanza')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('content_id')->take(10);
-    
+        if ($group) {
+            if ($sort === 'oldest') {
+                $free_memo_lists = FanzaFreeMemo::with('fanza:content_id,title')->whereUser_id(Auth::id())->whereContent_id($group)->oldest('updated_at')->paginate($hits);
+            }
+            if ($sort === 'latest') {
+                $free_memo_lists = FanzaFreeMemo::with('fanza:content_id,title')->whereUser_id(Auth::id())->whereContent_id($group)->latest('updated_at')->paginate($hits);
+            }
+        } else {
+            if ($sort === 'oldest') {
+                $free_memo_lists = FanzaFreeMemo::with('fanza:content_id,title')->whereUser_id(Auth::id())->oldest('updated_at')->paginate($hits);
+            }
+            if ($sort === 'latest') {
+                $free_memo_lists = FanzaFreeMemo::with('fanza:content_id,title')->whereUser_id(Auth::id())->latest('updated_at')->paginate($hits);
+            }
+        }
+
         return $free_memo_lists;
+    }
+
+    public static function freeMemoVideoLists($sort, $hits)
+    {
+        // マイページ
+        if ($sort === 'oldest') {
+            $free_memo_video_lists = FanzaFreeMemo::with(['fanza.fanza_nice' => function ($query) {
+                $query->whereUser_id(Auth::id());
+            }])->with('fanza:content_id,title')->select('fanza_id', 'content_id', DB::raw('MAX(updated_at) as updated_at'))->groupBy('content_id')->whereUser_id(Auth::id())->oldest('updated_at')->paginate($hits);
+        }
+
+        if ($sort === 'latest') {
+            $free_memo_video_lists = FanzaFreeMemo::with(['fanza.fanza_nice' => function ($query) {
+                $query->whereUser_id(Auth::id());
+            }])->with('fanza:content_id,title')->select('fanza_id', 'content_id', DB::raw('MAX(updated_at) as updated_at'))->groupBy('content_id')->whereUser_id(Auth::id())->latest('updated_at')->paginate($hits);
+        }
+
+        return $free_memo_video_lists;
     }
 
     public static function store($request, $fanza_id, $content_id)

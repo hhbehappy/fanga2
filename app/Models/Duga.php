@@ -8,13 +8,16 @@ use Carbon\Carbon;
 
 class Duga extends Model
 {
-    use HasFactory;
+    use HasFactory, SerializeDate;
 
     protected $table = "dugas";
     protected $primaryKey = 'productid';
     protected $keyType = 'string';
     protected $dates = ['date'];
-    protected $casts = ['date' => 'date'];
+    protected $casts = [
+        'updated_at' => 'datetime:Y年m月d日 H:i:s',
+        'date' => 'date'
+    ];
     public $incrementing = false;
 
     protected $fillable = [
@@ -47,6 +50,26 @@ class Duga extends Model
     
     public function user() {
         return $this->belongsTo('App\Models\User');
+    }
+
+    public function duga_nice()
+    {
+        return $this->hasOne(DugaNice::class, 'productid');
+    }
+
+    public function duga_free_memos()
+    {
+        return $this->hasMany(DugaFreeMemo::class, 'productid');
+    }
+
+    public function duga_release_memos()
+    {
+        return $this->hasMany(DugaReleaseMemo::class, 'productid');
+    }
+
+    public function duga_private_memos()
+    {
+        return $this->hasMany(DugaPrivateMemo::class, 'productid');
     }
 
     public static function index()

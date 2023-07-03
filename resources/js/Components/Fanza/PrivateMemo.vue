@@ -33,11 +33,11 @@ const destroyPrivateMemo = id => {
           <span class="w-44 mt-2 ml-4 text-sm text-zinc-500 inline-block">
             {{ fanza_private_memo.updated_at }}</span>
         </div>
-        <div class="flex">
+        <div class="flex items-center">
           <Link as="button"
             :href="route('fvideo.edit', { type: 'private', content_id: fanza_private_memo.content_id, memoid: fanza_private_memo.id }) + '#editmemo'">
           <button type="button"
-            class="mt-2 mx-2 px-3 py-1 bg-green-600 text-white font-semibold text-xs leading-normal uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out flex align-center">
+            class="mt-2 mx-2 px-1.5 py-0.5 bg-green-600 text-white font-semibold text-xs leading-normal rounded shadow-md hover:bg-green-700 flex align-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-3 h-4 mr-1 inline-block">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -47,9 +47,9 @@ const destroyPrivateMemo = id => {
           </button>
           </Link>
           <button type="button" @click="destroyPrivateMemo(fanza_private_memo.id)"
-            class="mt-2 px-2 py-1 bg-red-600 text-white font-semibold text-xs leading-normal uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out flex align-center">
+            class="mt-2 px-1 py-0.5 bg-red-600 text-white font-semibold text-xs leading-normal rounded shadow-md hover:bg-red-700 flex align-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="w-4 h-4 my-auto mr-1">
+              stroke="currentColor" class="w-3 h-3 my-auto mr-1">
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>

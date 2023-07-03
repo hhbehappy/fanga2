@@ -6,15 +6,11 @@ import Footer from '@/Components/Parts/Footer.vue';
 
 <template>
   <div class="flex flex-col mx-auto min-h-screen max-w-[1320px]">
-  <Header />
-    <main>
-      <div class="flex flex-grow mx-auto">
-        <div class="">
-          <article>
-            <slot />
-          </article>
-        </div>
-      </div>
+    <Header />
+    <main class="flex-grow">
+      <article>
+        <slot />
+      </article>
     </main>
     <Footer />
   </div>

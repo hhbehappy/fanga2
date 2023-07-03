@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
 use App\Services\SideBarRandomOrder;
-use App\Services\MemoCount;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -45,16 +44,6 @@ class HandleInertiaRequests extends Middleware
                 'message' => fn () => $request->session()->get('message'),
                 'nicemessage' => fn () => $request->session()->get('nicemessage'),
                 'status' => fn () => $request->session()->get('status'),
-            ],
-            'count' => [
-                'fanzafreememo' => MemoCount::fanzaFreeMemo(),
-                'fanzareleasememo' => MemoCount::fanzaReleaseMemo(),
-                'fanzaprivatememo' => MemoCount::fanzaPrivateMemo(),
-                'dugafreememo' => MemoCount::dugaFreeMemo(),
-                'dugareleasememo' => MemoCount::dugaReleaseMemo(),
-                'dugaprivatememo' => MemoCount::dugaPrivateMemo(),
-                'fanzanice' => MemoCount::fanzaNice(),
-                'duganice' => MemoCount::dugaNice(),
             ],
             'sidebar' => [
                 'fanzagenre' => SideBarRandomOrder::fanzaGenre(),

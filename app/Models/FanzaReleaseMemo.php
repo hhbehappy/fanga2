@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class FanzaReleaseMemo extends Model
 {
-    use HasFactory,SerializeDate;
-    
+    use HasFactory, SerializeDate;
+
     protected $touches = ['fanza'];
     protected $table = "fanza_release_memos";
     protected $casts = [
@@ -42,32 +42,36 @@ class FanzaReleaseMemo extends Model
         return $this->belongsTo(Fanza::class, 'content_id');
     }
 
-    public static function myLists(){
+    public static function myLists()
+    {
         // 詳細ページのユーザーのメモした動画
-        $mylists = FanzaReleaseMemo::with('fanza')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('content_id')->take(20);
+        $mylists = FanzaReleaseMemo::with('fanza')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('content_id')->take(30);
 
         return $mylists;
     }
 
-    public static function releaseLists(){
+    public static function releaseLists()
+    {
         // トップページのメモされた動画
         // 詳細ページの最近メモされた動画
-        $releaselists = FanzaReleaseMemo::with('fanza')->latest('updated_at')->get()->unique('content_id')->take(20);
+        $releaselists = FanzaReleaseMemo::with('fanza')->latest('updated_at')->get()->unique('content_id')->take(30);
 
         return $releaselists;
     }
 
-    public static function releaseAllLists(){
+    public static function releaseAllLists()
+    {
         // 最近メモされた動画の一覧ページ
         $releasealllists = FanzaReleaseMemo::with('fanza')->groupBy('content_id')->latest('updated_at')->paginate(100);
 
         return $releasealllists;
     }
 
-    public static function fanzaReleaseMemos($content_id){
+    public static function fanzaReleaseMemos($content_id)
+    {
         // 詳細ページのメモリスト
         $fanza_release_memos = FanzaReleaseMemo::whereContent_id($content_id)->latest('updated_at')->take(10)->get();
-        
+
         return $fanza_release_memos;
     }
 
@@ -82,10 +86,10 @@ class FanzaReleaseMemo extends Model
     public static function fanzaReleaseMemoAllListSort($sort, $content_id)
     {
         // メモの一覧ページ
-        if($sort === 'oldest'){
+        if ($sort === 'oldest') {
             $releasememosort = FanzaReleaseMemo::with('fanza')->whereContent_id($content_id)->oldest('updated_at')->get();
         }
-        if($sort === 'latest'){
+        if ($sort === 'latest') {
             $releasememosort = FanzaReleaseMemo::with('fanza')->whereContent_id($content_id)->latest('updated_at')->get();
         }
 
@@ -94,14 +98,15 @@ class FanzaReleaseMemo extends Model
     public static function fanzaReleaseMemoAllListLatest($content_id)
     {
         // メモの最新50件のページ
-            $releasememolatest = FanzaReleaseMemo::with('fanza')->whereContent_id($content_id)->latest('updated_at')->take(50)->get();
+        $releasememolatest = FanzaReleaseMemo::with('fanza')->whereContent_id($content_id)->latest('updated_at')->take(50)->get();
 
         return $releasememolatest;
     }
 
-    public static function editReleaseMemos($memoid){
+    public static function editReleaseMemos($memoid)
+    {
         $edit_release_memos = FanzaReleaseMemo::whereId($memoid)->get();
-    
+
         return $edit_release_memos;
     }
 
@@ -117,12 +122,44 @@ class FanzaReleaseMemo extends Model
         return $memolists;
     }
 
-    public static function releaseMemoList()
+    public static function releaseMemoLists($group, $sort, $hits)
     {
         // マイページ
-        $release_memo_lists = FanzaReleaseMemo::with('fanza')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('content_id')->take(10);
+        if ($group) {
+            if ($sort === 'oldest') {
+                $release_memo_lists = FanzaReleaseMemo::with('fanza:content_id,title')->whereUser_id(Auth::id())->whereContent_id($group)->oldest('updated_at')->paginate($hits);
+            }
+            if ($sort === 'latest') {
+                $release_memo_lists = FanzaReleaseMemo::with('fanza:content_id,title')->whereUser_id(Auth::id())->whereContent_id($group)->latest('updated_at')->paginate($hits);
+            }
+        } else {
+            if ($sort === 'oldest') {
+                $release_memo_lists = FanzaReleaseMemo::with('fanza:content_id,title')->whereUser_id(Auth::id())->oldest('updated_at')->paginate($hits);
+            }
+            if ($sort === 'latest') {
+                $release_memo_lists = FanzaReleaseMemo::with('fanza:content_id,title')->whereUser_id(Auth::id())->latest('updated_at')->paginate($hits);
+            }
+        }
 
         return $release_memo_lists;
+    }
+
+    public static function releaseMemoVideoLists($sort, $hits)
+    {
+        // マイページ
+        if ($sort === 'oldest') {
+            $release_memo_video_lists = FanzaReleaseMemo::with(['fanza.fanza_nice' => function ($query) {
+                $query->whereUser_id(Auth::id());
+            }])->with('fanza:content_id,title')->select('fanza_id', 'content_id', DB::raw('MAX(updated_at) as updated_at'))->groupBy('content_id')->whereUser_id(Auth::id())->oldest('updated_at')->paginate($hits);
+        }
+
+        if ($sort === 'latest') {
+            $release_memo_video_lists = FanzaReleaseMemo::with(['fanza.fanza_nice' => function ($query) {
+                $query->whereUser_id(Auth::id());
+            }])->with('fanza:content_id,title')->select('fanza_id', 'content_id', DB::raw('MAX(updated_at) as updated_at'))->groupBy('content_id')->whereUser_id(Auth::id())->latest('updated_at')->paginate($hits);
+        }
+
+        return $release_memo_video_lists;
     }
 
     public static function store($request, $fanza_id, $content_id)
@@ -130,18 +167,18 @@ class FanzaReleaseMemo extends Model
         $fanza = Fanza::find($content_id);
         $fanza->touch();
 
-        if (FanzaReleaseMemo::whereId($request->get('f_no'))->exists()){
+        if (FanzaReleaseMemo::whereId($request->get('f_no'))->exists()) {
             $f_links = FanzaReleaseMemo::whereId($request->get('f_no'))->select('content_id')->get();
-            foreach ($f_links as $f_link){
+            foreach ($f_links as $f_link) {
                 $f_link = $f_link->content_id;
             }
         } else {
             $f_link = '';
         }
 
-        if (DugaReleaseMemo::whereId($request->get('d_no'))->exists()){
+        if (DugaReleaseMemo::whereId($request->get('d_no'))->exists()) {
             $d_links = DugaReleaseMemo::whereId($request->get('d_no'))->select('productid')->get();
-            foreach($d_links as $d_link){
+            foreach ($d_links as $d_link) {
                 $d_link = $d_link->productid;
             }
         } else {
@@ -164,10 +201,10 @@ class FanzaReleaseMemo extends Model
         ]);
 
         return back()
-        ->with([
-            'message' => 'メモを送信しました。',
-            'status'  => 'release'
-        ]);
+            ->with([
+                'message' => 'メモを送信しました。',
+                'status'  => 'release'
+            ]);
     }
 
     public static function change($request, $id)
@@ -182,15 +219,14 @@ class FanzaReleaseMemo extends Model
 
     public static function destroy($id)
     {
-        
+
         $release_memo = FanzaReleaseMemo::findOrFail($id);
         $release_memo->delete();
 
         return back()
-        ->with([
-            'message' => 'メモを削除しました。',
-            'status'  => 'delete'
-        ]);
+            ->with([
+                'message' => 'メモを削除しました。',
+                'status'  => 'delete'
+            ]);
     }
-
 }

@@ -8,13 +8,16 @@ use Carbon\Carbon;
 
 class Fanza extends Model
 {
-    use HasFactory;
+    use HasFactory, SerializeDate;
 
     protected $table = "fanzas";
     protected $primaryKey = 'content_id';
     protected $keyType = 'string';
     protected $dates = ['date'];
-    protected $casts = ['date' => 'date'];
+    protected $casts = [
+        'updated_at' => 'datetime:Y年m月d日 H:i:s',
+        'date' => 'date'
+    ];
     public $incrementing = false;
 
     protected $fillable = [
@@ -46,6 +49,27 @@ class Fanza extends Model
         return $this->belongsTo('App\Models\User');
     }
 
+    public function fanza_nice()
+    {
+        return $this->hasOne(FanzaNice::class, 'content_id');
+    }
+
+    public function fanza_free_memos()
+    {
+        return $this->hasMany(FanzaFreeMemo::class, 'content_id');
+    }
+
+    public function fanza_release_memos()
+    {
+        return $this->hasMany(FanzaReleaseMemo::class, 'content_id');
+    }
+
+    public function fanza_private_memos()
+    {
+        return $this->hasMany(FanzaPrivateMemo::class, 'content_id');
+    }
+
+
     public static function index()
     {
         $videoids = Fanza::latest('date')->paginate(100);
@@ -57,28 +81,30 @@ class Fanza extends Model
     {
         Fanza::updateOrCreate(
             ['content_id'        => $request->get('content_id')],
-            ['content_id'        => $request->get('content_id'),
-            'title'              => $request->get('title'),
-            'affiliateURL'       => $request->get('affiliateURL'),
-            'volume'             => $request->get('volume'),
-            'maker'              => $request->get('maker'),
-            'label'              => $request->get('label'),
-            'series'             => $request->get('series'),
-            'actress'            => $request->get('actress'),
-            'ruby'               => $request->get('ruby'),
-            'director'           => $request->get('director'),
-            'genre'              => $request->get('genre'),
-            'genre1'             => $request->get('genre1'),
-            'genre2'             => $request->get('genre2'),
-            'genre3'             => $request->get('genre3'),
-            'genre4'             => $request->get('genre4'),
-            'genre5'             => $request->get('genre5'),
-            'genre6'             => $request->get('genre6'),
-            'genre7'             => $request->get('genre7'),
-            'genre8'             => $request->get('genre8'),
-            'genre9'             => $request->get('genre9'),
-            'date'               => $request->get('date'),
-        ]);
+            [
+                'content_id'        => $request->get('content_id'),
+                'title'              => $request->get('title'),
+                'affiliateURL'       => $request->get('affiliateURL'),
+                'volume'             => $request->get('volume'),
+                'maker'              => $request->get('maker'),
+                'label'              => $request->get('label'),
+                'series'             => $request->get('series'),
+                'actress'            => $request->get('actress'),
+                'ruby'               => $request->get('ruby'),
+                'director'           => $request->get('director'),
+                'genre'              => $request->get('genre'),
+                'genre1'             => $request->get('genre1'),
+                'genre2'             => $request->get('genre2'),
+                'genre3'             => $request->get('genre3'),
+                'genre4'             => $request->get('genre4'),
+                'genre5'             => $request->get('genre5'),
+                'genre6'             => $request->get('genre6'),
+                'genre7'             => $request->get('genre7'),
+                'genre8'             => $request->get('genre8'),
+                'genre9'             => $request->get('genre9'),
+                'date'               => $request->get('date'),
+            ]
+        );
     }
 
     public static function destroy($id)
@@ -186,7 +212,7 @@ class Fanza extends Model
 
     public static function columnSearch($column, $keyword)
     {
-        if(!empty($keyword)){
+        if (!empty($keyword)) {
             $columnsearchlists = Fanza::where($column, 'like', $keyword . '%')->groupBy($column)->oldest($column)->paginate(100);
         }
 

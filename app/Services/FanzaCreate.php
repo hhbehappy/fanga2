@@ -22,6 +22,7 @@ class FanzaCreate
       'offset'        => '',
       'sort'          => '',
       'keyword'       => '-期間限定セール -VR -ゲイ',
+      'gte_date'      => '2018-01-01T00:00:00',
       'output'        => 'json',
     );
     $url = "https://api.dmm.com/affiliate/v3/ItemList?";
