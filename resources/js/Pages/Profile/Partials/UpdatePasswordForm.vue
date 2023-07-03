@@ -36,7 +36,7 @@ const updatePassword = () => {
 <template>
     <section>
         <header>
-            <h2 class="text-lg font-medium text-gray-900">パスワードの変更ができます。</h2>
+            <h2 class="text-lg font-bold text-gray-900">パスワードの変更ができます。</h2>
 
         </header>
 

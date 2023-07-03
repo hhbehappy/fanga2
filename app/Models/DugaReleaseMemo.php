@@ -119,12 +119,44 @@ class DugaReleaseMemo extends Model
         return $memolists;
     }
 
-    public static function releaseMemoList()
+    public static function releaseMemoLists($group, $sort, $hits)
     {
         // マイページ
-        $release_memo_lists = DugaReleaseMemo::with('duga')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('re_productid')->take(10);
+        if ($group) {
+            if ($sort === 'oldest') {
+                $release_memo_lists = DugaReleaseMemo::with('duga:productid,title,jacketimage')->whereUser_id(Auth::id())->whereProductid($group)->oldest('updated_at')->paginate($hits);
+            }
+            if ($sort === 'latest') {
+                $release_memo_lists = DugaReleaseMemo::with('duga:productid,title,jacketimage')->whereUser_id(Auth::id())->whereProductid($group)->latest('updated_at')->paginate($hits);
+            }
+        } else {
+            if ($sort === 'oldest') {
+                $release_memo_lists = DugaReleaseMemo::with('duga:productid,title,jacketimage')->whereUser_id(Auth::id())->oldest('updated_at')->paginate($hits);
+            }
+            if ($sort === 'latest') {
+                $release_memo_lists = DugaReleaseMemo::with('duga:productid,title,jacketimage')->whereUser_id(Auth::id())->latest('updated_at')->paginate($hits);
+            }
+        }
 
         return $release_memo_lists;
+    }
+
+    public static function releaseMemoVideoLists($sort, $hits)
+    {
+        // マイページ
+        if ($sort === 'oldest') {
+            $release_memo_video_lists = DugaReleaseMemo::with(['duga.duga_nice' => function ($query) {
+                $query->whereUser_id(Auth::id());
+            }])->with('duga:productid,title,jacketimage')->select('duga_id', 'productid', 're_productid', DB::raw('MAX(updated_at) as updated_at'))->groupBy('productid')->whereUser_id(Auth::id())->oldest('updated_at')->paginate($hits);
+        }
+
+        if ($sort === 'latest') {
+            $release_memo_video_lists = DugaReleaseMemo::with(['duga.duga_nice' => function ($query) {
+                $query->whereUser_id(Auth::id());
+            }])->with('duga:productid,title,jacketimage')->select('duga_id', 'productid', 're_productid', DB::raw('MAX(updated_at) as updated_at'))->groupBy('productid')->whereUser_id(Auth::id())->latest('updated_at')->paginate($hits);
+        }
+
+        return $release_memo_video_lists;
     }
 
     public static function store($request, $duga_id, $productid)

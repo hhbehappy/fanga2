@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DugaPrivateMemo extends Model
 {
@@ -48,12 +49,44 @@ class DugaPrivateMemo extends Model
         return $edit_private_memos;
     }
 
-    public static function privateMemoList(){
-        $private_memo_lists = DugaPrivateMemo::select('title', 'duga_private_memos.productid', 're_productid', 'jacketimage', 'duga_private_memos.updated_at')
-        ->whereUser_id(Auth::id())->latest('updated_at')
-        ->leftJoin('dugas', 'duga_private_memos.productid', '=', 'dugas.productid')->get()->unique('re_productid');
-        
+    public static function privateMemoLists($group, $sort, $hits)
+    {
+        // マイページ
+        if ($group) {
+            if ($sort === 'oldest') {
+                $private_memo_lists = DugaPrivateMemo::with('duga:productid,title,jacketimage')->whereUser_id(Auth::id())->whereProductid($group)->oldest('updated_at')->paginate($hits);
+            }
+            if ($sort === 'latest') {
+                $private_memo_lists = DugaPrivateMemo::with('duga:productid,title,jacketimage')->whereUser_id(Auth::id())->whereProductid($group)->latest('updated_at')->paginate($hits);
+            }
+        } else {
+            if ($sort === 'oldest') {
+                $private_memo_lists = DugaPrivateMemo::with('duga:productid,title,jacketimage')->whereUser_id(Auth::id())->oldest('updated_at')->paginate($hits);
+            }
+            if ($sort === 'latest') {
+                $private_memo_lists = DugaPrivateMemo::with('duga:productid,title,jacketimage')->whereUser_id(Auth::id())->latest('updated_at')->paginate($hits);
+            }
+        }
+
         return $private_memo_lists;
+    }
+
+    public static function privateMemoVideoLists($sort, $hits)
+    {
+        // マイページ
+        if ($sort === 'oldest') {
+            $private_memo_video_lists = DugaPrivateMemo::with(['duga.duga_nice' => function ($query) {
+                $query->whereUser_id(Auth::id());
+            }])->with('duga:productid,title,jacketimage')->select('duga_id', 'productid', 're_productid', DB::raw('MAX(updated_at) as updated_at'))->groupBy('productid')->whereUser_id(Auth::id())->oldest('updated_at')->paginate($hits);
+        }
+
+        if ($sort === 'latest') {
+            $private_memo_video_lists = DugaPrivateMemo::with(['duga.duga_nice' => function ($query) {
+                $query->whereUser_id(Auth::id());
+            }])->with('duga:productid,title,jacketimage')->select('duga_id', 'productid', 're_productid', DB::raw('MAX(updated_at) as updated_at'))->groupBy('productid')->whereUser_id(Auth::id())->latest('updated_at')->paginate($hits);
+        }
+
+        return $private_memo_video_lists;
     }
 
     public static function store($request, $duga_id, $productid)

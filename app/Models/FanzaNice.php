@@ -9,9 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class FanzaNice extends Model
 {
-    use HasFactory;
+    use HasFactory, SerializeDate;
 
     protected $table = "fanza_nices";
+    protected $casts = [
+        'updated_at' => 'datetime:Y年m月d日 H:i:s',
+    ];
 
     protected $fillable = [
         'user_id',
@@ -46,7 +49,7 @@ class FanzaNice extends Model
 
     public static function unNice($content_id){
         
-        $nice=FanzaNice::where('content_id', $content_id)->first();
+        $nice=FanzaNice::whereContent_id($content_id)->first();
         $nice->delete();
 
         return back()
@@ -70,7 +73,7 @@ class FanzaNice extends Model
 
     public static function myNices(){
         // 詳細ページのユーザーの気になる動画
-        $mynices = FanzaNice::with('fanza')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('content_id')->take(20);
+        $mynices = FanzaNice::with('fanza:content_id,title')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('content_id')->take(20);
 
         return $mynices;
     }
@@ -86,11 +89,19 @@ class FanzaNice extends Model
         return $nicelists;
     }
 
-    public static function profileNiceList()
+    public static function niceVideoLists($sort, $hits)
     {
-        $profile_nice_lists = FanzaNice::with('fanza')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('content_id')->take(10);
+        // マイページ
+        if ($sort === 'oldest') {
+            $nice_video_lists = FanzaNice::with('fanza:content_id,title')->whereUser_id(Auth::id())->oldest('updated_at')->paginate($hits);
+        }
 
-        return $profile_nice_lists;
+        if ($sort === 'latest') {
+            $nice_video_lists = FanzaNice::with('fanza:content_id,title')->whereUser_id(Auth::id())->latest('updated_at')->paginate($hits);
+
+        }
+
+        return $nice_video_lists;
     }
     
 }

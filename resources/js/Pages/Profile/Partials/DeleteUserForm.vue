@@ -40,7 +40,7 @@ const closeModal = () => {
 <template>
     <section class="space-y-6">
         <header>
-            <h2 class="text-lg font-medium text-gray-900">退会</h2>
+            <h2 class="text-lg font-bold text-gray-900">退会</h2>
 
             <p class="mt-1 text-sm text-gray-600">
                 退会されるとアカウント情報が削除されます。<br>

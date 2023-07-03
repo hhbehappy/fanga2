@@ -9,9 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class DugaNice extends Model
 {
-    use HasFactory;
+    use HasFactory, SerializeDate;
 
     protected $table = "duga_nices";
+    protected $casts = [
+        'updated_at' => 'datetime:Y年m月d日 H:i:s',
+    ];
 
     protected $fillable = [
         'user_id',
@@ -90,10 +93,19 @@ class DugaNice extends Model
         return $nicelists;
     }
 
-    public static function profileNiceList()
+    public static function niceVideoLists($sort, $hits)
     {
-        $profile_nice_lists = DugaNice::with('duga')->whereUser_id(Auth::id())->latest('updated_at')->get()->unique('re_productid')->take(10);
+        // マイページ
+        if ($sort === 'oldest') {
+            $nice_video_lists = DugaNice::with('duga:productid,title,jacketimage')->whereUser_id(Auth::id())->oldest('updated_at')->paginate($hits);
+        }
 
-        return $profile_nice_lists;
+        if ($sort === 'latest') {
+            $nice_video_lists = DugaNice::with('duga:productid,title,jacketimage')->whereUser_id(Auth::id())->latest('updated_at')->paginate($hits);
+
+        }
+
+        return $nice_video_lists;
     }
+
 }

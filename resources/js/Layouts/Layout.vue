@@ -3,7 +3,6 @@ import Header from '@/Components/Parts/Header.vue';
 import SideBar from '@/Components/Parts/SideBar.vue';
 import FanzaSideBar from '@/Components/Parts/FanzaSideBar.vue';
 import DugaSideBar from '@/Components/Parts/DugaSideBar.vue';
-import MypageSideBar from '@/Components/Parts/MypageSideBar.vue';
 import Footer from '@/Components/Parts/Footer.vue';
 
 const path = location.pathname;

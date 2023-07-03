@@ -38,7 +38,7 @@ const destroyPrivateMemo = id => {
             <Link as="button"
               :href="route('dvideo.edit', { type: 'private', productid: duga_private_memo.productid, memoid: duga_private_memo.id }) + '#editmemo'">
             <button type="button"
-              class="mt-2 mx-2 px-3 py-1 bg-green-600 text-white font-semibold text-xs leading-normal uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out flex align-center">
+              class="mt-2 mx-2 px-1.5 py-0.5 bg-green-600 text-white font-semibold text-xs leading-normal rounded shadow-md hover:bg-green-700 flex align-center">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-3 h-4 mr-1 inline-block">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -48,7 +48,7 @@ const destroyPrivateMemo = id => {
             </button>
             </Link>
             <button type="button" @click="destroyPrivateMemo(duga_private_memo.id)"
-              class="mt-2 px-2 py-1 bg-red-600 text-white font-semibold text-xs leading-normal uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out flex align-center">
+              class="mt-2 px-1 py-0.5 bg-red-600 text-white font-semibold text-xs leading-normal rounded shadow-md hover:bg-red-700 flex align-center">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-4 h-4 my-auto mr-1">
                 <path stroke-linecap="round" stroke-linejoin="round"

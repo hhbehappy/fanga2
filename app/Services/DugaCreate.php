@@ -21,6 +21,7 @@ class DugaCreate
       'sort'          => 'favorite',
       // オプション項目
       'hits'          => '100',
+      'openstt'       => '2018-01-01',
       'offset'        => '',
       'keyword'       => '-ゲイ',
     );
@@ -71,8 +72,8 @@ class DugaCreate
       );
 
       $post_html = <<< EOM
-          <div style="float:left;margin:8px;height:110px;width:7em;font-size:40%">
-          <a href="store?productid={$item_list['productid']}&title={$item_list['title']}&caption={$item_list['caption']}&jacketimage={$item_list['jacketimage']}&posterimage={$item_list['posterimage']}&thumbnail01={$item_list['thumbnail01']}&thumbnail02={$item_list['thumbnail02']}&thumbnail03={$item_list['thumbnail03']}&thumbnail04={$item_list['thumbnail04']}&thumbnail05={$item_list['thumbnail05']}&thumbnail06={$item_list['thumbnail06']}&thumbnail07={$item_list['thumbnail07']}&thumbnail08={$item_list['thumbnail08']}&thumbnail09={$item_list['thumbnail09']}&thumbnail10={$item_list['thumbnail10']}&maker={$item_list['makername']}&series={$item_list['series']}&performer={$item_list['performer']}&performer_ruby={$item_list['performer_ruby']}&director={$item_list['director']}&affiliateurl={$item_list['affiliateurl']}&date={$item_list['opendate']}&volume={$item_list['volume']}&label={$item_list['label']}&category={$item_list['category']}"><img src="{$item_list['posterimage']}" /><br>{$item_list['productid']}</a>
+          <div style="float:left;margin:8px;height:120px;width:7em;font-size:40%">
+          <a href="store?productid={$item_list['productid']}&date={$item_list['opendate']}&title={$item_list['title']}&caption={$item_list['caption']}&jacketimage={$item_list['jacketimage']}&posterimage={$item_list['posterimage']}&thumbnail01={$item_list['thumbnail01']}&thumbnail02={$item_list['thumbnail02']}&thumbnail03={$item_list['thumbnail03']}&thumbnail04={$item_list['thumbnail04']}&thumbnail05={$item_list['thumbnail05']}&thumbnail06={$item_list['thumbnail06']}&thumbnail07={$item_list['thumbnail07']}&thumbnail08={$item_list['thumbnail08']}&thumbnail09={$item_list['thumbnail09']}&thumbnail10={$item_list['thumbnail10']}&maker={$item_list['makername']}&series={$item_list['series']}&performer={$item_list['performer']}&performer_ruby={$item_list['performer_ruby']}&director={$item_list['director']}&affiliateurl={$item_list['affiliateurl']}&volume={$item_list['volume']}&label={$item_list['label']}&category={$item_list['category']}"><img src="{$item_list['posterimage']}" /><br>{$item_list['productid']}</a>
           
           </div>
           EOM;
