@@ -45,10 +45,10 @@ const path = location.pathname;
     <nav class="hidden md:flex items-center lg:mr-8">
       <ul class="flex flex-wrap lg:flex-nowrap text-gray-700 font-bold">
         <li class="h-6 w-20 mb-1 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
-          <a :href="route('flist.index')" class="absolute top-0 left-0 w-full h-full">FANZA</a>
+          <a :href="route('fvideo.index')" class="absolute top-0 left-0 w-full h-full">FANZA</a>
         </li>
         <li class="h-6 w-16 mb-1 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
-          <a :href="route('dlist.index')" class="absolute top-0 left-0 w-full h-full">DUGA</a>
+          <a :href="route('dvideo.index')" class="absolute top-0 left-0 w-full h-full">DUGA</a>
         </li>
         <li class="h-6 w-12 mb-1 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
           <Link :href="route('bbs')" class="absolute top-0 left-0 w-full h-full">BBS</Link></li>
@@ -68,10 +68,10 @@ const path = location.pathname;
   <nav class="flex flex-col md:hidden w-full">
     <ul class="flex">
       <li class="p-1 h-10 w-1/2 bg-gray-200 text-center text-gray-700 text-2xl font-bold hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
-        <a :href="route('flist.index')" class="absolute top-0 left-0 w-full h-full mt-1">FANZA</a>
+        <a :href="route('fvideo.index')" class="absolute top-0 left-0 w-full h-full mt-1">FANZA</a>
       </li>
       <li class="p-1 h-10 w-1/2 bg-gray-200 text-center text-gray-700 text-2xl font-bold hover:bg-red-500 hover:text-white relative">
-        <a :href="route('dlist.index')" class="absolute top-0 left-0 w-full h-full mt-1">DUGA</a>
+        <a :href="route('dvideo.index')" class="absolute top-0 left-0 w-full h-full mt-1">DUGA</a>
       </li>
     </ul>
     <ul v-if="$page.props.auth.user" class="flex">

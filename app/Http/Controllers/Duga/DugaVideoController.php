@@ -17,6 +17,22 @@ use App\Services\DugaCreate;
 class DugaVideoController extends Controller
 {
 
+    public function index()
+    {
+        return Inertia::render('Duga/Video/Search', [
+            'dvideoids'     => Duga::dVideoIds(30),
+            'dugacount'     => Duga::count(),
+            'dugaperformers'=> Duga::dugaLists('performer'),
+            'dugamakers'    => Duga::dugaLists('maker'),
+            'dugaseriess'   => Duga::dugaLists('series'),
+            'dugamemos'     => DugaReleasememo::releaseLists(),
+            'mydlists'      => DugaReleaseMemo::myLists(),
+            'mydlistcount'  => DugaReleaseMemo::myLists()->count(),
+            'mydnices'      => DugaNice::myNices(),
+            'mydnicecount'  => DugaNice::myNices()->count()
+        ]);
+    }
+
     public function create()
     {
         DugaCreate::create();

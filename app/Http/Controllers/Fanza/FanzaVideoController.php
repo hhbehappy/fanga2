@@ -16,6 +16,22 @@ use App\Services\FanzaCreate;
 
 class FanzaVideoController extends Controller
 {
+    
+    public function index()
+    {
+        return Inertia::render('Fanza/Video/Search', [
+            'fvideoids'     => Fanza::fVideoIds(30),
+            'fanzacount'    => Fanza::count(),
+            'fanzaactresss' => Fanza::fanzaLists('actress'),
+            'fanzamakers'   => Fanza::fanzaLists('maker'),
+            'fanzaseriess'  => Fanza::fanzaLists('series'),
+            'fanzamemos'    => FanzaReleasememo::releaseLists(),
+            'myflists'      => FanzaReleaseMemo::myLists(),
+            'myflistcount'  => FanzaReleaseMemo::myLists()->count(),
+            'myfnices'      => FanzaNice::myNices(),
+            'myfnicecount'  => FanzaNice::myNices()->count()
+        ]);
+    }
 
     public function create()
     {
