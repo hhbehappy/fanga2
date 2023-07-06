@@ -21,7 +21,7 @@ class DugaCreate
       'sort'          => 'favorite',
       // オプション項目
       'hits'          => '100',
-      'openstt'       => '2018-01-01',
+      'openstt'       => '20180101',
       'offset'        => '',
       'keyword'       => '-ゲイ',
     );
