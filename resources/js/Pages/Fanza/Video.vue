@@ -53,30 +53,9 @@ const props = defineProps({
   <Layout>
     <article>
       <Detail :videoa="videoa" :videoids="videoids" :date="date" :nice="nice" :nicecount="nicecount" />
-      <!-- サンプル動画 -->
-      <section>
-        <div class="block lg:hidden w-full my-8 mx-auto">
-          <h2 class="pl-4 mb-1 text-xl font-bold border-b-4 border-gray-500">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="w-5 h-5 mb-1 inline-block">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
-            </svg>
-            サンプル動画
-          </h2>
-          <div class="w-4/5 md:w-1/2 mx-auto my-10">
-            <div style="width:100%; padding-top: 75%; position:relative;">
-              <iframe width="85%" height="85%" max-width="1280px" style="position: absolute; top: 0; left: 0;"
-                :src="'https://www.dmm.co.jp/litevideo/-/part/=/affi_id=maxjpblog-017/cid=' + props.videoa.content_id + '/size=1280_720/'"
-                scrolling="no" frameborder="0" allowfullscreen></iframe>
-            </div>
-          </div>
-        </div>
-      </section>
       <!-- メモ -->
       <section>
-        <div class="min-h-32 mt-8">
+        <div class="min-h-32 mt-14">
           <div id="memo" class="flex border-b-4 border-gray-500 justify-between items-end">
             <h2 class="ml-4 mb-1 text-2xl font-bold">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

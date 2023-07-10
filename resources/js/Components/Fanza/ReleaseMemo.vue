@@ -95,7 +95,7 @@ const props = defineProps({
       class="w-56 p-1.5 font-mono text-center bg-gray-300 rounded-3xl hover:bg-blue-200 shadow-md">メモを一覧で見る</Link>
   </div>
   <div v-else class="m-5 text-center font-bold text-gray-600">
-    <p class="w-52 mx-auto pl-2 border-b-2 border-blue-200">
+    <p class="w-52 my-12 mx-auto pl-2 border-b-2 border-blue-200">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
         class="w-4 h-4 mb-1 text-blue-400 inline-block">
         <path fill-rule="evenodd"
