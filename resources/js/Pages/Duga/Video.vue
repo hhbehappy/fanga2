@@ -55,29 +55,9 @@ const props = defineProps({
     <article>
       <Detail :videod="videod" :dugavideos="dugavideos" :date="date" :re_productid="re_productid" :nice="nice"
         :nicecount="nicecount" />
-      <!-- サンプル動画 -->
-      <section>
-        <div class="block lg:hidden w-full h-96 mx-auto mt-8 mb-20">
-          <h2 class="pl-4 mb-1 text-xl font-bold border-b-4 border-gray-500">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="w-5 h-5 mb-1 inline-block">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
-            </svg>
-            サンプル動画
-          </h2>
-          <div class="w-3/4 md:w-3/5 mx-auto mt-10">
-            <video controls playsinline
-              :poster="'https://affsample.duga.jp/unsecure/' + videod.productid + '/noauth/flvcap.jpg'" preload="metadata">
-              <source :src="'https://affsample.duga.jp/unsecure/' + videod.productid + '/noauth/movie.mp4'" />
-            </video>
-          </div>
-        </div>
-      </section>
       <!-- メモ -->
       <section>
-        <div class="min-h-32 mt-8">
+        <div class="min-h-32 mt-14">
           <div id="memo" class="flex border-b-4 border-gray-500 mx-3 mt-7 justify-between items-end">
             <h2 class="ml-4 mb-1 text-2xl font-bold">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

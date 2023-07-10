@@ -170,7 +170,7 @@ defineProps({
         <div v-if="myflistcount !== 0">
           <FanzaWithScroll :scrolls="myflists" />
         </div>
-        <div v-else class="h-44 pt-12 font-bold text-gray-600">
+        <div v-else class="h-36 pt-12 font-bold text-gray-600">
           <p class="w-52 mx-auto pl-2 border-b-2 border-blue-200">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
               class="w-4 h-4 mb-1 text-blue-200 inline-block">
@@ -205,7 +205,7 @@ defineProps({
         <div v-if="myfnicecount !== 0">
           <FanzaWithScroll :scrolls="myfnices" />
         </div>
-        <div v-else class="h-44 pt-12 font-bold text-gray-600">
+        <div v-else class="h-36 pt-12 font-bold text-gray-600">
           <p class="w-[306px] mx-auto pl-2 border-b-2 border-pink-200">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
               class="w-5 h-5 mb-1 text-pink-200 inline-block">
