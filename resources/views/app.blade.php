@@ -2,8 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <link rel="canonical" href="{{ url()->current() }}" />
-        <meta name="description" content="「FANGA」では、デジタルコンテンツ配信サービスの「FANZA」及び「DUGA」で配信されている動画コンテンツに、当サイト内においてメモを投稿できるウェブサイトです。※VR動画及び一部の動画には対応していません。">
-        <meta name="keywords" content="FANZA,DUGA,AV,無料,メモ">
+        <meta name="description" content="FANZAやDUGAで配信されている人気アダルト動画のレヴューサイトではありません。アダルト動画のレヴューサイトではなくて、アダルトな掲示板でもない、ただのオナニー日記かもしれません。">
+        <meta name="keywords" content="FANZA,DUGA,AV,アダルト,メモ">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 

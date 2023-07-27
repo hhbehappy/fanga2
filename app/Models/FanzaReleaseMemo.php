@@ -50,9 +50,19 @@ class FanzaReleaseMemo extends Model
         return $mylists;
     }
 
+    public static function topLists()
+    {
+        // トップページのメモの多い順
+        $toplists = DB::table('fanza_release_memos')
+            ->select('fanza_release_memos.content_id', 'title', DB::raw('count(*) as total'))
+            ->groupBy('content_id', 'title')->latest('total')
+            ->leftJoin('fanzas', 'fanza_release_memos.content_id', '=', 'fanzas.content_id')->get()->unique('content_id')->take(5);
+
+        return $toplists;
+    }
+
     public static function releaseLists()
     {
-        // トップページのメモされた動画
         // 詳細ページの最近メモされた動画
         $releaselists = FanzaReleaseMemo::with('fanza')->latest('updated_at')->get()->unique('content_id')->take(30);
 

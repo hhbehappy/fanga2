@@ -3,7 +3,7 @@ import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
-  <aside class="hidden md:flex flex-col md:w-[140px] lg:w-[160px] shrink-0 bg-white border-4 border-black mx-4 lg:mx-8 mb-10">
+  <aside class="hidden md:flex flex-col md:w-[140px] lg:w-[160px] shrink-0 bg-white border-4 border-black mx-4 lg:mr-8 mb-10">
     <div class="flex flex-col space-y-1">
       <p class="pb-1 pl-3 text-left text-gray-300 font-bold bg-black">MENU</p>
       <h1 class="pt-2 pl-3 text-left text-red-500 font-bold text-xl">FANZA</h1>
@@ -15,7 +15,7 @@ import { Link } from '@inertiajs/vue3';
         <a :href="route('flist.index')" class="hover:bg-red-50 hover:border-y-2 border-red-200">動画一覧</a>
       </p>
       <h2 class="pl-3 text-left text-gray-700 font-bold">ジャンル</h2>
-      <ul class="text-blue-500 text-sm space-y-1">
+      <ul class="text-blue-500 text-sm space-y-1 break-words">
         <li v-for="fanzasidegenre in $page.props.sidebar.fanzagenre" :key="fanzasidegenre.id" class="hover:underline hover:bg-red-50 hover:border-y-2 border-red-200">
           <a :href="route('flist.show', { sort: 'genre', keyword: fanzasidegenre })" class="py-1 px-3 block w-full h-full">
             {{ fanzasidegenre }}
@@ -30,7 +30,7 @@ import { Link } from '@inertiajs/vue3';
         <Link :href="route('flist.genre')" class="hover:bg-red-50 hover:border-y-2 border-red-200">ジャンル一覧</Link>
       </p>
       <h2 class="pl-3 text-left text-gray-700 font-bold">女優</h2>
-      <ul class="text-blue-500 text-sm space-y-1">
+      <ul class="text-blue-500 text-sm space-y-1 break-words">
         <li v-for="fanzasideactress in $page.props.sidebar.fanzaactress" :key="fanzasideactress.id" class="hover:underline hover:bg-red-50 hover:border-y-2 border-red-200">
           <a :href="route('flist.show', { sort: 'actress', keyword: fanzasideactress.actress })" class="py-1 px-3 block w-full h-full">
             {{ fanzasideactress.actress }}
@@ -45,7 +45,7 @@ import { Link } from '@inertiajs/vue3';
         <Link :href="route('flist.actress')" class="hover:bg-red-50 hover:border-y-2 border-red-200">女優一覧</Link>
       </p>
       <h2 class="pl-3 text-left text-gray-700 font-bold">メーカー</h2>
-      <ul class="text-blue-500 text-sm space-y-1">
+      <ul class="text-blue-500 text-sm space-y-1 break-words">
         <li v-for="fanzasidemaker in $page.props.sidebar.fanzamaker" :key="fanzasidemaker.id" class="hover:underline hover:bg-red-50 hover:border-y-2 border-red-200">
           <a :href="route('flist.show', { sort: 'maker', keyword: fanzasidemaker.maker })" class="py-1 px-3 block w-full h-full">
             {{ fanzasidemaker.maker }}
@@ -60,7 +60,7 @@ import { Link } from '@inertiajs/vue3';
         <Link :href="route('flist.maker')" class="hover:bg-red-50 hover:border-y-2 border-red-200">メーカー一覧</Link>
       </p>
       <h2 class="pl-3 text-left text-gray-700 font-bold">シリーズ</h2>
-      <ul class="text-blue-500 text-sm space-y-1">
+      <ul class="text-blue-500 text-sm space-y-1 break-words">
         <li v-for="fanzasideseries in $page.props.sidebar.fanzaseries" :key="fanzasideseries.id" class="hover:underline hover:bg-red-50 hover:border-y-2 border-red-200">
           <a :href="route('flist.show', { sort: 'series', keyword: fanzasideseries.series })" class="py-1 px-3 block w-full h-full">
             {{ fanzasideseries.series }}
@@ -85,7 +85,7 @@ import { Link } from '@inertiajs/vue3';
         <a :href="route('dlist.index')" class="hover:bg-red-50 hover:border-y-2 border-red-200">動画一覧</a>
       </p>
       <h2 class="pl-3 text-left text-gray-700 font-bold">カテゴリ</h2>
-      <ul class="text-blue-500 text-sm space-y-1">
+      <ul class="text-blue-500 text-sm space-y-1 break-words">
         <li v-for="dugasidecategory in $page.props.sidebar.dugacategory" :key="dugasidecategory.id" class="hover:underline hover:bg-red-50 hover:border-y-2 border-red-200">
           <a :href="route('dlist.show', { sort: 'category', keyword: dugasidecategory })" class="py-1 px-3 block w-full h-full">
             {{ dugasidecategory }}
@@ -100,7 +100,7 @@ import { Link } from '@inertiajs/vue3';
       <Link :href="route('dlist.category')" class="hover:bg-red-50 hover:border-y-2 border-red-200">カテゴリ一覧</Link>
       </p>
       <h2 class="pl-3 text-left text-gray-700 font-bold">女優</h2>
-      <ul class="text-blue-500 text-sm space-y-1">
+      <ul class="text-blue-500 text-sm space-y-1 break-words">
         <li v-for="dugasideperformer in $page.props.sidebar.dugaperformer" :key="dugasideperformer.id" class="hover:underline hover:bg-red-50 hover:border-y-2 border-red-200">
           <a :href="route('dlist.show', { sort: 'performer', keyword: dugasideperformer.performer })" class="py-1 px-3 block w-full h-full">
             {{ dugasideperformer.performer }}
@@ -115,7 +115,7 @@ import { Link } from '@inertiajs/vue3';
         <Link :href="route('dlist.performer')" class="hover:bg-red-50 hover:border-y-2 border-red-200">女優一覧</Link>
       </p>
       <h2 class="pl-3 text-left text-gray-700 font-bold">メーカー</h2>
-      <ul class="text-blue-500 text-sm space-y-1">
+      <ul class="text-blue-500 text-sm space-y-1 break-words">
         <li v-for="dugasidemaker in $page.props.sidebar.dugamaker" :key="dugasidemaker.id" class="hover:underline hover:bg-red-50 hover:border-y-2 border-red-200">
           <a :href="route('dlist.show', { sort: 'maker', keyword: dugasidemaker.maker })" class="py-1 px-3 block w-full h-full">
             {{ dugasidemaker.maker }}
@@ -130,7 +130,7 @@ import { Link } from '@inertiajs/vue3';
         <Link :href="route('dlist.maker')" class="hover:bg-red-50 hover:border-y-2 border-red-200">メーカー一覧</Link>
       </p>
       <h2 class="pl-3 text-left text-gray-700 font-bold">シリーズ</h2>
-      <ul class="text-blue-500 text-sm space-y-1">
+      <ul class="text-blue-500 text-sm space-y-1 break-words">
         <li v-for="dugasideseries in $page.props.sidebar.dugaseries" :key="dugasideseries.id" class="hover:underline hover:bg-red-50 hover:border-y-2 border-red-200">
           <a :href="route('dlist.show', { sort: 'series', keyword: dugasideseries.series })" class="py-1 px-3 block w-full h-full">
             {{ dugasideseries.series }}

@@ -1,6 +1,6 @@
 <script setup>
 import Layout from '@/Layouts/Layout.vue';
-import { Head, Link } from '@inertiajs/vue3';
+import { Head, Link, useForm } from '@inertiajs/vue3';
 import Detail from '@/Components/Fanza/Detail.vue';
 import PostTab from '@/Components/Fanza/PostTab.vue';
 import FreeMemo from '@/Components/Fanza/FreeMemo.vue';
@@ -42,13 +42,21 @@ const props = defineProps({
   releaselists: Object,
   nice: Object,
   nicecount: Number,
-  privatememolimit: Number
+  privatememolimit: Number,
+  currenturl: String
 })
 
+const form = useForm({
+
+});
+
+const memoLogin = () => {
+  form.post('/commentlogin')
+};
 </script>
 
 <template>
-  <Head :title="'【FANZA】' + videoa.title" />
+  <Head :title="videoa.title" />
 
   <Layout>
     <article>
@@ -56,8 +64,8 @@ const props = defineProps({
       <!-- メモ -->
       <section>
         <div class="min-h-32 mt-14">
-          <div id="memo" class="flex border-b-4 border-gray-500 justify-between items-end">
-            <h2 class="ml-4 mb-1 text-2xl font-bold">
+          <div id="memo" class="flex pb-1 border-b-4 border-gray-500 justify-between items-end">
+            <h2 class="ml-4 text-2xl font-bold">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6 inline-block">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -65,7 +73,7 @@ const props = defineProps({
               </svg>
               メモ
             </h2>
-            <p class="mr-5 text-blue-500">
+            <p v-if="$page.props.auth.user" class="mr-5 text-blue-500">
               <Link :href="route('about') + '#memotype'" class="cursor-pointer hover:underline hover:text-red-500">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-5 h-5 mb-1 -mr-1 inline-block">
@@ -74,6 +82,12 @@ const props = defineProps({
               </svg>
               メモの種類について
               </Link>
+            </p>
+            <p v-else class="px-2 mr-6 rounded bg-red-500 hover:bg-gray-600 text-white font-mono cursor-pointer">
+            <form @submit.prevent="memoLogin">
+              <input type="hidden" name="currenturl" :value="currenturl">
+              <button type="submit" name="currenturl">ログイン</button>
+            </form>
             </p>
           </div>
           <!-- 非公開メモ -->

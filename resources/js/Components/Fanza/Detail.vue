@@ -34,7 +34,7 @@ export default {
 <template>
   <div v-for="videoid in videoids" :key="videoid.id">
     <section>
-      <h1 class="font-bold md:text-xl mb-8 px-4 md:mr-8 bg-gray-200 p-2 border-b-2 border-gray-500"><span
+      <h1 class="font-bold md:text-xl mb-8 px-4 md:mr-8 bg-gray-200 p-2 md:border-b-2 border-gray-500"><span
           class="text-red-500">【FANZA】</span>{{ videoid.title }}</h1>
       <p class="mb-7">
         <NiceFlashMessage />
@@ -268,6 +268,7 @@ export default {
         <div :class="{ 'hidden': detailTab !== 3, 'hidden': detailTab === 3 }"></div>
       </div>
       <!-- 画像リスト -->
+      <p class="ml-5 mb-1 text-xs">イメージは実際の内容とは異なる場合があるようです。</p>
       <button @click="toggleStatus" type="button" data-micromodal-trigger="modal-1" class="w-screen md:w-full">
         <div class="flex overflow-x-scroll mx-4 my-2 pb-3 hidden-scrollbar">
           <div class="flex flex-none flex-nowrap">
@@ -327,7 +328,7 @@ export default {
                 :src="'https://pics.dmm.co.jp/digital/video/' + videoid.content_id + '/' + videoid.content_id + '-10.jpg'"
                 :alt="'【FANZA】' + videoid.title + '10枚目の画像'" class="h-[6rem]">
             </div>
-            <div class="flex w-32 mr-12 mt-4 text-blue-500 hover:underline hover:text-red-500 justify-center">
+            <div class="flex w-32 mt-4 text-blue-500 hover:underline hover:text-red-500 justify-center">
               <a :href="'https://al.dmm.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fdigital%2Fvideoa%2F-%2Fdetail%2F%3D%2Fcid%3D' + videoid.content_id + '%2F&af_id=maxjpblog-017&ch=link_tool&ch_id=text'"
                 rel="nofollow" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -341,7 +342,6 @@ export default {
           </div>
         </div>
       </button>
-      <p class="ml-5 text-xs">イメージは実際の内容とは異なる場合があるようです。</p>
     </section>
     <!-- モーダルウィンドウの中 -->
     <div v-show="isShow" class="modal relative z-40" id="modal-1" aria-hidden="true" @click="toggleStatus">
@@ -419,7 +419,7 @@ export default {
               </div>
             </div>
           </main>
-          <p class="ml-6 text-white">イメージは実際の内容とは異なる場合があるようです。</p>
+          <p class="ml-6 text-xs text-white">イメージは実際の内容とは異なる場合があるようです。</p>
         </div>
       </div>
     </div>

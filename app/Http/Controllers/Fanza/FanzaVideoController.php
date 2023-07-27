@@ -47,6 +47,7 @@ class FanzaVideoController extends Controller
 
     public function show($content_id)
     {
+        $currenturl = url()->current();
         $videoa = Fanza::whereContent_id($content_id)->first();
 
         return Inertia::render('Fanza/Video', [
@@ -76,6 +77,7 @@ class FanzaVideoController extends Controller
             'releaselists'        => FanzaReleasememo::releaseLists(),
             'nice'                => FanzaNice::fanzaNice($content_id),
             'nicecount'           => FanzaNice::fanzaNiceCount($content_id),
+            'currenturl'    => $currenturl
         ]);
     }
 

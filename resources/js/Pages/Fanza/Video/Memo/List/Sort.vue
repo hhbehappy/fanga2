@@ -27,10 +27,10 @@ const destroyReleaseMemo = id => {
 <template>
   <Layout>
 
-    <Head :title="'【FANZA】' + videoa.title + 'のメモ一覧'" />
+    <Head :title="videoa.title + 'のメモ一覧'" />
 
     <section class="">
-      <h1 class="font-bold md:text-xl mb-10 px-4 md:mr-8 bg-gray-200 p-2 border-b-2 border-gray-500"><span
+      <h1 class="font-bold md:text-xl mb-10 px-4 md:mr-8 bg-gray-200 p-2 md:border-b-2 border-gray-500"><span
           class="text-red-500">【FANZA】</span>{{ props.videoa.title }}</h1>
       <!-- 画像リスト -->
       <div v-for="videoid in videoids" :key="videoid.id">

@@ -56,7 +56,7 @@
             <div class="flex flex-wrap ml-4 md:mx-2 justify-center sm:justify-start">
                 @foreach ($makersearchlists as $makersearchlist)
                 <div class="w-36 mr-5 md:mr-2 mb-4">
-                    <a href="{{ route('flist.show', ['keyword' => $makersearchlist->maker]) }}"
+                    <a href="{{ route('flist.show', [ 'sort' => 'maker', 'keyword' => $makersearchlist->maker ]) }}"
                         class="p-2 border-2 text-blue-500 text-center inline-block">
                         <img src="<?php echo 'https://pics.dmm.co.jp/digital/video/' . $makersearchlist->content_id . '/' . $makersearchlist->content_id . 'ps.jpg'; ?>"
                             alt="【FANZA】AVメーカー「<?php echo $makersearchlist->maker ?>」" class="h-40">
