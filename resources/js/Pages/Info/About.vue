@@ -11,16 +11,18 @@ import { Head, Link } from '@inertiajs/vue3';
       <div class="w-11/12 md:w-9/12 max-w-3xl mx-auto p-2 bg-white text-gray-700">
         <div class="mx-auto">
           <section class="w-full px-2 space-y-4">
-            <h1 class="pb-1 font-bold md:text-xl leading-tight border-b-4 border-gray-400">当サイトについて</h1>
+            <h1 class="py-1 font-bold md:text-xl leading-tight border-b-4 border-gray-400">当サイトについて</h1>
             <p>
-              当サイトは、デジタルコンテンツ配信サービスの「FANZA」及び「DUGA」で配信されている動画コンテンツに、当サイト内においてメモを投稿できるウェブサイトです。※VR動画及び一部の動画には対応していません</p>
+              当サイトは、FANZAとDUGAで配信されている人気アダルト動画のレヴューサイトではありません。アダルト動画のレヴューサイトではなくて、アダルトな掲示板でもない、ただのオナニー日記かもしれません。</p>
             <p>
               当サイトは、完全リンクフリーです。
             </p>
-            <h2 id="memotype" class="pt-5 pb-1 font-bold md:text-xl leading-tight border-b-4 border-gray-400">メモの種類について
-            </h2>
-            <p class="mb-5">メモは３種類あります。利用されると同時に
-              <Link :href="route('rule')" class="text-blue-500 hover:underline">利用規約</Link>に同意したものとされます。
+            <div class="flex pt-3 mx-auto border-b-4 border-gray-400">
+              <h2 id="memotype" class="font-bold md:text-xl leading-tight">メモの種類について
+              </h2>
+              <Link :href="route('rule')" class="ml-auto px-4 text-blue-500 hover:underline">利用規約</Link>
+            </div>
+            <p class="mb-5">メモは３種類あります。
             </p>
             <h3 class="my-2 py-1 font-semibold border-dotted border-b-2 border-amber-500">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"

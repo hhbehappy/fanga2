@@ -1,48 +1,21 @@
-<header class="py-4">
-  <div class="flex items-end justify-between w-full md:mb-5 pb-3 border-b-2 border-gray-500">
-    <div class="w-36 lg:w-44 ml-4 lg:ml-8 shrink-0">
-      <a href="{{ route('fanga') }}">
-        <x-applicationlogo />
+<header class="mt-2">
+  <div class="flex flex-wrap w-full justify-between pb-1 items-end mb-5 border-b-2 border-gray-500">
+    <div class="md:w-[350px] ml-4 md:shrink-0">
+      <a href="{{ route('fanga') }}" class="font-logofont text-2xl text-red-500">FANGA
+      <span class="text-sm text-gray-700">【FANZA&DUGA】</span>
       </a>
-    </div>
-    <div class="flex flex-wrap md:hidden justify-end">
-      <div class="h-8 ml-4 mb-1">
-        <form action="{{ route('fanga.searchfanza') }}" method="GET">
-          <input type="text" name="keyword" placeholder="FANZA" class="w-4/5 h-8 pb-2.5 -mr-1.5 leading-5 rounded-l-lg" required>
-          <input type="submit" value="検索" class="h-8 p-1 text-gray-100 text-sm bg-gray-600 rounded-r-lg cursor-pointer">
-        </form>
-      </div>
-      <div class="h-8 ml-4 mb-1">
-        <form action="{{ route('fanga.searchduga') }}" method="GET">
-          <input type="text" name="keyword" placeholder="DUGA" class="w-4/5 h-8 pb-2.5 -mr-1.5 leading-5 rounded-l-lg" required>
-          <input type="submit" value="検索" class="h-8 p-1 text-gray-100 text-sm bg-gray-600 rounded-r-lg cursor-pointer">
-        </form>
-      </div>
-    </div>
-    <div class="hidden md:flex flex-wrap justify-center">
-      <div class="h-7 ml-4 mb-1">
-        <form action="{{ route('fanga.searchfanza') }}" method="GET">
-          <input type="text" name="keyword" placeholder="FANZA" class="w-48 h-7 pb-2.5 -mr-1.5 leading-5 rounded-l-lg" required>
-          <input type="submit" value="検索" class="w-10 h-7 p-1 text-gray-100 text-sm bg-gray-600 rounded-r-lg cursor-pointer">
-        </form>
-      </div>
-      <div class="h-7 ml-4 mb-1">
-        <form action="{{ route('fanga.searchduga') }}" method="GET">
-          <input type="text" name="keyword" placeholder="DUGA" class="w-48 h-7 pb-2.5 -mr-1.5 leading-5 rounded-l-lg" required>
-          <input type="submit" value="検索" class="w-10 h-7 p-1 text-gray-100 text-sm bg-gray-600 rounded-r-lg cursor-pointer">
-        </form>
-      </div>
+      <p class="text-sm font-bold">人気アダルト動画のレヴューサイトではありません。</p>
     </div>
     {{-- PC --}}
-    <nav class="hidden md:flex items-center lg:mr-8 text-gray-700 font-bold">
-      <ul class="flex flex-wrap lg:flex-nowrap">
-        <li class="h-6 w-20 mb-1 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
-          <a href="{{ route('flist.index') }}" class="absolute top-0 left-0 w-full h-full">FANZA</a>
+    <nav class="hidden md:block items-center mt-3 ml-4 lg:mr-2">
+      <ul class="flex flex-nowrap text-gray-700 font-bold">
+        <li class="h-6 w-40 mb-1 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
+          <a href="{{ route('fvideo.index') }}" class="absolute top-0 left-0 w-full h-full">FANZAの動画を探す</a>
         </li>
-        <li class="h-6 w-16 mb-1 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
-          <a href="{{ route('dlist.index') }}" class="absolute top-0 left-0 w-full h-full">DUGA</a>
+        <li class="h-6 w-40 mb-1 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
+          <a href="{{ route('dvideo.index') }}" class="absolute top-0 left-0 w-full h-full">DUGAの動画を探す</a>
         </li>
-        <li class="h-6 w-12 mb-1 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative"><a href="{{ route('bbs') }}" class="absolute top-0 left-0 w-full h-full">BBS</a></li>
+        <li class="h-6 w-14 mb-1 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative"><a href="{{ route('bbs') }}" class="absolute top-0 left-0 w-full h-full">BBS</a></li>
         <li class="h-6 w-24 mb-1 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative"><a href="{{ route('mypage') }}" class="absolute top-0 left-0 w-full h-full">マイページ</a></li>
         @guest
         <li class="h-6 w-20 mb-1 text-center hover:bg-green-600 hover:text-white border-r-2 border-gray-500 relative"><a href="{{ route('register') }}" class="absolute top-0 left-0 w-full h-full">会員登録</a></li>
@@ -55,9 +28,20 @@
         @endguest
       </ul>
     </nav>
+    <!-- スマホ -->
+    <nav v-if="path.includes('/video/{content_id}') === false" class="block md:hidden w-full mt-3">
+      <ul class="flex flex-nowrap text-gray-700 font-bold">
+        <li class="h-8 w-1/2 text-center hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
+          <a href="{{ route('fvideo.index') }}" class="pt-1 absolute top-0 left-0 w-full h-full">FANZAの動画を探す</a>
+        </li>
+        <li class="h-8 w-1/2 text-center hover:bg-red-500 hover:text-white relative">
+          <a href="{{ route('dvideo.index') }}" class="pt-1 absolute top-0 left-0 w-full h-full">DUGAの動画を探す</a>
+        </li>
+      </ul>
+    </nav>
   </div>
   {{-- スマホ --}}
-  <nav class="flex flex-col md:hidden">
+  {{-- <nav class="flex flex-col md:hidden">
     <ul class="flex">
       <li class="p-1 h-10 w-1/2 bg-gray-200 text-center text-gray-700 text-2xl font-bold hover:bg-red-500 hover:text-white border-r-2 border-gray-500 relative">
         <a href="{{ route('flist.index') }}" class="absolute top-0 left-0 w-full h-full mt-1">FANZA</a>
@@ -123,5 +107,5 @@
       </div>
     </div>
     @endif
-  </nav>
+  </nav> --}}
 </header>

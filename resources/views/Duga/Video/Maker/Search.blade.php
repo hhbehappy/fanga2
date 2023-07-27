@@ -44,7 +44,7 @@
       <div class="flex flex-wrap ml-4 md:mx-2 justify-center sm:justify-start">
         @foreach ( $makersearchlists as $makersearchlist )
         <div class="w-36 mr-5 md:mr-2 mb-4">
-          <a href="{{ route('dlist.show', [ 'keyword' => $makersearchlist->maker ]) }}" class="p-2 border-2 text-blue-500 text-center inline-block">
+          <a href="{{ route('dlist.show', [ 'sort' => 'maker', 'keyword' => $makersearchlist->maker ]) }}" class="p-2 border-2 text-blue-500 text-center inline-block">
             @if( $makersearchlist->jacketimage )
             <img src="<?php echo $makersearchlist->jacketimage ?>" alt="【DUGA】AVメーカー「<?php echo $makersearchlist->maker ?>」" class="h-40 w-[118px] inline-block px-1">
             @else

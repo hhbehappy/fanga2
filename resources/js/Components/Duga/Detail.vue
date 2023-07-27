@@ -35,7 +35,7 @@ export default {
 <template>
   <div v-for="dugavideo in dugavideos" :key="dugavideo.id" class="">
     <section>
-      <h1 class="font-bold md:text-xl mb-8 px-4 md:mr-8 bg-gray-200 p-2 border-b-2 border-gray-500"><span
+      <h1 class="font-bold md:text-xl mb-8 px-4 md:mr-8 bg-gray-200 p-2 md:border-b-2 border-gray-500"><span
           class="text-red-500">【DUGA】</span>{{ dugavideo.title }}</h1>
       <p class="mb-7">
         <NiceFlashMessage />
@@ -227,6 +227,7 @@ export default {
         <div :class="{ 'hidden': detailTab !== 3, 'hidden': detailTab === 3 }"></div>
       </div>
       <!-- 画像リスト -->
+      <p class="ml-5 mb-1 text-xs">イメージは実際の内容とは異なる場合があるようです。</p>
       <button @click="toggleStatus" type="button" data-micromodal-trigger="modal-2" class="w-screen md:w-full">
         <div class="flex overflow-x-scroll mx-4 my-2 pb-3 hidden-scrollbar">
           <div class="flex flex-none flex-nowrap">
@@ -278,7 +279,6 @@ export default {
           </div>
         </div>
       </button>
-      <p class="ml-5 text-xs">イメージは実際の内容とは異なる場合があるようです。</p>
     </section>
     <!-- モーダルウィンドウの中 -->
     <div v-show="isShow" class="modal relative z-40" id="modal-2" aria-hidden="true" @click="toggleStatus">
@@ -335,7 +335,7 @@ export default {
               </div>
             </div>
           </main>
-          <p class="ml-6 text-white">イメージは実際の内容とは異なる場合があるようです。</p>
+          <p class="ml-6 text-xs text-white">イメージは実際の内容とは異なる場合があるようです。</p>
         </div>
       </div>
     </div>

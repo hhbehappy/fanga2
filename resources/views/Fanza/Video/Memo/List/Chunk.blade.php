@@ -1,9 +1,9 @@
 <x-app>
   <x-slot name="title">
-    【FANZA】{{ $videoa->title }}のメモ一覧
+    {{ $videoa->title }}のメモ一覧
   </x-slot>
 
-  <h1 class="font-bold md:text-xl mb-10 px-4 md:mr-8 bg-gray-200 p-2 border-b-2 border-gray-500"><span
+  <h1 class="font-bold md:text-xl mb-10 px-4 md:mr-8 bg-gray-200 p-2 md:border-b-2 border-gray-500"><span
       class="text-red-500">【FANZA】</span>
     {{ $videoa->title }}
   </h1>

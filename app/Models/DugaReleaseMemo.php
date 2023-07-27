@@ -50,8 +50,19 @@ class DugaReleaseMemo extends Model
         return $mylists;
     }
 
+    public static function topLists()
+    {
+        // トップページのメモの多い順
+        $toplists = DB::table('duga_release_memos')
+        ->select('duga_release_memos.productid', 're_productid', 'title', 'jacketimage', DB::raw('count(*) as total'))
+        ->groupBy('productid', 're_productid', 'title', 'jacketimage')->latest('total')
+        ->leftJoin('dugas', 'duga_release_memos.productid', '=', 'dugas.productid')
+        ->get()->unique('productid')->take(5);
+
+        return $toplists;
+    }
+
     public static function releaseLists(){
-        // トップページのメモされた動画
         // 詳細ページの最近メモされた動画
         $releaselists = DugaReleaseMemo::with('duga')->latest('updated_at')->get()->unique('re_productid')->take(30);
     

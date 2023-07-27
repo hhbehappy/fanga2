@@ -4,11 +4,11 @@ import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
-  <div class="hidden md:flex flex-col md:w-[140px] lg:w-[160px] shrink-0 bg-white border-4 border-black mx-4 lg:mx-8 mb-10">
+  <div class="hidden md:flex flex-col md:w-[140px] lg:w-[160px] shrink-0 bg-white border-4 border-black mx-4 lg:mr-8 mb-10">
     <div class="flex flex-col space-y-1">
       <h1 class="pb-1 pl-3 text-lg text-left text-gray-300 font-bold bg-black">FANZA</h1>
       <h2 class="py-2 pl-3 text-left text-red-500 font-bold">ジャンル</h2>
-      <ul class="text-blue-500 text-sm space-y-1">
+      <ul class="text-blue-500 text-sm space-y-1 break-words">
         <li v-for="fanzasidegenre in $page.props.sidebar.fanzagenre" :key="fanzasidegenre.id" class="hover:underline hover:bg-red-50 hover:border-y-2 border-red-200">
           <a :href="route('flist.show', { sort: 'genre', keyword: fanzasidegenre })" class="py-1 px-3 block w-full h-full">
             {{ fanzasidegenre }}
@@ -24,7 +24,7 @@ import { Link } from '@inertiajs/vue3';
       </p>
       <div class="flex flex-col pt-2 border-t-2 border-gray-400 space-y-1">
         <h2 class="pb-2 pl-3 text-left text-red-500 font-bold">女優</h2>
-        <ul class="text-blue-500 text-sm space-y-1">
+        <ul class="text-blue-500 text-sm space-y-1 break-words">
           <li v-for="fanzasideactress in $page.props.sidebar.fanzaactress" :key="fanzasideactress.id" class="hover:underline hover:bg-red-50 hover:border-y-2 border-red-200">
             <a :href="route('flist.show', { sort: 'actress', keyword: fanzasideactress.actress })" class="py-1 px-3 block w-full h-full">
               {{ fanzasideactress.actress }}
@@ -41,7 +41,7 @@ import { Link } from '@inertiajs/vue3';
       </div>
       <div class="flex flex-col pt-2 border-t-2 border-gray-400 space-y-1">
         <h2 class="pb-2 pl-3 text-left text-red-500 font-bold">メーカー</h2>
-        <ul class="text-blue-500 text-sm space-y-1">
+        <ul class="text-blue-500 text-sm space-y-1 break-words">
           <li v-for="fanzasidemaker in $page.props.sidebar.fanzamaker" :key="fanzasidemaker.id" class="hover:underline hover:bg-red-50 hover:border-y-2 border-red-200">
             <a :href="route('flist.show', { sort: 'maker', keyword: fanzasidemaker.maker })" class="py-1 px-3 block w-full h-full">
               {{ fanzasidemaker.maker }}
@@ -58,11 +58,11 @@ import { Link } from '@inertiajs/vue3';
       </div>
       <div class="flex flex-col pt-2 border-t-2 border-gray-400 space-y-1">
         <h2 class="py-2 pl-3 text-left text-red-500 font-bold">シリーズ</h2>
-        <ul class="text-blue-500 text-sm space-y-1">
+        <ul class="text-blue-500 text-sm space-y-1 break-words">
           <li v-for="fanzasideseries in $page.props.sidebar.fanzaseries" :key="fanzasideseries.id" class="hover:underline hover:bg-red-50 hover:border-y-2 border-red-200">
             <a :href="route('flist.show', { sort: 'series', keyword: fanzasideseries.series })" class="py-1 px-3 block w-full h-full">
               {{ fanzasideseries.series }}
-            </a>
+            </a> 
           </li>
         </ul>
         <p class="text-xs text-blue-500 text-right mr-2 py-1">

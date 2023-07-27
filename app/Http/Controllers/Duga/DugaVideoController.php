@@ -47,6 +47,7 @@ class DugaVideoController extends Controller
 
     public function show($productid)
     {
+        $currenturl = url()->current();
         $videod = Duga::whereProductid($productid)->first();
         
         return Inertia::render('Duga/Video', [
@@ -78,6 +79,7 @@ class DugaVideoController extends Controller
             'auth_id'           => Auth::id(),
             'nice'              => DugaNice::dugaNice($productid),
             'nicecount'         => DugaNice::dugaNicecount($productid),
+            'currenturl'    => $currenturl
         ]);
     }
 
