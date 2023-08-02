@@ -37,7 +37,7 @@ import { Head, Link } from '@inertiajs/vue3';
             </h3>
             <ul class="leading-8 list-disc list-inside">
               <li>会員登録せずに利用ができます。</li>
-              <li>2文字以上300文字以内でメモができます。</li>
+              <li>2文字以上500文字以内でメモができます。</li>
               <li>誰でも自由にメモやメモの削除ができます。</li>
               <li>自分のメモが誰かに削除される可能性があります。</li>
             </ul>
@@ -55,7 +55,7 @@ import { Head, Link } from '@inertiajs/vue3';
             </h3>
             <ul class="leading-8 list-disc list-inside">
               <li>無料会員登録後に利用ができます。</li>
-              <li>2文字以上500文字以内でメモができます。</li>
+              <li>2文字以上1000文字以内でメモができます。</li>
               <li>公開時にニックネームを使用するか選択ができます。
                 <p class="text-sm leading-7">（例）<span class="py-1 px-1">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -110,7 +110,7 @@ import { Head, Link } from '@inertiajs/vue3';
           </h3>
           <ul class="leading-8 list-disc list-inside">
             <li>無料会員登録後に利用ができます。</li>
-            <li>2文字以上500文字以内で、1作品に2つまでメモができます。</li>
+            <li>2文字以上1000文字以内で、1作品に2つまでメモができます。</li>
             <li>誰にも見られない自分だけのメモです。</li>
             <li>非公開メモの編集や削除ができます。</li>
           </ul>

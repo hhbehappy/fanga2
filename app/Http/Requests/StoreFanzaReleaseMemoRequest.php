@@ -24,7 +24,7 @@ class StoreFanzaReleaseMemoRequest extends FormRequest
     public function rules()
     {
         return [
-            'release'          => 'required|max:500|min:2',
+            'release'          => 'required|max:1000|min:2',
         ];
     }
 }

@@ -24,7 +24,7 @@ class StoreFanzaFreeMemoRequest extends FormRequest
     public function rules()
     {
         return [
-            'free'          => 'required|max:300|min:2',
+            'free'          => 'required|max:500|min:2',
         ];
     }
 }
