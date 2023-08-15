@@ -10,6 +10,7 @@ use App\Models\Fanza;
 use App\Models\FanzaReleaseMemo;
 use App\Models\Duga;
 use App\Models\DugaReleaseMemo;
+use App\Models\Thread;
 
 class FangaController extends Controller
 {
@@ -17,7 +18,8 @@ class FangaController extends Controller
     {
         return Inertia::render('Fanga', [
             'topflists'     => FanzaReleaseMemo::topLists(),
-            'topdlists'     => DugaReleaseMemo::topLists()
+            'topdlists'     => DugaReleaseMemo::topLists(),
+            'threads'       => Thread::threadTitles()
         ]);
     }
 

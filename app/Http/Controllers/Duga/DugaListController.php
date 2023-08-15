@@ -9,6 +9,7 @@ use Inertia\Inertia;
 use Carbon\Carbon;
 use App\Models\Duga;
 use App\Models\DugaReleaseMemo;
+use App\Models\Thread;
 use App\Services\SortKeyword;
 
 class DugaListController extends Controller
@@ -48,8 +49,9 @@ class DugaListController extends Controller
         $release_memo_lists = DugaReleaseMemo::dugaReleaseMemoAllListChunk($productid);
         $memocount          = DugaReleaseMemo::dugaReleaseMemoAllListChunk($productid)->count();
         $releaselists       = DugaReleasememo::releaseLists();
+        $threads            = Thread::threadTitles();
         
-        return view('Duga/Video/Memo/List/Chunk', compact('videod', 'videoids', 're_productid',  'release_memo_lists', 'memocount', 'releaselists'));
+        return view('Duga/Video/Memo/List/Chunk', compact('videod', 'videoids', 're_productid',  'release_memo_lists', 'memocount', 'releaselists', 'threads'));
     }
 
     public function memoListSort($sort, $productid)
@@ -64,7 +66,8 @@ class DugaListController extends Controller
             'memocount'     => DugaReleaseMemo::dugaReleaseMemoAllListSort($sort, $productid)->count(),
             'releaselists'  => DugaReleasememo::releaseLists(),
             'auth_id'       => Auth::id(),
-            'sort'          => $sort
+            'sort'          => $sort,
+            'threads'       => Thread::threadTitles()
         ]);
     }
 
@@ -78,7 +81,8 @@ class DugaListController extends Controller
             're_productid'    => str_replace("-", "/", $videod->productid),
             'memolistlatests' => DugaReleaseMemo::dugaReleaseMemoAllListLatest($productid),
             'memocount'       => DugaReleaseMemo::dugaReleaseMemoAllListLatest($productid)->count(),
-            'releaselists'    => DugaReleasememo::releaseLists()
+            'releaselists'    => DugaReleasememo::releaseLists(),
+            'threads'         => Thread::threadTitles()
         ]);
     }
 

@@ -42,19 +42,7 @@ const submitFunction = () => {
               </textarea>
             </div>
             <div class="flex justify-end mr-40 items-center">
-              <div class="">
-                <div class="mb-1">
-                  <label class="cursor-pointer text-sm">
-                    <input type="radio" class="mr-2 mb-1" name="nickname" v-model="form.nickname" value="1" checked>ニックネームを使用する
-                  </label>
-                </div>
-                <div class="">
-                  <label class="cursor-pointer text-sm">
-                    <input type="radio" class="mr-2 mb-1" name="nickname" v-model="form.nickname" value="0">ニックネームを使用しない
-                  </label>
-                </div>
-              </div>
-              <button type="submit" class="px-6 py-2 bg-blue-600 text-white font-bold text-sm leading-normal uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-lg transition duration-150 ease-in-out flex align-center absolute right-6">
+              <button type="submit" class="px-6 py-2 bg-blue-600 text-white font-bold text-sm rounded shadow-md hover:bg-blue-700 flex align-center absolute right-6">
                 <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="download"
                   class="w-3 mt-1 mr-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                   <path fill="currentColor"

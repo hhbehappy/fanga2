@@ -11,6 +11,7 @@ use App\Models\FanzaNice;
 use App\Models\FanzaFreeMemo;
 use App\Models\FanzaReleaseMemo;
 use App\Models\FanzaPrivateMemo;
+use App\Models\Thread;
 use App\Services\Kanren;
 use App\Services\FanzaCreate;
 
@@ -77,7 +78,8 @@ class FanzaVideoController extends Controller
             'releaselists'        => FanzaReleasememo::releaseLists(),
             'nice'                => FanzaNice::fanzaNice($content_id),
             'nicecount'           => FanzaNice::fanzaNiceCount($content_id),
-            'currenturl'    => $currenturl
+            'currenturl'          => $currenturl,
+            'threads'             => Thread::threadTitles()
         ]);
     }
 

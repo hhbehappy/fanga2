@@ -22,4 +22,11 @@ class Thread extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public static function threadTitles()
+    {
+        $threads = Thread::select('id', 'title')->latest('updated_at')->take(3)->get();
+
+        return $threads;
+    }
 }

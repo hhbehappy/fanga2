@@ -15,6 +15,7 @@ import Series from '@/Components/Fanza/Kanren/Series.vue';
 import Director from '@/Components/Fanza/Kanren/Director.vue';
 import Genre2 from '@/Components/Fanza/Kanren/Genre2.vue';
 import Site from '@/Components/Fanza/Kanren/Site.vue';
+import Bbs from '@/Components/Parts/Bbs.vue';
 
 const props = defineProps({
   videoa: Object,
@@ -43,7 +44,8 @@ const props = defineProps({
   nice: Object,
   nicecount: Number,
   privatememolimit: Number,
-  currenturl: String
+  currenturl: String,
+  threads: Object
 })
 
 const form = useForm({
@@ -113,6 +115,7 @@ const memoLogin = () => {
       <Director :director="videoa.director" :fanzadirectors="fanzadirectors" :fanzadirectorcount="fanzadirectorcount" />
       <Genre2 :genre2="videoa.genre2" :fanzagenre2s="fanzagenre2s" :fanzagenre2count="fanzagenre2count" />
       <Site />
+      <Bbs :threads="threads" />
     </article>
   </Layout>
 </template>
