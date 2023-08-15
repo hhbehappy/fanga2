@@ -37,7 +37,7 @@ class ThreadController extends Controller
         ->where('thread_id', $id)->oldest('updated_at')
         ->leftJoin('users', 'comments.user_id', '=', 'users.id')->get();
         
-        $threads = Thread::select('title', 'updated_at')
+        $threads = Thread::select('title')
         ->where('id', $id)->latest('updated_at')->get();
 
         return Inertia::render('Threads/Show', [
@@ -53,7 +53,7 @@ class ThreadController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:126',
-            'content' => 'required|string|max:512|min:5',
+            'content' => 'required|string|max:1000|min:2',
         ]);
         
         $thread = DB::transaction(function () use ($request) {

@@ -88,11 +88,11 @@ const props = defineProps({
       </div>
     </div>
   </div>
-  <!-- メモを一覧で見る -->
+  <!-- メモをはじめから全部見る -->
   <div v-if="props.fanza_release_memo_count !== 0"
     class="flex py-6 justify-center border-dotted border-b border-gray-500">
     <Link :href="route('fmemo.memoListSort', { content_id: props.videoa.content_id, sort: 'oldest' })"
-      class="w-56 p-1.5 font-mono text-center bg-gray-300 rounded-3xl hover:bg-blue-200 shadow-md">メモを一覧で見る</Link>
+      class="w-64 p-1.5 font-mono text-center bg-gray-300 rounded-3xl hover:bg-blue-200 shadow-md">メモをはじめから全部見る</Link>
   </div>
   <div v-else class="m-5 text-center font-bold text-gray-600">
     <p class="w-52 my-12 mx-auto pl-2 border-b-2 border-blue-200">

@@ -15,6 +15,7 @@ import Series from '@/Components/Duga/Kanren/Series.vue';
 import Director from '@/Components/Duga/Kanren/Director.vue';
 import Category from '@/Components/Duga/Kanren/Category.vue';
 import Site from '@/Components/Duga/Kanren/Site.vue';
+import Bbs from '@/Components/Parts/Bbs.vue';
 
 const props = defineProps({
   videod: Object,
@@ -45,7 +46,8 @@ const props = defineProps({
   nice: Object,
   nicecount: Number,
   privatememolimit: Number,
-  currenturl: String
+  currenturl: String,
+  threads: Object
 })
 
 const form = useForm({
@@ -117,6 +119,7 @@ const memoLogin = () => {
       <Director :director="videod.director" :dugadirectors="dugadirectors" :dugadirectorcount="dugadirectorcount" />
       <Category :category="videod.category" :dugacategorys="dugacategorys" :dugacategorycount="dugacategorycount" />
       <Site />
+      <Bbs :threads="threads" />
     </article>
   </Layout>
 </template>

@@ -2,6 +2,7 @@
 import Layout from '@/Layouts/Layout.vue';
 import { Head, Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import Bbs from '@/Components/Parts/Bbs.vue';
 
 const props = defineProps({
   videod: Object,
@@ -9,7 +10,8 @@ const props = defineProps({
   re_productid: String,
   memolistlatests: Object,
   releaselists: Object,
-  memocount: Number
+  memocount: Number,
+  threads: Object
 })
 
 const isShow = ref(false)
@@ -317,6 +319,7 @@ const toggleStatus = () => { isShow.value = !isShow.value }
           </div>
         </div>
       </div>
+      <Bbs :threads="threads" class="md:mr-6" />
     </section>
   </Layout>
 </template>

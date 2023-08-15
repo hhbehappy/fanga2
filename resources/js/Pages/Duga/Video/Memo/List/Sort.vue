@@ -2,6 +2,7 @@
 import Layout from '@/Layouts/Layout.vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import Bbs from '@/Components/Parts/Bbs.vue';
 
 const props = defineProps({
   videod: Object,
@@ -11,7 +12,8 @@ const props = defineProps({
   memocount: Number,
   releaselists: Object,
   auth_id: Number,
-  sort: String
+  sort: String,
+  threads: Object
 })
 
 const isShow = ref(false)
@@ -364,6 +366,7 @@ const destroyReleaseMemo = id => {
           </div>
         </div>
       </div>
+      <Bbs :threads="threads" class="md:mr-6" />
     </section>
   </Layout>
 </template>

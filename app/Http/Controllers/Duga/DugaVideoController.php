@@ -11,6 +11,7 @@ use App\Models\DugaNice;
 use App\Models\DugaFreeMemo;
 use App\Models\DugaReleaseMemo;
 use App\Models\DugaPrivateMemo;
+use App\Models\Thread;
 use App\Services\Kanren;
 use App\Services\DugaCreate;
 
@@ -79,7 +80,8 @@ class DugaVideoController extends Controller
             'auth_id'           => Auth::id(),
             'nice'              => DugaNice::dugaNice($productid),
             'nicecount'         => DugaNice::dugaNicecount($productid),
-            'currenturl'    => $currenturl
+            'currenturl'        => $currenturl,
+            'threads'           => Thread::threadTitles()
         ]);
     }
 

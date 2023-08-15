@@ -4,7 +4,8 @@ import { Head, Link } from '@inertiajs/vue3';
 
 defineProps({
   topflists: Object,
-  topdlists: Object
+  topdlists: Object,
+  threads: Object
 })
 </script>
 <template>
@@ -39,7 +40,7 @@ defineProps({
             </Link>
           </li>
         </ul>
-        <h2 class="mt-8 mb-3 font-bold">メモできる動画をお探しの方はこちら</h2>
+        <h2 class="mt-12 mb-3 font-bold">メモできる動画をお探しの方はこちら</h2>
         <ul class="list-disc list-inside space-y-3">
           <li>
             <Link :href="route('fvideo.index')" class="text-blue-500 hover:underline hover:text-red-500">FANZAの動画を探す
@@ -49,7 +50,14 @@ defineProps({
             <Link :href="route('dvideo.index')" class="text-blue-500 hover:underline hover:text-red-500">DUGAの動画を探す</Link>
           </li>
         </ul>
-        <h2 class="mt-8 mb-3 font-bold">運営者情報</h2>
+        <h2 class="mt-12 mb-3 font-bold">BBS</h2>
+        <ul class="list-disc list-inside space-y-3 whitespace-pre-line break-all">
+      <li v-for="thread in threads" :key="thread.id">
+        <Link :href="route('threads.show', thread.id)" class="font-mono text-blue-500 hover:underline hover:text-red-500">
+        {{ thread.title }}</Link>
+      </li>
+    </ul>
+        <h2 class="mt-12 mb-3 font-bold">運営者情報</h2>
         <p>ニックネーム: はんぞ〜</p>
         <p>福岡県在住<span class="ml-6">41歳</span></p>
         <p class="mt-3">

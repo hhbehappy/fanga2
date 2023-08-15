@@ -9,6 +9,7 @@ use Inertia\Inertia;
 use Carbon\Carbon;
 use App\Models\Fanza;
 use App\Models\FanzaReleaseMemo;
+use App\Models\Thread;
 use App\Services\SortKeyword;
 
 class FanzaListController extends Controller
@@ -47,8 +48,9 @@ class FanzaListController extends Controller
         $release_memo_lists = FanzaReleaseMemo::fanzaReleaseMemoAllListChunk($content_id);
         $memocount     = FanzaReleaseMemo::fanzaReleaseMemoAllListChunk($content_id)->count();
         $releaselists  = FanzaReleasememo::releaseLists();
+        $threads       = Thread::threadTitles();
         
-        return view('Fanza/Video/Memo/List/Chunk', compact('videoa', 'videoids', 'release_memo_lists', 'memocount', 'releaselists'));
+        return view('Fanza/Video/Memo/List/Chunk', compact('videoa', 'videoids', 'release_memo_lists', 'memocount', 'releaselists', 'threads'));
     }
 
     public function memoListSort($sort, $content_id)
@@ -60,7 +62,8 @@ class FanzaListController extends Controller
             'memocount'     => FanzaReleaseMemo::fanzaReleaseMemoAllListSort($sort, $content_id)->count(),
             'releaselists'  => FanzaReleasememo::releaseLists(),
             'auth_id'       => Auth::id(),
-            'sort'          => $sort
+            'sort'          => $sort,
+            'threads'       => Thread::threadTitles()
         ]);
     }
 
@@ -71,7 +74,8 @@ class FanzaListController extends Controller
             'videoa'          => Fanza::whereContent_id($content_id)->first(),
             'memolistlatests' => FanzaReleaseMemo::fanzaReleaseMemoAllListLatest($content_id),
             'memocount'       => FanzaReleaseMemo::fanzaReleaseMemoAllListLatest($content_id)->count(),
-            'releaselists'    => FanzaReleasememo::releaseLists()
+            'releaselists'    => FanzaReleasememo::releaseLists(),
+            'threads'         => Thread::threadTitles()
         ]);
     }
 
