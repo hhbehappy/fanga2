@@ -52,29 +52,11 @@ defineProps({
         </ul>
         <h2 class="mt-12 mb-3 font-bold">BBS</h2>
         <ul class="list-disc list-inside space-y-3 whitespace-pre-line break-all">
-      <li v-for="thread in threads" :key="thread.id">
-        <Link :href="route('threads.show', thread.id)" class="font-mono text-blue-500 hover:underline hover:text-red-500">
-        {{ thread.title }}</Link>
-      </li>
-    </ul>
-        <h2 class="mt-12 mb-3 font-bold">運営者情報</h2>
-        <p>ニックネーム: はんぞ〜</p>
-        <p>福岡県在住<span class="ml-6">41歳</span></p>
-        <p class="mt-3">
-          AV鑑賞が三度の飯より好き!というわけでもなく、昔6年程働いていたDVD試写室(当時はビデボと言っていた)に来ていた常連さんに、AVはぬくためではなくて1つの映画のような作品として見ている!という人もいたけどそういうわけでもない。
-        </p>
-        <p class="mt-3">
-          僕の場合は早漏だから普通にすれば、あっ!という間に終わってしまうので長時間のオナニーは楽しめない。
-        </p>
-        <p class="mt-3">
-          何か良い方法はないだろうか、、、
-        </p>
-        <p class="mt-3">
-          それにオナニーだけでなく、AVを楽しむ方法は他にもきっと沢山あると思う。
-        </p>
-        <p class="mt-3">
-          より良いAVライフを求めてこのサイトが何かの役に立つといいな。
-        </p>
+          <li v-for="thread in threads" :key="thread.id">
+            <Link :href="route('threads.show', thread.id)" class="font-mono text-blue-500 hover:underline hover:text-red-500">
+            {{ thread.title }}</Link>
+          </li>
+        </ul>
       </div>
     </section>
   </Layout>
